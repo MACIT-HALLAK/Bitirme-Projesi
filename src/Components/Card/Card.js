@@ -11,7 +11,7 @@ const Card = () => {
         <h4>hadis alkalam1</h4>
         <p>mohamad alzogbi</p>
     </div>
-   
+    
       )
 }
 

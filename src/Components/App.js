@@ -1,5 +1,6 @@
 import './App.css';
 import Title from './Title/Title';
+
 import Card from './Card/Card';
 import BookCategories from './BookCategories/BookCategories';
 import Footer from './Footer/Footer';
