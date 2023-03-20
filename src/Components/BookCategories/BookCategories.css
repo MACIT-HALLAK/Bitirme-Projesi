@@ -1,0 +1,13 @@
+aside {
+    grid-area: a;
+    border-radius: 4px;
+    background-color: #ffffff;
+  }
+  
+aside a {
+     font-size: 20px;
+     text-decoration: none; 
+     padding: 10px; 
+     display: block;
+  
+  }
