@@ -1,0 +1,92 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+i {
+  font-family: "Font Awesome 5 Free";
+}
+:root {
+  --main-color: #45b09e;
+  --main-color-alt: #1c8b78;
+  --main-transition: 0.3s;
+  --main-padding-top: 100px;
+  --main-padding-bottom: 100px;
+  --section-background: #ececec;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Cairo", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav {
+  display: flex;
+}
+@media (max-width: 767px) {
+  .main-nav {
+    margin: auto;
+  }
+}
+.main-nav li {
+  flex-grow: 1;
+}
+.main-nav li:last-child {
+  flex-grow: 4;
+  display: flex;
+  justify-content: center;
+}
+.main-nav li:last-child > ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-nav > li > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 72px;
+  position: relative;
+  color: black;
+  padding: 0 30px;
+  overflow: hidden;
+  font-size: 18px;
+  transition: var(--main-transition);
+}
+
+@media (max-width: 767px) {
+  .main-nav > li > a {
+    padding: 10px;
+    font-size: 14px;
+    height: 40px;
+  }
+}
+
+.main-nav > li > a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: var(--main-color);
+  top: 0;
+  left: -100%;
+  transition: var(--main-transition);
+}
+
+.main-nav > li > a:hover {
+  color: var(--main-color);
+  background-color: #fafafa;
+}
+.main-nav > li > a:hover::before {
+  left: 0;
+}

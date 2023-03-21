@@ -1,22 +1,23 @@
-import './App.css';
-import Title from './Title/Title';
-import Card from './Card/Card';
-import BookCategories from './BookCategories/BookCategories';
-import Footer from './Footer/Footer';
+import "./App.css";
+import Title from "./Title/Title";
+import Card from "./Card/Card";
+import BookCategories from "./BookCategories/BookCategories";
+import Footer from "./Footer/Footer";
+import Navbar from "./Navbar/Navber";
 //----Ana sayfa burasi----
 function App() {
   return (
     <div className="layout">
-      Header
+      <Navbar />
       <section>
-      <Title />
-      <div className="parent">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div>
+        <Title />
+        <div className="parent">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
       </section>
       <BookCategories />
       <Footer />
