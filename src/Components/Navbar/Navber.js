@@ -1,48 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
+  const [value, setValue] = useState("");
+  const [btnState, setBtnState] = useState(false);
+  function handleClick() {
+    setBtnState((btnState) => !btnState);
+  }
+  let toggleClassCheck = btnState ? "hide" : "";
   return (
-    <nav>
-      {/* <a href="#" class="logo" data-lang="logo">
-        Ümit Adımı
-      </a> */}
-      <ul className="main-nav">
-        <li>
-          <a href="#" data-lang="contact">
-            Anasayfa
-          </a>
-        </li>
-        <li>
-          <a href="#" data-lang="linkler">
-            Yazarlar
-          </a>
-        </li>
-        <li>
-          <a href="#" data-lang="linkler">
-            Seviyeler
-          </a>
-        </li>
-        <li>
-          <ul>
-            <li>
-              <input type="text" className="serach-area"></input>
-              <button className="btn-search">Ara</button>
-            </li>
-            <li>
-              <a href="#" data-lang="linkler" className="btn-auth">
-                Kayit ol
-              </a>
-            </li>
-            <li>
-              <a href="#" data-lang="linkler" className="btn-auth">
-                giris
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
+    <>
+      <nav>
+        <FontAwesomeIcon
+          icon={faBars}
+          className="menu-bars"
+          onClick={handleClick}
+        ></FontAwesomeIcon>
+        <ul className={`main-nav ${toggleClassCheck}`}>
+          <li>
+            <a href="#" data-lang="contact">
+              Anasayfa
+            </a>
+          </li>
+          <li>
+            <a href="#" data-lang="linkler">
+              Yazarlar
+            </a>
+          </li>
+          <li>
+            <a href="#" data-lang="linkler">
+              Seviyeler
+            </a>
+          </li>
+          <li>
+            <ul>
+              <li className="alt-box">
+                <div className="box">
+                  <form name="search">
+                    <input
+                      type="text"
+                      className="input"
+                      name="txt"
+                      value={value}
+                      onMouseEnter={() => setValue()}
+                      onMouseLeave={() => setValue("")}
+                    ></input>
+                  </form>
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
+                </div>
+                <div className="auth">
+                  <a href="#" data-lang="linkler" className="btn-auth">
+                    Register
+                  </a>
+                  <a href="#" data-lang="linkler" className="btn-auth">
+                    Login
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </>
   );
 };
 
