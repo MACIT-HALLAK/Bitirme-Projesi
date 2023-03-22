@@ -5,12 +5,14 @@ import Card from "./Card/Card";
 import BookCategories from "./BookCategories/BookCategories";
 import Footer from "./Footer/Footer";
 import Navbar from "./Navbar/Navber";
+import Content from "./Content/Content";
 
 //----Ana sayfa burasi----
 function App() {
   return (
     <div className="layout">
       <Navbar />
+      <Content />
       <section>
         <Title />
         <div className="parent">

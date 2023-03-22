@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FaSearch } from "react-icons/fa";
+import { FaList } from "react-icons/fa";
 import NavEelements from "./navElements/NavEelements";
 
 const Navbar = () => {
@@ -16,11 +15,7 @@ const Navbar = () => {
   return (
     <>
       <nav>
-        <FontAwesomeIcon
-          icon={faBars}
-          className="menu-bars"
-          onClick={handleClick}
-        ></FontAwesomeIcon>
+        <FaList className="menu-bars" onClick={handleClick} />
         <ul className={`main-nav ${toggleClassCheck}`}>
           {/* call main elments in navbar */}
           {arr.map((element, index) => {
@@ -40,7 +35,7 @@ const Navbar = () => {
                       onMouseLeave={() => setValue("")}
                     ></input>
                   </form>
-                  <FontAwesomeIcon icon={faMagnifyingGlass} />
+                  <FaSearch />
                 </div>
                 <div className="auth">
                   <a href="#" data-lang="linkler" className="btn-auth">
