@@ -5,8 +5,6 @@ import Card from "./Card/Card";
 import BookCategories from "./BookCategories/BookCategories";
 import Footer from "./Footer/Footer";
 import Navbar from "./Navbar/Navber";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 //----Ana sayfa burasi----
 function App() {

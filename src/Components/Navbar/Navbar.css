@@ -32,6 +32,16 @@ ul {
 .main-nav {
   display: flex;
   overflow: hidden;
+  margin-top: 5px;
+  /* padding: 5px 10px; */
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  transition: all 0.3s linear;
+  box-shadow: 1px 1px 1px var(--main-color-alt);
 }
 
 .menu-bars {
@@ -41,7 +51,8 @@ ul {
 @media (max-width: 767px) {
   .main-nav {
     margin: auto;
-    display: none;
+    visibility: hidden;
+    height: 0;
     flex-direction: column;
     align-items: start;
     gap: 20px;
@@ -83,6 +94,9 @@ ul {
 
   .hide {
     display: flex;
+    height: 90%;
+    visibility: visible;
+    padding: 2.5% 10px;
   }
 }
 

@@ -3,14 +3,16 @@ import "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import NavEelements from "./navElements/NavEelements";
 
 const Navbar = () => {
-  const [value, setValue] = useState("");
-  const [btnState, setBtnState] = useState(false);
+  const [value, setValue] = useState(() => "");
+  const [btnState, setBtnState] = useState(() => false);
   function handleClick() {
     setBtnState((btnState) => !btnState);
   }
   let toggleClassCheck = btnState ? "hide" : "";
+  let arr = ["Anasayfa", "Yazarlar", "Seviyeler"];
   return (
     <>
       <nav>
@@ -20,21 +22,10 @@ const Navbar = () => {
           onClick={handleClick}
         ></FontAwesomeIcon>
         <ul className={`main-nav ${toggleClassCheck}`}>
-          <li>
-            <a href="#" data-lang="contact">
-              Anasayfa
-            </a>
-          </li>
-          <li>
-            <a href="#" data-lang="linkler">
-              Yazarlar
-            </a>
-          </li>
-          <li>
-            <a href="#" data-lang="linkler">
-              Seviyeler
-            </a>
-          </li>
+          {/* call main elments in navbar */}
+          {arr.map((element, index) => {
+            return <NavEelements element={element} key={index} />;
+          })}
           <li>
             <ul>
               <li className="alt-box">
