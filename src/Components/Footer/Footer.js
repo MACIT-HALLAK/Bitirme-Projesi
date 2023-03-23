@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
 
+//-----footer component burasi---
 const Footer = () => {
   return (
     <footer>

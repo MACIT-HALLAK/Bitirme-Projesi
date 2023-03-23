@@ -13,11 +13,12 @@ footer {
  .footer-parent {
   font-size: 20px;
   color:tomato;
-  font-weight: bold;
  }
  .footer-parent > div {
    color: var(--text-color);
    font-size: 16px;
+   line-height: 25px;
+
 
  }
  .footer-parent  h5 {
