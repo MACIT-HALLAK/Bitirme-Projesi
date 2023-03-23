@@ -3,9 +3,7 @@
 	background-color: #ffffff;
 	border-radius: 10px;
 	box-shadow: 0px 60px 60px rgba(0,0,0,0.2);
-	margin: 100px auto;
-	width: 700px;
-    
+	margin: 103px auto !important;
     padding: 39px 23px 23px 23px;
 }
 
@@ -14,7 +12,7 @@ width: 600px;
 margin-left: 30px;
 }
 h1 {
-    color: #33cc33;
+    color: #19a130;
     text-align: center;
     margin: 6px 0px 37px 0px;
     padding: 6px;
@@ -45,7 +43,7 @@ input[type="password"] {
 
 
 .register-button {
-	background-color: #33cc33;
+	background-color: #1c8b2e;
 	border: none;
 	border-radius: 5px;
 	color: #ffffff;
@@ -54,13 +52,46 @@ input[type="password"] {
 	padding: 10px;
 	text-align: center;
 	text-decoration: none;
-	transition: background-color 0.3s ease;
-    display: block;
-    margin: 32px 195px 10px 195px;
     width: 250px;
+	position: relative;
+    left: 45%;
+    transform: translateX(-50%);
 }
 
 .register-button:hover {
-	background-color: #339933;
+	background-color: #1c8b78;
 }
 
+/* For screens smaller than 700px */
+@media screen and (max-width: 780px) {
+	.form-container {
+		width: 90%;
+		margin: 50px auto;
+	}
+	
+	.container {
+		width: 100%;
+		margin: 0;
+	}
+	
+	form {
+	    grid-template-columns: 1fr;
+	}
+	
+	.register-button {
+	    margin: 32px auto 10px auto;
+	}
+}
+
+  /* For screens larger than 700px */
+@media screen and (min-width: 750px) {
+	.form-container {
+		width: 700px;
+		margin: 100px auto;
+		}
+	
+	.container {
+		width: 600px;
+		margin-left: 30px;
+	}
+}  

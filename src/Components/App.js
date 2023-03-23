@@ -6,7 +6,8 @@ import BookCategories from "./BookCategories/BookCategories";
 import Footer from "./Footer/Footer";
 import Navbar from "./Navbar/Navber";
 import Content from "./Content/Content";
-
+import Register from "./Register/Register"
+import Login from "./Login/Login"
 //----Ana sayfa burasi----
 function App() {
   return (
@@ -22,9 +23,11 @@ function App() {
           <Card />
           <Card />
         </div>
+      
       </section>
       <BookCategories />
       <Footer />
+      
     </div>
   );
 }
