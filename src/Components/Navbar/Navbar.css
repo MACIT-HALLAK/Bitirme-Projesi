@@ -13,6 +13,7 @@ i {
   --main-padding-top: 100px;
   --main-padding-bottom: 100px;
   --section-background: #ececec;
+  --text-color:#333;
 }
 html {
   scroll-behavior: smooth;
