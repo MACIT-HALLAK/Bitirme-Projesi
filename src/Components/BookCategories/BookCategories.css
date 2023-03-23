@@ -2,6 +2,7 @@ aside {
     grid-area: a;
     border-radius: 4px;
     background-color: #ffffff;
+    position: relative;
   }
   
 aside a {
@@ -9,5 +10,34 @@ aside a {
      text-decoration: none; 
      padding: 10px; 
      display: block;
+     color:#333;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+    position: relative;
+   
   
   }
+
+ aside a:hover::after {
+  content: "";
+  position: absolute;
+  height: 5%;
+  width: 80%;
+  left: 5px;
+  bottom: 0;
+  background-color: var(--main-color-alt);
+ }
+aside h2 {
+  color: var(--main-color);
+  text-align: center;
+  
+}
+.book-icon {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+  color: var(--main-color-alt);
+  transform: skew(-12deg,5deg);
+
+}

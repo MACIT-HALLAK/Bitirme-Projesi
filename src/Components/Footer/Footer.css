@@ -1,5 +1,29 @@
 footer {
     grid-area: f;
     margin-top: 20px;
+    padding: 10px;
     background-color:  #ffffff ;
+    color: var(--text-color);
+    text-align: center;
   }
+ footer h3 {
+  color: var(--main-color-alt);
+
+ }
+ .footer-parent {
+  font-size: 20px;
+  color:tomato;
+  font-weight: bold;
+ }
+ .footer-parent > div {
+   color: var(--text-color);
+   font-size: 16px;
+
+ }
+ .footer-parent  h5 {
+  color: black;
+  font-size: 17px;
+  margin:5px 0 ;
+  
+
+}

@@ -1,18 +1,24 @@
 import React from 'react'
 import './BookCategories.css';
+import {FaBook} from "react-icons/fa"
 
 const BookCategories = () => {
   return (
     <aside>
-        <a href="#">kitab bolumleri</a>
-        <a href="#">islam dini</a>
-        <a href="#">tarih</a>
-        <a href="#">kultur</a>
-        <a href="#">pikoloj</a>
+        <h2>Kitab Bölümleri</h2>
         
+        <a href="#">İslam Dini <FaBook className='book-icon' /></a>
+        <a href="#">Tarih <FaBook className='book-icon' /></a>
+        <a href="#">Kültür <FaBook className='book-icon' /></a>
+        <a href="#">Piskoloj <FaBook className='book-icon' /></a>
+        <a href="#">Kitaplar romanlar ve edebi hikayeler <FaBook className='book-icon' /></a>   
+        <a href="#">Arap edebiyatı <FaBook className='book-icon' /></a>   
+        <a href="#">Arapça dili <FaBook className='book-icon' /></a>   
+        <a href="#">İslam felsefesi <FaBook className='book-icon' /></a>   
+        <a href="#">Mühendislik <FaBook className='book-icon' /></a>   
         
-           
-    </aside>  )
+    </aside>  
+    )
 }
 
 export default BookCategories

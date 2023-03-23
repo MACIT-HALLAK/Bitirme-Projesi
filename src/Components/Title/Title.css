@@ -4,4 +4,5 @@ h2 {
     padding: 20px;
     background-color: #ffffff;
     border-radius: 4px;
+    color: var(--main-color-alt);
   }
