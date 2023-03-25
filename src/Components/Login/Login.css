@@ -1,13 +1,15 @@
 
-.form-container {
-	background-color: #ffffff;
+.form-login-container {
+	background-color: rgb(255, 255, 255,0,8);
     border-radius: 10px;
     box-shadow: 0px 60px 60px rgba(0,0,0,0.2);
-    margin: 162px auto !important;
+    margin: 129px auto !important;
     padding: 39px 23px 23px 23px;
+    max-width: 650px;
+
 }
 
-.container {
+.container-login {
 width: 600px;
 
 }
@@ -16,15 +18,36 @@ h1 {
     text-align: center;
     margin: 6px 0px 37px 0px;
     padding: 6px;
+    animation: slideLeft1 1.5s ease-in-out forwards;
 }
-
+@keyframes slideLeft1{
+    0% {
+      transform: translateY(-400%); /* başlangıç konumu */
+	  opacity: 0.1;
+    }
+    100% {
+      transform: translateY(-5%); /* bitiş konumu */
+	  opacity: 1;
+    }
+} 
 form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
     width: 500px;
     margin: 45px;
+    animation: slideLeft2 1.5s ease-in-out forwards;
 }
+@keyframes slideLeft2{
+    0% {
+      transform: translateX(-200%); /* başlangıç konumu */
+	   opacity: 0.1;
+    }
+    100% {
+      transform: translateX(-5%); /* bitiş konumu */
+	  opacity: 1;
+    }
+} 
 
 label {
 	display: block;
@@ -42,51 +65,68 @@ input[type="password"] {
 
 
 .login-button {
-	background-color: #1c8b2e;
+    background-color: #1c8b2e;
     border: none;
     border-radius: 5px;
     color: #ffffff;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 17px;
     padding: 10px;
     text-align: center;
     text-decoration: none;
     width: 250px;
-    position: relative;
-    left: 47%;
-    transform: translateX(-50%);
+    margin: 6px;
+    animation: slideLeft3 1.5s ease-in-out forwards;
 }
+@keyframes slideLeft3 {
+    0% {
+      transform: translateX(400%); /* başlangıç konumu */
+	  opacity: 0.1;
+    }
+    100% {
+      transform: translateX(58%); /* bitiş konumu */
+	  opacity: 1;
+    }
+} 
 
 .login-button:hover {
 	background-color: #1c8b78;
 }
 /* For devices with a maximum width of 768px */
-@media only screen and (max-width: 700px) {
-    .form-container {
-        width: 90% !important;
-    }
-    .container {
+@media only screen and (max-width: 780px) {
+    
+    .container-login {
         width: 100%;
         margin: 0px;
     }
     form {
         display: flex;
         flex-direction: column;
-        width: 100%;
-        margin: 0px;
+        width: 105%;
+        margin: 16px;
     }
     
     .login-button {
-        margin: 32px auto 10px auto;
+        margin: 32px 16px 10px 59px;
+    }
+    .img {
+        width: auto;
+        height: 19vw;
+        margin-left: -20px;
+        transform: translateX(35vw)!important;
+    }
+    body {
+        overflow: hidden;
     }
 }
   /* For devices with a minimum width of 769px */
 @media only screen and (min-width: 700px) {
+   
     .form-container {
         margin: 151px auto !important;
         width: 650px !important;
     }
-    .container {
+    .container-login {
         width: 600px;
     }
     form {
@@ -96,8 +136,20 @@ input[type="password"] {
         width: 500px;
         margin: 45px;
     }
-
-    
+ 
 }
+@media only screen and (max-width: 690px) {
+    .login-button {
+	margin-top: 1rem;
+    margin-left: 0.5rem;
+    width: 107%;
+    max-width: 100%;
+    position: relative;
+    left: -59%;
+    }
+		
+   
 
+	
+}
 

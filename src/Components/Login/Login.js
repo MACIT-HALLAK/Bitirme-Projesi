@@ -1,14 +1,16 @@
 import React from 'react'
 import './Login.css'
+import img from '../../Assets/images/4043260_avatar_male_man_portrait_icon.png';
 
 const Login = () => {
     return (
     
     <>
 
-    <div className="form-container">
-        <h1>Giriş Sayfası</h1>
-            <div className = "container">
+    <div className="form-login-container">
+        
+            <div className = "container-login">
+            <img src={img} className='img'/>
                 <form>
                     
                     <label htmlFor="email">E-posta:</label>

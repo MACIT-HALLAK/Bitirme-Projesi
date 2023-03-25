@@ -1,5 +1,6 @@
 import React from 'react'
 import './Register.css'
+import img from '../../Assets/images/4043260_avatar_male_man_portrait_icon.png';
 
 const Register = () => {
   return (
@@ -7,8 +8,10 @@ const Register = () => {
     <>
 
     <div className="form-container">
-        <h1>Kayıt Ol</h1>
+        
             <div className = "container">
+            
+            <img src={img} className='img'/>
                 <form>
                     <label htmlFor="username">Kullanıcı Adı:</label>
                     <input type="text" id="username" name="username" required />
@@ -20,10 +23,10 @@ const Register = () => {
                     <input type="password" id="password-again" name="password-again" required />
                     
                 </form>
-                    
+                   
                 <button type="submit"  className="register-button">Kayıt Ol</button>
-                    
             </div>
+              
         
     </div>
 
