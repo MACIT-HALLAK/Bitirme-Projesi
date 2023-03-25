@@ -1,4 +1,4 @@
-
+/*
 .form-container {
 	background-color: #ffffff;
     border-radius: 10px;
@@ -61,6 +61,7 @@ input[type="password"] {
 	background-color: #1c8b78;
 }
 /* For devices with a maximum width of 768px */
+/*
 @media only screen and (max-width: 700px) {
     .form-container {
         width: 90% !important;
@@ -80,7 +81,9 @@ input[type="password"] {
         margin: 32px auto 10px auto;
     }
 }
+*/
   /* For devices with a minimum width of 769px */
+  /*
 @media only screen and (min-width: 700px) {
     .form-container {
         margin: 151px auto !important;
@@ -101,3 +104,4 @@ input[type="password"] {
 }
 
 
+*/

@@ -52,7 +52,7 @@ section {
 @media (max-width: 768px) {
   .layout {
     grid-template-columns: 50px repeat(10, 1fr) 25px;
-    grid-template-rows: auto 300px auto 200px;
+    grid-template-rows: auto 300px auto auto;
     grid-template-areas:
       ". header header header header header  header header header header header ."
       ". content-main content-main content-main content-main content-main content-main  content-main content-main content-main content-main ."
