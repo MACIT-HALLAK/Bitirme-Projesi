@@ -68,10 +68,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  letter-spacing: 2px;
 }
 
 .text-box a:hover {
   scale: 1.05;
+  letter-spacing: 0px;
 }
 
 .text-box a:first-child {
