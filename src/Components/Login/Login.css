@@ -1,41 +1,47 @@
-
+body {
+    background: #0dac6a;
+    
+}
 .form-login-container {
 	background-color: rgb(255, 255, 255,0,8);
     border-radius: 10px;
     box-shadow: 0px 60px 60px rgba(0,0,0,0.2);
-    margin: 129px auto !important;
-    padding: 39px 23px 23px 23px;
-    max-width: 650px;
-
+    max-width: fit-content;
+    margin: 157px auto !important;
+    padding: 21px 23px 23px 23px;
+   
 }
-
-.container-login {
-width: 600px;
-
-}
-h1 {
-    color: #19a130;
-    text-align: center;
-    margin: 6px 0px 37px 0px;
+.login-img {
+	
+	width: 90px ;
+	height: 90px;
+	margin: 6px 0px 37px 242px;
     padding: 6px;
-    animation: slideLeft1 1.5s ease-in-out forwards;
+	animation: slideLeft1 1.5s ease-in-out forwards;
+	
 }
 @keyframes slideLeft1{
-    0% {
-      transform: translateY(-400%); /* başlangıç konumu */
+	0% {
+	  transform: translateY(-400%); /* başlangıç konumu */
 	  opacity: 0.1;
-    }
-    100% {
-      transform: translateY(-5%); /* bitiş konumu */
+	}
+	100% {
+	  transform: translateY(-5%); /* bitiş konumu */
 	  opacity: 1;
-    }
+	}
 } 
-form {
-    display: grid;
+.login-container {
+width: 600px;
+margin-left: 30px;
+}
+
+
+.login-form {
+	display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
-    width: 500px;
-    margin: 45px;
+    padding-top: 8px;
+    margin: -17px 32px 27px 70px;
     animation: slideLeft2 1.5s ease-in-out forwards;
 }
 @keyframes slideLeft2{
@@ -49,14 +55,13 @@ form {
     }
 } 
 
-label {
+.login-label {
 	display: block;
 	margin-bottom: 5px;
-	color: #333333;
+	color: #ffffff;
 }
 
-input[type="email"],
-input[type="password"] {
+.login-input{
 	border: 2px solid #cccccc;
 	border-radius: 10px;
 	padding: 10px;
@@ -65,10 +70,11 @@ input[type="password"] {
 
 
 .login-button {
-    background-color: #1c8b2e;
+	background-color: ffffff;
     border: none;
     border-radius: 5px;
-    color: #ffffff;
+    color: black;
+    font-weight: bold;
     cursor: pointer;
     font-size: 17px;
     padding: 10px;
@@ -76,8 +82,10 @@ input[type="password"] {
     text-decoration: none;
     width: 250px;
     margin: 6px;
-    animation: slideLeft3 1.5s ease-in-out forwards;
+	animation: slideLeft3 1.5s ease-in-out forwards;
+	
 }
+
 @keyframes slideLeft3 {
     0% {
       transform: translateX(400%); /* başlangıç konumu */
@@ -89,67 +97,98 @@ input[type="password"] {
     }
 } 
 
+
 .login-button:hover {
-	background-color: #1c8b78;
+	background-color: green;
 }
-/* For devices with a maximum width of 768px */
-@media only screen and (max-width: 780px) {
-    
-    .container-login {
-        width: 100%;
-        margin: 0px;
-    }
-    form {
-        display: flex;
-        flex-direction: column;
-        width: 105%;
-        margin: 16px;
-    }
-    
-    .login-button {
-        margin: 32px 16px 10px 59px;
-    }
-    .img {
-        width: auto;
-        height: 19vw;
-        margin-left: -20px;
-        transform: translateX(35vw)!important;
-    }
-    body {
-        overflow: hidden;
-    }
-}
-  /* For devices with a minimum width of 769px */
-@media only screen and (min-width: 700px) {
-   
-    .form-container {
-        margin: 151px auto !important;
-        width: 650px !important;
-    }
-    .container-login {
-        width: 600px;
-    }
-    form {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 20px;
-        width: 500px;
-        margin: 45px;
-    }
- 
+
+/* For screens smaller than 700px */
+@media screen and (max-width: 780px) {
+	.form-login-container {
+		border-radius: 10px;
+		box-shadow: 0px 60px 60px rgba(0,0,0,0.2);
+		max-width: -moz-fit-content;
+		max-width: 100%;
+		margin: 66px auto !important;
+	}
+	.form-login-container {
+		width: 90%;
+		margin: 50px auto;
+	}
+	
+	.login-container {
+		width: 100%;
+		margin-left: 20px;
+	}
+	
+	.login-form {
+	    grid-template-columns: 1fr;
+	}
+	
+	.login-button {
+	    margin: 32px auto 10px auto;
+	}
+	.login-img {
+		width: auto;
+		height: 20vw;
+		margin-left: 0px;
+		transform: translateX(30vw)!important;
+		animation: slideLeft1 1.5s ease-in-out forwards;
+	}
+	body {
+		overflow: scroll;
+	}
+	
 }
 @media only screen and (max-width: 690px) {
     .login-button {
 	margin-top: 1rem;
-    margin-left: 0.5rem;
-    width: 107%;
-    max-width: 100%;
+    width: 100%;
+    max-width: 83%;
     position: relative;
-    left: -59%;
-    }
+    left: -41%;
 		
-   
+    }
 
 	
 }
+@media only screen and (max-width: 650px) {
+    .form-login-container {
+        
+        margin: 75px auto !important;
+    }
+    .login-button {
+		margin-top: 1rem;
+		width: 100%;
+		max-width: 100%;
+		position: relative;
+		left: -63%;
+	
+    }
+	.login-form {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: 20px;
+		padding-top: 8px;
+		margin: -21px 0px 27px 0px;
+		animation: slideLeft2 1.5s ease-in-out forwards;
+	}
+
+	
+}
+@media screen and (max-width: 550px){
+.login-img {
+    width: auto;
+    height: 20vw;
+    margin-left: -20px;
+    transform: translateX(30vw)!important;
+    animation: slideLeft1 1.5s ease-in-out forwards;
+}
+.form-login-container {
+        
+    margin: 99px auto !important;
+}
+}
+
+
 

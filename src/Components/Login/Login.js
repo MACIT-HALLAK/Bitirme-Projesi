@@ -9,14 +9,14 @@ const Login = () => {
 
     <div className="form-login-container">
         
-            <div className = "container-login">
-            <img src={img} className='img'/>
-                <form>
+            <div className = "login-container">
+            <img src={img} className="login-img"/>
+                <form className="login-form">
                     
-                    <label htmlFor="email">E-posta:</label>
-                    <input type="email" id="email" name="email" required />
-                    <label htmlFor="password">Şifre:</label>
-                    <input type="password" id="password" name="password" required />
+                    <label className="login-label" htmlFor="email">E-posta:</label>
+                    <input className="login-input" type="email" id="email" name="email" required />
+                    <label className="login-label" htmlFor="password">Şifre:</label>
+                    <input className="login-input" type="password" id="password" name="password" required />
                     
                 </form>
                     
