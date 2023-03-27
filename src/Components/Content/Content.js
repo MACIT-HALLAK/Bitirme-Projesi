@@ -3,6 +3,9 @@ import "./Content.css";
 export default function Content() {
   return (
     <div className="content-main">
+      <div className="main-image">
+        <img src={require("../../Assets/images/Eyadprofile.jpg")}></img>
+      </div>
       <div className="text-box">
         <p>
           lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem
