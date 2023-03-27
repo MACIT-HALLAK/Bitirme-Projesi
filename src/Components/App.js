@@ -6,7 +6,7 @@ import BookCategories from "./BookCategories/BookCategories";
 import Footer from "./Footer/Footer";
 import Navbar from "./Navbar/Navber";
 import Content from "./Content/Content";
-import Form from "./Writer/Writer";
+// import Form from "./Writer/Writer";
 
 //----Ana sayfa burasi----
 function App() {
