@@ -1,7 +1,7 @@
 .layout {
   display: grid;
   grid-template-columns: 100px repeat(10, 1fr) 100px;
-  grid-template-rows: 75px 500px 1fr 220px;
+  grid-template-rows: 75px 500px 2fr 220px;
   background-color: #f1f1f1;
   grid-template-areas:
     ". header header header header header header  header header header header ."
@@ -52,7 +52,7 @@ section {
 @media (max-width: 768px) {
   .layout {
     grid-template-columns: 50px repeat(10, 1fr) 25px;
-    grid-template-rows: auto 300px auto auto;
+    grid-template-rows: auto 300px auto auto auto;
     grid-template-areas:
       ". header header header header header  header header header header header ."
       ". content-main content-main content-main content-main content-main content-main  content-main content-main content-main content-main ."
@@ -67,6 +67,6 @@ section {
   }
   .layout {
     grid-template-columns: 25px repeat(10, 1fr) 25px;
-    grid-template-rows: auto 375px auto 200px;
+    grid-template-rows: auto 375px auto auto 200px;
   }
 }
