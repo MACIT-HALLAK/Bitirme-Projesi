@@ -1,5 +1,5 @@
 body {
-	background: #0dac6a;
+	background: linear-gradient(to right, #45b09e 50%, white 50%);
 		
 }
 .form-register-container {
@@ -7,14 +7,14 @@ body {
     border-radius: 10px;
     box-shadow: 0px 60px 60px rgba(0,0,0,0.2);
     max-width: fit-content;
-    margin: 70px auto !important;
+    margin: 99px auto !important;
     padding: 21px 23px 23px 23px;
 }
 .register-img {
 	
 	width: 90px ;
 	height: 90px;
-	margin: 6px 0px 37px 242px;
+	margin: 6px 0px 37px 239px;
     padding: 6px;
 	animation: slideLeft1 1.5s ease-in-out forwards;
 	
@@ -69,20 +69,17 @@ margin-left: 30px;
 
 
 .register-button {
-	background-color: ffffff;
-    border: none;
-    border-radius: 5px;
-    color: black;
+	background: linear-gradient(to right, #45b09e -103vw, white 128vw);
     font-weight: bold;
+	border: #45b09e;
     cursor: pointer;
     font-size: 17px;
     padding: 10px;
     text-align: center;
     text-decoration: none;
     width: 250px;
-    margin: 6px;
-	animation: slideLeft3 1.5s ease-in-out forwards;
-	
+    margin: 7px 15px;
+    animation: slideLeft3 1.5s ease-in-out forwards;
 }
 
 @keyframes slideLeft3 {
@@ -108,7 +105,7 @@ margin-left: 30px;
 		box-shadow: 0px 60px 60px rgba(0,0,0,0.2);
 		max-width: -moz-fit-content;
 		max-width: 100%;
-		margin: -24px auto !important;
+		margin: -3.1vw auto !important;
 	}
 	.form-container {
 		width: 90%;
@@ -133,12 +130,16 @@ margin-left: 30px;
 	}
 	
 	.register-button {
-		margin: 15px 0px 10px 27px;
+		margin-top: 1rem;
+		width: 100%;
+		max-width: 39%;
+		position: relative;
+		left: 1vw;
 	}
 	.register-img {
 		width: auto;
-		height: 18vw;
-		margin-left: 18px;
+		height: 16.5vw;
+		margin: 2.8vw 5vw;
 		transform: translateX(30vw)!important;
 		animation: slideLeft1 1.5s ease-in-out forwards;
 	}
@@ -147,27 +148,17 @@ margin-left: 30px;
 	}
 	
 }
-@media only screen and (max-width: 690px) {
-    .register-button {
-	margin-top: 1rem;
-    width: 100%;
-    max-width: 45%;
-    position: relative;
-    left: -11%;
-		
-    }
-
+@media only screen and (max-width: 700px){
+	.register-img {
+		margin: 2.8vw 3.8vw;
+	}
 	
 }
 @media only screen and (max-width: 575px) {
-    .register-button {
-		margin-top: 1rem;
-		width: 100%;
-		max-width: 100%;
-		position: relative;
-		left: -69%;
+    .register-img {
+		margin: 2.8vw 2.1vw;
+	}
 	
-    }
 	.register-form {
 		display: grid;
 		grid-template-columns: 1fr;
@@ -176,17 +167,23 @@ margin-left: 30px;
 		margin: -21px 0px 27px 0px;
 		animation: slideLeft2 1.5s ease-in-out forwards;
 	}
+	.form-register-container {
+		margin: 1.4vw auto !important;
+	}
 
 	
 }
-@media screen and (max-width: 480px){
+@media screen and (max-width: 450px){
 .register-img {
-    width: auto;
-    height: 20vw;
-    margin-left: -2px;
-    transform: translateX(30vw)!important;
-    animation: slideLeft1 1.5s ease-in-out forwards;
+	margin: 2.2vw -1.1vw;
+    
 }
+}
+@media screen and (max-width: 375px){
+	.register-img {
+		margin: 2.2vw -2.5vw;
+	}
+	
 }
 
 

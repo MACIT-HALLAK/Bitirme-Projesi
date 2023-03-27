@@ -1,5 +1,5 @@
 body {
-    background: #0dac6a;
+     background: linear-gradient(to right, #45b09e 50%, white 50%);
     
 }
 .form-login-container {
@@ -15,7 +15,7 @@ body {
 	
 	width: 90px ;
 	height: 90px;
-	margin: 6px 0px 37px 242px;
+	margin: 6px 0px 37px 240px;
     padding: 6px;
 	animation: slideLeft1 1.5s ease-in-out forwards;
 	
@@ -70,20 +70,17 @@ margin-left: 30px;
 
 
 .login-button {
-	background-color: ffffff;
-    border: none;
-    border-radius: 5px;
-    color: black;
+	background: linear-gradient(to right, #45b09e -103vw, white 128vw);
     font-weight: bold;
+	border: #45b09e;
     cursor: pointer;
     font-size: 17px;
     padding: 10px;
     text-align: center;
     text-decoration: none;
     width: 250px;
-    margin: 6px;
-	animation: slideLeft3 1.5s ease-in-out forwards;
-	
+    margin: 7px 15px;
+    animation: slideLeft3 1.5s ease-in-out forwards;
 }
 
 @keyframes slideLeft3 {
@@ -131,7 +128,7 @@ margin-left: 30px;
 	.login-img {
 		width: auto;
 		height: 20vw;
-		margin-left: 0px;
+		margin-left: -13px;
 		transform: translateX(30vw)!important;
 		animation: slideLeft1 1.5s ease-in-out forwards;
 	}
@@ -149,6 +146,11 @@ margin-left: 30px;
     left: -41%;
 		
     }
+	.login-img {
+		
+		padding: 6px 2px;
+		
+	}
 
 	
 }
@@ -186,9 +188,17 @@ margin-left: 30px;
 }
 .form-login-container {
         
-    margin: 99px auto !important;
+    margin: 92px auto !important;
 }
 }
+@media screen and (max-width: 450px){
+	.login-img {
+		margin-left: -27px;
+
+}
+	
+}
+
 
 
 
