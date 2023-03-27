@@ -1,20 +1,22 @@
 import React from 'react'
 import './Login.css'
+import img from '../../Assets/images/4043260_avatar_male_man_portrait_icon.png';
 
 const Login = () => {
     return (
     
     <>
 
-    <div className="form-container">
-        <h1>Giriş Sayfası</h1>
-            <div className = "container">
-                <form>
+    <div className="form-login-container">
+        
+            <div className = "login-container">
+            <img src={img} className="login-img"/>
+                <form className="login-form">
                     
-                    <label htmlFor="email">E-posta:</label>
-                    <input type="email" id="email" name="email" required />
-                    <label htmlFor="password">Şifre:</label>
-                    <input type="password" id="password" name="password" required />
+                    <label className="login-label" htmlFor="email">E-posta:</label>
+                    <input className="login-input" type="email" id="email" name="email" required />
+                    <label className="login-label" htmlFor="password">Şifre:</label>
+                    <input className="login-input" type="password" id="password" name="password" required />
                     
                 </form>
                     
