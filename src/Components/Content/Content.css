@@ -31,6 +31,8 @@
 }
 
 .main-image img {
+  width: 100px;
+  height: 100px;
   mix-blend-mode: darken;
   animation: moving alternate infinite 1s;
   -webkit-animation: moving alternate infinite 1s, ray alternate infinite 1s;
