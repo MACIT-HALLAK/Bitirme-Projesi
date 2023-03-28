@@ -7,6 +7,7 @@ import Footer from "./Footer/Footer";
 import Navbar from "./Navbar/Navber";
 import Content from "./Content/Content";
 import Writerspage from "./Writerspage/Writerspage";
+import CardWriters from "./CardWriters/CardWriters";
 // import Form from "./Writer/Writer";
 
 //----Ana sayfa burasi----
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
         <Writerspage />
+       
     </>
   //  <div className="layout">
   //    <Navbar />

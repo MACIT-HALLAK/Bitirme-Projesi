@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.writers-card-container a {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 310px;
+    width: 212px;
+    background-color: var(--main-color-screen);
+    border: 1px solid #dadde1;
+    margin-bottom: 10px;
+
+  border-radius: 7px;
+  position: relative;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+  transition: 0.3s;
+}
+.writers-card-container a:hover {
+    border-color: var(--main-color);
+    transform:scale(1.02) ;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+
+}
+.writers-card-container a > img {
+    height: 98px;
+    width: 98px;
+    border-radius: 49px;
+    padding: 2px;
+    border: 1px solid #dadde1;
+}
+.writers-card-container a > h3 {
+    color: var(--text-color);
+    font-weight: 500;
+    text-transform: capitalize;
+    position: relative;
+    padding-bottom: 20px;
+}
+.writers-card-container a > h3::after {
+    content:'';
+    position: absolute;
+    height: 1px;
+    width: 157%;
+    left: -34px;
+    bottom: 0;
+    background-color: #dadde1;
+}
+.writers-card-container a > p {
+    color: var(--main-color-alt);
+}
+.writers-card-container a .book-icon {
+    position: static;
+}

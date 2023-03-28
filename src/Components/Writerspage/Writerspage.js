@@ -1,7 +1,7 @@
 import React from 'react';
 import './Writerspage.css';
 import Navbar from '../Navbar/Navber';
-import Card from '../Card/Card';
+import CardWriters from '../CardWriters/CardWriters';
 import Footer from '../Footer/Footer';
 import {FaSearch} from 'react-icons/fa';
 
@@ -16,14 +16,15 @@ const Writerspage = () => {
             </h3>
           </div>
           <div className='parent'>
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
+              <CardWriters />
+              <CardWriters />
+              <CardWriters />
+              <CardWriters />
+              <CardWriters />
+              <CardWriters />
+              <CardWriters />
+              <CardWriters />
+            
           </div>
           <Footer />
     </div>
