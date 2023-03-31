@@ -6,21 +6,42 @@ import NavEelements from "./navElements/NavEelements";
 
 const Navbar = () => {
   const [value, setValue] = useState(() => "");
-  const [btnState, setBtnState] = useState(() => false);
+  const [btn_state, setBtnState] = useState(() => false);
   function handleClick() {
-    setBtnState((btnState) => !btnState);
+    setBtnState((btn_state) => !btn_state);
   }
-  let toggleClassCheck = btnState ? "hide" : "";
-  let arr = ["Anasayfa", "Yazarlar", "Seviyeler"];
+  let toggle_class_check = btn_state ? "hide" : "";
+  let nav_items = [
+    "Anasayfa",
+    "Yazarlar",
+    "Seviyeler",
+    "Temel düzey",
+    "Orta düzey",
+    "İleri düzey",
+  ];
+  // let drop_items = ["Temel düzey", "Orta düzey", "İleri düzey"];
   return (
     <>
       <nav>
         <FaList className="menu-bars" onClick={handleClick} />
-        <ul className={`main-nav ${toggleClassCheck}`}>
+        <ul className={`main-nav ${toggle_class_check}`}>
           {/* call main elments in navbar */}
-          {arr.map((element, index) => {
-            return <NavEelements element={element} key={index} />;
+          {nav_items.map((element, index) => {
+            return index < 3 ? (
+              <NavEelements element={element} key={index} />
+            ) : (
+              ""
+            );
           })}
+          <div className="drop-items">
+            {nav_items.map((element, index) => {
+              return index >= 3 ? (
+                <NavEelements element={element} key={index} />
+              ) : (
+                ""
+              );
+            })}
+          </div>
           <li>
             <ul>
               <li className="alt-box">

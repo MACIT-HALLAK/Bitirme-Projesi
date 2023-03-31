@@ -6,6 +6,9 @@ export default function NavEelements({ element }) {
       <li>
         <a href={`/${element}`}>{element}</a>
       </li>
+      {/* <li>
+        <a href={`/${drop_element}`}>{drop_element}</a>
+      </li> */}
     </>
   );
 }
