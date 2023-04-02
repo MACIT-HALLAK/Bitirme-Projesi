@@ -12,8 +12,23 @@ import BookPage from "./BookPage/BookPage";
 //----Ana sayfa burasi----
 function App() {
   return (
-  <div >
-    <BookPage/>
+    <div className="layout">
+    <Navbar />
+    <Content />
+    <section>
+      <Title />
+      <div className="parent">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
+    
+    </section>
+    <BookCategories />
+    <Footer />
+    
   </div>
   
   );
