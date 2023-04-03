@@ -8,7 +8,8 @@ import Register from './Components/Register/Register';
 import Writer from './Components/Writer/Writer';
 import Writerspage from "./Components/Writerspage/Writerspage";
 import Seviyeler from "./Components/Seviyeler/Seviyeler";
-
+import BookPage from "./Components/BookPage/BookPage";
+import ReadingPage from "./Components/ReadingPage/ReadingPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,6 +22,8 @@ root.render(
       <Route path='/Yazarlar' element={<Writerspage />}/>
       <Route path='/Seviyeler' element={<Seviyeler />}/>
       <Route path='/Writer' element={<Writer />}/>
+      <Route path='/BookPage' element={<BookPage />}/>
+      <Route path='/ReadingPage' element={<ReadingPage />}/>
     
       
     </Routes>
