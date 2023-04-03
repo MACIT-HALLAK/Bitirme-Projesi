@@ -1,5 +1,6 @@
-body {
+.login-wraper {
      background: linear-gradient(to right, #45b09e 50%, white 50%);
+	 overflow: hidden;
     
 }
 .form-login-container {

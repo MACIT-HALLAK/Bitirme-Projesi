@@ -14,15 +14,16 @@
     background-color: var(--main-color-screen);
     border: 1px solid #dadde1;
     margin-bottom: 10px;
-
-  border-radius: 7px;
-  position: relative;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
-  transition: 0.3s;
+    border-radius: 7px;
+    position: relative;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+    transform: translateY(0);
+    transition: all .2s cubic-bezier(.4,0,.2,1);
 }
 .writers-card-container a:hover {
     border-color: var(--main-color);
-    transform:scale(1.02) ;
+    transition: .3s;
+    transform: translateY(-4px);
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
 
 }

@@ -5,7 +5,8 @@ import img from '../../Assets/images/4043260_avatar_male_man_portrait_icon.png';
 const Login = () => {
     return (
     
-    <>
+    
+<div className="login-wraper" >
 
     <div className="form-login-container">
         
@@ -25,9 +26,8 @@ const Login = () => {
             </div>
         
     </div>
-
-    </>
-    
+    </div>
+   
     )
 }
 

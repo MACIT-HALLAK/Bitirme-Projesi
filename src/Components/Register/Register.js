@@ -5,7 +5,7 @@ import img from '../../Assets/images/4043260_avatar_male_man_portrait_icon.png';
 const Register = () => {
   return (
     
-    <>
+    <div className='register-wraper'>
 
     <div className="form-register-container">
         
@@ -30,7 +30,7 @@ const Register = () => {
         
     </div>
 
-    </>
+    </div>
     
     )
 }

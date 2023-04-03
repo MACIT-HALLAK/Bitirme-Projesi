@@ -1,0 +1,129 @@
+.reading-container {
+    display: grid;
+    grid-template-columns: 50px repeat(6, 1fr) 25px repeat(3,1fr) 50px;
+    grid-template-rows: auto 400px auto auto;
+    grid-template-areas:
+    ". nav nav nav nav nav nav nav nav nav nav ."
+    ". sec sec sec sec sec sec . as as as ."
+    ". sec sec sec sec sec sec . . . . ."
+    ". fo fo fo fo fo fo fo fo fo fo ."
+    ;
+    background-color: var(--section-background);
+    gap: 20px;
+}
+.reading-container nav {
+    grid-area: nav;
+}
+.reading-container section {
+    grid-area: sec;
+    background-color: var(--main-color-screen);
+    padding: 20px;
+    line-height: 30px;
+
+}
+.reading-container section p {
+    position: relative;
+}
+.reading-container section p::selection {
+    background-color: var(--main-color);
+    color: var(--main-color-screen);
+}
+.reading-container section p > span {
+    color: var(--main-color-alt);
+    font-weight: bold;
+    position: absolute;
+    bottom: -90px;
+    left: 50%;
+}
+.reading-container section div {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px 0;
+}
+.reading-container section div>button {
+    background-color: var(--main-color);
+    color: var(--main-color-screen);
+    height: 40px;
+    width: 40px;
+    border: none;
+    line-height: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+
+}
+.reading-container aside {
+    grid-area: as;
+    background-color: var(--main-color-screen);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+}
+.reading-container aside div > img {
+height: 120px;
+width: 90px;
+}
+.reading-container aside div  {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+.reading-container aside div div  {
+    display: flex;
+    flex-direction: column;
+}
+.reading-container aside div div >p {
+    color: var(--text-color);
+    line-height: 25px;
+}
+.reading-container aside h2{
+   width: 100%;
+    flex-grow: 1;
+}
+.reading-container  footer {
+    grid-area: fo;
+}
+@media screen and (max-width:770px) {
+    .reading-container {
+       
+        grid-template-columns: 50px repeat(6, 1fr) 10px repeat(3,1fr) 50px;
+        grid-template-rows: auto 400px auto auto;
+        grid-template-areas:
+        ". nav nav nav nav nav nav nav nav nav nav ."
+        ". sec sec sec sec sec sec as as as as ."
+        ". sec sec sec sec sec sec . . . . ."
+        ". fo fo fo fo fo fo fo fo fo fo ."
+        ;
+        
+    }
+}
+@media screen and (max-width:712px) {
+    .reading-container {
+       
+        grid-template-columns: 50px repeat(10, 1fr)  50px;
+        grid-template-rows: auto 400px auto auto;
+        grid-template-areas:
+        ". nav nav nav nav nav nav nav nav nav nav ."
+        ". as as as as as as  as as as as ."
+        ". sec sec sec sec sec sec sec sec sec sec ."
+        ". fo fo fo fo fo fo fo fo fo fo ."
+        ;
+        
+    }
+}
+@media screen and (max-width:550px) {
+    .reading-container {
+       
+        grid-template-columns: 10px repeat(10, 1fr) 10px;
+        grid-template-rows: auto 400px auto auto;
+        grid-template-areas:
+        ". nav nav nav nav nav nav nav nav nav nav ."
+        ". as as as as as as  as as as as ."
+        ". sec sec sec sec sec sec sec sec sec sec ."
+        ". fo fo fo fo fo fo fo fo fo fo ."
+        ;
+        
+    }
+}

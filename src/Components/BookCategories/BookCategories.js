@@ -4,7 +4,7 @@ import {FaBook} from "react-icons/fa"
 
 const BookCategories = () => {
   return (
-    <aside>
+    <aside className='chapters-wraper'>
         <h2>Kitab Bölümleri</h2>
         
         <a href="#">İslam Dini <FaBook className='book-icon' /></a>
