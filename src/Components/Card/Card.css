@@ -15,8 +15,10 @@
   position: relative;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
   transition: 0.3s;
+  border: 1px solid #dadde1;
 }
 .card-container:hover {
+  border-color: var(--main-color);
   transform:scale(1.02) ;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
 }

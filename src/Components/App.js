@@ -13,26 +13,22 @@ import CardWriters from "./CardWriters/CardWriters";
 //----Ana sayfa burasi----
 function App() {
   return (
-    <>
-        <Writerspage />
-       
-    </>
-  //  <div className="layout">
-  //    <Navbar />
-  //    <Content />
-  //    <section>
-  //      <Title />
-  //      <div className="parent">
-  //        <Card />
-  //        <Card />
-  //        <Card />
-  //        <Card />
-  //        <Card />
-  //      </div>
-  //    </section>
-  //    <BookCategories />
-  //    <Footer />
-  //   </div>
+   <div className="layout">
+     <Navbar />
+     <Content />
+     <section>
+       <Title />
+       <div className="parent">
+         <Card />
+         <Card />
+         <Card />
+         <Card />
+         <Card />
+       </div>
+     </section>
+     <BookCategories />
+     <Footer />
+    </div>
  
   );
 }

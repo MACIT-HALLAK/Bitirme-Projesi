@@ -144,7 +144,10 @@
   .text-box {
     width: 90%;
   }
-
+  .main-image img {
+    width: 75px;
+    height: 75px;
+  }
   .main-image {
     width: 75px;
     height: 75px;
