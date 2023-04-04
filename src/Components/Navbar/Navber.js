@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import { FaSearch } from "react-icons/fa";
 import { FaList } from "react-icons/fa";
@@ -6,18 +6,24 @@ import NavEelements from "./navElements/NavEelements";
 
 const Navbar = () => {
   const [value, setValue] = useState(() => "");
+  const [handle, setHandle] = useState(() => false);
   const [btn_state, setBtnState] = useState(() => false);
   function handleClick() {
     setBtnState((btn_state) => !btn_state);
   }
+
+  function trigger() {
+    setHandle((prev) => !prev);
+  }
+
   let toggle_class_check = btn_state ? "hide" : "";
   let nav_items = [
     "Anasayfa",
     "Yazarlar",
     "Seviyeler",
-    "Temel düzey",
-    "Orta düzey",
-    "İleri düzey",
+    // "Temel düzey",
+    // "Orta düzey",
+    // "İleri düzey",
   ];
   // let drop_items = ["Temel düzey", "Orta düzey", "İleri düzey"];
   return (
@@ -28,12 +34,32 @@ const Navbar = () => {
           {/* call main elments in navbar */}
           {nav_items.map((element, index) => {
             return index < 3 ? (
-              <NavEelements element={element} key={index} />
+              element === "Seviyeler" ? (
+                <NavEelements
+                  element={element}
+                  key={index}
+                  clicking={() => trigger()}
+                  handle={handle}
+                />
+              ) : (
+                <NavEelements element={element} key={index} />
+              )
             ) : (
               ""
             );
           })}
-          <div className="drop-items">
+          {/* {handle && (
+            <div className="drop-items">
+              {nav_items.map((element, index) => {
+                return index >= 3 ? (
+                  <NavEelements element={element} key={index} />
+                ) : (
+                  ""
+                );
+              })}
+            </div>
+          )} */}
+          {/* <div className={`drop-items ${handle && "active"}`} drop-items="">
             {nav_items.map((element, index) => {
               return index >= 3 ? (
                 <NavEelements element={element} key={index} />
@@ -41,7 +67,8 @@ const Navbar = () => {
                 ""
               );
             })}
-          </div>
+          </div> */}
+
           <li>
             <ul>
               <li className="alt-box">
