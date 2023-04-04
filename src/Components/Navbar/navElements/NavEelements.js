@@ -18,10 +18,10 @@ export default function NavEelements({ element, clicking, handle }) {
                 <a href="/ileri">ileri</a>
               </li>
               <li>
-                <a href="/ileri">orta</a>
+                <a href="/orta">orta</a>
               </li>
               <li>
-                <a href="/ileri">temel</a>
+                <a href="/temel">temel</a>
               </li>
             </ul>
           </div>
