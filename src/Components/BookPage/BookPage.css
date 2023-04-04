@@ -19,3 +19,59 @@
   50% { transform: scale(0.8); }
   100% { transform: scale(1); }
   }
+
+.btn-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 30px;
+    gap: 20px;
+
+}
+.BookPage-button-Artırma {
+    background:  #30bb6c;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    text-align: center;
+    text-decoration: none;
+    width: 210px;
+    height: 40px;
+    border-radius: 19px;
+    animation: slideLeft4 1.5s ease-in-out forwards;
+}
+
+.BookPage-button-Azaltma {
+    background:  #e3bb1d;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 17px;
+    text-align: center;
+    text-decoration: none;
+    width: 210px;
+    height: 40px;
+    border-radius: 19px;
+    animation: slideLeft5 1.5s ease-in-out forwards;
+}
+@keyframes slideLeft4 {
+    0% {
+      transform: translateX(400%); /* başlangıç konumu */
+	  opacity: 0.1;
+    }
+    100% {
+      transform: translateX(0%); /* bitiş konumu */
+	  opacity: 1;
+    }
+} 
+@keyframes slideLeft5 {
+    0% {
+      transform: translateX(-400%); /* başlangıç konumu */
+	  opacity: 0.1;
+    }
+    100% {
+      transform: translateX(0%); /* bitiş konumu */
+	  opacity: 1;
+    }
+} 
