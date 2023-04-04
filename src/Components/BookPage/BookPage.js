@@ -30,7 +30,7 @@ const BookPage = () => {
 
     return (
     
-    <div className='book-page-container'>
+    <>
         <div className='BookPage-Header'>
             <Navbar/>
         </div>
@@ -55,7 +55,7 @@ const BookPage = () => {
         <div className='BookPage-Footer'>
             <Footer/>
         </div>  
-    </div>
+    </>
     
     )
 }
