@@ -1,6 +1,7 @@
 import React from "react";
 import "./Title.css";
 
+//----Title component burasi
 const Title = () => {
   return (
     <>

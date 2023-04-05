@@ -3,6 +3,7 @@ import "./Card.css";
 import book_img from "../../Assets/images/si1.webp";
 import writer_img from "../../Assets/images/iyad.webp";
 
+//-----card component burasi-----
 const Card = () => {
   return (
     <div className="card-container">

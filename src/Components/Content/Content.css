@@ -34,6 +34,8 @@
 }
 
 .main-image img {
+  width: 100px;
+  height: 100px;
   mix-blend-mode: darken;
   animation: moving alternate infinite 1s;
   -webkit-animation: moving alternate infinite 1s, ray alternate infinite 1s;
@@ -106,6 +108,7 @@
 }
 
 .text-box a {
+  color: white;
   width: 100px;
   padding: 15px 10px;
   cursor: pointer;
@@ -147,7 +150,10 @@
   .text-box {
     width: 90%;
   }
-
+  .main-image img {
+    width: 75px;
+    height: 75px;
+  }
   .main-image {
     width: 75px;
     height: 75px;

@@ -14,13 +14,15 @@
   border-radius: 7px;
   position: relative;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
-  transition: 0.3s;
+  transform: translateY(0);
+  transition: all .2s cubic-bezier(.4,0,.2,1);
+  border: 1px solid #dadde1;
 }
 .card-container:hover {
-  transform:scale(1.02) ;
+  border-color: var(--main-color);
+  transition: .3s;
+  transform: translateY(-4px);
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
-
-
 }
 
 .card-container .book-img{

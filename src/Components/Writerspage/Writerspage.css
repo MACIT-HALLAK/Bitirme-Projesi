@@ -1,0 +1,91 @@
+* {
+    box-sizing:border-box;
+    margin:0;
+    padding: 0;
+}
+/* the container of this page */
+.Writerspage-layout {
+    display: grid;
+    background-color: var(--section-background);
+    grid-template-columns: 100px repeat(10, 1fr) 100px;
+    grid-template-rows: 75px 50px auto 250px;
+    grid-template-areas: 
+    ". header header header header header header header header header header ."
+    ". arama arama arama arama arama arama . . . . ."
+    ". card card card card card card card card card card ."
+    ". footer footer footer footer footer footer footer footer footer footer .";
+    gap: 15px 10px;
+
+}
+/* To design a grid system... */
+.Writerspage-layout nav {
+    grid-area: header;
+}
+.Writerspage-layout .Writerspage-layout-arama {
+    display: grid;
+    grid-area: arama;
+   
+}
+.Writerspage-layout .Writerspage-layout-arama h3 >input {
+    border: none;
+    outline: none;
+    height: 45px;
+    width: 75%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-size: 18px;
+    color: var(--main-color-alt);
+    font-weight: 200;
+    padding-left: 10px;
+    border: 1px solid;
+   
+}
+
+
+.Writerspage-layout .Writerspage-layout-arama h3 >span {
+    background-color: var(--main-color-alt);
+    display: inline-block;
+    height: 45px;
+    width: 50px;
+    line-height: 2.8;
+    padding-left: 18px;
+    color: var(--main-color-screen);
+    position: relative;
+    z-index: 1;
+    top: 4px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.Writerspage-layout footer {
+    grid-area: footer;
+}
+/* the cards responsivity */
+.Writerspage-layout .parent {
+    grid-area: card;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+      
+}
+/* for screen 850px */
+@media screen and (max-width:850px) {
+    .Writerspage-layout {
+        grid-template-columns: 50px repeat(10, 1fr) 50px;
+        grid-template-rows: auto 50px auto 250px;
+        grid-template-areas: 
+        ". header header header header header header header header header header ."
+        ". arama arama arama arama arama arama arama arama arama arama ."
+        ". card card card card card card card card card card ."
+        ". footer footer footer footer footer footer footer footer footer footer .";
+    }
+}
+/* for screen 535px */
+@media screen and (max-width:535px) {
+    .Writerspage-layout {
+        grid-template-rows: auto 50px auto auto;
+    }
+    .Writerspage-layout .parent {      
+        justify-content: center;
+    }
+}

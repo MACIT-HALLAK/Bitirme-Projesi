@@ -1,4 +1,4 @@
-aside {
+.chapters-wraper {
     grid-area: a;
     border-radius: 4px;
     background-color: #ffffff;
@@ -14,12 +14,13 @@ aside a {
      white-space: nowrap;
      overflow: hidden;
      text-overflow: ellipsis;
-    position: relative;
-   
+     position: relative;
+     transition: 0.3s;
   
   }
 
  aside a:hover::after {
+  padding-left:20px;
   content: "";
   position: absolute;
   height: 5%;
@@ -27,6 +28,10 @@ aside a {
   left: 5px;
   bottom: 0;
   background-color: var(--main-color-alt);
+  
+ }
+aside a:hover {
+  padding-left:20px;
  }
 aside h2 {
   color: var(--main-color);

@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { FaSearch } from "react-icons/fa";
 import { FaList } from "react-icons/fa";
 import NavEelements from "./navElements/NavEelements";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [value, setValue] = useState(() => "");
@@ -86,12 +87,10 @@ const Navbar = () => {
                   <FaSearch />
                 </div>
                 <div className="auth">
-                  <a href="#" data-lang="linkler" className="btn-auth">
-                    Register
-                  </a>
-                  <a href="#" data-lang="linkler" className="btn-auth">
-                    Login
-                  </a>
+                  
+                  <Link to='/Register'  data-lang="linkler" className="btn-auth">Register</Link>
+                  <Link to='/Login'  data-lang="linkler" className="btn-auth">Login</Link>
+                  
                 </div>
               </li>
             </ul>

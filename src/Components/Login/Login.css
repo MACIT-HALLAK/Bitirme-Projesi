@@ -1,21 +1,22 @@
-.register-wraper {
-	background: linear-gradient(to right, #45b09e 50%, white 50%);
-	overflow: hidden;
-		
+.login-wraper {
+     background: linear-gradient(to right, #45b09e 50%, white 50%);
+	 overflow: hidden;
+    
 }
-.form-register-container {
+.form-login-container {
 	background-color: rgb(255, 255, 255,0,8);
     border-radius: 10px;
     box-shadow: 0px 60px 60px rgba(0,0,0,0.2);
     max-width: fit-content;
-    margin: 99px auto;
+    margin: 157px auto !important;
     padding: 21px 23px 23px 23px;
+   
 }
-.register-img {
+.login-img {
 	
 	width: 90px ;
 	height: 90px;
-	margin: 6px 0px 37px 239px;
+	margin: 6px 0px 37px 240px;
     padding: 6px;
 	animation: slideLeft1 1.5s ease-in-out forwards;
 	
@@ -30,13 +31,13 @@
 	  opacity: 1;
 	}
 } 
-.register-container {
+.login-container {
 width: 600px;
 margin-left: 30px;
 }
 
 
-.register-form {
+.login-form {
 	display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
@@ -55,13 +56,13 @@ margin-left: 30px;
     }
 } 
 
-.register-label {
+.login-label {
 	display: block;
 	margin-bottom: 5px;
-	color: #000000;
+	color: #ffffff;
 }
 
-.register-input{
+.login-input{
 	border: 2px solid #cccccc;
 	border-radius: 10px;
 	padding: 10px;
@@ -69,7 +70,7 @@ margin-left: 30px;
 }
 
 
-.register-button {
+.login-button {
 	background: linear-gradient(to right, #45b09e -103vw, white 128vw);
     font-weight: bold;
 	border: #45b09e;
@@ -95,53 +96,40 @@ margin-left: 30px;
 } 
 
 
-.register-button:hover {
+.login-button:hover {
 	background-color: green;
 }
 
 /* For screens smaller than 700px */
-
 @media screen and (max-width: 780px) {
-	.form-register-container {
+	.form-login-container {
 		border-radius: 10px;
 		box-shadow: 0px 60px 60px rgba(0,0,0,0.2);
 		max-width: -moz-fit-content;
 		max-width: 100%;
-		margin: -3.1vw auto !important;
+		margin: 66px auto !important;
 	}
-	.form-container {
+	.form-login-container {
 		width: 90%;
 		margin: 50px auto;
 	}
-	.register-form {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-gap: 20px;
-		padding-top: -3px;
-		margin: -16px 38px 11px 36px;
-		
-	}
 	
-	.register-container {
+	.login-container {
 		width: 100%;
 		margin-left: 20px;
 	}
 	
-	.register-form {
+	.login-form {
 	    grid-template-columns: 1fr;
 	}
 	
-	.register-button {
-		margin-top: 1rem;
-		width: 100%;
-		max-width: 39%;
-		position: relative;
-		left: 1vw;
+	.login-button {
+	    margin: 32px auto 10px auto;
 	}
-	.register-img {
+	.login-img {
 		width: auto;
-		height: 16.5vw;
-		margin: 2.8vw 5vw;
+		height: 20vw;
+		margin-left: -13px;
 		transform: translateX(30vw)!important;
 		animation: slideLeft1 1.5s ease-in-out forwards;
 	}
@@ -150,18 +138,37 @@ margin-left: 30px;
 	}
 	
 }
-@media only screen and (max-width: 700px){
-	.register-img {
-		margin: 2.8vw 3.8vw;
+@media only screen and (max-width: 690px) {
+    .login-button {
+	margin-top: 1rem;
+    width: 100%;
+    max-width: 83%;
+    position: relative;
+    left: -41%;
+		
+    }
+	.login-img {
+		
+		padding: 6px 2px;
+		
 	}
+
 	
 }
-@media only screen and (max-width: 575px) {
-    .register-img {
-		margin: 2.8vw 2.1vw;
-	}
+@media only screen and (max-width: 650px) {
+    .form-login-container {
+        
+        margin: 75px auto !important;
+    }
+    .login-button {
+		margin-top: 1rem;
+		width: 100%;
+		max-width: 100%;
+		position: relative;
+		left: -63%;
 	
-	.register-form {
+    }
+	.login-form {
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-gap: 20px;
@@ -169,22 +176,27 @@ margin-left: 30px;
 		margin: -21px 0px 27px 0px;
 		animation: slideLeft2 1.5s ease-in-out forwards;
 	}
-	.form-register-container {
-		margin: 1.4vw auto !important;
-	}
 
 	
 }
+@media screen and (max-width: 550px){
+.login-img {
+    width: auto;
+    height: 20vw;
+    margin-left: -20px;
+    transform: translateX(30vw)!important;
+    animation: slideLeft1 1.5s ease-in-out forwards;
+}
+.form-login-container {
+        
+    margin: 92px auto !important;
+}
+}
 @media screen and (max-width: 450px){
-.register-img {
-	margin: 2.2vw -1.1vw;
-    
+	.login-img {
+		margin-left: -27px;
+
 }
-}
-@media screen and (max-width: 375px){
-	.register-img {
-		margin: 2.2vw -2.5vw;
-	}
 	
 }
 

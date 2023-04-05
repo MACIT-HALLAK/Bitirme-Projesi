@@ -1,4 +1,5 @@
 import { click } from "@testing-library/user-event/dist/click";
+import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 export default function NavEelements({ element, clicking, handle }) {
@@ -15,20 +16,20 @@ export default function NavEelements({ element, clicking, handle }) {
             {element}
             <ul className="our-list">
               <li>
-                <a href="/ileri">ileri</a>
+                <Link to="Seviyeler/ileri">ileri</Link>
               </li>
               <li>
-                <a href="/orta">orta</a>
+                <Link to="Seviyeler/orta">orta</Link>
               </li>
               <li>
-                <a href="/temel">temel</a>
+                <Link to="Seviyeler/temel">temel</Link>
               </li>
             </ul>
           </div>
         ) : (
-          <a href={`/${element}`} className="input">
+          <Link to={`/${element}`} className="input">
             {element}
-          </a>
+          </Link>
         )}
 
         {/* {element === "Seviyeler" ? <FaAngleDown className="drop-icon" /> : ""} */}
