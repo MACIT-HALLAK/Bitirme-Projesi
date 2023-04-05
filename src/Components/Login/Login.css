@@ -1,6 +1,8 @@
 .login-wraper {
-     background: linear-gradient(to right, #45b09e 50%, white 50%);
-	 overflow: hidden;
+	background: linear-gradient(to right, #45b09e 50%, white 50%);
+	overflow: hidden;
+	
+	height: 100vh;
     
 }
 .form-login-container {
@@ -100,14 +102,17 @@ margin-left: 30px;
 	background-color: green;
 }
 
-/* For screens smaller than 700px */
+
 @media screen and (max-width: 780px) {
+	.login-wraper {
+		height: 97.5vh;
+	}
 	.form-login-container {
 		border-radius: 10px;
 		box-shadow: 0px 60px 60px rgba(0,0,0,0.2);
 		max-width: -moz-fit-content;
 		max-width: 100%;
-		margin: 66px auto !important;
+		margin: 58px auto !important;
 	}
 	.form-login-container {
 		width: 90%;

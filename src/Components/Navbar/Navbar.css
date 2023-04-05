@@ -10,6 +10,20 @@
   --main-padding-top: 100px;
   --main-padding-bottom: 100px;
   --section-background: #f1f1f1;
+  --padding-main: 10px;
+  --margin-main: 10px;
+  --border-main: 10px;
+  --width-main: 250px;
+  --height-main: 100px;
+  --border-redius-main: 10px;
+  --font-size-main: 17px;
+  --box-shadow-main: 60px;
+  --opacity-main: 1;
+  --top-main: 0px;
+  --right-main: 263px;
+  --bottom-main: -38px;
+  --left-main: 0px;
+
   /*  #ececec */
   --text-color:#333;
   --main-color-screen:#ffffff;
