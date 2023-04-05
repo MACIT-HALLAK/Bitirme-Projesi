@@ -34,8 +34,6 @@
 }
 
 .main-image img {
-  width: 100px;
-  height: 100px;
   mix-blend-mode: darken;
   animation: moving alternate infinite 1s;
   -webkit-animation: moving alternate infinite 1s, ray alternate infinite 1s;
@@ -44,7 +42,7 @@
   -moz-transition: all 0.35s ease-out;
   -ms-transition: all 0.35s ease-out;
   -o-transition: all 0.35s ease-out;
-  width: 75px;
+  width: 80px;
   aspect-ratio: 1 / 1;
 }
 
