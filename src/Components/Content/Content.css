@@ -28,6 +28,9 @@
   -moz-border-radius: 60%;
   -ms-border-radius: 60%;
   -o-border-radius: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-image img {
@@ -41,6 +44,8 @@
   -moz-transition: all 0.35s ease-out;
   -ms-transition: all 0.35s ease-out;
   -o-transition: all 0.35s ease-out;
+  width: 75px;
+  aspect-ratio: 1 / 1;
 }
 
 .main-image img:hover {
@@ -194,7 +199,7 @@
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
-  z-index: -1;
+  z-index: 1;
   filter: blur(10px);
   -webkit-filter: blur(10px);
 }
