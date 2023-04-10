@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Register.css'
 import img from '../../Assets/images/4043260_avatar_male_man_portrait_icon.png';
-
+import BackTo from "../BackTo/BackTo";
 const Register = () => {
 const [username, setUsername] = useState('');
 const [email, setEmail] = useState('');
@@ -37,39 +37,39 @@ function submit (event) {
 return (
     
     <div className='register-wraper'>
-        
+        <BackTo/>
         <div className="form-register-container">
             
             <div className = "register-container">
                 
                 <img src={img} className="register-img"/>
                     <form className="register-form" onSubmit={submit}>
-                        <label className="register-label" htmlFor="username">Kullanıcı Adı:</label>
-                        <input className="register-input"
+                        <label className="register-label-1" htmlFor="username">Kullanıcı Adı:</label>
+                        <input className="register-input-1"
                             type="text" 
                             id="username" 
                             name="username" 
                             value={username}
                             onChange={event => setUsername(event.target.value)} 
                         />
-                        <label className="register-label" htmlFor="email">E-posta:</label>
-                        <input className="register-input" 
+                        <label className="register-label-2" htmlFor="email">E-posta:</label>
+                        <input className="register-input-2" 
                             type="text"
                             id="email" 
                             name="email"
                             value={email} 
                             onChange={event => setEmail(event.target.value)} 
                         />
-                        <label className="register-label" htmlFor="password">Şifre:</label>
-                        <input className="register-input" 
+                        <label className="register-label-3" htmlFor="password">Şifre:</label>
+                        <input className="register-input-3" 
                             type="password" 
                             id="password" 
                             name="password"
                             value={password} 
                             onChange={event => setPassword(event.target.value)} 
                         />
-                        <label className="register-label" htmlFor="password-again">Şifre Tekrar:</label>
-                        <input className="register-input" 
+                        <label className="register-label-4" htmlFor="password-again">Şifre Tekrar:</label>
+                        <input className="register-input-4" 
                             type="password" 
                             id="password-again" 
                             name="password-again"

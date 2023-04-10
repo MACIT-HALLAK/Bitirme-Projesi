@@ -10,12 +10,14 @@ import Writerspage from "./Components/Writerspage/Writerspage";
 import Seviyeler from "./Components/Seviyeler/Seviyeler";
 import BookPage from "./Components/BookPage/BookPage";
 import ReadingPage from "./Components/ReadingPage/ReadingPage";
+import BackTo from "./Components/BackTo/BackTo";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
     <Routes>
       <Route path='/' element={<App />}/>
+      <Route path='/BackTo' element={<BackTo />}/>
       <Route path='/Anasayfa' element={<App />}/>
       <Route path='/Login' element={<Login />}/>
       <Route path='/Register' element={<Register />}/>
