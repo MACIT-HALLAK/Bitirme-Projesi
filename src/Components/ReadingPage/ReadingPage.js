@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import Modal from 'react-modal';
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navber'
 import book_img from "../../Assets/images/si1.webp";
@@ -8,71 +9,64 @@ import { FaArrowLeft, FaArrowRight,FaLanguage } from "react-icons/fa";
 const ReadingPage = () => {
   const [value ,setValue] = useState("");
 
+  //******************* */
+  const [selection, setSelection] = useState(null);
+  const [showIcon, setShowIcon] = useState(false);
+  const [iconPosition, setIconPosition] = useState({ x: 0, y: 0 });
+  const [showModal, setShowModal] = useState(false);
+
 
 //secilen metini almak icin
 // 
+const handleSelection = () => {
+  const selectionText = window.getSelection().toString();
+  if (selectionText) {
+    setSelection(selectionText);
+    const selectionRange = window.getSelection().getRangeAt(0);
+    const rangeRect = selectionRange.getBoundingClientRect();
+    const iconX = `calc(${rangeRect.left}px + calc(${rangeRect.width}px / 2) - 40px)`;
+    const iconY = `calc(${rangeRect.bottom}px + 5px)`;
+    setIconPosition({ x: iconX, y: iconY });
+    setShowIcon(true);
+  } else {
+    setSelection(null);
+    setShowIcon(false);
+  }
+};
 //--------------------------------------------------
-
-var pageX, pageY;
-      document.addEventListener("mouseup", () => {
-        function translate() {
-          var field = document.getElementById("output");
-          field.focus();
-          field.setSelectionRange(0, field.value.length);
-          // burasi elde edilen deger apie gonderilecek cevirmek icin
-        }
-  
-        let selection = document.getSelection();
-        let selectedText = selection.toString();
-        var menu = document.querySelector(".menu");
-        if (selectedText !== "") {
-
-          // let rect = document.querySelector(".text").getBoundingClientRect();
-          let rect = selection.getRangeAt(0).getBoundingClientRect();
-          menu.style.display = "block";
-          menu.style.left =`calc(${rect.left}px + calc(${rect.width}px / 2) - 40px)`;
-          menu.style.top = `calc(${rect.top}px - 48px)`;
-         // console.log(pageX);
-          document.getElementById("output").innerHTML = selectedText;
-          setValue(selectedText);
-          var popup = document.getElementById("mypopup");
-          var translatebtn = document.getElementById("copy-btn");
-          
-  
-          translatebtn.addEventListener("click", () => {
-            translate();
-            popup.style.display = "block";
-            
-          });
-  
-          var span = document.getElementsByClassName("close-btn")[0];
-  
-          span.addEventListener("click", () => {
-            popup.style.display = "none";
-          });
-  
-          window.addEventListener("click", (event) => {
-            if (event.target == popup) {
-              popup.style.display = "none";
-            }
-          });
-        } else {
-          menu.style.display = "none";
-        }
-      });
-      document.addEventListener("mousedown", (e) => {
-        pageX = e.pageX;
-        pageY = e.pageY;
-      });
-
+const handleIconClick = () => {
+  setShowIcon(false);
+  setShowModal(true);
+};
 //--------------------------------------------------
 
 
 
   return (
-    <div className='reading-container'>
+    <div className='reading-container' >
         <Navbar />
-       <section className='text'>
+       <section className='text' onMouseUp={handleSelection}>
+       {showIcon && (
+        <div  style={{ position: 'absolute', left: iconPosition.x, top: iconPosition.y ,zIndex:1}}>
+          {/* <img src="icon.png" alt="icon" onClick={handleIconClick} /> */}
+          <button  style={{ fontSize: '30px', zIndex: 10,cursor: 'hand' }} onClick={handleIconClick}><FaLanguage  /> </button>
+          <i id="copy-btn"   ></i>
+        
+        </div>
+      )}
+      <Modal isOpen={showModal} onRequestClose={() => setShowModal(false) }  
+       overlayClassName="custom-overlay"
+      style={{
+          content: {
+            maxWidth: 'fit-content' ,
+            height: 'fit-content',
+            margin: 'auto',
+           
+            
+          },
+        }}>
+        <div>{selection}</div>
+      </Modal>
         <p>
         I have found that it is best to deal with the meaning of the verb that is salient in the text. If the meaning of the verb in focus is to 'reject', 
         then I teach this meaning, without going into the other possible meanings. I find this approach to be clearer and less confusing for students.
@@ -93,7 +87,7 @@ var pageX, pageY;
         <span>5</span>
 
 
-        <div className="menu">
+        {/* <div className="menu">
         <i id="copy-btn"><FaLanguage /></i>
         <h4>ezberleme sayfasina ekle</h4>
         <h4>ozet sayfasina ekle</h4>
@@ -105,7 +99,7 @@ var pageX, pageY;
           <p>{value}</p>
           <span className="close-btn">×</span>
         </div>
-      </div>
+      </div> */}
 
 
         </p>

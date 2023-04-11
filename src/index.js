@@ -10,6 +10,7 @@ import Writerspage from "./Components/Writerspage/Writerspage";
 import Seviyeler from "./Components/Seviyeler/Seviyeler";
 import BookPage from "./Components/BookPage/BookPage";
 import ReadingPage from "./Components/ReadingPage/ReadingPage";
+import Deneme from "./Components/Deneme/Deneme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -24,6 +25,7 @@ root.render(
       <Route path='/Writer' element={<Writer />}/>
       <Route path='/BookPage' element={<BookPage />}/>
       <Route path='/ReadingPage' element={<ReadingPage />}/>
+      <Route path='/Deneme' element={<Deneme />}/>
     
       
     </Routes>

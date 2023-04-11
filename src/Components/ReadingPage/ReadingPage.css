@@ -193,3 +193,9 @@ width: 90px;
     font-size: 28px;
     font-weight: bold;
   }
+
+/* /************************************* */
+.custom-overlay {
+  background-color: rgba(211, 203, 203, 0.5);
+  color: aqua;
+}
