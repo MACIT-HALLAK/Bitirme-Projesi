@@ -81,11 +81,9 @@ export default function SettingCom({ clicking, show, handle }) {
 
     let all_props = document.querySelectorAll(".items-box span");
 
-    let prop_obj = {
-      color: "black",
-      font: "sans-serif",
-      size: "24",
-    };
+    let prop_obj = JSON.parse(localStorage.getItem("props_arr"))
+      ? JSON.parse(localStorage.getItem("props_arr"))
+      : { color: "balck", font: "sans-serif", size: "24px" };
 
     all_props.forEach((e) => {
       e.addEventListener("click", (event) => {
