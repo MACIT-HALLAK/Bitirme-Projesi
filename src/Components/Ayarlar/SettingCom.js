@@ -98,13 +98,6 @@ const SettingCom = () => {
     });
 
     function call() {
-      //       let arr = [];
-      //       for (const key in prop_obj) {
-      //         if (Object.hasOwnProperty.call(prop_obj, key)) {
-      //           const element = prop_obj[key];
-      //           // arr.push(element);
-      //         }
-      //       }
       localStorage.setItem(`props_arr`, JSON.stringify(prop_obj));
       changeProps();
     }
