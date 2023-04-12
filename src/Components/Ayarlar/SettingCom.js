@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./SettingCom.css";
+import { FaRegWindowClose } from "react-icons/fa";
 
-const SettingCom = () => {
+export default function SettingCom({ clicking, show, handle }) {
+  console.log(clicking);
   useEffect(() => {
     let colors = document.querySelector("[colors]");
     let colors_array = [
@@ -35,6 +37,7 @@ const SettingCom = () => {
       let single_color;
       single_color = document.createElement("span");
       single_color.setAttribute("color", colors_array[i]);
+      single_color.setAttribute("prop", colors_array[i]);
       single_color.style.backgroundColor = colors_array[i];
       single_color.style.width = "2.5rem";
       single_color.style.height = "2.5rem";
@@ -46,6 +49,7 @@ const SettingCom = () => {
       let single_size;
       single_size = document.createElement("span");
       single_size.setAttribute("font_size", e);
+      single_size.setAttribute("prop", e);
       single_size.style.backgroundColor = "#fff";
       single_size.style.width = Math.sqrt(e) - Math.sqrt(Math.sqrt(e)) + "rem";
       single_size.style.height = Math.sqrt(e) - Math.sqrt(Math.sqrt(e)) + "rem";
@@ -63,6 +67,7 @@ const SettingCom = () => {
       let single_family;
       single_family = document.createElement("span");
       single_family.setAttribute("font_family", e);
+      single_family.setAttribute("prop", e);
       single_family.style.backgroundColor = "#fff";
       single_family.style.display = "flex";
       single_family.style.justifyContent = "center";
@@ -85,10 +90,13 @@ const SettingCom = () => {
     all_props.forEach((e) => {
       e.addEventListener("click", (event) => {
         let parent = event.target.closest([".sub-box"]);
-        parent = parent.classNameName.split(" ")[0];
-        if (parent == "color-box") {
+        console.log(parent);
+        console.log(parent.className);
+        console.log(parent.className.split(" ")[0]);
+        parent = parent.className.split(" ")[0];
+        if (parent === "color-box") {
           prop_obj.color = event.target.getAttribute("color");
-        } else if (parent == "font-box") {
+        } else if (parent === "font-box") {
           prop_obj.font = event.target.getAttribute("font_family");
         } else {
           prop_obj.size = event.target.getAttribute("font_size");
@@ -109,14 +117,27 @@ const SettingCom = () => {
     function changeProps() {
       if (localStorage.getItem("props_arr")) {
         prop_obj = JSON.parse(localStorage.getItem("props_arr"));
-        console.log(prop_obj);
-        // document.querySelector(".text").style.color = prop_obj.color;
-        // document.querySelector(".text").style.fontFamily = prop_obj.font;
-        // document.querySelector(".text").style.fontSize = prop_obj.size + "px";
+        let prop_obj_arr = Object.values(
+          JSON.parse(localStorage.getItem("props_arr"))
+        );
+        document
+          .querySelectorAll(".items-box span")
+          .forEach((element, index) => {
+            for (const key in prop_obj) {
+              if (Object.hasOwnProperty.call(prop_obj, key)) {
+                if (element.getAttribute("prop") === prop_obj[key]) {
+                  element.style.opacity = "1";
+                }
+              }
+            }
+          });
+        document.querySelector(".text p").style.color = prop_obj.color;
+        document.querySelector(".text p").style.fontFamily = prop_obj.font;
+        document.querySelector(".text p").style.fontSize = prop_obj.size + "px";
       } else {
-        // document.querySelector(".text").style.color = prop_obj.color;
-        // document.querySelector(".text").style.fontFamily = prop_obj.font;
-        // document.querySelector(".text").style.fontSize = prop_obj.size + "px";
+        document.querySelector(".text p").style.color = prop_obj.color;
+        document.querySelector(".text p").style.fontFamily = prop_obj.font;
+        document.querySelector(".text p").style.fontSize = prop_obj.size + "px";
       }
 
       // if (localStorage.getItem("props_arr")) {
@@ -126,7 +147,15 @@ const SettingCom = () => {
   }, []);
   return (
     <>
-      <div className="props-main-box">
+      <div className={`props-main-box ${handle && show}`}>
+        <FaRegWindowClose
+          className="closing-icon"
+          onClick={() => {
+            // console.log(clicking);
+            // console.log(clicking);
+            clicking();
+          }}
+        />
         <div className="color-box sub-box">
           <h2>
             <span>Color</span>
@@ -148,6 +177,6 @@ const SettingCom = () => {
       </div>
     </>
   );
-};
+}
 
-export default SettingCom;
+// export default SettingCom;

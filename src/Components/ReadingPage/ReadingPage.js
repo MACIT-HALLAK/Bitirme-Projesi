@@ -3,10 +3,12 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navber";
 import book_img from "../../Assets/images/si1.webp";
 import "./ReadingPage.css";
-import { FaArrowLeft, FaArrowRight, FaLanguage } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaLanguage, FaCog } from "react-icons/fa";
+import SettingCom from "../Ayarlar/SettingCom";
 
 const ReadingPage = () => {
   const [value, setValue] = useState("");
+  const [handle, setHandle] = useState(false);
 
   //secilen metini almak icin
   //
@@ -66,6 +68,17 @@ const ReadingPage = () => {
   return (
     <div className="reading-container">
       <Navbar />
+      {handle && (
+        <>
+          <SettingCom
+            clicking={() => setHandle((prev) => !prev)}
+            show={"show"}
+            handle={handle}
+            className="show"
+          />
+          <div className="mask"></div>
+        </>
+      )}
       <section className="text">
         <p>
           I have found that it is best to deal with the meaning of the verb that
@@ -133,7 +146,10 @@ const ReadingPage = () => {
           <img src={book_img} alt="" />
         </div>
       </aside>
-
+      <FaCog
+        onClick={() => setHandle((prev) => !prev)}
+        className="setting-open"
+      />
       <Footer />
     </div>
   );
