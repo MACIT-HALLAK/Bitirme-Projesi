@@ -89,10 +89,12 @@ export default function SettingCom({ clicking, show, handle }) {
 
     all_props.forEach((e) => {
       e.addEventListener("click", (event) => {
+        e.parentElement.querySelectorAll("span").forEach((act) => {
+          act.classList.remove("active");
+        });
+        e.classList.add("active");
+
         let parent = event.target.closest([".sub-box"]);
-        console.log(parent);
-        console.log(parent.className);
-        console.log(parent.className.split(" ")[0]);
         parent = parent.className.split(" ")[0];
         if (parent === "color-box") {
           prop_obj.color = event.target.getAttribute("color");
@@ -115,36 +117,36 @@ export default function SettingCom({ clicking, show, handle }) {
     };
 
     function changeProps() {
+      let element_arr = [];
+
       if (localStorage.getItem("props_arr")) {
         prop_obj = JSON.parse(localStorage.getItem("props_arr"));
-        let prop_obj_arr = Object.values(
-          JSON.parse(localStorage.getItem("props_arr"))
-        );
-        document
-          .querySelectorAll(".items-box span")
-          .forEach((element, index) => {
-            for (const key in prop_obj) {
-              if (Object.hasOwnProperty.call(prop_obj, key)) {
-                if (element.getAttribute("prop") === prop_obj[key]) {
-                  element.style.opacity = "1";
-                }
-              }
-            }
-          });
-        document.querySelector(".text p").style.color = prop_obj.color;
-        document.querySelector(".text p").style.fontFamily = prop_obj.font;
-        document.querySelector(".text p").style.fontSize = prop_obj.size + "px";
-      } else {
-        document.querySelector(".text p").style.color = prop_obj.color;
-        document.querySelector(".text p").style.fontFamily = prop_obj.font;
-        document.querySelector(".text p").style.fontSize = prop_obj.size + "px";
+        all_props.forEach((element) => {
+          let my_prop = element.getAttribute("prop");
+          // console.log(my_prop);
+          if (
+            my_prop === prop_obj.color ||
+            my_prop === prop_obj.font ||
+            my_prop === prop_obj.size
+          ) {
+            element_arr.push(element);
+            console.log("true");
+          }
+        });
+        element_arr.forEach((set_active) => {
+          set_active.classList.add("active");
+        });
       }
+      document.querySelector(".text p").style.color = prop_obj.color;
+      document.querySelector(".text p").style.fontFamily = prop_obj.font;
+      document.querySelector(".text p").style.fontSize = prop_obj.size + "px";
 
       // if (localStorage.getItem("props_arr")) {
       //   console.log(JSON.parse(localStorage.getItem("props_arr")));
       // }
     }
-  }, []);
+  }, [handle]);
+
   return (
     <>
       <div className={`props-main-box ${handle && show}`}>

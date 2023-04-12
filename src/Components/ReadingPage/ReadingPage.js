@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navber";
 import book_img from "../../Assets/images/si1.webp";
@@ -65,13 +65,48 @@ const ReadingPage = () => {
 
   //--------------------------------------------------
 
+  // ----------------------Start change props of text--------------------------
+  function changeProps() {
+    setTimeout(() => {
+      let element_arr = [];
+
+      let prop_obj = JSON.parse(localStorage.getItem("props_arr"));
+      if (localStorage.getItem("props_arr")) {
+        let all_props = document.querySelectorAll(".items-box span");
+        all_props.forEach((element) => {
+          let my_prop = element.getAttribute("prop");
+          // console.log(my_prop);
+          if (
+            my_prop === prop_obj.color ||
+            my_prop === prop_obj.font ||
+            my_prop === prop_obj.size
+          ) {
+            element_arr.push(element);
+          }
+        });
+        element_arr.forEach((set_active) => {
+          set_active.classList.add("active");
+        });
+      }
+      document.querySelector(".text p").style.color = prop_obj.color;
+      document.querySelector(".text p").style.fontFamily = prop_obj.font;
+      document.querySelector(".text p").style.fontSize = prop_obj.size + "px";
+    }, 150);
+  }
+  useEffect(() => {
+    changeProps();
+  }, []);
+  // ----------------------End change props of text--------------------------
+
   return (
     <div className="reading-container">
       <Navbar />
       {handle && (
         <>
           <SettingCom
-            clicking={() => setHandle((prev) => !prev)}
+            clicking={() => {
+              setHandle((prev) => !prev);
+            }}
             show={"show"}
             handle={handle}
             className="show"
@@ -147,7 +182,10 @@ const ReadingPage = () => {
         </div>
       </aside>
       <FaCog
-        onClick={() => setHandle((prev) => !prev)}
+        onClick={() => {
+          setHandle((prev) => !prev);
+          changeProps();
+        }}
         className="setting-open"
       />
       <Footer />

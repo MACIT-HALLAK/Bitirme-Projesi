@@ -269,3 +269,7 @@ body {
   scale: 1.25;
   cursor: pointer;
 }
+
+span.active {
+  opacity: 1 !important;
+}
