@@ -9,6 +9,7 @@ import Writer from "./Components/Writer/Writer";
 import Writerspage from "./Components/Writerspage/Writerspage";
 import Seviyeler from "./Components/Seviyeler/Seviyeler";
 import BookPage from "./Components/BookPage/BookPage";
+import SettingCom from "./Components/Ayarlar/SettingCom";
 import ReadingPage from "./Components/ReadingPage/ReadingPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -23,6 +24,8 @@ root.render(
       <Route path="/Seviyeler" element={<Seviyeler />} />
       <Route path="/Writer" element={<Writer />} />
       <Route path="/BookPage" element={<BookPage />} />
+      <Route path="/ReadingPage" element={<ReadingPage />} />
+      <Route path="/settings" element={<SettingCom />} />
     </Routes>
   </Router>
 );

@@ -381,6 +381,7 @@ nav {
     left: 50%;
     top: 5rem;
     z-index: 1;
+    visibility: hidden;
     width: 12rem;
     display: flex !important;
     padding: 1rem;
@@ -437,6 +438,7 @@ nav {
 
   .active .our-list {
     opacity: 1;
+    visibility: visible;
     transform: translate(-50%, 0);
     -webkit-transform: translate(-50%, 0);
     -moz-transform: translate(-50%, 0);
