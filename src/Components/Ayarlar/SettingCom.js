@@ -3,8 +3,8 @@ import "./SettingCom.css";
 import { FaRegWindowClose } from "react-icons/fa";
 
 export default function SettingCom({ clicking, show, handle }) {
-  console.log(clicking);
   useEffect(() => {
+    let opac = "0.5";
     let colors = document.querySelector("[colors]");
     let colors_array = [
       "#e53935",
@@ -41,7 +41,7 @@ export default function SettingCom({ clicking, show, handle }) {
       single_color.style.backgroundColor = colors_array[i];
       single_color.style.width = "2.5rem";
       single_color.style.height = "2.5rem";
-      single_color.style.opacity = "0.7";
+      single_color.style.opacity = opac;
       colors.append(single_color);
     }
 
@@ -57,7 +57,7 @@ export default function SettingCom({ clicking, show, handle }) {
       single_size.style.justifyContent = "center";
       single_size.style.alignItems = "center";
       single_size.style.cursor = "pointer";
-      single_size.style.opacity = "0.7";
+      single_size.style.opacity = opac;
       single_size.style.fontSize = e + "px";
       single_size.textContent = "T";
       font_size.append(single_size);
@@ -72,7 +72,7 @@ export default function SettingCom({ clicking, show, handle }) {
       single_family.style.display = "flex";
       single_family.style.justifyContent = "center";
       single_family.style.alignItems = "baseline";
-      single_family.style.opacity = "0.7";
+      single_family.style.opacity = opac;
       single_family.style.cursor = "pointer";
       single_family.style.fontFamily = e;
       single_family.textContent = "Lorem Lorem Lorem Lorem";
