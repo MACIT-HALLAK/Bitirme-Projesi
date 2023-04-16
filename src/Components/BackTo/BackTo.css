@@ -1,0 +1,33 @@
+.backTo-icon {
+	position: absolute;
+    top: 50px;
+    right: 40px;
+    color: var(--main-color);
+    animation: slideLeft1 1.5s ease-in-out forwards;
+    animation: shake 1.5s linear infinite;
+}
+@keyframes slideLeft2{
+    0% {
+      transform: translateX(-200%); /* başlangıç konumu */
+	   opacity: 0.1;
+    }
+    100% {
+      transform: translateX(-5%); /* bitiş konumu */
+	  opacity: 1;
+    }
+} 
+
+@keyframes shake {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(7px);
+    }
+    100% {
+        transform: translateX(10px);
+    }
+}

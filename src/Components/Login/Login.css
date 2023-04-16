@@ -1,203 +1,201 @@
 .login-wraper {
-     background: linear-gradient(to right, #45b09e 50%, white 50%);
-	 overflow: hidden;
-    
+	background: linear-gradient(to right, #45b09e 50%, white 50%);
+	display: grid;
+	grid-auto-rows: minmax(100px,auto);
+	grid-template-areas: 
+	"container container container container container"
+;
+	justify-items: center;
+	align-items: center;
+	gap: var(--gap-main) var(--gap-main);
+	height: calc(var(--height-vh-main) + 100vh);
+	overflow: hidden;   
 }
 .form-login-container {
 	background-color: rgb(255, 255, 255,0,8);
-    border-radius: 10px;
-    box-shadow: 0px 60px 60px rgba(0,0,0,0.2);
-    max-width: fit-content;
-    margin: 157px auto !important;
-    padding: 21px 23px 23px 23px;
-   
+    border-radius: var(--border-redius-main);
+    box-shadow: 
+	calc(var(--box-shadow-main) - 60px) 
+	var(--box-shadow-main)
+	var(--box-shadow-main)
+	rgba(0,0,0,0.2);
+	grid-area: container;
+	display: grid;
+	grid-auto-rows: minmax(100px,auto);
+	grid-template-areas: 
+	"login-container login-container login-container login-container login-container"
+	;
+	justify-items: center;
+	align-items: center;
+	gap: var(--gap-main) var(--gap-main);
+	height: calc(var(--height-vh-main) + 56vh);
+}
+.login-container {
+	grid-area: login-container;
+	display: grid;
+	grid-template-areas: 
+	"img img img img img"
+	"form form form form form"
+	;
+	justify-items: center;
+	align-items: center;
+	gap: var(--gap-main) var(--gap-main);
+    height: calc(var(--height-vh-main) + 50vh);
+    width: calc(var(--width-vw-main) - 30vw);
 }
 .login-img {
-	
-	width: 90px ;
-	height: 90px;
-	margin: 6px 0px 37px 240px;
-    padding: 6px;
-	animation: slideLeft1 1.5s ease-in-out forwards;
-	
+	justify-items: center;
+	align-items: start;
+	height: calc(var(--height-main) - 10px);;
+	width: calc(var(--width-main) - 160px);
+	grid-area: img;
+	animation: slide1 1.5s ease-in-out forwards;
 }
-@keyframes slideLeft1{
+@keyframes slide1{
 	0% {
-	  transform: translateY(-400%); /* başlangıç konumu */
-	  opacity: 0.1;
+		transform: translateY(-400%); /* başlangıç konumu */
+		opacity: calc(var(--opacity-main) - 0.9);
 	}
 	100% {
-	  transform: translateY(-5%); /* bitiş konumu */
-	  opacity: 1;
+		transform: translateY(-5%); /* bitiş konumu */
+		opacity: var(--opacity-main);
 	}
 } 
-.login-container {
-width: 600px;
-margin-left: 30px;
-}
-
-
 .login-form {
+	grid-area: form;
 	display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-    padding-top: 8px;
-    margin: -17px 32px 27px 70px;
-    animation: slideLeft2 1.5s ease-in-out forwards;
+	grid-auto-rows: minmax(50px,60px);
+	grid-template-areas: 
+	"label1 label1 input1 input1 input1"
+	"label2 label2 input2 input2 input2"
+	". button button button  ."
+	;
+	justify-items: center;
+	align-items: center;
+	gap: calc(var(--gap-vh-main) - 13vh) calc(var(--gap-vw-main) - 2.5vw);;
+    height: calc(var(--height-vh-main) + 29vh);
+	animation: slide2 1.5s ease-in-out forwards;	
 }
-@keyframes slideLeft2{
+@keyframes slide2{
     0% {
-      transform: translateX(-200%); /* başlangıç konumu */
-	   opacity: 0.1;
+		transform: translateX(-200%); /* başlangıç konumu */
+		opacity: calc(var(--opacity-main) - 0.9);
     }
     100% {
-      transform: translateX(-5%); /* bitiş konumu */
-	  opacity: 1;
+		transform: translateX(0%); /* bitiş konumu */
+		opacity: var(--opacity-main);
     }
 } 
-
-.login-label {
-	display: block;
-	margin-bottom: 5px;
-	color: #ffffff;
+.login-label-1 {
+	grid-area: label1;
 }
-
-.login-input{
-	border: 2px solid #cccccc;
-	border-radius: 10px;
-	padding: 10px;
-	width: 100%;
+.login-label-2 {
+	grid-area: label2;
 }
-
-
+.login-label-1,.login-label-2 {
+	height: calc(var(--height-vh-main) + 5vh);
+	color: var(--main-color-alt-2);
+	font-family: cursive;
+	
+}
+.login-input-1{
+	grid-area: input1;
+}
+.login-input-2{
+	grid-area: input2;
+}
+.login-input-1,.login-input-2 {
+    height: 5vh;
+	color: var(--main-color-alt-2);
+	font-family: cursive;
+	border: calc(var(--border-main) - 8px) solid #cccccc;
+	border-radius: var(--border-redius-main);
+	padding:  calc(var(--padding-main) + 7px);
+	width: calc(var(--width-precentage-main) + 5%);
+}
 .login-button {
+	grid-area: button;
+	color: var(--main-color-alt-2);
 	background: linear-gradient(to right, #45b09e -103vw, white 128vw);
     font-weight: bold;
+	font-family: cursive;
 	border: #45b09e;
+	border-radius: calc(var(--border-redius-main) - 4px);
     cursor: pointer;
-    font-size: 17px;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    width: 250px;
-    margin: 7px 15px;
-    animation: slideLeft3 1.5s ease-in-out forwards;
+    font-size: var(--font-size-main);
+	width: var(--width-main);
+	padding: var(--padding-main);
+	animation: slide3 calc(var(--main-transition) + 1.2s) ease-in-out forwards;
+	margin-top: calc(var(--margin-vh-main) + 1.2vh);
 }
-
-@keyframes slideLeft3 {
+@keyframes slide3 {
     0% {
-      transform: translateX(400%); /* başlangıç konumu */
-	  opacity: 0.1;
+		transform: translateX(800%); /* başlangıç konumu */
+		opacity: calc(var(--opacity-main) - 0.9);
     }
     100% {
-      transform: translateX(58%); /* bitiş konumu */
-	  opacity: 1;
+		transform: translateX(-2%); /* bitiş konumu */
+		opacity: var(--opacity-main);
     }
 } 
 
-
-.login-button:hover {
-	background-color: green;
-}
-
-/* For screens smaller than 700px */
-@media screen and (max-width: 780px) {
-	.form-login-container {
-		border-radius: 10px;
-		box-shadow: 0px 60px 60px rgba(0,0,0,0.2);
-		max-width: -moz-fit-content;
-		max-width: 100%;
-		margin: 66px auto !important;
+@media screen and (max-width: 1115px) {
+    .login-container {
+		width: calc(var(--width-vw-main) - 20vw);
 	}
-	.form-login-container {
-		width: 90%;
-		margin: 50px auto;
-	}
-	
-	.login-container {
-		width: 100%;
-		margin-left: 20px;
-	}
-	
 	.login-form {
-	    grid-template-columns: 1fr;
-	}
-	
-	.login-button {
-	    margin: 32px auto 10px auto;
+		gap: calc(var(--gap-vh-main) - 13vh) calc(var(--gap-vw-main) - 0.3vw);
+		
 	}
 	.login-img {
-		width: auto;
-		height: 20vw;
-		margin-left: -13px;
-		transform: translateX(30vw)!important;
-		animation: slideLeft1 1.5s ease-in-out forwards;
-	}
-	body {
-		overflow: scroll;
+		margin-right: calc(var(--margin-vw-main) - 20.9vw)
 	}
 	
 }
-@media only screen and (max-width: 690px) {
-    .login-button {
-	margin-top: 1rem;
-    width: 100%;
-    max-width: 83%;
-    position: relative;
-    left: -41%;
-		
-    }
-	.login-img {
-		
-		padding: 6px 2px;
-		
-	}
 
-	
-}
-@media only screen and (max-width: 650px) {
-    .form-login-container {
-        
-        margin: 75px auto !important;
-    }
-    .login-button {
-		margin-top: 1rem;
-		width: 100%;
-		max-width: 100%;
-		position: relative;
-		left: -63%;
-	
-    }
+@media screen and (max-width: 966px) {
+    .login-container {
+		width: var(--width-vw-main);
+	}
 	.login-form {
+		gap: calc(var(--gap-vh-main) - 13vh) calc(var(--gap-vw-main) + 4.5vw);
+	}
+}
+
+@media screen and (max-width: 700px){
+	.form-login-container {
+		height: calc(var(--height-vh-main) + 65vh)
+	}
+    .login-container {
+		gap: calc(var(--main-gap) - 10px) calc(var(--main-gap) - 10px);
+		width: calc(var(--width-vw-main) + 10vw)
+	}
+	.login-form {
+		grid-template-areas:
+			"label1 label1 . . ."
+			"input1 input1 input1 input1 input1"
+			"label2 label2 . . ."
+			"input2 input2 input2 input2 input2"
+			". button button button . ";
+			display: grid;
+			justify-items: start;
+	        align-items: center;
+			gap: calc(var(--gap-vh-main) - 15vh) calc(var(--gap-vw-main) + 5vw);
+			height: calc(var(--height-vh-main) + 37vh);
+	}
+	.login-input-1 , .login-input-2{
+		width: calc(var(--width-precentage-main) + 25%);
+		
+	}
+	.login-label-1, .login-label-2 {
+		height: calc(var(--height-vh-main) + 2vh);
 		display: grid;
-		grid-template-columns: 1fr;
-		grid-gap: 20px;
-		padding-top: 8px;
-		margin: -21px 0px 27px 0px;
-		animation: slideLeft2 1.5s ease-in-out forwards;
 	}
-
-	
-}
-@media screen and (max-width: 550px){
-.login-img {
-    width: auto;
-    height: 20vw;
-    margin-left: -20px;
-    transform: translateX(30vw)!important;
-    animation: slideLeft1 1.5s ease-in-out forwards;
-}
-.form-login-container {
-        
-    margin: 92px auto !important;
-}
-}
-@media screen and (max-width: 450px){
-	.login-img {
-		margin-left: -27px;
-
-}
-	
+	.login-button {
+		width: calc(var(--width-precentage-main) + 125%);
+		margin-left: calc(var(--margin-vw-main) - 39.5vw);
+		margin-top: calc(var(--margin-vh-main) + 6vh);
+	}
 }
 
 
