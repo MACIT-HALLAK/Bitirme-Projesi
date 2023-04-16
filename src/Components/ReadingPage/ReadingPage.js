@@ -81,6 +81,19 @@ const handleIconClick = () => {
   return (
     <div className='reading-container' >
         <Navbar />
+        {handle && (
+        <>
+          <SettingCom
+            clicking={() => {
+              setHandle((prev) => !prev);
+            }}
+            show={"show"}
+            handle={handle}
+            className="show"
+          />
+          <div className="mask"></div>
+        </>
+      )}
        <section className='text' onMouseUp={handleSelection}>
        {showIcon && (
         <div  style={{ position: 'absolute', left: iconPosition.x, top: iconPosition.y ,zIndex:1}}>
@@ -91,7 +104,7 @@ const handleIconClick = () => {
         </div>
       )}
       <Modal isOpen={showModal} onRequestClose={() => setShowModal(false) }  
-       overlayClassName="custom-overlay"
+      //  overlayClassName="custom-overlay"
       style={{
           content: {
             maxWidth: 'fit-content' ,
@@ -123,26 +136,13 @@ const handleIconClick = () => {
         <span>5</span>
 
 
-        {/* <div className="menu">
-        <i id="copy-btn"><FaLanguage /></i>
-        <h4>ezberleme sayfasina ekle</h4>
-        <h4>ozet sayfasina ekle</h4>
         
-      </div>
-      <textarea id="output"></textarea>
-      <div id="mypopup" className="popup">
-        <div className="popup-content">
-          <p>{value}</p>
-          <span className="close-btn">×</span>
-        </div>
-      </div> */}
-
-
         </p>
         <div className='next-preivece'>
         <button><FaArrowLeft /></button>
         <button><FaArrowRight/></button>
         </div>
+
        </section>
        <aside>
         <div>
@@ -162,33 +162,10 @@ const handleIconClick = () => {
 
                 
             </div>
-          </div>
-        </p>
-        <div className="next-preivece">
-          <button>
-            <FaArrowLeft />
-          </button>
-          <button>
-            <FaArrowRight />
-          </button>
-        </div>
-      </section>
-      <aside>
-        <div>
-          <h2>kitabin bilgileri</h2>
-        </div>
-
-        <div>
-          <div>
-            <p>yazar: iyad al qinabi </p>
-            <p>bolum: din </p>
-            <p>dil: arpca </p>
-            <p>kac sayfa: 232 </p>
-            <p>yayin tarihi: 20/5/2014 </p>
-          </div>
-          <img src={book_img} alt="" />
-        </div>
       </aside>
+     
+       
+       
       <FaCog
         onClick={() => {
           setHandle((prev) => !prev);
