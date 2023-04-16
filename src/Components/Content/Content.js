@@ -19,7 +19,7 @@ export default function Content() {
           {/* <a className="btn btn-first">En Çok Okunan</a> */}
           <Link to='/ReadingPage' className="btn btn-second">En Çok Okunan</Link>
           <Link to='/BookPage' className="btn btn-second">Kitablar</Link>
-          <Link to='/BookPage' className="btn btn-second">Bölümler</Link>
+          <Link to='/Deneme' className="btn btn-second">Bölümler</Link>
           {/* <a className="btn btn-second">Kitablar</a> */}
           {/* <a className="btn btn-third">Bölümler</a> */}
         </div>
