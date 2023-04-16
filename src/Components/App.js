@@ -14,24 +14,21 @@ import CardWriters from "./CardWriters/CardWriters";
 function App() {
   return (
     <div className="layout">
-    <Navbar />
-    <Content />
-    <section>
-      <Title />
-      <div className="parent">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div>
-    
-    </section>
-    <BookCategories />
-    <Footer />
-    
-  </div>
-  
+      <Navbar />
+      <Content />
+      <section>
+        <Title />
+        <div className="parent">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
+      </section>
+      <BookCategories />
+      <Footer />
+    </div>
   );
 }
 export default App;

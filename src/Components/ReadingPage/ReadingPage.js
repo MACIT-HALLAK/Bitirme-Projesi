@@ -3,11 +3,13 @@ import Modal from 'react-modal';
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navber'
 import book_img from "../../Assets/images/si1.webp";
-import './ReadingPage.css'
-import { FaArrowLeft, FaArrowRight,FaLanguage } from "react-icons/fa";
+import "./ReadingPage.css";
+import { FaArrowLeft, FaArrowRight, FaLanguage, FaCog } from "react-icons/fa";
+import SettingCom from "../Ayarlar/SettingCom";
 
 const ReadingPage = () => {
-  const [value ,setValue] = useState("");
+  const [value, setValue] = useState("");
+  const [handle, setHandle] = useState(false);
 
   //******************* */
   const [selection, setSelection] = useState(null);
@@ -41,6 +43,40 @@ const handleIconClick = () => {
 //--------------------------------------------------
 
 
+  //--------------------------------------------------
+
+  // ----------------------Start change props of text--------------------------
+  function changeProps() {
+    setTimeout(() => {
+      let element_arr = [];
+
+      let prop_obj = JSON.parse(localStorage.getItem("props_arr"));
+      if (localStorage.getItem("props_arr")) {
+        let all_props = document.querySelectorAll(".items-box span");
+        all_props.forEach((element) => {
+          let my_prop = element.getAttribute("prop");
+          // console.log(my_prop);
+          if (
+            my_prop === prop_obj.color ||
+            my_prop === prop_obj.font ||
+            my_prop === prop_obj.size
+          ) {
+            element_arr.push(element);
+          }
+        });
+        element_arr.forEach((set_active) => {
+          set_active.classList.add("active");
+        });
+      }
+      document.querySelector(".text p").style.color = prop_obj.color;
+      document.querySelector(".text p").style.fontFamily = prop_obj.font;
+      document.querySelector(".text p").style.fontSize = prop_obj.size + "px";
+    }, 150);
+  }
+  useEffect(() => {
+    changeProps();
+  }, []);
+  // ----------------------End change props of text--------------------------
 
   return (
     <div className='reading-container' >
@@ -126,12 +162,43 @@ const handleIconClick = () => {
 
                 
             </div>
-           
-       </aside>
+          </div>
+        </p>
+        <div className="next-preivece">
+          <button>
+            <FaArrowLeft />
+          </button>
+          <button>
+            <FaArrowRight />
+          </button>
+        </div>
+      </section>
+      <aside>
+        <div>
+          <h2>kitabin bilgileri</h2>
+        </div>
 
-       <Footer />
+        <div>
+          <div>
+            <p>yazar: iyad al qinabi </p>
+            <p>bolum: din </p>
+            <p>dil: arpca </p>
+            <p>kac sayfa: 232 </p>
+            <p>yayin tarihi: 20/5/2014 </p>
+          </div>
+          <img src={book_img} alt="" />
+        </div>
+      </aside>
+      <FaCog
+        onClick={() => {
+          setHandle((prev) => !prev);
+          changeProps();
+        }}
+        className="setting-open"
+      />
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default ReadingPage
+export default ReadingPage;

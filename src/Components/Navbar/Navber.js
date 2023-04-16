@@ -16,7 +16,6 @@ const Navbar = () => {
   function trigger() {
     setHandle((prev) => !prev);
   }
-
   let toggle_class_check = btn_state ? "hide" : "";
   let nav_items = [
     "Anasayfa",
@@ -87,10 +86,12 @@ const Navbar = () => {
                   <FaSearch />
                 </div>
                 <div className="auth">
-                  
-                  <Link to='/Register'  data-lang="linkler" className="btn-auth">Register</Link>
-                  <Link to='/Login'  data-lang="linkler" className="btn-auth">Login</Link>
-                  
+                  <Link to="/Register" data-lang="linkler" className="btn-auth">
+                    Register
+                  </Link>
+                  <Link to="/Login" data-lang="linkler" className="btn-auth">
+                    Login
+                  </Link>
                 </div>
               </li>
             </ul>

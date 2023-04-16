@@ -68,11 +68,7 @@ nav {
 .main-nav {
   display: flex;
   background-color: var(--main-color-alt);
-  /*overflow: hidden;
-  */
   margin-top: 5px;
-  /*padding: 5px 10px;
-  */
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -84,7 +80,6 @@ nav {
   -moz-transition: all 0.35s linear;
   -ms-transition: all 0.35s linear;
   -o-transition: all 0.35s linear;
-  overflow: hidden;
 }
 .main-nav::after {
   content: "";
@@ -106,6 +101,7 @@ nav {
     flex-direction: column;
     align-items: start;
     gap: 20px;
+    overflow: hidden !important;
   }
 
   .main-nav::after {
@@ -415,6 +411,7 @@ nav {
     left: 50%;
     top: 5rem;
     z-index: 1;
+    visibility: hidden;
     width: 12rem;
     display: flex !important;
     padding: 1rem;
@@ -471,6 +468,7 @@ nav {
 
   .active .our-list {
     opacity: 1;
+    visibility: visible;
     transform: translate(-50%, 0);
     -webkit-transform: translate(-50%, 0);
     -moz-transform: translate(-50%, 0);

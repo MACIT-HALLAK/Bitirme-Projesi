@@ -1,181 +1,254 @@
 .reading-container {
-    display: grid;
-    grid-template-columns: 50px repeat(6, 1fr) 25px repeat(3,1fr) 50px;
-    grid-template-rows: auto 400px auto auto;
-    grid-template-areas:
+  display: grid;
+  grid-template-columns: 50px repeat(6, 1fr) 25px repeat(3, 1fr) 50px;
+  grid-template-rows: auto 400px auto auto;
+  grid-template-areas:
     ". nav nav nav nav nav nav nav nav nav nav ."
     ". sec sec sec sec sec sec . as as as ."
     ". sec sec sec sec sec sec . . . . ."
-    ". fo fo fo fo fo fo fo fo fo fo ."
-    ;
-    background-color: var(--section-background);
-    gap: 20px;
+    ". fo fo fo fo fo fo fo fo fo fo .";
+  background-color: var(--section-background);
+  gap: 20px;
+  overflow-y: hidden;
 }
 .reading-container nav {
-    grid-area: nav;
+  grid-area: nav;
 }
 .reading-container section {
-    grid-area: sec;
-    background-color: var(--main-color-screen);
-    padding: 20px;
-    line-height: 30px;
-
+  grid-area: sec;
+  background-color: var(--main-color-screen);
+  padding: 20px;
+  line-height: 30px;
 }
 .reading-container section > p {
-    position: relative;
+  position: relative;
 }
 .reading-container section > p::selection {
-    background-color: var(--main-color);
-    color: var(--main-color-screen);
-    
+  background-color: var(--main-color);
+  color: var(--main-color-screen);
 }
-
 
 .reading-container section p > span {
-    color: var(--main-color-alt);
-    font-weight: bold;
-    position: absolute;
-    bottom: -90px;
-    left: 50%;
+  color: var(--main-color-alt);
+  font-weight: bold;
+  position: absolute;
+  bottom: -90px;
+  left: 50%;
 }
 .reading-container section .next-preivece {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 20px 0;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px 0;
 }
-.reading-container section div>button {
-    background-color: var(--main-color);
-    color: var(--main-color-screen);
-    height: 40px;
-    width: 40px;
-    border: none;
-    line-height: 5px;
-    border-radius: 20px;
-    cursor: pointer;
-
+.reading-container section div > button {
+  background-color: var(--main-color);
+  color: var(--main-color-screen);
+  height: 40px;
+  width: 40px;
+  border: none;
+  line-height: 5px;
+  border-radius: 20px;
+  cursor: pointer;
 }
 .reading-container aside {
-    grid-area: as;
-    background-color: var(--main-color-screen);
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    
+  grid-area: as;
+  background-color: var(--main-color-screen);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .reading-container aside div > img {
-height: 120px;
-width: 90px;
+  height: 120px;
+  width: 90px;
 }
-.reading-container aside div  {
+.reading-container aside div {
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
   justify-content: space-between;
 }
-.reading-container aside div div  {
-    display: flex;
-    flex-direction: column;
+.reading-container aside div div {
+  display: flex;
+  flex-direction: column;
 }
-.reading-container aside div div >p {
-    color: var(--text-color);
-    line-height: 25px;
+.reading-container aside div div > p {
+  color: var(--text-color);
+  line-height: 25px;
 }
-.reading-container aside h2{
-   width: 100%;
-    flex-grow: 1;
+.reading-container aside h2 {
+  width: 100%;
+  flex-grow: 1;
 }
-.reading-container  footer {
-    grid-area: fo;
+.reading-container footer {
+  grid-area: fo;
 }
-@media screen and (max-width:770px) {
-    .reading-container {
-       
-        grid-template-columns: 50px repeat(6, 1fr) 10px repeat(3,1fr) 50px;
-        grid-template-rows: auto 400px auto auto;
-        grid-template-areas:
-        ". nav nav nav nav nav nav nav nav nav nav ."
-        ". sec sec sec sec sec sec as as as as ."
-        ". sec sec sec sec sec sec . . . . ."
-        ". fo fo fo fo fo fo fo fo fo fo ."
-        ;
-        
-    }
+@media screen and (max-width: 770px) {
+  .reading-container {
+    grid-template-columns: 50px repeat(6, 1fr) 10px repeat(3, 1fr) 50px;
+    grid-template-rows: auto 400px auto auto;
+    grid-template-areas:
+      ". nav nav nav nav nav nav nav nav nav nav ."
+      ". sec sec sec sec sec sec as as as as ."
+      ". sec sec sec sec sec sec . . . . ."
+      ". fo fo fo fo fo fo fo fo fo fo .";
+  }
 }
-@media screen and (max-width:712px) {
-    .reading-container {
-       
-        grid-template-columns: 50px repeat(10, 1fr)  50px;
-        grid-template-rows: auto 400px auto auto;
-        grid-template-areas:
-        ". nav nav nav nav nav nav nav nav nav nav ."
-        ". as as as as as as  as as as as ."
-        ". sec sec sec sec sec sec sec sec sec sec ."
-        ". fo fo fo fo fo fo fo fo fo fo ."
-        ;
-        
-    }
+@media screen and (max-width: 712px) {
+  .reading-container {
+    grid-template-columns: 50px repeat(10, 1fr) 50px;
+    grid-template-rows: auto 400px auto auto;
+    grid-template-areas:
+      ". nav nav nav nav nav nav nav nav nav nav ."
+      ". as as as as as as  as as as as ."
+      ". sec sec sec sec sec sec sec sec sec sec ."
+      ". fo fo fo fo fo fo fo fo fo fo .";
+  }
 }
-@media screen and (max-width:550px) {
-    .reading-container {
-       
-        grid-template-columns: 10px repeat(10, 1fr) 10px;
-        grid-template-rows: auto 400px auto auto;
-        grid-template-areas:
-        ". nav nav nav nav nav nav nav nav nav nav ."
-        ". as as as as as as  as as as as ."
-        ". sec sec sec sec sec sec sec sec sec sec ."
-        ". fo fo fo fo fo fo fo fo fo fo ."
-        ;
-        
-    }
+@media screen and (max-width: 550px) {
+  .reading-container {
+    grid-template-columns: 10px repeat(10, 1fr) 10px;
+    grid-template-rows: auto 400px auto auto;
+    grid-template-areas:
+      ". nav nav nav nav nav nav nav nav nav nav ."
+      ". as as as as as as  as as as as ."
+      ". sec sec sec sec sec sec sec sec sec sec ."
+      ". fo fo fo fo fo fo fo fo fo fo .";
+  }
+}
+
+.reading-container:has(.props-main-box.show)::after {
+  content: "";
+  min-width: 100% !important;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(5px);
+  position: absolute;
+  z-index: 12;
+  -webkit-backdrop-filter: blur(5px);
 }
 /* ============================= */
- 
-  .menu {
-    display: none;
-    position: absolute;
-    background: var(--main-color-screen);
-    border-radius: 6px;
-    width: 250px;
-    color: var(--text-color);
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    padding: 20px;
-   
+
+.menu {
+  display: none;
+  position: absolute;
+  background: var(--section-background);
+  border-radius: 6px;
+  width: 250px;
+  color: var(--text-color);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  padding: 20px;
+}
+.menu i {
+  color: var(--main-color-alt);
+  font-size: 30px;
+  cursor: pointer;
+  margin: 8px;
+}
+#output {
+  position: absolute;
+  opacity: 0.01;
+  height: 0;
+  overflow: hidden;
+}
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* background-color: rgb(0, 0, 0); */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.popup-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.close-btn {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: auto;
+}
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.popup-content p {
+  font-size: 28px;
+  font-weight: bold;
+}
+/* 
+.mask {
+  width: 120%;
+  height: 165dvh;
+  background-color: rgba(255, 255, 255, 0.001);
+  backdrop-filter: blur(5px);
+  position: absolute;
+  z-index: 12;
+} */
+
+.props-main-box {
+  z-index: 13 !important;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width: 50%;
+}
+
+nav {
+  z-index: 11;
+}
+
+.setting-open {
+  position: absolute;
+  right: 1%;
+  top: 4%;
+  font-size: 32px;
+  animation: 3s rota alternate infinite;
+  -webkit-animation: 3s rota alternate infinite;
+  cursor: pointer;
+  color: var(--main-color-alt);
+}
+
+@keyframes rota {
+  from {
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
   }
-  .menu i {
-    color: var(--main-color-alt);
-    font-size: 30px;
-    cursor: pointer;
-    margin: 8px;
-  
+  to {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
   }
-  #output {
-    position: absolute;
-    opacity: 0.01;
-    height: 0;
-    overflow: hidden;
-  }
-  .popup {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
+}
+
+@media (max-width: 567px) {
+  .props-main-box {
     width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+    top: -15%;
+    left: 2.5%;
   }
-  .popup-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
-    display: flex;
-    align-items: center;
+}
+@media (min-width: 568px) and (max-width: 920px) {
+  .props-main-box {
+    width: 100%;
+    top: -15%;
+    left: 2.5%;
   }
   .close-btn {
     color: #aaa;
@@ -193,6 +266,7 @@ width: 90px;
     font-size: 28px;
     font-weight: bold;
   }
+}
 
 /* /************************************* */
 .custom-overlay {
