@@ -80,37 +80,37 @@ return (
                     </form>
                 
                 {showPopup4 && (
-                    <div className="popup">
-                        <div className="popup-content">
-                            <h3 className="popup-text">Şifreler eşleşmiyor!</h3>
-                            <button className="popup-button" onClick={() => setShowPopup4(false)}>OK</button>
+                    <div className="register-popup">
+                        <div className="register-popup-content">
+                            <h3 className="register-popup-text">Şifreler eşleşmiyor!</h3>
+                            <button className="register-popup-button" onClick={() => setShowPopup4(false)}>OK</button>
                         </div>
                     </div>
                 
                 )}
                 {showPopup1 && (
-                    <div className="popup">
-                        <div className="popup-content">
-                            <h3 className="popup-text">Kullanıcı Adı boş olamaz!</h3>
-                            <button className="popup-button" onClick={() => setShowPopup1(false)}>OK</button>
+                    <div className="register-popup">
+                        <div className="register-popup-content">
+                            <h3 className="register-popup-text">Kullanıcı Adı boş olamaz!</h3>
+                            <button className="register-popup-button" onClick={() => setShowPopup1(false)}>OK</button>
                         </div>
                     </div>
                 
                 )}
                 {showPopup3 && (
-                    <div className="popup">
-                        <div className="popup-content">
-                            <h3 className="popup-text">Şifreniz en az 8 karakter uzunluğunda olmalıdır !</h3>
-                            <button className="popup-button" onClick={() => setShowPopup3(false)}>OK</button>
+                    <div className="register-popup">
+                        <div className="register-popup-content">
+                            <h3 className="register-popup-text">Şifreniz en az 8 karakter uzunluğunda olmalıdır !</h3>
+                            <button className="register-popup-button" onClick={() => setShowPopup3(false)}>OK</button>
                         </div>
                     </div>
                 
                 )}
                 {showPopup2 && (
-                    <div className="popup">
-                        <div className="popup-content">
-                            <h3 className="popup-text">E-posta adresi geçersiz. Lütfen doğru e-posta adresi girin.</h3>
-                            <button className="popup-button" onClick={() => setShowPopup2(false)}>OK</button>
+                    <div className="register-popup">
+                        <div className="register-popup-content">
+                            <h3 className="register-popup-text">E-posta adresi geçersiz. Lütfen doğru e-posta adresi girin.</h3>
+                            <button className="register-popup-button" onClick={() => setShowPopup2(false)}>OK</button>
                         </div>
                     </div>
                 )}
