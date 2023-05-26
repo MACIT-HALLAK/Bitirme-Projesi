@@ -4,11 +4,19 @@ import { FaSearch } from "react-icons/fa";
 import { FaList } from "react-icons/fa";
 import NavEelements from "./navElements/NavEelements";
 import { Link } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
 const Navbar = () => {
   const [value, setValue] = useState(() => "");
   const [handle, setHandle] = useState(() => false);
   const [btn_state, setBtnState] = useState(() => false);
+  const [cookies, setCookies, removeCookies] = useCookies(['email']);
+
+  function logout() {
+    removeCookies('email', { path: '/' });
+    window.location.pathname = '/';
+  }
+
   function handleClick() {
     setBtnState((btn_state) => !btn_state);
   }
@@ -86,12 +94,20 @@ const Navbar = () => {
                   <FaSearch />
                 </div>
                 <div className="auth">
+                {!cookies.email ? (
+                  <>
                   <Link to="/Register" data-lang="linkler" className="btn-auth">
                     Register
                   </Link>
                   <Link to="/Login" data-lang="linkler" className="btn-auth">
                     Login
                   </Link>
+                  </>
+                  ) : (
+                    <div onClick={logout}>
+                      logout
+                    </div>
+                  )}
                 </div>
               </li>
             </ul>

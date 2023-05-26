@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Register.css'
 import img from '../../Assets/images/4043260_avatar_male_man_portrait_icon.png';
 import BackTo from "../BackTo/BackTo";
+import axios from "axios";
 const Register = () => {
 const [username, setUsername] = useState('');
 const [email, setEmail] = useState('');
@@ -14,9 +15,32 @@ const [showPopup3, setShowPopup3] = useState(false);
 const [showPopup4, setShowPopup4] = useState(false);
 
 
-function submit (event) {
+async function submit (event) {
     event.preventDefault();
     setAccept(true);
+    let flag = true;
+    if (username === "" || password.length < 8 || confirmPassword !== password) {
+        flag = false;
+    } else flag = true;
+    try {
+        if (flag) {
+        let res = await axios.post("https://librarygop.com/public/index.php/api/register", {
+            name: username,
+            email: email,
+            role: 0,
+            password: password,
+        });
+        if (res.status === 200) {
+            window.localStorage.setItem("email", email);
+            window.location.pathname = "/";
+        }
+        
+    }
+    } catch (err) {
+        console.log(err);
+    }
+
+
     if(username === ""){
         setShowPopup1(true)
     }
@@ -80,37 +104,37 @@ return (
                     </form>
                 
                 {showPopup4 && (
-                    <div className="popup">
-                        <div className="popup-content">
-                            <h3 className="popup-text">Şifreler eşleşmiyor!</h3>
-                            <button className="popup-button" onClick={() => setShowPopup4(false)}>OK</button>
+                    <div className="register-popup">
+                        <div className="register-popup-content">
+                            <h3 className="register-popup-text">Şifreler eşleşmiyor!</h3>
+                            <button className="register-popup-button" onClick={() => setShowPopup4(false)}>OK</button>
                         </div>
                     </div>
                 
                 )}
                 {showPopup1 && (
-                    <div className="popup">
-                        <div className="popup-content">
-                            <h3 className="popup-text">Kullanıcı Adı boş olamaz!</h3>
-                            <button className="popup-button" onClick={() => setShowPopup1(false)}>OK</button>
+                    <div className="register-popup">
+                        <div className="register-popup-content">
+                            <h3 className="register-popup-text">Kullanıcı Adı boş olamaz!</h3>
+                            <button className="register-popup-button" onClick={() => setShowPopup1(false)}>OK</button>
                         </div>
                     </div>
                 
                 )}
                 {showPopup3 && (
-                    <div className="popup">
-                        <div className="popup-content">
-                            <h3 className="popup-text">Şifreniz en az 8 karakter uzunluğunda olmalıdır !</h3>
-                            <button className="popup-button" onClick={() => setShowPopup3(false)}>OK</button>
+                    <div className="register-popup">
+                        <div className="register-popup-content">
+                            <h3 className="register-popup-text">Şifreniz en az 8 karakter uzunluğunda olmalıdır !</h3>
+                            <button className="register-popup-button" onClick={() => setShowPopup3(false)}>OK</button>
                         </div>
                     </div>
                 
                 )}
                 {showPopup2 && (
-                    <div className="popup">
-                        <div className="popup-content">
-                            <h3 className="popup-text">E-posta adresi geçersiz. Lütfen doğru e-posta adresi girin.</h3>
-                            <button className="popup-button" onClick={() => setShowPopup2(false)}>OK</button>
+                    <div className="register-popup">
+                        <div className="register-popup-content">
+                            <h3 className="register-popup-text">E-posta adresi geçersiz. Lütfen doğru e-posta adresi girin.</h3>
+                            <button className="register-popup-button" onClick={() => setShowPopup2(false)}>OK</button>
                         </div>
                     </div>
                 )}
@@ -123,3 +147,9 @@ return (
 }
 
 export default Register
+
+
+
+
+
+
