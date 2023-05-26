@@ -40,15 +40,15 @@
   --gap-vh-main: 15vh;
 
   /*  #ececec */
-  --text-color:#333;
-  --main-color-screen:#ffffff;
+  --text-color: #333;
+  --main-color-screen: #ffffff;
 }
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 20px;
 }
 body {
-  font-family: "Cairo", sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 a {
   text-decoration: none;
@@ -82,7 +82,7 @@ nav {
   -o-transition: all 0.35s linear;
 }
 .main-nav::after {
-  content: "";
+  content: '';
   width: 100%;
   height: 15px;
   bottom: -20%;
@@ -247,7 +247,7 @@ nav {
     display: none !important;
   }
   .level:has(.active) {
-    flex-basis: 220px;
+    flex-basis: 255px;
     transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
@@ -309,7 +309,7 @@ nav {
 }
 
 .main-nav > li > .input::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   height: 4px;
@@ -400,6 +400,9 @@ nav {
   -ms-border-radius: 25px;
   -o-border-radius: 25px;
   color: #fff;
+  text-transform: capitalize;
+  cursor: pointer;
+  font-size: 1.125rem;
 }
 .main-nav li:last-child > ul .auth .btn-auth:hover {
   scale: 0.98 !important;
@@ -483,4 +486,7 @@ nav {
   -moz-transition: all 0.4s ease-out;
   -ms-transition: all 0.4s ease-out;
   -o-transition: all 0.4s ease-out;
+}
+
+.logout {
 }
