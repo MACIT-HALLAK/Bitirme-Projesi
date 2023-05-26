@@ -10,7 +10,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [accept, setAccept] = useState(false);
     const [cookies, setCookies] = useCookies(['email']);
-
+    const [showPopup, setShowPopup] = useState(false);
 async function submit(event) {
     event.preventDefault();
     let flag = true;
@@ -26,6 +26,9 @@ async function submit(event) {
         if (res.data === 'başarılı bir şekilde giriş yapıldı') {
             setCookies('email', email, { path: '/' });
             window.location.pathname = '/';
+        }
+        else {
+            setShowPopup(true);
         }
     }
     } catch (err) {
@@ -46,6 +49,15 @@ return (
                 <input className="login-input-2" type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}required/>
                 <button type="submit" className="login-button">Giriş Yap</button>
             </form>
+            {showPopup && (
+                    <div className="login-popup">
+                        <div className="login-popup-content">
+                            <h3 className="login-popup-text">Kullanıcı Adı Yada Şifreniz Hatalıdır!</h3>
+                            <button className="login-popup-button" onClick={() => setShowPopup(false)}>OK</button>
+                        </div>
+                    </div>
+                
+                )}
             </div>
         </div>
     </div>

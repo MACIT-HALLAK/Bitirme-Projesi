@@ -32,7 +32,7 @@ async function submit (event) {
         });
         if (res.status === 200) {
             window.localStorage.setItem("email", email);
-            window.location.pathname = "/";
+            window.location.pathname = "/Login";
         }
         
     }
