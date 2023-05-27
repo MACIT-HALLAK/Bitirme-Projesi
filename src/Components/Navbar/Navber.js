@@ -14,6 +14,7 @@ const Navbar = () => {
 
   function logout() {
     removeCookies('email', { path: '/' });
+    window.localStorage.removeItem('email');
     window.location.pathname = '/';
   }
 
