@@ -21,7 +21,6 @@ root.render(
     <Routes>
       <Route element={<PrivateRoutes />}>
         <Route path="/" element={<App />} />
-        <Route path="/BackTo" element={<BackTo />} />
         <Route path="/Anasayfa" element={<App />} />
         <Route path="/Yazarlar" element={<Writerspage />} />
         <Route path="/Seviyeler" element={<Seviyeler />} />
@@ -30,6 +29,7 @@ root.render(
         <Route path="/ReadingPage" element={<ReadingPage />} />
         <Route path="/Deneme" element={<Deneme />} />
         <Route path="/settings" element={<SettingCom />} />
+        <Route path="/BackTo" element={<BackTo />} />
       </Route>
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />

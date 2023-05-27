@@ -26,20 +26,34 @@ const Login = () => {
             `https://librarygop.com/public/index.php/api/login/${email}/${password}`
           )
           .then((res) => {
-            toast.success(res.data.message, {
-              position: toast.POSITION.TOP_RIGHT,
-              autoClose: 1500, // مدة ظهور الرسالة (بالمللي ثانية)
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              toastId: 'loginToast', // معرّف فريد للتأكد من عدم تكرار ظهور الرسالة
-            });
-            setTimeout(() => {
-              setCookies('email', email, { path: '/' });
-              window.location.pathname = '/';
-            }, 1500);
+            if (String(res.data.status) === '200') {
+              toast.success(res.data.message, {
+                position: 'top-right',
+                autoClose: 1500, // مدة ظهور الرسالة (بالمللي ثانية)
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                toastId: 'success_loginToast', // معرّف فريد للتأكد من عدم تكرار ظهور الرسالة
+              });
+              setTimeout(() => {
+                setCookies('email', email, { path: '/' });
+                window.location.pathname = '/';
+              }, 1500);
+            } else {
+              toast.error(res.data.message, {
+                position: 'top-right',
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'colored',
+                toastId: 'error_loginToast', // معرّف فريد للتأكد من عدم تكرار ظهور الرسالة
+              });
+            }
           });
       }
     } catch (err) {
@@ -49,8 +63,19 @@ const Login = () => {
 
   return (
     <div className="login-wraper">
-      <ToastContainer />
-      <BackTo />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
+      <BackTo path={'Register'} />
       <div className="form-login-container">
         <div className="login-container">
           <img src={img} className="login-img" />

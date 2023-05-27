@@ -76,7 +76,7 @@ const Register = () => {
 
   return (
     <div className="register-wraper">
-      <BackTo />
+      <BackTo path={'Login'} />
       <div className="form-register-container">
         <div className="register-container">
           <img src={img} className="register-img" />
