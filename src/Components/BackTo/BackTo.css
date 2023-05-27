@@ -5,6 +5,7 @@
   color: var(--main-color);
   animation: slideLeft1 1.5s ease-in-out forwards;
   animation: shake 1.5s linear infinite;
+  -webkit-animation: ;
 }
 
 .back-to-left {
@@ -12,6 +13,8 @@
   top: 5%;
   position: absolute;
   color: white;
+  animation: slideLeft1 1.5s ease-in-out forwards;
+  animation: shake 1.5s linear infinite;
 }
 @keyframes slideLeft2 {
   0% {
