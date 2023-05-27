@@ -5,6 +5,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { ToastContainer, toast } from 'react-toastify';
+import { FaAngleDoubleLeft } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -64,7 +66,7 @@ const Login = () => {
   return (
     <div className="login-wraper">
       <ToastContainer />
-      <BackTo path={'Register'} />
+      <BackTo path={'Register'} dir={'rtl'} />
       <div className="form-login-container">
         <div className="login-container">
           <img src={img} className="login-img" />
@@ -99,6 +101,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <BackTo />
     </div>
   );
 };

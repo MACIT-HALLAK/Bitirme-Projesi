@@ -81,7 +81,7 @@ const Register = () => {
 
   return (
     <div className="register-wraper">
-      <BackTo path={'Login'} />
+      <BackTo path={'Login'} dir={'rtl'} />
       <div className="form-register-container">
         <div className="register-container">
           <img src={img} className="register-img" />
@@ -150,6 +150,7 @@ const Register = () => {
           )}
         </div>
       </div>
+      <BackTo />
     </div>
   );
 };

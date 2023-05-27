@@ -26,15 +26,7 @@ const Navbar = () => {
     setHandle((prev) => !prev);
   }
   let toggle_class_check = btn_state ? 'hide' : '';
-  let nav_items = [
-    'Anasayfa',
-    'Yazarlar',
-    'Seviyeler',
-    // "Temel düzey",
-    // "Orta düzey",
-    // "İleri düzey",
-  ];
-  // let drop_items = ["Temel düzey", "Orta düzey", "İleri düzey"];
+  let nav_items = ['Anasayfa', 'Yazarlar', 'Seviyeler'];
   return (
     <>
       <nav>
@@ -57,27 +49,6 @@ const Navbar = () => {
               ''
             );
           })}
-          {/* {handle && (
-            <div className="drop-items">
-              {nav_items.map((element, index) => {
-                return index >= 3 ? (
-                  <NavEelements element={element} key={index} />
-                ) : (
-                  ""
-                );
-              })}
-            </div>
-          )} */}
-          {/* <div className={`drop-items ${handle && "active"}`} drop-items="">
-            {nav_items.map((element, index) => {
-              return index >= 3 ? (
-                <NavEelements element={element} key={index} />
-              ) : (
-                ""
-              );
-            })}
-          </div> */}
-
           <li>
             <ul>
               <li className="alt-box">
