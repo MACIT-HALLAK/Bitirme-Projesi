@@ -50,7 +50,7 @@ const Login = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                theme: 'colored',
+                // theme: 'colored',
                 toastId: 'error_loginToast', // معرّف فريد للتأكد من عدم تكرار ظهور الرسالة
               });
             }
@@ -63,18 +63,7 @@ const Login = () => {
 
   return (
     <div className="login-wraper">
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+      <ToastContainer />
       <BackTo path={'Register'} />
       <div className="form-login-container">
         <div className="login-container">
