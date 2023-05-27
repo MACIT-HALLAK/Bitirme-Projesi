@@ -20,10 +20,13 @@ root.render(
   <Router>
     <Routes>
       <Route path="/" element={<App />} />
+      <Route path="/Anasayfa" element={<App />} />
       <Route element={<PrivateRoutes />}>
-        <Route path="/Anasayfa" element={<App />} />
         <Route path="/Yazarlar" element={<Writerspage />} />
         <Route path="/Seviyeler" element={<Seviyeler />} />
+        <Route path="/Seviyeler/ileri" element={<Seviyeler />} />
+        <Route path="/Seviyeler/orta" element={<Seviyeler />} />
+        <Route path="/Seviyeler/temel" element={<Seviyeler />} />
         <Route path="/Writer" element={<Writer />} />
         <Route path="/BookPage" element={<BookPage />} />
         <Route path="/ReadingPage" element={<ReadingPage />} />
