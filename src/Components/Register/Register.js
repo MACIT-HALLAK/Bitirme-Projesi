@@ -42,6 +42,9 @@ const Register = () => {
       console.log(err);
     }
 
+    // check from email is correct or no with regex
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
     if (username === '') {
       setShowPopup(true);
       setTimeout(() => {
@@ -53,7 +56,7 @@ const Register = () => {
       setTimeout(() => {
         document.querySelector('#popup-text').textContent = 'Email boş olamaz!';
       }, 100);
-    } else if (email.indexOf('@') === -1) {
+    } else if (!emailRegex.test(email)) {
       setShowPopup(true);
       setTimeout(() => {
         document.querySelector('#popup-text').textContent =
