@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Register.css';
 import img from '../../Assets/images/4043260_avatar_male_man_portrait_icon.png';
 import BackTo from '../BackTo/BackTo';
+import { useCookies } from 'react-cookie';
 import axios from 'axios';
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -10,6 +11,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [accept, setAccept] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [cookies, setCookies] = useCookies(['email']);
 
   async function submit(event) {
     event.preventDefault();
@@ -34,7 +36,7 @@ const Register = () => {
           }
         );
         if (res.status === 200) {
-          window.localStorage.setItem('email', email);
+          setCookies('email', email, { path: '/' });
           window.location.pathname = '/';
         }
       }
