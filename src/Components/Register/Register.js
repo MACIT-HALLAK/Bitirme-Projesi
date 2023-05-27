@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Register.css';
 import img from '../../Assets/images/4043260_avatar_male_man_portrait_icon.png';
 import BackTo from '../BackTo/BackTo';
+import { useCookies } from 'react-cookie';
 import axios from 'axios';
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -10,6 +11,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [accept, setAccept] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [cookies, setCookies] = useCookies(['email']);
 
   async function submit(event) {
     event.preventDefault();
@@ -34,13 +36,16 @@ const Register = () => {
           }
         );
         if (res.status === 200) {
-          window.localStorage.setItem('email', email);
+          setCookies('email', email, { path: '/' });
           window.location.pathname = '/';
         }
       }
     } catch (err) {
       console.log(err);
     }
+
+    // check from email is correct or no with regex
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (username === '') {
       setShowPopup(true);
@@ -53,7 +58,7 @@ const Register = () => {
       setTimeout(() => {
         document.querySelector('#popup-text').textContent = 'Email boş olamaz!';
       }, 100);
-    } else if (email.indexOf('@') === -1) {
+    } else if (!emailRegex.test(email)) {
       setShowPopup(true);
       setTimeout(() => {
         document.querySelector('#popup-text').textContent =
@@ -76,7 +81,7 @@ const Register = () => {
 
   return (
     <div className="register-wraper">
-      <BackTo />
+      <BackTo path={'Login'} />
       <div className="form-register-container">
         <div className="register-container">
           <img src={img} className="register-img" />

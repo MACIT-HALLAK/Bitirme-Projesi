@@ -19,17 +19,20 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
     <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/Anasayfa" element={<App />} />
       <Route element={<PrivateRoutes />}>
-        <Route path="/" element={<App />} />
-        <Route path="/BackTo" element={<BackTo />} />
-        <Route path="/Anasayfa" element={<App />} />
         <Route path="/Yazarlar" element={<Writerspage />} />
         <Route path="/Seviyeler" element={<Seviyeler />} />
+        <Route path="/Seviyeler/ileri" element={<Seviyeler />} />
+        <Route path="/Seviyeler/orta" element={<Seviyeler />} />
+        <Route path="/Seviyeler/temel" element={<Seviyeler />} />
         <Route path="/Writer" element={<Writer />} />
         <Route path="/BookPage" element={<BookPage />} />
         <Route path="/ReadingPage" element={<ReadingPage />} />
         <Route path="/Deneme" element={<Deneme />} />
         <Route path="/settings" element={<SettingCom />} />
+        <Route path="/BackTo" element={<BackTo />} />
       </Route>
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />

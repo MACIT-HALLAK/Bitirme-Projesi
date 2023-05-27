@@ -191,6 +191,7 @@
   max-width: 30%;
   width: 30%;
   position: absolute;
+  top: 5%;
   height: 15vh;
   -webkit-animation: slideLeft6 1s ease-in-out forwards;
 }
