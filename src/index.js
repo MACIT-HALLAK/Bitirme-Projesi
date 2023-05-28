@@ -13,6 +13,7 @@ import SettingCom from './Components/Ayarlar/SettingCom';
 import ReadingPage from './Components/ReadingPage/ReadingPage';
 import BackTo from './Components/BackTo/BackTo';
 import Deneme from './Components/Deneme/Deneme';
+import WordsPage from './Components/WordsPage/WordsPage';
 import PrivateRoutes from './Components/utils/PrivateRoutes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -33,6 +34,7 @@ root.render(
         <Route path="/Deneme" element={<Deneme />} />
         <Route path="/settings" element={<SettingCom />} />
         <Route path="/BackTo" element={<BackTo />} />
+        <Route path="/WordsPage" element={<WordsPage />} />
       </Route>
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />

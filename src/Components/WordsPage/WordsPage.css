@@ -1,0 +1,50 @@
+.word-page-parent {
+    min-height: 100vh;
+    background-color: var(--section-background);
+    display: grid;
+    grid-template-columns: 100px repeat(7, 1fr) 100px;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    ". title title title title title title title ."
+    ". cont cont cont cont cont cont cont .";
+    gap: 20px;
+    
+    
+}
+.title {
+    grid-area: title;
+    margin-top: 20px;
+}
+.word-page-wraper {
+    grid-area: cont;
+    
+}
+.word-page-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: var(--main-color-alt);
+    color: var(--main-color-screen);
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+}
+.word-page-child button{
+   font-size: 20px;
+    color: var(--main-color-screen);
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+@media screen and (max-width: 500px) {
+    .word-page-parent {
+        grid-template-columns: 50px repeat(7, 1fr) 50px;
+    }
+}
+@media screen and (max-width: 390px) {
+    .word-page-parent {
+        grid-template-columns: 20px repeat(7, 1fr) 20px;
+    }
+}

@@ -4,8 +4,9 @@ import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navber'
 import book_img from "../../Assets/images/si1.webp";
 import "./ReadingPage.css";
-import { FaArrowLeft, FaArrowRight, FaLanguage, FaCog } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaLanguage, FaCog,FaRegEdit } from "react-icons/fa";
 import SettingCom from "../Ayarlar/SettingCom";
+import { Link } from 'react-router-dom';
 
 const ReadingPage = () => {
   const [value, setValue] = useState("");
@@ -42,8 +43,12 @@ const handleIconClick = () => {
 };
 //--------------------------------------------------
 
-
-  //--------------------------------------------------
+const wordAdd = () => {
+  console.log(selection)
+}
+const quoteAdd = () => {
+  console.log(selection)
+}
 
   // ----------------------Start change props of text--------------------------
   function changeProps() {
@@ -98,9 +103,16 @@ const handleIconClick = () => {
        {showIcon && (
         <div  style={{ position: 'absolute', left: iconPosition.x, top: iconPosition.y ,zIndex:1}}>
           {/* <img src="icon.png" alt="icon" onClick={handleIconClick} /> */}
-          <button  style={{ fontSize: '30px', zIndex: 10,cursor: 'hand' }} onClick={handleIconClick}><FaLanguage  /> </button>
-          <i id="copy-btn"   ></i>
-        
+          <button className='trans-btn' style={{ fontSize: '30px', zIndex: 10,cursor: 'hand' }} onClick={handleIconClick}><FaLanguage  /> </button>
+          {/* <i id="copy-btn"   ></i> */}
+          <div>
+            <button onClick={wordAdd}> Kelime Ekle </button>
+            <Link to="/WordsPage"><FaRegEdit /></Link>
+          </div>
+          <div>
+            <button onClick={quoteAdd}>Alıntı Ekle </button>
+            <Link to="/WordsPage"><FaRegEdit /></Link>
+          </div>
         </div>
       )}
       <Modal isOpen={showModal} onRequestClose={() => setShowModal(false) }  
