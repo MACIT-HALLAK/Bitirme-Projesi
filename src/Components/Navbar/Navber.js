@@ -26,7 +26,7 @@ const Navbar = () => {
     setHandle((prev) => !prev);
   }
   let toggle_class_check = btn_state ? 'hide' : '';
-  let nav_items = ['Anasayfa', 'Yazarlar', 'Seviyeler'];
+  let nav_items = ['Anasayfa', 'Yazarlar', 'Seviyeler', 'Add Book'];
   return (
     <>
       <nav>
@@ -34,19 +34,15 @@ const Navbar = () => {
         <ul className={`main-nav ${toggle_class_check}`}>
           {/* call main elments in navbar */}
           {nav_items.map((element, index) => {
-            return index < 3 ? (
-              element === 'Seviyeler' ? (
-                <NavEelements
-                  element={element}
-                  key={index}
-                  clicking={() => trigger()}
-                  handle={handle}
-                />
-              ) : (
-                <NavEelements element={element} key={index} />
-              )
+            return element === 'Seviyeler' ? (
+              <NavEelements
+                element={element}
+                key={index}
+                clicking={() => trigger()}
+                handle={handle}
+              />
             ) : (
-              ''
+              <NavEelements element={element} key={index} />
             );
           })}
           <li>

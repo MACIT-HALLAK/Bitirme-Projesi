@@ -14,6 +14,7 @@ import ReadingPage from './Components/ReadingPage/ReadingPage';
 import BackTo from './Components/BackTo/BackTo';
 import Deneme from './Components/Deneme/Deneme';
 import PrivateRoutes from './Components/utils/PrivateRoutes';
+import AddBook from './Components/AddBooks/AddBook';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,6 +29,7 @@ root.render(
         <Route path="/Seviyeler/orta" element={<Seviyeler />} />
         <Route path="/Seviyeler/temel" element={<Seviyeler />} />
         <Route path="/Writer" element={<Writer />} />
+        <Route path="/AddBook" element={<AddBook />} />
         <Route path="/BookPage" element={<BookPage />} />
         <Route path="/ReadingPage" element={<ReadingPage />} />
         <Route path="/Deneme" element={<Deneme />} />

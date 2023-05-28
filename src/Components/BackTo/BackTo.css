@@ -5,7 +5,6 @@
   color: var(--main-color);
   animation: slideLeft1 1.5s ease-in-out forwards;
   animation: shake 1.5s linear infinite;
-  -webkit-animation: ;
 }
 
 .back-to-left {
