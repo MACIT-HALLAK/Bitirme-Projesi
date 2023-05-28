@@ -145,6 +145,10 @@
   .row .form-group {
     width: 100%;
   }
+
+  .column-6 {
+    grid-column: 1 / -1;
+  }
 }
 
 .custom-select {
