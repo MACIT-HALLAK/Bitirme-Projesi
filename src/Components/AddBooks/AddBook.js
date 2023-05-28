@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './AddBook.css';
 import CustomFileInput from './CustomFileInput';
 import axios from 'axios';
+import BackTo from '../BackTo/BackTo';
 const AddBook = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -161,6 +162,8 @@ const AddBook = () => {
             </div>
           </form>
         </div>
+
+        <BackTo path={'Anasayfa'} dir={'rtl'} />
       </div>
     </>
   );
