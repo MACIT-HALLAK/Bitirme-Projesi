@@ -1,15 +1,15 @@
-import { click } from "@testing-library/user-event/dist/click";
-import { Link } from "react-router-dom";
-import React, { useState } from "react";
-import { FaAngleDown } from "react-icons/fa";
+import { click } from '@testing-library/user-event/dist/click';
+import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { FaAngleDown } from 'react-icons/fa';
 export default function NavEelements({ element, clicking, handle }) {
   return (
     <>
-      <li className={element === "Seviyeler" ? "level " : ""}>
-        {element === "Seviyeler" ? (
+      <li className={element === 'Seviyeler' ? 'level ' : ''}>
+        {element === 'Seviyeler' ? (
           <div
-            className={`input ${handle === true ? "active" : ""}`}
-            style={{ cursor: "pointer" }}
+            className={`input ${handle === true ? 'active' : ''}`}
+            style={{ cursor: 'pointer' }}
             data-drop-button=""
             onClick={clicking}
           >
@@ -27,7 +27,10 @@ export default function NavEelements({ element, clicking, handle }) {
             </ul>
           </div>
         ) : (
-          <Link to={`/${element}`} className="input">
+          <Link
+            to={`/${String(element).split(' ').join('')}`}
+            className="input"
+          >
             {element}
           </Link>
         )}

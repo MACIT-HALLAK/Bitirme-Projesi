@@ -16,6 +16,7 @@ import Deneme from "./Components/Deneme/Deneme";
 import WordsPage from "./Components/WordsPage/WordsPage";
 import PrivateRoutes from "./Components/utils/PrivateRoutes";
 import QuotePage from "./Components/QuotePage/QuotePage";
+import AddBook from './Components/AddBooks/AddBook';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -30,6 +31,7 @@ root.render(
         <Route path="/Seviyeler/orta" element={<Seviyeler />} />
         <Route path="/Seviyeler/temel" element={<Seviyeler />} />
         <Route path="/Writer" element={<Writer />} />
+        <Route path="/AddBook" element={<AddBook />} />
         <Route path="/BookPage" element={<BookPage />} />
         <Route path="/ReadingPage" element={<ReadingPage />} />
         <Route path="/Deneme" element={<Deneme />} />
