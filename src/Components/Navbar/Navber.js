@@ -10,11 +10,11 @@ const Navbar = () => {
   const [value, setValue] = useState(() => '');
   const [handle, setHandle] = useState(() => false);
   const [btn_state, setBtnState] = useState(() => false);
-  const [cookies, setCookies, removeCookies] = useCookies(['email']);
+  const [cookies, setCookies, removeCookies] = useCookies(['email', 'role']);
 
   function logout() {
     removeCookies('email', { path: '/' });
-    window.localStorage.removeItem('email');
+    removeCookies('role', { path: '/' });
     window.location.pathname = '/';
   }
 
@@ -26,7 +26,11 @@ const Navbar = () => {
     setHandle((prev) => !prev);
   }
   let toggle_class_check = btn_state ? 'hide' : '';
-  let nav_items = ['Anasayfa', 'Yazarlar', 'Seviyeler', 'Add Book'];
+  let nav_items = ['Anasayfa', 'Yazarlar', 'Seviyeler'];
+  let admin_items = ['Add Book'];
+
+  // if user not admin filter array
+  if (cookies.role === '1') nav_items = nav_items.concat(admin_items);
   return (
     <>
       <nav>

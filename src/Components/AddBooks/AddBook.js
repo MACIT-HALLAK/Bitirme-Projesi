@@ -113,37 +113,39 @@ const AddBook = () => {
               </div>
             </div>
 
-            <div className="form-group column-6">
-              <label htmlFor="category-select">Category:</label>
-              <select
-                id="category-select"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                required
-                className="custom-select"
-              >
-                <option value="">Kategori seçme</option>
-                <option value="tarıh">Tarih</option>
-                <option value="bilim">Bilim</option>
-                {/* قم بإضافة المزيد من الخيارات حسب الاحتياج */}
-              </select>
-            </div>
-
-            <div className="form-group column-6">
-              <label htmlFor="level-select">Level:</label>
-              <select
-                id="level-select"
-                value={level}
-                onChange={(e) => setLevel(e.target.value)}
-                required
-                className="custom-select"
-              >
-                <option value="">Seviye Seç</option>
-                <option value="ileri">ileri</option>
-                <option value="orta">orta</option>
-                <option value="temel">temel</option>
-                {/* قم بإضافة المزيد من الخيارات حسب الاحتياج */}
-              </select>
+            <div className="row flex">
+              {' '}
+              <div className="form-group column-6">
+                <label htmlFor="category-select">Category:</label>
+                <select
+                  id="category-select"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  required
+                  className="custom-select"
+                >
+                  <option value="">Kategori seçme</option>
+                  <option value="tarıh">Tarih</option>
+                  <option value="bilim">Bilim</option>
+                  {/* قم بإضافة المزيد من الخيارات حسب الاحتياج */}
+                </select>
+              </div>
+              <div className="form-group column-6">
+                <label htmlFor="level-select">Level:</label>
+                <select
+                  id="level-select"
+                  value={level}
+                  onChange={(e) => setLevel(e.target.value)}
+                  required
+                  className="custom-select"
+                >
+                  <option value="">Seviye Seç</option>
+                  <option value="ileri">ileri</option>
+                  <option value="orta">orta</option>
+                  <option value="temel">temel</option>
+                  {/* قم بإضافة المزيد من الخيارات حسب الاحتياج */}
+                </select>
+              </div>
             </div>
             <div className="form-group column-12">
               <label htmlFor="content-textarea">Content:</label>
