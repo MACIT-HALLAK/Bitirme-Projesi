@@ -1,7 +1,8 @@
-import React from 'react'//rafce
-import './QuotePage.css'
-import Title from '../Title/Title'
-import { FaRegTrashAlt } from 'react-icons/fa'
+import React from 'react';//rafce
+import './QuotePage.css';
+import Title from '../Title/Title';
+import { FaRegTrashAlt } from 'react-icons/fa';
+import VerticalNavbar from '../VerticalNavbar/VerticalNavbar';
 
 const QuotePage = () => {
   return (
@@ -21,6 +22,7 @@ const QuotePage = () => {
                 <button><FaRegTrashAlt /></button>
             </div>
         </div>
+        <VerticalNavbar />
     </div>  
   )
 }

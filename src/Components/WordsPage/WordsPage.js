@@ -2,6 +2,7 @@ import React from 'react'//rfce
 import './WordsPage.css';
 import Title from '../Title/Title';
 import { FaRegTrashAlt } from "react-icons/fa";
+import VerticalNavbar from '../VerticalNavbar/VerticalNavbar';
 
 function WordsPage() {
   return (
@@ -45,6 +46,7 @@ function WordsPage() {
                 
             </div>
         </div>
+        <VerticalNavbar />
     </div>
   )
 }
