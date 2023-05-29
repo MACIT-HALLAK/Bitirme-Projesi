@@ -1,0 +1,36 @@
+.quote-page-layout {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns:100px repeat(4, 1fr) 100px;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    ". title title title title ."
+    ". cont cont cont cont .";
+    gap: 20px;
+    background-color: var(--section-background);
+}
+.title {
+    grid-area:title;
+}
+.quote-page-wraper {
+    grid-area: cont;
+}
+.quote-page-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: var(--main-color-alt);
+    color: var(--main-color-screen);
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+}
+.quote-page-child button{
+   font-size: 20px;
+    color: var(--main-color-screen);
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

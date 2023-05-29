@@ -40,6 +40,17 @@
   justify-content: space-evenly;
   margin: 20px 0;
 }
+.reading-container section .next-preivece  button{
+  color: var(--main-color-screen);
+  background-color: var(--main-color-alt);
+  height: 33px;
+  width: 33px;
+  border-radius: 17px;
+  font-size: 17px;
+  line-height: 39px;
+  border: none;
+  cursor: pointer;
+}
 .reading-container .text > div:first-child {
   height: 200px;
   width: 180px;

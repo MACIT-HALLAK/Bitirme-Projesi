@@ -111,7 +111,7 @@ const quoteAdd = () => {
           </div>
           <div>
             <button onClick={quoteAdd}>Alıntı Ekle </button>
-            <Link to="/WordsPage"><FaRegEdit /></Link>
+            <Link to="/QuotePage"><FaRegEdit /></Link>
           </div>
         </div>
       )}
