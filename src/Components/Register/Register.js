@@ -27,7 +27,7 @@ const Register = () => {
     try {
       if (flag) {
         let res = await axios.post(
-          'https://librarygop.com/public/index.php/api/register',
+          'http://127.0.0.1:8000/api/register',
           {
             name: username,
             email: email,
@@ -36,8 +36,11 @@ const Register = () => {
           }
         );
         if (res.status === 200) {
+        
+          console.log(res.data);
           setCookies('email', email, { path: '/' });
-          window.location.pathname = '/';
+          setCookies('code', res.data, { path: '/' });
+          window.location.pathname = '/EmailConfirm';
         }
       }
     } catch (err) {
