@@ -26,19 +26,25 @@ const Register = () => {
     } else flag = true;
     try {
       if (flag) {
-        let res = await axios.post(
-          'http://127.0.0.1:8000/api/register',
-          {
-            name: username,
-            email: email,
-            role: 0,
-            password: password,
-          }
-        );
+        // let res = await axios.post(
+        //   'http://127.0.0.1:8000/api/register',
+        //   {
+        //     name: username,
+        //     email: email,
+        //     role: 0,
+        //     password: password,
+        //   }
+        // );
+        let res = await axios.get(
+            `http://127.0.0.1:8000/api/sendemail/${email}`,
+           
+          );
         if (res.status === 200) {
         
           console.log(res.data);
+          setCookies('name',username);
           setCookies('email', email, { path: '/' });
+          setCookies('password',password);
           setCookies('code', res.data, { path: '/' });
           window.location.pathname = '/EmailConfirm';
         }

@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import './EmailConfirm.css';
 import { useCookies } from 'react-cookie';
+import axios from 'axios';
 
 
 const EmailConfirm = () => {
 
 
     const [cookies, setCookies] = useCookies('code');
+    const [cookiesN, setCookiesN] = useCookies('name');
+    const [cookiesE, setCookiesE] = useCookies('email');
+    const [cookiesP, setCookiesP] = useCookies('password');
+
     const [val1, setval1] = useState("");
     const [val2, setval2] = useState("");
     const [val3, setval3] = useState("");
@@ -19,7 +24,24 @@ const EmailConfirm = () => {
         let cooky = cookies.code.toString().split("");
         if(val1 == cooky[0] && val2 == cooky[1] && val3 == cooky[2] && val4 == cooky[3] && val5 == cooky[4])
         {
-             window.location.pathname = '/';
+           let res = await axios.post(
+          'http://127.0.0.1:8000/api/register',
+          {
+            name: cookiesN.name,
+            email: cookiesE.email,
+            role: 0,
+            password: cookiesP.password,
+          }
+        );
+       
+      if (res.status === 200) {
+      
+        console.log(res.data);
+        setCookies('email', cookiesP.email, { path: '/' });
+        window.location.pathname = '/';
+      
+    }
+            
         }else{
              window.location.pathname = '/Register';
             // console.log(cooky);
