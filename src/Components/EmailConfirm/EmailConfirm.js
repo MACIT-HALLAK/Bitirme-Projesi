@@ -9,7 +9,7 @@ const EmailConfirm = () => {
 
     const [cookies, setCookies] = useCookies('code');
     const [cookiesN, setCookiesN] = useCookies('name');
-    const [cookiesE, setCookiesE] = useCookies('email');
+    const [cookiesE, setCookiesE] = useCookies('email1');
     const [cookiesP, setCookiesP] = useCookies('password');
 
     const [val1, setval1] = useState("");
@@ -28,13 +28,13 @@ const EmailConfirm = () => {
           'http://127.0.0.1:8000/api/register',
           {
             name: cookiesN.name,
-            email: cookiesE.email,
+            email: cookiesE.email1,
             role: 0,
             password: cookiesP.password,
           }
         );
        
-      if (res.status === 200) {
+       if (res.status === 200) {
       
         console.log(res.data);
         setCookies('email', cookiesP.email, { path: '/' });
@@ -42,7 +42,7 @@ const EmailConfirm = () => {
       
     }
             
-        }else{
+    }else{
              window.location.pathname = '/Register';
             // console.log(cooky);
             // console.log(val1);
@@ -51,8 +51,8 @@ const EmailConfirm = () => {
             // console.log(val4);
             // console.log(val5);
 
-        }
-    }
+      }
+   }
 
 
   return (

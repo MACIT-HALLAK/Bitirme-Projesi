@@ -41,9 +41,9 @@ const Register = () => {
           );
         if (res.status === 200) {
         
-          console.log(res.data);
+          console.log("bayby");
           setCookies('name',username);
-          setCookies('email', email, { path: '/' });
+          setCookies('email1', email, { path: '/' });
           setCookies('password',password);
           setCookies('code', res.data, { path: '/' });
           window.location.pathname = '/EmailConfirm';

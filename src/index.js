@@ -36,10 +36,10 @@ root.render(
         <Route path="/Deneme" element={<Deneme />} />
         <Route path="/settings" element={<SettingCom />} />
         <Route path="/BackTo" element={<BackTo />} />
-        <Route path="/EmailConfirm" element={<EmailConfirm />} />
       </Route>
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
+      <Route path="/EmailConfirm" element={<EmailConfirm />} />
     </Routes>
   </Router>
 );
