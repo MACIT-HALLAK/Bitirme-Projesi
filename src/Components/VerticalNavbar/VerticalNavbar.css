@@ -5,10 +5,15 @@
     align-items: center;
     padding: 10px;
     margin-top: 20px;
+    overflow: auto;
+    height: 570px;
+    position: sticky;
+    top: 20px;
+    scroll-behavior: smooth;
 }
 .vertical-navbar-layout button {
     background-color: transparent;
-    /* margin: 5px; */
+    margin: 5px;
     padding: 5px;
     width: 100%;
     border-radius: 7px;
