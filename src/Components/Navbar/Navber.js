@@ -26,7 +26,7 @@ const Navbar = () => {
     setHandle((prev) => !prev);
   }
   let toggle_class_check = btn_state ? 'hide' : '';
-  let nav_items = ['Anasayfa', 'Yazarlar', 'Seviyeler'];
+  let nav_items = ['Anasayfa', 'Yazarlar', 'Seviyeler','YazarEkle'];
   let admin_items = ['Add Book'];
 
   // if user not admin filter array

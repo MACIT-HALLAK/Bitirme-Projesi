@@ -17,8 +17,8 @@ import WordsPage from "./Components/WordsPage/WordsPage";
 import PrivateRoutes from "./Components/utils/PrivateRoutes";
 import QuotePage from "./Components/QuotePage/QuotePage";
 import AddBook from './Components/AddBooks/AddBook';
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
+import AddWriter from './Components/AddWriter/AddWriter';
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
     <Routes>
@@ -33,6 +33,7 @@ root.render(
         <Route path="/Writer" element={<Writer />} />
         <Route path="/AddBook" element={<AddBook />} />
         <Route path="/BookPage" element={<BookPage />} />
+        <Route path="/YazarEkle" element={<AddWriter />} />
         <Route path="/ReadingPage" element={<ReadingPage />} />
         <Route path="/Deneme" element={<Deneme />} />
         <Route path="/settings" element={<SettingCom />} />
