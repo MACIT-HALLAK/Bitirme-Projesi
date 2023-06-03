@@ -15,7 +15,7 @@ import BackTo from './Components/BackTo/BackTo';
 import Deneme from './Components/Deneme/Deneme';
 import PrivateRoutes from './Components/utils/PrivateRoutes';
 import AddBook from './Components/AddBooks/AddBook';
-
+import AddWriter from './Components/AddWriter/AddWriter';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
@@ -35,6 +35,10 @@ root.render(
         <Route path="/Deneme" element={<Deneme />} />
         <Route path="/settings" element={<SettingCom />} />
         <Route path="/BackTo" element={<BackTo />} />
+        <Route path="/YazarEkle" element={<AddWriter />} />
+
+
+
       </Route>
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
