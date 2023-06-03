@@ -41,7 +41,7 @@ const Login = () => {
               });
               setTimeout(() => {
                 setCookies('email', email, { path: '/' });
-                setCookies('role', res.data[1][0].role, { path: '/' });
+                setCookies('role', res.data[0][0].role, { path: '/' });
                 window.location.pathname = '/';
               }, 1500);
             } else {
