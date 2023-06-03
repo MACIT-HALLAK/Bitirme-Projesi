@@ -12,6 +12,8 @@ const AddBook = () => {
   const [uploaded, setUploaded] = useState(false);
   const [category, setCategory] = useState('');
   const [level, setLevel] = useState('');
+  const [lang, setLang] = useState('');
+  const [pageCount, setPageCount] = useState();
   const [content, setContent] = useState('');
 
   const handleSubmit = async (e) => {
@@ -24,12 +26,12 @@ const AddBook = () => {
       const formData = new FormData();
       formData.append('title', title);
       formData.append('author', author);
-      formData.append('desc', desc);
+      formData.append('pageCount', pageCount);
       formData.append('coverImage', coverImage);
-      formData.append('author', author);
-      formData.append('desc', desc);
+      formData.append('language', lang);
       formData.append('category', category);
       formData.append('level', level);
+      formData.append('desc', desc);
       formData.append('content', content);
       formData.forEach((e) => {
         console.log(e);
@@ -47,6 +49,8 @@ const AddBook = () => {
       setUploaded(true);
       setCategory('');
       setLevel('');
+      setLang('');
+      setPageCount(0);
       setContent('');
     } catch (error) {
       console.error('Error uploading book:', error);
@@ -95,12 +99,12 @@ const AddBook = () => {
 
             <div className="row flex">
               <div className="form-group  column-6">
-                <label htmlFor="desc">Description:</label>
+                <label htmlFor="pageCount">Sayfa Sayısı:</label>
                 <input
                   type="text"
-                  id="desc"
-                  value={desc}
-                  onChange={(e) => setdesc(e.target.value)}
+                  id="pageCount"
+                  value={pageCount}
+                  onChange={(e) => setPageCount(e.target.value)}
                   required
                 />
               </div>
@@ -114,6 +118,24 @@ const AddBook = () => {
             </div>
 
             <div className="row flex">
+              <div className="form-group column-12">
+                <label htmlFor="lang-select">Dil:</label>
+                <select
+                  id="lang-select"
+                  value={lang}
+                  onChange={(e) => setLang(e.target.value)}
+                  required
+                  className="custom-select"
+                >
+                  <option value="">Dil Seç</option>
+                  <option value="English">English</option>
+                  <option value="Türkçe">Türkçe</option>
+                  <option value="Arabça">Arabça</option>
+                  {/* قم بإضافة المزيد من الخيارات حسب الاحتياج */}
+                </select>
+              </div>
+            </div>
+            <div className="row flex">
               {' '}
               <div className="form-group column-6">
                 <label htmlFor="category-select">Category:</label>
@@ -125,8 +147,21 @@ const AddBook = () => {
                   className="custom-select"
                 >
                   <option value="">Kategori seçme</option>
-                  <option value="tarıh">Tarih</option>
-                  <option value="bilim">Bilim</option>
+                  <option value="Tarıh">Tarih</option>
+                  <option value="Bilim">Bilim</option>
+                  <option value="İslam Dini">İslam Dini</option>
+                  <option value="Tarih">Tarih</option>
+                  <option value="Kültür">Kültür</option>
+                  <option value="Piskoloj">Piskoloj</option>
+                  <option value="Kitaplar romanlar ve edebi hikayeler">
+                    Kitaplar romanlar ve edebi hikayeler
+                  </option>
+                  <option value="Arap edebiyatı">Arap edebiyatı</option>
+                  <option value="Arapça dili">Arapça dili</option>
+                  <option value="İslam felsefesi">İslam felsefesi</option>
+                  <option value="Mühendislik                                                                                                                                                              Inglizce edebiyatı                                                                                                                                                                                       Çocuk">
+                    Mühendislik Inglizce edebiyatı Çocuk
+                  </option>
                   {/* قم بإضافة المزيد من الخيارات حسب الاحتياج */}
                 </select>
               </div>
@@ -147,6 +182,19 @@ const AddBook = () => {
                 </select>
               </div>
             </div>
+
+            <div className="form-group column-12">
+              {' '}
+              <label htmlFor="desc">Description:</label>
+              <textarea
+                rows={5}
+                id="desc"
+                value={desc}
+                onChange={(e) => setdesc(e.target.value)}
+                required
+              ></textarea>
+            </div>
+
             <div className="form-group column-12">
               <label htmlFor="content-textarea">Content:</label>
               <textarea

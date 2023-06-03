@@ -40,7 +40,32 @@
   justify-content: space-evenly;
   margin: 20px 0;
 }
-.reading-container section div > button {
+.reading-container section .next-preivece  button{
+  color: var(--main-color-screen);
+  background-color: var(--main-color-alt);
+  height: 33px;
+  width: 33px;
+  border-radius: 17px;
+  font-size: 17px;
+  line-height: 39px;
+  border: none;
+  cursor: pointer;
+}
+.reading-container .text > div:first-child {
+  height: 200px;
+  width: 180px;
+  display: block;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  border-width: 1px;
+  border-style: solid;
+  border-image: initial;
+  border-color: rgb(187, 187, 187) rgb(187, 187, 187) rgb(168, 168, 168);
+  padding: 15px;
+  
+}
+.reading-container section div > button.trans-btn {
   background-color: var(--main-color);
   color: var(--main-color-screen);
   height: 40px;
@@ -49,6 +74,40 @@
   line-height: 5px;
   border-radius: 20px;
   cursor: pointer;
+  display: block;
+}
+.reading-container section  div > div button {
+  color: var(--text-color);
+  background-color: transparent;
+  border: none;
+  display: block;
+  position: relative;
+  margin-top: 15px;
+  font-size: 16px;
+  cursor: pointer;
+
+}
+.reading-container section div > div  {
+  display: flex;   
+  justify-content: space-between;
+  align-items: baseline;
+ 
+}
+.reading-container section div > div svg  {
+  font-size: 20px;
+  color: var(--main-color-alt);
+  cursor: pointer;
+}
+
+.reading-container section div > div> button::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 148px;
+  left: 0px;
+  bottom: -4px;
+  background-color: var(--main-color-alt);
+
 }
 .reading-container aside {
   grid-area: as;

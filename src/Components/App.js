@@ -10,7 +10,6 @@ import book_img from '../Assets/images/si1.webp';
 import book_img1 from '../Assets/images/book1.webp';
 import book_img2 from '../Assets/images/book2.webp';
 import book_img3 from '../Assets/images/book3.webp';
-import book_img4 from '../Assets/images/si1.webp';
 import writer_Img from '../Assets/images/iyad.webp';
 import writer_Img1 from '../Assets/images/jalal.jpg';
 import writer_Img2 from '../Assets/images/mustafa.webp';
@@ -29,7 +28,7 @@ function App() {
       <Navbar />
       <Content />
       <section>
-        <Title />
+        <Title title="En Yeni Kitaplar" />
         <div className="parent">
           <Card bookImage={book_img} writerImage={writer_Img} />
           <Card bookImage={book_img1} writerImage={writer_Img1} />
