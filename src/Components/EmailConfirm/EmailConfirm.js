@@ -98,7 +98,7 @@ const handleChange = (event, index) => {
     <div className="EmailVerify-parent">
         <div className="EmailVerify-icons"><FaEnvelopeOpenText size={48}/></div>
         <h2 className="EmailVerify-h2">Lütfen e-postanızı kontrol ediniz...</h2>
-        <h5 className="EmailVerify-h5">Beş haneli kodu &useremail& adresine gönderdik. İşlemi tamamlamak için lütfen kodu giriniz.</h5>
+        <h5 className="EmailVerify-h5">Beş haneli kodu {cookiesE.email1} adresine gönderdik. İşlemi tamamlamak için lütfen kodu giriniz.</h5>
         {/* <form onSubmit={submit}>
             <input class="email-input" type="text" onChange={(e) => setval1(e.target.value)}></input>
             <input class="email-input" type="text" onChange={(e) => setval2(e.target.value)}></input>
