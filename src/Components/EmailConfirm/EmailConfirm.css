@@ -3,3 +3,95 @@
     height: 50px;
     margin-left: auto;
 }
+
+.EmailVerify-parent {
+    display: grid;
+    grid-auto-rows: minmax(73px, auto);
+    grid-template-areas:
+    '. . ev-icon . .'
+    'e-h2 e-h2 e-h2 e-h2 e-h2'
+    '. . e-h5 . .'
+    'e-cont e-cont e-cont e-cont e-cont'
+    '. button button button .';
+    gap: 0vw 4vh;
+    justify-items: center;
+    align-items: center;
+    border-radius: var(--border-redius-main);
+    box-shadow: 0px 23px 14px rgba(0, 0, 0, 0.2);
+    border: solid 3px #1c8b78;
+    width: 44vw;
+    height: 57vh;
+    margin: 22vh 25vw;
+}
+.EmailVerify-icons {
+    grid-area: ev-icon;
+}
+.EmailVerify-container {
+    grid-area: e-cont;
+}
+.EmailVerify-input-1,.EmailVerify-input-2,.EmailVerify-input-3,.EmailVerify-input-4,.EmailVerify-input-5 {
+    
+    width: 39px;
+    height: 39px;
+    border-radius: 8px;
+    margin: 8px;
+    text-align: center;
+    border: 2px solid #1c8b78;
+}
+.EmailVerify-h2 {
+    grid-area: e-h2;
+}
+.EmailVerify-h5 {
+    grid-area: e-h5;
+}
+.EmailVerify-button {
+    color: white;
+    background: darkcyan;
+    font-weight: bold;
+    font-family: cursive;
+    border: #45b09e;
+    border-radius: calc(var(--border-redius-main) - 4px);
+    cursor: pointer;
+    font-size: var(--font-size-main);
+    width: 82px;
+    padding: 10px;
+    grid-area: button;
+}
+@media screen and (max-width: 1115px) {
+    .EmailVerify-parent {
+        grid-template-areas:
+            '. . ev-icon . .'
+            '. e-h2 e-h2 e-h2 .'
+            '. . e-h5 . .'
+            '. e-cont e-cont e-cont .'
+            '. button button button .';
+        width: 50vw;
+        
+    }
+}
+@media screen and (max-width: 666px){
+    .EmailVerify-parent {
+        grid-template-areas:
+            '. . ev-icon . .'
+            '. e-h2 e-h2 e-h2 .'
+            '. . e-h5 . .'
+            '. e-cont e-cont e-cont .'
+            '. button button button .';
+        width: 50vw;
+    }
+    .EmailVerify-parent {
+        width: 63vw;
+        gap: 0vw 3vh;
+        margin: 22vh 19vw;
+    }
+
+    .EmailVerify-input-1, .EmailVerify-input-2, .EmailVerify-input-3, .EmailVerify-input-4, .EmailVerify-input-5 {
+        margin: 4px;
+    }
+}
+@media screen and (max-width: 500px){
+.EmailVerify-parent {
+    width: 96vw;
+    gap: 0vw 2vh;
+    margin: 22vh 2vw;
+}}

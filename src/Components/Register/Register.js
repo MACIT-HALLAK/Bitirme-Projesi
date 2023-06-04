@@ -36,7 +36,7 @@ const Register = () => {
         //   }
         // );
         let res = await axios.get(
-            `http://127.0.0.1:8000/api/sendemail/${email}`,
+            `https://librarygop.com/public/index.php/api/sendemail/${email}`,
            
           );
         if (res.status === 200) {
