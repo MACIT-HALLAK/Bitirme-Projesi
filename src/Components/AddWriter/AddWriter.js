@@ -13,6 +13,7 @@ function AddWriter() {
   const [coverImage, setCoverImage] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploaded, setUploaded] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -38,6 +39,7 @@ function AddWriter() {
       setdesc('');
       setCoverImage(null);
       setUploading(false);
+      setUploaded(true);
      
     } catch (error) {
       console.error('Error uploading book:', error);
