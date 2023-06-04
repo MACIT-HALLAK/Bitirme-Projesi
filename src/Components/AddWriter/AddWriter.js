@@ -3,22 +3,46 @@ import "./AddWriter.css"
 import BackTo from '../BackTo/BackTo';
 import AppUrl from "../../AppUrl/AppUrl";
 import RestApi from "../../AppUrl/RestApi";
-
+import CustomFileInput from '../AddBooks/CustomFileInput';
+import axios from "axios";
 
 function AddWriter() {
 
-   function SendWriter(){
-    let writer_name = document.getElementById("writer_name").value;
-    let writer_disc = document.getElementById("writer_disc").value;
-    let writer_img = document.getElementById("writer_img").value;
+  const [author, setAuthor] = useState('');
+  const [desc, setdesc] = useState('');
+  const [coverImage, setCoverImage] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploaded, setUploaded] = useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setUploading(true);
 
-    let jesonObject={writer_name:writer_name,writer_disc:writer_disc,writer_img:writer_img}
+      console.log(coverImage);
+      // Make POST request using Axios
+      const formData = new FormData();
+    
+      formData.append('author', author);
+      formData.append('desc', desc);
+      formData.append('coverImage', coverImage);
+      formData.forEach((e) => {
+        console.log(e);
+      });
 
-    RestApi.PostRequest(AppUrl.AddWriter,JSON.stringify(jesonObject)).then(result=>{
-      alert(result);
-    }).catch(error=>{
-      alert("Error");
-    })
+      // Make POST request to upload image using Axios
+      const response = await axios.post('/api/books', formData);
+
+      // Reset form after successful upload
+      
+      setAuthor('');
+      setdesc('');
+      setCoverImage(null);
+      setUploading(false);
+     
+    } catch (error) {
+      console.error('Error uploading book:', error);
+      setUploading(false);
+    }
   }
   
     
@@ -31,7 +55,7 @@ function AddWriter() {
               <h1>Yazar Ekle</h1>
             </div>
             <div className="hero-layout column-12 flex">
-              <form className="book-form column-12" enctype="multipart/form-data" >
+              <form className="book-form column-12" enctype="multipart/form-data" onSubmit={handleSubmit}>
                 <div className="row flex">
                   {' '}
                   <div className="form-group column-6">
@@ -39,8 +63,8 @@ function AddWriter() {
                     <input
                       id="writer_name"
                       type="text"
-                     // value={name}
-                    //  onChange={(e)=>setName(e.target.value)}
+                      value={author}
+                      onChange={(e)=>setAuthor(e.target.value)}
                       required
                     />
                   </div>
@@ -54,8 +78,8 @@ function AddWriter() {
                   <textarea
                     id="writer_disc"
                     rows={15}
-                    //value={comment}
-                   // onChange={(e)=>setComment(e.target.value)}
+                    value={desc}
+                    onChange={(e)=>setdesc(e.target.value)}
                     required
                   ></textarea>
                 </div>
@@ -64,16 +88,17 @@ function AddWriter() {
                   
                   <div className="form-group  column-6">
                     <label htmlFor="Writer-image">Yazar Resmi:</label>
-                    <input type="file"
-                    id="writer_img"
-                     name="image"
-                      />
-                   
+                    <CustomFileInput
+                      onFileSelect={setCoverImage}
+                      uploaded={uploaded}
+                   />                   
                   </div>
                 </div>
                 
                 <div className="btn-con column-12 flex">
-                    <button  className="btn" onClick={SendWriter}> Kaydet</button>
+                    <button  className="btn" type="submit" disabled={uploading}>
+                    {uploading ? 'Uploading...' : 'Add writer'}
+                    </button>
     
                 </div>
               </form>
