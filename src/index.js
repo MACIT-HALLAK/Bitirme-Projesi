@@ -18,6 +18,8 @@ import PrivateRoutes from "./Components/utils/PrivateRoutes";
 import QuotePage from "./Components/QuotePage/QuotePage";
 import AddBook from './Components/AddBooks/AddBook';
 import AddWriter from './Components/AddWriter/AddWriter';
+import EmailConfirm from './Components/EmailConfirm/EmailConfirm';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
@@ -43,6 +45,7 @@ root.render(
       </Route>
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
+      <Route path="/EmailConfirm" element={<EmailConfirm />} />
     </Routes>
   </Router>
 );

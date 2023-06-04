@@ -26,18 +26,27 @@ const Register = () => {
     } else flag = true;
     try {
       if (flag) {
-        let res = await axios.post(
-          'https://librarygop.com/public/index.php/api/register',
-          {
-            name: username,
-            email: email,
-            role: 0,
-            password: password,
-          }
-        );
+        // let res = await axios.post(
+        //   'http://127.0.0.1:8000/api/register',
+        //   {
+        //     name: username,
+        //     email: email,
+        //     role: 0,
+        //     password: password,
+        //   }
+        // );
+        let res = await axios.get(
+            `https://librarygop.com/public/index.php/api/sendemail/${email}`,
+           
+          );
         if (res.status === 200) {
-          setCookies('email', email, { path: '/' });
-          window.location.pathname = '/';
+        
+          console.log("bayby");
+          setCookies('name',username);
+          setCookies('email1', email, { path: '/' });
+          setCookies('password',password);
+          setCookies('code', res.data, { path: '/' });
+          window.location.pathname = '/EmailConfirm';
         }
       }
     } catch (err) {
