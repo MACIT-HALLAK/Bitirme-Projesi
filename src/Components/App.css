@@ -7,7 +7,7 @@
     ". header header header header header header  header header header header ."
     ". content-main content-main content-main content-main content-main content-main  content-main content-main content-main content-main ."
     ". s s s s s s s s a a . "
-    ". f f f f f f f f f f . ";
+    "f f f f f f f f f f f f ";
   gap: 15px 10px;
 }
 
@@ -26,6 +26,10 @@ section {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+.layout-footer{
+  grid-area: f;
+  
+}
 @media (max-width: 1200px) {
   .layout {
     grid-template-columns: 50px repeat(10, 1fr) 50px;
@@ -34,7 +38,13 @@ section {
       ". header header header header header  header header header header header ."
       ". content-main content-main content-main content-main content-main content-main  content-main content-main content-main content-main ."
       ". s s s s s s s a a a . "
-      ". f f f f f f f f f f . ";
+      "f f f f f f f f f f f f ";
+  }
+}
+@media (max-width: 1115px) {
+  .layout-footer{
+    width: 105.7%;
+    margin-left: -2.2vw;
   }
 }
 @media (max-width: 992px) {
@@ -44,7 +54,11 @@ section {
       ". content-main content-main content-main content-main content-main content-main  content-main content-main content-main content-main ."
       ". s s s s s s s s s s . "
       ". a a a a a a a a a a ."
-      ". f f f f f f f f f f . ";
+      "f f f f f f f f f f f f ";
+  }
+  .layout-footer{
+    width: 104.1%;
+    margin-left: -1.7%;
   }
 }
 
@@ -57,7 +71,11 @@ section {
       ". content-main content-main content-main content-main content-main content-main  content-main content-main content-main content-main ."
       ". s s s s s s s s s s . "
       ". a a a a a a a a a a ."
-      ". f f f f f f f f f f . ";
+      "f f f f f f f f f f f f ";
+  }
+  .layout-footer{
+    width: 104%;
+    margin-left: 0%;
   }
 }
 @media (max-width: 576px) {
@@ -68,4 +86,10 @@ section {
     grid-template-columns: 25px repeat(10, 1fr) 25px;
     grid-template-rows: auto 375px auto auto 255px;
   }
+  @media (max-width: 576px){
+    .layout-footer .footer-bottom {
+      width: 87.6vw;
+  }
+  }
+
 }

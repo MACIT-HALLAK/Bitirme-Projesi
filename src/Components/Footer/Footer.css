@@ -1,30 +1,144 @@
 footer {
-    grid-area: f;
-    margin-top: 20px;
-    padding: 10px;
-    background-color:  #ffffff ;
-    color: var(--text-color);
-    text-align: center;
-  }
- footer h3 {
-  color: var(--main-color-alt);
+  width: 84.2%;
+  margin-left: 7.9vw;
+  background: #1c8b78;
+  display: grid;
+}
 
- }
- .footer-parent {
-  font-size: 20px;
-  color:tomato;
- }
- .footer-parent > div {
-   color: var(--text-color);
-   font-size: 16px;
-   line-height: 25px;
+.inner-footer {
+  width: 95%;
+  margin: auto;
+  padding: 15px 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  justify-items: center;
+  box-sizing: border-box;
+}
 
+.footer-items-1,.footer-items-2,.footer-items-3,.footer-items-4 {
+  color: #fff;
+}
 
- }
- .footer-parent  h5 {
+.footer-items-1 p {
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 25px;
   color: black;
-  font-size: 17px;
-  margin:5px 0 ;
-  
+}
 
+.footer-items-1 h2,.footer-items-2 h2,.footer-items-3 h2,.footer-items-4 h2 {
+  color: #fff;
+  width: 14vw;
+}
+
+.border1,
+.border2,
+.border3 {
+  height: 3px;
+  background-color: black;
+  border: 0px;
+}
+
+.border1 {
+  width: 91px;
+}
+
+.border2 {
+  width: 122px;
+}
+
+.border3 {
+  width: 58px;
+}
+
+.footer-ul {
+  list-style: none;
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-ul a {
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  transition: 0.3s;
+  display: block;
+}
+
+.footer-ul a:hover {
+  color: black;
+  font-weight: bold;
+}
+
+.footer-ul .footer-li {
+  margin: 3px 0;
+  height: 25px;
+}
+
+
+
+.footer-li i {
+  margin-right: 20px;
+}
+
+.social-media {
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+}
+
+.social-media a {
+  text-decoration: none;
+}
+
+.social-media i {
+  height: 25px;
+  width: 25px;
+  margin: 20px 10px;
+  padding: 4px;
+  color: #fff;
+  transition: 0.5s;
+}
+
+.social-media i:hover {
+  transform: scale(1.5);
+}
+
+.footer-bottom {
+  padding: 10px;
+  background: black;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+  .inner-footer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-items-2 {
+    margin-right: 30px;
+}
+.footer-items-3 {
+  margin-right: 100px;
+}
+}
+
+@media screen and (max-width: 550px) {
+  .inner-footer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .footer-items-2 {
+    margin-right: 130px;
+}
+.footer-items-4 {
+  margin-right: 100px;
+}
+.footer-bottom {
+  width: 84vw;
+}
 }

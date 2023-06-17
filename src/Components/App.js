@@ -38,7 +38,10 @@ function App() {
         </div>
       </section>
       <BookCategories />
-      <Footer />
+      <div className='layout-footer'>
+        <Footer />
+      </div>
+      
     </div>
   );
 }
