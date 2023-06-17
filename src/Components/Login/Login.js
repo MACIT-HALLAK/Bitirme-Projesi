@@ -28,6 +28,7 @@ const Login = () => {
             `https://librarygop.com/public/index.php/api/login/${email}/${password}`
           )
           .then((res) => {
+            console.log(res.data);
             if (String(res.status) === '200') {
               toast.success(res.data.message, {
                 position: 'top-right',
@@ -41,7 +42,7 @@ const Login = () => {
               });
               setTimeout(() => {
                 setCookies('email', email, { path: '/' });
-                setCookies('role', res.data[1][0].role, { path: '/' });
+                setCookies('role', res.data[0][0].role, { path: '/' });
                 window.location.pathname = '/';
               }, 1500);
             } else {
@@ -60,6 +61,7 @@ const Login = () => {
           });
       }
     } catch (err) {
+      console.log('je;;;;;;lkljhnj');
       console.log(err);
     }
   }

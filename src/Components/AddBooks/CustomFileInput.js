@@ -5,9 +5,11 @@ const CustomFileInput = ({ onFileSelect }) => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    onFileSelect(file);
-    setSelectedFile(file);
+    const file = e.target.files[0]['name'];
+    const fileName = e.target.files[0];
+    console.log(file);
+    onFileSelect(fileName);
+    setSelectedFile(fileName);
   };
 
   return (
@@ -19,7 +21,7 @@ const CustomFileInput = ({ onFileSelect }) => {
         type="file"
         id="file-input"
         onChange={handleFileChange}
-        accept=".jpg,.jpeg,.png"
+        // accept=".jpg,.jpeg,.png"
         required
       />
     </div>

@@ -18,10 +18,10 @@ const AddBook = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(coverImage);
     try {
       setUploading(true);
 
-      console.log(coverImage);
       // Make POST request using Axios
       const formData = new FormData();
       formData.append('title', title);
@@ -38,20 +38,32 @@ const AddBook = () => {
       });
 
       // Make POST request to upload image using Axios
-      const response = await axios.post('/api/books', formData);
+      const response = await axios
+        .post('http://127.0.0.1:8000/api/addbook', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then(({ data }) => {
+          console.log(data);
+          console.log(data.book);
+        })
+        .catch((error, data) => {
+          console.log(error);
+        });
 
-      // Reset form after successful upload
-      setTitle('');
-      setAuthor('');
-      setdesc('');
-      setCoverImage(null);
+      // // Reset form after successful upload
+      // setTitle('');
+      // setAuthor('');
+      // setdesc('');
+      // setCoverImage(null);
       setUploading(false);
       setUploaded(true);
-      setCategory('');
-      setLevel('');
-      setLang('');
-      setPageCount(0);
-      setContent('');
+      // setCategory('');
+      // setLevel('');
+      // setLang('');
+      // setPageCount(0);
+      // setContent('');
     } catch (error) {
       console.error('Error uploading book:', error);
       setUploading(false);
@@ -72,7 +84,11 @@ const AddBook = () => {
           <h1>Add Book</h1>
         </div>
         <div className="hero-layout column-12 flex">
-          <form className="book-form column-12" onSubmit={handleSubmit}>
+          <form
+            className="book-form column-12"
+            onSubmit={handleSubmit}
+            enctype="multipart/form-data"
+          >
             <div className="row flex">
               {' '}
               <div className="form-group column-6">
@@ -104,7 +120,7 @@ const AddBook = () => {
                   type="text"
                   id="pageCount"
                   value={pageCount}
-                  onChange={(e) => setPageCount(e.target.value)}
+                  onInput={(e) => setPageCount(e.target.value)}
                   required
                 />
               </div>
@@ -206,7 +222,12 @@ const AddBook = () => {
               ></textarea>
             </div>
             <div className="btn-con column-12 flex">
-              <button type="submit" className="btn" disabled={uploading}>
+              <button
+                type="submit"
+                className="btn"
+                disabled={uploading}
+                onClick={handleSubmit}
+              >
                 {uploading ? 'Uploading...' : 'Add Book'}
               </button>
             </div>
