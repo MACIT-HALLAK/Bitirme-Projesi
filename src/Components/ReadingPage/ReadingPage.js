@@ -222,6 +222,7 @@ const translate = () => {
         }}
         className="setting-open"
       />
+      
       <Footer />
     </div>
   );

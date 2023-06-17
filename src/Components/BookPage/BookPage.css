@@ -32,7 +32,7 @@
 
 }
 .BookPage-button-Artırma {
-    background:  #30bb6c;
+    background:  #1c8b78;
     font-weight: bold;
     border: none;
     cursor: pointer;
@@ -43,6 +43,10 @@
     height: 40px;
     border-radius: 19px;
     animation: slideLeft4 1.5s ease-in-out forwards;
+}
+.BookPage-Footer footer{
+width: 89%;
+margin-left: 5.2vw;
 }
 
 .BookPage-button-Azaltma {
@@ -78,3 +82,9 @@
 	  opacity: 1;
     }
 } 
+@media (max-width: 576px){
+
+}
+.BookPage-Footer .footer-bottom {
+    width: 89vw;
+}

@@ -22,19 +22,24 @@ function Form() {
                     Çeşitli terapötik alanlarda uluslararası dergilerde yayınlanmış, yüzlerce kez atıfta bulunulan onlarca bilimsel makalem var.
                 </p>
             </div>
-           </div>
-           <h2>yazarin butun kitablari 325 kitab</h2>
-           <div className='writer-book-wraper'>
-               <Card />
-               <Card />
-               <Card />
-               <Card />
-               <Card />
-               <Card />
-           </div>
-           <Footer />
+        </div>
+        <h2>yazarin butun kitablari 325 kitab</h2>
+        <div className='writer-book-wraper'>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+        </div>
+        
+        <div className='writer-footer'>
+            <Footer />
+        </div>
 
-       </div>
+        
+        
+    </div>
 
 
     );
