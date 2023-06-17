@@ -247,7 +247,7 @@ nav {
     display: none !important;
   }
   .level:has(.active) {
-    flex-basis: 220px;
+    flex-basis: 255px;
     transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
@@ -400,6 +400,9 @@ nav {
   -ms-border-radius: 25px;
   -o-border-radius: 25px;
   color: #fff;
+  text-transform: capitalize;
+  cursor: pointer;
+  font-size: 1.125rem;
 }
 .main-nav li:last-child > ul .auth .btn-auth:hover {
   scale: 0.98 !important;
@@ -485,10 +488,3 @@ nav {
   -o-transition: all 0.4s ease-out;
 }
 
-.logout {
-  margin-left: 1rem;
-  color: var(--main-color-screen);
-  font-size: large;
-  text-transform: capitalize;
-  cursor: pointer;
-}

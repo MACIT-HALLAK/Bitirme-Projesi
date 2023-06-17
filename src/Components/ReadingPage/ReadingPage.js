@@ -4,8 +4,10 @@ import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navber'
 import book_img from "../../Assets/images/si1.webp";
 import "./ReadingPage.css";
-import { FaArrowLeft, FaArrowRight, FaLanguage, FaCog } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaLanguage, FaCog,FaRegEdit } from "react-icons/fa";
 import SettingCom from "../Ayarlar/SettingCom";
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const ReadingPage = () => {
   const [value, setValue] = useState("");
@@ -16,34 +18,61 @@ const ReadingPage = () => {
   const [showIcon, setShowIcon] = useState(false);
   const [iconPosition, setIconPosition] = useState({ x: 0, y: 0 });
   const [showModal, setShowModal] = useState(false);
-
+//*****************varibalese for tarnslate text  */
+const [from,setFrom] = useState("en");
+const [to,setTo] = useState("ar");
+const [input,setInput] = useState("");
+const [outPut,setOutput] = useState("");
 
 //secilen metini almak icin
 // 
 const handleSelection = () => {
+  setShowModal(false);
   const selectionText = window.getSelection().toString();
-  if (selectionText) {
+  if (selectionText && selectionText != " ") {
     setSelection(selectionText);
     const selectionRange = window.getSelection().getRangeAt(0);
+    
     const rangeRect = selectionRange.getBoundingClientRect();
+    console.log(rangeRect);
     const iconX = `calc(${rangeRect.left}px + calc(${rangeRect.width}px / 2) - 40px)`;
-    const iconY = `calc(${rangeRect.bottom}px + 5px)`;
+    const iconY = `calc(${rangeRect.bottom}px + calc(${rangeRect.width}px / 2) - 5px)`;
+
     setIconPosition({ x: iconX, y: iconY });
     setShowIcon(true);
+    setInput(selection);
+    
   } else {
     setSelection(null);
     setShowIcon(false);
   }
+  
 };
 //--------------------------------------------------
 const handleIconClick = () => {
   setShowIcon(false);
   setShowModal(true);
+  translate();
 };
 //--------------------------------------------------
 
+const wordAdd = () => {
+  console.log(selection)
+}
+const quoteAdd = () => {
+  console.log(selection)
+}
+const translate = () => {
+  let apiurl = `https://api.mymemory.translated.net/get?q=${input}&langpair=${from}|${to}`;
 
-  //--------------------------------------------------
+  fetch(apiurl)
+  .then((res)=>res.json())
+  .then((data)=>{
+    console.log(data)
+    setOutput(data.responseData.translatedText)
+  })
+
+}
 
   // ----------------------Start change props of text--------------------------
   function changeProps() {
@@ -98,23 +127,43 @@ const handleIconClick = () => {
        {showIcon && (
         <div  style={{ position: 'absolute', left: iconPosition.x, top: iconPosition.y ,zIndex:1}}>
           {/* <img src="icon.png" alt="icon" onClick={handleIconClick} /> */}
-          <button  style={{ fontSize: '30px', zIndex: 10,cursor: 'hand' }} onClick={handleIconClick}><FaLanguage  /> </button>
-          <i id="copy-btn"   ></i>
-        
+          <button className='trans-btn' style={{ fontSize: '30px', zIndex: 10,cursor: 'pointer' }} onClick={handleIconClick}><FaLanguage  /> </button>
+          {/* <i id="copy-btn"   ></i> */}
+          <div>
+            <button onClick={wordAdd}> Kelime Ekle </button>
+            <Link to="/WordsPage"><FaRegEdit /></Link>
+          </div>
+          <div>
+            <button onClick={quoteAdd}>Alıntı Ekle </button>
+            <Link to="/QuotePage"><FaRegEdit /></Link>
+          </div>
         </div>
       )}
       <Modal isOpen={showModal} onRequestClose={() => setShowModal(false) }  
-      //  overlayClassName="custom-overlay"
+        overlayClassName="custom-overlay"
       style={{
           content: {
+            minWidth: "200px",
+            minHeight: "150px",
             maxWidth: 'fit-content' ,
             height: 'fit-content',
-            margin: 'auto',
+            // margin: 'auto',
+            position: 'absolute', 
+            left: iconPosition.x, 
+            top: iconPosition.y ,
+            zIndex:1,
+            color: "var(--text-color)",
+            direction: "rtl"
+            
+     
            
             
           },
         }}>
-        <div>{selection}</div>
+        <div>
+        <p>{outPut}</p>
+        <p>{selection}</p>
+        </div>
       </Modal>
         <p>
         I have found that it is best to deal with the meaning of the verb that is salient in the text. If the meaning of the verb in focus is to 'reject', 
