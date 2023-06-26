@@ -37,7 +37,7 @@ const Register = () => {
         );
         if (res.status === 200) {
           setCookies('email', email, { path: '/' });
-          window.location.pathname = '/';
+          window.location.pathname = '/Login';
         }
       }
     } catch (err) {
