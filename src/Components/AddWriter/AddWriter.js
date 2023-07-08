@@ -25,13 +25,13 @@ function AddWriter() {
     
       formData.append('author', author);
       formData.append('desc', desc);
-      formData.append('coverImage', coverImage);
+      formData.append('img', coverImage);
       formData.forEach((e) => {
         console.log(e);
       });
 
       // Make POST request to upload image using Axios
-      const response = await axios.post('/api/books', formData);
+      const response = await axios.post('http://127.0.0.1:8000/api/addwriter', formData);
 
       // Reset form after successful upload
       
