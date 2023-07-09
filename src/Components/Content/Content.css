@@ -33,22 +33,6 @@
   align-items: center;
 }
 
-.main-image img {
-  mix-blend-mode: darken;
-  animation: moving alternate infinite 1s;
-  -webkit-animation: moving alternate infinite 1s, ray alternate infinite 1s;
-  transition: all 0.35s ease-out;
-  -webkit-transition: all 0.35s ease-out;
-  -moz-transition: all 0.35s ease-out;
-  -ms-transition: all 0.35s ease-out;
-  -o-transition: all 0.35s ease-out;
-  width: 80px;
-  aspect-ratio: 1 / 1;
-}
-
-.main-image img:hover {
-  scale: 1.2;
-}
 
 @keyframes moving {
   from {
@@ -68,15 +52,10 @@
 }
 
 .text-box {
+  background-image: url("../../Assets/images/content.png");
   width: 70%;
   height: 70%;
   padding: 10px 20px;
-  background: rgb(34, 193, 195);
-  background: radial-gradient(
-    circle,
-    rgba(34, 193, 195, 1) 0%,
-    rgba(100, 191, 150, 1) 100%
-  );
   color: #fff;
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -90,6 +69,14 @@
   -moz-transition: all 0.35s ease;
   -ms-transition: all 0.35s ease;
   -o-transition: all 0.35s ease;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.content-logo{
+  width: 120px;
+  height: 120px;
+  margin-top: 40px;
 }
 
 .text-box .footer-row {
@@ -100,6 +87,7 @@
   position: absolute;
   bottom: 5%;
   left: 5%;
+ 
 }
 .text-box p {
   text-align: center;
