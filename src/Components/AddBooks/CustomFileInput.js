@@ -19,7 +19,7 @@ const CustomFileInput = ({ onFileSelect }) => {
         type="file"
         id="file-input"
         onChange={handleFileChange}
-        accept=".jpg,.jpeg,.png"
+        accept=".jpg,.jpeg,.png,.webp"
         required
       />
     </div>
