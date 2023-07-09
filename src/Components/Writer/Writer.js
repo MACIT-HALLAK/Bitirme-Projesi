@@ -13,7 +13,7 @@ function Form() {
         loadImages();
     },[]);
     const  loadImages = async()=>{
-        const re = await axios.get('http://127.0.0.1:8000/api/getallwriter');
+        const re = await axios.get('https://librarygop.com/public/index.php/api/getallwriter');
         setData(re.data);
         console.log(re.data);
     }

@@ -8,8 +8,8 @@ const Card = (props) => {
     <div className="card-container">
       <img className="book-img" src={props.bookImage} alt="" />
       <img className="writer-img" src={props.writerImage} alt="" />
-      <h4>Soyluların biyografisi</h4>
-      <p>Muhammed Ali El-Sabouni</p>
+      <h4>{props.name}</h4>
+      <p>{props.WriterName}</p>
     </div>
   );
 };

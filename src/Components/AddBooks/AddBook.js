@@ -26,19 +26,19 @@ const AddBook = () => {
       const formData = new FormData();
       formData.append('title', title);
       formData.append('author', author);
-      formData.append('pageCount', pageCount);
-      formData.append('coverImage', coverImage);
-      formData.append('language', lang);
-      formData.append('category', category);
+      formData.append('pageNumber', pageCount);
+      formData.append('langueg', lang);
+      formData.append('categori', category);
       formData.append('level', level);
       formData.append('desc', desc);
       formData.append('content', content);
+      formData.append('img', coverImage);
       formData.forEach((e) => {
         console.log(e);
       });
 
       // Make POST request to upload image using Axios
-      const response = await axios.post('/api/books', formData);
+      const response = await axios.post('https://librarygop.com/public/index.php/api/addbook', formData);
 
       // Reset form after successful upload
       setTitle('');

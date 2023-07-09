@@ -31,7 +31,7 @@ function AddWriter() {
       });
 
       // Make POST request to upload image using Axios
-      const response = await axios.post('http://127.0.0.1:8000/api/addwriter', formData);
+      const response = await axios.post('https://librarygop.com/public/index.php/api/addwriter', formData);
 
       // Reset form after successful upload
       
