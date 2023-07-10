@@ -12,10 +12,25 @@ import {
   FaRegEdit,
 } from 'react-icons/fa';
 import SettingCom from '../Ayarlar/SettingCom';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const ReadingPage = () => {
+
+  let {bookId} = useParams();
+  const [bookdata,setBookdata] = useState([]);
+  //veritabanindan kitabi cekmek
+  const loadData = async()=>{
+      const res = await axios.get(`https://librarygop.com/public/index.php/api/getbook/${bookId}`);
+      setBookdata(res.data);
+
+      
+;
+  }
+
+  const [nextP, setNextP] = useState(0);
+  const [prevP, setPrevP] = useState(0);
+
   const [value, setValue] = useState('');
   const [handle, setHandle] = useState(false);
 
@@ -108,7 +123,14 @@ const ReadingPage = () => {
   }
   useEffect(() => {
     changeProps();
+    loadData();
   }, []);
+  const next =()=>{
+    setNextP(nextP+1);
+  }
+  const preivece =()=>{
+    setNextP(nextP-1);
+  }
   // ----------------------End change props of text--------------------------
 
   return (
@@ -185,39 +207,22 @@ const ReadingPage = () => {
             <p>{selection}</p>
           </div>
         </Modal>
-        <p>
-          I have found that it is best to deal with the meaning of the verb that
-          is salient in the text. If the meaning of the verb in focus is to
-          'reject', then I teach this meaning, without going into the other
-          possible meanings. I find this approach to be clearer and less
-          confusing for students. Richards states that "Knowing a word means
-          knowing its different meanings (polysemy)." This is certainly our aim
-          in teaching, but we must realise that such competence requires time.
-          It is only through reading, exposing learners to texts rich in
-          multi-word verbs, that learners will become lexically competent. "The
-          learner must be allowed I have found that it is best to deal with the
-          meaning of the verb that is salient in the text. If the meaning of the
-          verb in focus is to 'reject', then I teach this meaning, without going
-          into the other possible meanings. I find this approach to be clearer
-          and less confusing for students. Richards states that "Knowing a word
-          means knowing its different meanings (polysemy)." This is certainly
-          our aim in teaching, but we must realise that such competence requires
-          time. such competence requires time. such competence requires time.
-          such competence requires time. such competence requires time. It is
-          only through reading, exposing learners to texts rich in multi-word
-          verbs, that learners will become lexically competent. "The learner
-          must be allowed to be vague about meaning at first; precision will
-          come later". (Judd, quoted in Carter and McCarthy) to be vague about
-          meaning at first; precision will come later". (Judd, quoted in Carter
-          and McCarthy)
-          <span>5</span>
-        </p>
+        
+        {bookdata.map((item)=>{
+         const newData = item.content.split("$");
+         
+         return(<p>
+           {newData[nextP]}
+            <span>{nextP+1}</span>
+        </p>)
+})}
+          
         <div className="next-preivece">
-          <button>
+          <button onClick={preivece}>
             <FaArrowLeft />
           </button>
           <button>
-            <FaArrowRight />
+            <FaArrowRight onClick={next} />
           </button>
         </div>
       </section>

@@ -38,6 +38,7 @@ root.render(
         <Route path="/BookPage" element={<BookPage />} />
         <Route path="/YazarEkle" element={<AddWriter />} />
         <Route path="/ReadingPage" element={<ReadingPage />} />
+        <Route path="/ReadingPage/:bookId" element={<ReadingPage />} />
         <Route path="/Deneme" element={<Deneme />} />
         <Route path="/Categories" element={<Categories />} />
         <Route path="/settings" element={<SettingCom />} />

@@ -53,10 +53,11 @@ const BookPage = () => {
             <div className="loader"></div>
           </div>
         ) : (
-          data.map((items) => (
+          data.map((items,index) => (
             <>
               <Card
                 key={items.id}
+                cardNumber={items.id}
                 bookImage={`data:image/jpeg;base64,${items.conten_book}`}
                 writerImage={`data:image/jpeg;base64,${items.conten_author}`}
                 name={items.title}
