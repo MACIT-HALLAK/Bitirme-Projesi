@@ -1,17 +1,36 @@
-import React from "react";
+import {useEffect,useState} from "react";
 import "./Writerspage.css";
 import Navbar from "../Navbar/Navber";
 import CardWriters from "../CardWriters/CardWriters";
-import WriterImage from '../../Assets/images/iyad.webp'
-import WriterImage1 from '../../Assets/images/si1.webp'
-import WriterImage2 from '../../Assets/images/jalal.jpg'
-import WriterImage3 from '../../Assets/images/mutwali.webp'
-import WriterImage4 from '../../Assets/images/mustafa.webp'
-
+import axios from 'axios';
 import Footer from "../Footer/Footer";
 import { FaSearch } from "react-icons/fa";
 
 const Writerspage = () => {
+
+  const [data,setData] = useState([]);
+  const [value,setValue] = useState("");
+
+    useEffect(() => {
+        loadData();
+    },[]);
+    //veriler veritabaninda cek 
+    const  loadData = async()=>{
+        const re = await axios.get('https://librarygop.com/public/index.php/api/getallwriter');
+        setData(re.data);
+    }
+    //bu metot aranan yazarin yada yazarlarin donduruyor
+    const search = (word)=>{
+      if(word != "")
+      {
+      const newData = data.filter((item) => {
+        return(item.author.toLowerCase().includes(word))})
+      setData(newData);
+      }else{
+        loadData();
+      }
+      
+    }
   return (
     <div className="Writerspage-layout">
       <Navbar />
@@ -20,17 +39,15 @@ const Writerspage = () => {
           <span>
             <FaSearch />
           </span>
-          <input type="text" placeholder="Bir Yazarın Ara"></input>
+          <input type="text" placeholder="Bir Yazarın Ara" onChange={(e) => search(e.target.value)}></input>
         </h3>
       </div>
       <div className="parent">
-        <CardWriters WriterImage={WriterImage} writerName="Iyad al kinabi"/>
-        <CardWriters WriterImage={WriterImage1} writerName="Osman yusuf"/>
-        <CardWriters WriterImage={WriterImage3} writerName="Mohammed al sharawi"/>
-        <CardWriters WriterImage={WriterImage4} writerName="Mustafa mahmud"/>
-        <CardWriters WriterImage={WriterImage2} writerName="Jalal aldin alromi"/>
-        <CardWriters WriterImage={WriterImage3} writerName="iyad al kinabi"/>
-        <CardWriters WriterImage={WriterImage2} writerName="iyad al kinabi"/>
+        {data ? data.map((item)=>
+        <CardWriters WriterImage={`data:image/jpeg;base64,${item.content}`} writerName={item.author} />
+        
+        ):console.log("no data")}
+        
       </div>
       <Footer />
     </div>
