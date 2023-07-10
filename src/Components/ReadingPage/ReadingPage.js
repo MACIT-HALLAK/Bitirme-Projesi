@@ -29,7 +29,6 @@ const ReadingPage = () => {
   }
 
   const [nextP, setNextP] = useState(0);
-  const [prevP, setPrevP] = useState(0);
 
   const [value, setValue] = useState('');
   const [handle, setHandle] = useState(false);
@@ -119,11 +118,11 @@ const ReadingPage = () => {
         prop_obj.color !== 'null' ? prop_obj.color : 'black';
       document.querySelector('.text p').style.fontFamily = prop_obj.font;
       document.querySelector('.text p').style.fontSize = prop_obj.size + 'px';
-    }, 150);
+    }, 1000);
   }
   useEffect(() => {
-    changeProps();
     loadData();
+    changeProps();
   }, []);
   const next =()=>{
     setNextP(nextP+1);
@@ -210,10 +209,12 @@ const ReadingPage = () => {
         
         {bookdata.map((item)=>{
          const newData = item.content.split("$");
-         
+         const dataNew = newData[nextP].split('#');
          return(<p>
-           {newData[nextP]}
-            <span>{nextP+1}</span>
+          
+           <span className='page-title'>{dataNew.length >1 ? dataNew[0]:""}</span>
+           {dataNew.length >1 ? dataNew[1]: dataNew[0]}
+            <span className='navigation-items'>{nextP+1}</span>
         </p>)
 })}
           
@@ -232,14 +233,18 @@ const ReadingPage = () => {
         </div>
 
         <div>
-          <div>
-            <p>yazar: iyad al qinabi </p>
-            <p>bolum: din </p>
-            <p>dil: arpca </p>
-            <p>kac sayfa: 232 </p>
-            <p>yayin tarihi: 20/5/2014 </p>
-          </div>
-          <img src={book_img} alt="" />
+            {bookdata.map((items)=>
+                <>
+                <div>      
+                    <p>yazar: {items.author} </p>
+                    <p>bolum: {items.categori} </p>
+                    <p>dil: {items.langueg} </p>
+                    <p>kac sayfa: {items.pageNumber} </p>
+                    <p>yayin tarihi: 20/5/2014 </p>
+                </div>
+                <img src={`data:image/jpeg;base64,${items.conten_book}`} alt="" />
+                </>
+            )}
         </div>
       </aside>
 
