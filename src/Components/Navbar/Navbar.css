@@ -340,7 +340,7 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .main-nav li:last-child > ul .box {
   position: relative;

@@ -14,17 +14,21 @@ const Register = () => {
   const [cookies, setCookies] = useCookies(['email']);
 
   async function submit(event) {
+    // check from email is correct or no with regex
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     event.preventDefault();
     setAccept(true);
     let flag = true;
     if (
       username === '' ||
       password.length < 8 ||
-      confirmPassword !== password
+      confirmPassword !== password ||
+      !emailRegex.test(email)
     ) {
       flag = false;
     } else flag = true;
     try {
+      console.log(flag);
       if (flag) {
         // let res = await axios.post(
         //   'http://127.0.0.1:8000/api/register',
@@ -36,15 +40,13 @@ const Register = () => {
         //   }
         // );
         let res = await axios.get(
-            `https://librarygop.com/public/index.php/api/sendemail/${email}`,
-           
-          );
+          `https://librarygop.com/public/index.php/api/sendemail/${email}`
+        );
         if (res.status === 200) {
-        
-          console.log("bayby");
-          setCookies('name',username);
+          console.log('bayby');
+          setCookies('name', username);
           setCookies('email1', email, { path: '/' });
-          setCookies('password',password);
+          setCookies('password', password);
           setCookies('code', res.data, { path: '/' });
           window.location.pathname = '/EmailConfirm';
         }
@@ -52,9 +54,6 @@ const Register = () => {
     } catch (err) {
       console.log(err);
     }
-
-    // check from email is correct or no with regex
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (username === '') {
       setShowPopup(true);

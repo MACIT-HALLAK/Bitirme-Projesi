@@ -7,7 +7,10 @@ const AddBook = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [desc, setdesc] = useState('');
-  const [coverImage, setCoverImage] = useState(null);
+  const [coverImageBook, setCoverImageBook] = useState(null);
+  const [coverImageAuthor, setCoverImageAuthor] = useState(null);
+  const [NameImageBook, setNameImageBook] = useState(null);
+  const [NameImageAuthor, setNameImageAuthor] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploaded, setUploaded] = useState(false);
   const [category, setCategory] = useState('');
@@ -18,10 +21,10 @@ const AddBook = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // console.log(coverImage);
     try {
       setUploading(true);
 
-      console.log(coverImage);
       // Make POST request using Axios
       const formData = new FormData();
       formData.append('title', title);
@@ -32,21 +35,26 @@ const AddBook = () => {
       formData.append('level', level);
       formData.append('desc', desc);
       formData.append('content', content);
-      formData.append('img', coverImage);
+      formData.append('book_img', coverImageBook);
+      formData.append('author_img', coverImageAuthor);
       formData.forEach((e) => {
         console.log(e);
       });
 
-      // Make POST request to upload image using Axios
-      const response = await axios.post('https://librarygop.com/public/index.php/api/addbook', formData);
+      // // Make POST request to upload image using Axios
+      const response = await axios.post(
+        'https://librarygop.com/public/index.php/api/addbook',
+        formData
+      );
 
-      // Reset form after successful upload
+      // // Reset form after successful upload
+      setUploading(false);
+      setUploaded(true);
       setTitle('');
       setAuthor('');
       setdesc('');
-      setCoverImage(null);
-      setUploading(false);
-      setUploaded(true);
+      setCoverImageAuthor(null);
+      setCoverImageBook(null);
       setCategory('');
       setLevel('');
       setLang('');
@@ -57,9 +65,23 @@ const AddBook = () => {
       setUploading(false);
     }
 
-    const handleFileChange = (file) => {
-      setCoverImage(file);
-    };
+    // const handleFileChange = (file) => {
+    //   setCoverImage(file);
+    // };
+  };
+
+  const handleAuthorImageChange = (event) => {
+    const file = event.target.files[0];
+    console.log(file);
+    setCoverImageAuthor(file);
+    setNameImageAuthor(file);
+  };
+
+  const handleBookImageChange = (event) => {
+    const file = event.target.files[0];
+    console.log(file);
+    setCoverImageBook(event.target.files[0]);
+    setNameImageBook(file);
   };
 
   return (
@@ -72,7 +94,11 @@ const AddBook = () => {
           <h1>Add Book</h1>
         </div>
         <div className="hero-layout column-12 flex">
-          <form className="book-form column-12" onSubmit={handleSubmit}>
+          <form
+            className="book-form column-12"
+            onSubmit={handleSubmit}
+            enctype="multipart/form-data"
+          >
             <div className="row flex">
               {' '}
               <div className="form-group column-6">
@@ -104,21 +130,11 @@ const AddBook = () => {
                   type="text"
                   id="pageCount"
                   value={pageCount}
-                  onChange={(e) => setPageCount(e.target.value)}
+                  onInput={(e) => setPageCount(e.target.value)}
                   required
                 />
               </div>
-              <div className="form-group  column-6">
-                <label htmlFor="book-image">Image:</label>
-                <CustomFileInput
-                  onFileSelect={setCoverImage}
-                  uploaded={uploaded}
-                />
-              </div>
-            </div>
-
-            <div className="row flex">
-              <div className="form-group column-12">
+              <div className="form-group column-6">
                 <label htmlFor="lang-select">Dil:</label>
                 <select
                   id="lang-select"
@@ -133,6 +149,42 @@ const AddBook = () => {
                   <option value="Arabça">Arabça</option>
                   {/* قم بإضافة المزيد من الخيارات حسب الاحتياج */}
                 </select>
+              </div>
+            </div>
+
+            <div className="row flex">
+              <div className="form-group  column-6">
+                {/* <label htmlFor="book-image">Book Image:</label> */}
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleBookImageChange}
+                  style={{ display: 'none' }} // تخفي الزر الأصلي
+                  id="book-image-input"
+                />
+                <label
+                  htmlFor="book-image-input"
+                  className="image-upload-button"
+                >
+                  {NameImageBook ? NameImageBook.name : 'Book Image'}
+                </label>
+              </div>
+              <div className="form-group  column-6">
+                {/* <label htmlFor="author-image">Author Image:</label> */}
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleAuthorImageChange}
+                  style={{ display: 'none' }} // تخفي الزر الأصلي
+                  id="author-image-input"
+                />
+
+                <label
+                  htmlFor="author-image-input"
+                  className="image-upload-button"
+                >
+                  {NameImageAuthor ? NameImageAuthor.name : 'Author Image'}
+                </label>
               </div>
             </div>
             <div className="row flex">
@@ -206,7 +258,12 @@ const AddBook = () => {
               ></textarea>
             </div>
             <div className="btn-con column-12 flex">
-              <button type="submit" className="btn" disabled={uploading}>
+              <button
+                type="submit"
+                className="btn"
+                disabled={uploading}
+                onClick={handleSubmit}
+              >
                 {uploading ? 'Uploading...' : 'Add Book'}
               </button>
             </div>
