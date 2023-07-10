@@ -76,7 +76,11 @@
 .content-logo{
   width: 120px;
   height: 120px;
-  margin-top: 40px;
+  margin-top: 30px;
+}
+.text-box .content-name{
+  font-style: italic;
+  text-transform:uppercase ;
 }
 
 .text-box .footer-row {
@@ -85,7 +89,7 @@
   justify-content: space-evenly;
   gap: 15px;
   position: absolute;
-  bottom: 5%;
+  bottom: 10%;
   left: 5%;
  
 }
