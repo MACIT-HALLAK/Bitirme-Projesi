@@ -48,8 +48,6 @@ const AddBook = () => {
       );
 
       // // Reset form after successful upload
-      setUploading(false);
-      setUploaded(true);
       setTitle('');
       setAuthor('');
       setdesc('');
@@ -60,6 +58,8 @@ const AddBook = () => {
       setLang('');
       setPageCount(0);
       setContent('');
+      setUploading(false);
+      setUploaded(true);
     } catch (error) {
       console.error('Error uploading book:', error);
       setUploading(false);
