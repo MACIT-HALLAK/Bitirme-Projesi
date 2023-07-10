@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 function Form() {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     loadImages();
@@ -16,6 +17,7 @@ function Form() {
       'https://librarygop.com/public/index.php/api/getallwriter'
     );
     setData(re.data);
+    setLoading(false);
     console.log(re.data);
   };
 
@@ -24,28 +26,35 @@ function Form() {
       <Navbar />
       <div className="writer-container">
         <div className="writer-card-wraper">
-          {data.map((item) => (
-            <>
-              <div>
-                <img
-                  src={`data:image/jpeg;base64,${item.content}`}
-                  alt="tazarin resmi"
-                />
-              </div>
-              <div>
-                <h3>
-                  <strong>Yazar: </strong>
-                  {item.author}
-                </h3>
-                <p>
-                  <strong>Yazar Hakkında:</strong> {item.desc}
-                </p>
-                <p>
-                  <strong>Kitaplar Sayısı:</strong> {item.bookNumber}
-                </p>
-              </div>
-            </>
-          ))}
+          {loading ? (
+            <div className="loading">
+              <p>Lütfen Bekleyin</p>
+              <div className="loader"></div>
+            </div>
+          ) : (
+            data.map((item) => (
+              <>
+                <div>
+                  <img
+                    src={`data:image/jpeg;base64,${item.content}`}
+                    alt="tazarin resmi"
+                  />
+                </div>
+                <div>
+                  <h3>
+                    <strong>Yazar: </strong>
+                    {item.author}
+                  </h3>
+                  <p>
+                    <strong>Yazar Hakkında:</strong> {item.desc}
+                  </p>
+                  <p>
+                    <strong>Kitaplar Sayısı:</strong> {item.bookNumber}
+                  </p>
+                </div>
+              </>
+            ))
+          )}
         </div>
         <div className="writer-footer">
           <Footer />
