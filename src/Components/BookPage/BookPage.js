@@ -6,7 +6,7 @@ import Footer from '../Footer/Footer';
 import axios from 'axios';
 
 const BookPage = () => {
-  const [books, setBooks] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const [cardCount, setCardCount] = useState(10);
   const [minCardCount, setMinCardCount] = useState(10);
@@ -21,6 +21,7 @@ const BookPage = () => {
     );
     setData(re.data);
     console.log(re.data);
+    setLoading(false);
   };
 
   //   const [cardCount, setCardCount] = useState(10);
@@ -46,16 +47,31 @@ const BookPage = () => {
         <Navbar />
       </div>
       <div className="BookPage-Body">
-        {data.map((items) => (
-          <>
+        {loading ? (
+          <div className="loading">
+            <p>Lütfen Bekleyin</p>
+            <div className="loader"></div>
+          </div>
+        ) : (
+          data.map((items) => (
+            <>
+              <Card
+                key={items.id}
+                bookImage={`data:image/jpeg;base64,${items.conten_book}`}
+                writerImage={`data:image/jpeg;base64,${items.conten_author}`}
+                name={items.title}
+                WriterName={items.author}
+              />
+              {/* author
             <Card
               key={items.id}
-              bookImage={`data:image/jpeg;base64,${items.conten}`}
+              bookImage={`data:image/jpeg;base64,${items.conten_author}`}
               name={items.title}
               WriterName={items.author}
-            />
-          </>
-        ))}
+            /> */}
+            </>
+          ))
+        )}
       </div>
 
       <div className="btn-btn">
@@ -78,32 +94,6 @@ const BookPage = () => {
 
       <div className="BookPage-Footer">
         <Footer />
-      </div>
-      <div className="BookPage-Body">
-        {books.length > 0 &&
-          books.map((row, key) => (
-            <>
-              <div>{row.id}</div>
-              <img
-                width="100px"
-                src={`http://127.0.0.1:8000/storage/product${row.coverImage}`}
-                alt={`${row.title}`}
-              />
-              <div>{row.title}</div>
-              <div>{row.author}</div>
-              <div>{row.pageCount}</div>
-              <div>{row.language}</div>
-              <div>{row.category}</div>
-              <div>{row.level}</div>
-              <div>{row.desc}</div>
-              <div>{row.content}</div>
-            </>
-          ))}
-      </div>
-
-      <div className="BookPage-Footer">
-        <Footer />
-        <div>ggggg</div>
       </div>
     </>
   );

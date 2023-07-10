@@ -193,3 +193,16 @@
   outline: none;
   border-color: #45b09e;
 }
+
+.image-upload-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.image-upload-button:hover {
+  background-color: #45a049;
+}
