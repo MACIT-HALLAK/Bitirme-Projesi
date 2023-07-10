@@ -56,6 +56,8 @@
 }
 .Writerspage-layout footer {
   grid-area: footer;
+  width: 100.3%;
+  margin-left: -0.2vw;
 }
 /* the cards responsivity */
 .Writerspage-layout .parent {
@@ -77,12 +79,24 @@
       ". footer footer footer footer footer footer footer footer footer footer .";
   }
 }
+@media screen and (max-width: 800px){
+  .Writerspage-layout footer {
+    height: 51vh;
+}}
+@media screen and (max-width: 576px){
+  .Writerspage-layout .footer-bottom {
+    width: 100%;
+}
+}
 /* for screen 535px */
-@media screen and (max-width: 535px) {
+@media screen and (max-width: 550px) {
   .Writerspage-layout {
     grid-template-rows: auto 50px auto auto;
   }
   .Writerspage-layout .parent {
     justify-content: center;
   }
+  .Writerspage-layout footer {
+    height: 93vh;
+}
 }

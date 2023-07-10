@@ -27,7 +27,7 @@ const Navbar = () => {
   }
   let toggle_class_check = btn_state ? 'hide' : '';
   let nav_items = ['Anasayfa', 'Yazarlar', 'Seviyeler'];
-  let admin_items = ['Add Book'];
+  let admin_items = ['Add Book','YazarEkle'];
 
   // if user not admin filter array
   if (cookies.role === '1') nav_items = nav_items.concat(admin_items);

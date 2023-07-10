@@ -14,6 +14,11 @@
 .reading-container nav {
   grid-area: nav;
 }
+.reading-container footer {
+  grid-area: fo;
+  width: 100%;
+    margin-left: -1px;
+}
 .reading-container section {
   grid-area: sec;
   background-color: var(--main-color-screen);
@@ -164,6 +169,12 @@
       ". fo fo fo fo fo fo fo fo fo fo .";
   }
 }
+@media (max-width: 576px){
+.reading-container .footer-bottom {
+    width: 100%;
+}
+}
+
 @media screen and (max-width: 550px) {
   .reading-container {
     grid-template-columns: 10px repeat(10, 1fr) 10px;
@@ -174,6 +185,17 @@
       ". sec sec sec sec sec sec sec sec sec sec ."
       ". fo fo fo fo fo fo fo fo fo fo .";
   }
+}
+@media screen and (max-width: 303px){
+.reading-container .footer-items-2 {
+  margin-right: 50px;
+}
+.reading-container .footer-items-3 {
+  margin-right: 20px;
+}
+.reading-container .footer-items-4 {
+  margin-right: 23px;
+}
 }
 
 .reading-container:has(.props-main-box.show)::after {

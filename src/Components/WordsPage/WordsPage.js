@@ -45,6 +45,30 @@ function WordsPage() {
                 <button><FaRegTrashAlt /></button>
                 
             </div>
+            <div className='word-page-child'>
+                <p>wishes</p>
+                <p>التمنيات</p>
+                <button><FaRegTrashAlt /></button>
+                
+            </div>
+            <div className='word-page-child'>
+                <p>wishes</p>
+                <p>التمنيات</p>
+                <button><FaRegTrashAlt /></button>
+                
+            </div>
+            <div className='word-page-child'>
+                <p>wishes</p>
+                <p>التمنيات</p>
+                <button><FaRegTrashAlt /></button>
+                
+            </div>
+            <div className='word-page-child'>
+                <p>wishes</p>
+                <p>التمنيات</p>
+                <button><FaRegTrashAlt /></button>
+                
+            </div>
         </div>
         <VerticalNavbar />
     </div>

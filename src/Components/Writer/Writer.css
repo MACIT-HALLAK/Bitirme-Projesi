@@ -19,6 +19,7 @@
 .writer-container nav {
   grid-area: nav;
 }
+
 .writer-container .writer-card-wraper {
   grid-area: wc;
   background: var(--main-color-screen);

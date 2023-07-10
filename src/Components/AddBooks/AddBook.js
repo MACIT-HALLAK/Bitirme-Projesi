@@ -26,31 +26,22 @@ const AddBook = () => {
       const formData = new FormData();
       formData.append('title', title);
       formData.append('author', author);
-      formData.append('pageCount', pageCount);
-      formData.append('coverImage', coverImage);
-      formData.append('language', lang);
-      formData.append('category', category);
+      formData.append('pageNumber', pageCount);
+      formData.append('langueg', lang);
+      formData.append('categori', category);
       formData.append('level', level);
       formData.append('desc', desc);
       formData.append('content', content);
+      formData.append('img', coverImage);
       formData.forEach((e) => {
         console.log(e);
       });
 
       // Make POST request to upload image using Axios
-      const response = await axios
-        .post('http://127.0.0.1:8000/api/addbook', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        })
-        .then(({ data }) => {
-          console.log(data);
-          console.log(data.book);
-        })
-        .catch((error, data) => {
-          console.log(error);
-        });
+      const response = await axios.post(
+        'https://librarygop.com/public/index.php/api/addbook',
+        formData
+      );
 
       // // Reset form after successful upload
       // setTitle('');

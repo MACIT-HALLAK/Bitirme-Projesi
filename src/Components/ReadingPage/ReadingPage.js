@@ -245,6 +245,7 @@ const ReadingPage = () => {
         }}
         className="setting-open"
       />
+      
       <Footer />
     </div>
   );
