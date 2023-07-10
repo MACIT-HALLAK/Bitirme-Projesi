@@ -9,16 +9,28 @@ import { FaSearch } from "react-icons/fa";
 const Writerspage = () => {
 
   const [data,setData] = useState([]);
+  const [value,setValue] = useState("");
 
     useEffect(() => {
         loadData();
     },[]);
-
+    //veriler veritabaninda cek 
     const  loadData = async()=>{
         const re = await axios.get('https://librarygop.com/public/index.php/api/getallwriter');
         setData(re.data);
     }
-
+    //bu metot aranan yazarin yada yazarlarin donduruyor
+    const search = (word)=>{
+      if(word != "")
+      {
+      const newData = data.filter((item) => {
+        return(item.author.toLowerCase().includes(word))})
+      setData(newData);
+      }else{
+        loadData();
+      }
+      
+    }
   return (
     <div className="Writerspage-layout">
       <Navbar />
@@ -27,7 +39,7 @@ const Writerspage = () => {
           <span>
             <FaSearch />
           </span>
-          <input type="text" placeholder="Bir Yazarın Ara"></input>
+          <input type="text" placeholder="Bir Yazarın Ara" onChange={(e) => search(e.target.value)}></input>
         </h3>
       </div>
       <div className="parent">
