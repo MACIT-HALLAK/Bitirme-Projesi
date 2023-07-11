@@ -23,8 +23,8 @@ function Form() {
 
   return (
     <>
-      <Navbar />
       <div className="writer-container">
+        <Navbar />
         <div className="writer-card-wraper">
           {loading ? (
             <div className="loading">
