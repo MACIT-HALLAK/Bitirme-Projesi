@@ -56,6 +56,15 @@ function Form() {
             ))
           )}
         </div>
+        <h2>yazarin butun kitablari 325 kitab</h2>
+        <div className='writer-book-wraper'>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+        </div>
         <div className="writer-footer">
           <Footer />
         </div>
