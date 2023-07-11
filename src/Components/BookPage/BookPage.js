@@ -53,7 +53,7 @@ const BookPage = () => {
             <div className="loader"></div>
           </div>
         ) : (
-          data.map((items,index) => (
+          data.map((items) => (
             <>
               <Card
                 key={items.id}
