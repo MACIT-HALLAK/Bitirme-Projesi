@@ -44,11 +44,12 @@ const Writerspage = () => {
       </div>
       <div className="parent">
         {data ? data.map((item)=>
-        <CardWriters WriterImage={`data:image/jpeg;base64,${item.content}`} writerName={item.author} />
+        <CardWriters WriterImage={`data:image/jpeg;base64,${item.content}`} writerName={item.author} id={item.userId} bookN={item.bookNumber}/>
         
         ):console.log("no data")}
         
       </div>
+      
       <Footer />
     </div>
   );

@@ -34,6 +34,7 @@ root.render(
         <Route path="/Seviyeler/orta" element={<Seviyeler />} />
         <Route path="/Seviyeler/temel" element={<Seviyeler />} />
         <Route path="/Writer" element={<Writer />} />
+        <Route path="/Writer/:writerId" element={<Writer />} />
         <Route path="/AddBook" element={<AddBook />} />
         <Route path="/BookPage" element={<BookPage />} />
         <Route path="/YazarEkle" element={<AddWriter />} />
