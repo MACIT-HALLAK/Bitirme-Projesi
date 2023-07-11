@@ -23,12 +23,11 @@ const ReadingPage = () => {
   const loadData = async()=>{
       const res = await axios.get(`https://librarygop.com/public/index.php/api/getbook/${bookId}`);
       setBookdata(res.data);
-
-      
-;
+      console.log(res.data);
   }
 
   const [nextP, setNextP] = useState(0);
+ 
 
   const [value, setValue] = useState('');
   const [handle, setHandle] = useState(false);
@@ -125,9 +124,17 @@ const ReadingPage = () => {
     changeProps();
   }, []);
   const next =()=>{
-    setNextP(nextP+1);
+     bookdata.map((item)=>{
+      if(nextP +1 < item.content.split('$').length){
+        setNextP(nextP+1);
+      }
+      else{
+        setNextP(nextP);
+      }
+    })
   }
   const preivece =()=>{
+    if(nextP != 0)
     setNextP(nextP-1);
   }
   // ----------------------End change props of text--------------------------
@@ -210,7 +217,7 @@ const ReadingPage = () => {
         {bookdata.map((item)=>{
          const newData = item.content.split("$");
          const dataNew = newData[nextP].split('#');
-         return(<p>
+         return(<p className="reading-page-dir" direc={item.langueg}>
           
            <span className='page-title'>{dataNew.length >1 ? dataNew[0]:""}</span>
            {dataNew.length >1 ? dataNew[1]: dataNew[0]}
@@ -219,11 +226,11 @@ const ReadingPage = () => {
 })}
           
         <div className="next-preivece">
-          <button onClick={preivece}>
+          <button onClick={preivece} >
             <FaArrowLeft />
           </button>
           <button>
-            <FaArrowRight onClick={next} />
+            <FaArrowRight onClick={next}/>
           </button>
         </div>
       </section>
@@ -236,13 +243,13 @@ const ReadingPage = () => {
             {bookdata.map((items)=>
                 <>
                 <div>      
-                    <p>yazar: {items.author} </p>
-                    <p>bolum: {items.categori} </p>
-                    <p>dil: {items.langueg} </p>
-                    <p>kac sayfa: {items.pageNumber} </p>
-                    <p>yayin tarihi: 20/5/2014 </p>
+                    <p>Yazar: {items.author} </p>
+                    <p>Categori: {items.categori} </p>
+                    <p>Dil: {items.langueg} </p>
+                    <p>Sayfa Sayısı: {items.pageNumber} </p>
+                    <p>Yayın Tarihi: {items.time.split(' ')[0]} </p>
                 </div>
-                <img src={`data:image/jpeg;base64,${items.conten_book}`} alt="" />
+                <img src={`data:image/jpeg;base64,${items.conten}`} alt="" />
                 </>
             )}
         </div>

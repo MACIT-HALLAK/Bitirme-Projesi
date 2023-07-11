@@ -14,7 +14,7 @@ export default function Content() {
     loadName();
   },[])
   const loadName = async()=>{
-   const res = await axios.get(`http://127.0.0.1:8000/api/getusername/${cookiesE.email}`)
+   const res = await axios.get(`https://librarygop.com/public/index.php/api/getusername/${cookiesE.email}`)
    setName(res.data);
     console.log(res.data);
   }

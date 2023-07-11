@@ -37,9 +37,13 @@
   color: var(--main-color-alt);
   font-weight: bold;
   position: absolute;
-  bottom: -90px;
+  bottom: -53px;
   left: 50%;
 }
+.reading-page-dir[direc = "Arabça"]{
+  direction: rtl;
+}
+
 .reading-container section p > .page-title {
   display: block;
     text-align: center;
