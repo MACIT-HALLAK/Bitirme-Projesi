@@ -90,6 +90,25 @@ const ReadingPage = () => {
       console.error("Kelime ekleme başarısız:", error);
     });
 };
+
+const kitapidgetit = () => {
+  axios.get(`http://127.0.0.1:8000/api/words/${email}/${bookId}`)
+    .then(response => {
+      // İstek başarılı olduğunda yapılacak işlemler
+      const bookIds = response.data.map(item => item.bookId);
+      console.log(bookIds);
+          axios.get(`http://127.0.0.1:8000/api/addbook/${bookIds}`)
+          .then(res => {
+            console.log(res.data);
+
+          })
+    })
+    .catch(error => {
+      // Hata durumunda yapılacak işlemler
+      console.error("Kelime ekleme başarısız:", error);
+    });
+};
+
   const quoteAdd = () => {
     console.log(selection);
   };
@@ -183,7 +202,7 @@ const ReadingPage = () => {
             <div>
               <button onClick={wordAdd}> Kelime Ekle </button>
               <Link to="/WordsPage">
-                <FaRegEdit />
+                <FaRegEdit onClick={kitapidgetit} />
               </Link>
             </div>
             <div>
