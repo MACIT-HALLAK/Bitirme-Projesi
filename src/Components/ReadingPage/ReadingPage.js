@@ -79,29 +79,11 @@ const ReadingPage = () => {
   //------------------------------------------------
 
   const wordAdd = () => {
-  axios.post(`http://127.0.0.1:8000/api/words/${email}/${bookId}/${selection}`)
+  axios.post(`https://librarygop.com/public/index.php/api/words/${email}/${bookId}/${selection}`)
     .then(response => {
       // İstek başarılı olduğunda yapılacak işlemler
       console.log(bookId);
       console.log("Kelime eklendi:", response.data);
-    })
-    .catch(error => {
-      // Hata durumunda yapılacak işlemler
-      console.error("Kelime ekleme başarısız:", error);
-    });
-};
-
-const kitapidgetit = () => {
-  axios.get(`http://127.0.0.1:8000/api/words/${email}/${bookId}`)
-    .then(response => {
-      // İstek başarılı olduğunda yapılacak işlemler
-      const bookIds = response.data.map(item => item.bookId);
-      console.log(bookIds);
-          axios.get(`http://127.0.0.1:8000/api/addbook/${bookIds}`)
-          .then(res => {
-            console.log(res.data);
-
-          })
     })
     .catch(error => {
       // Hata durumunda yapılacak işlemler
@@ -202,7 +184,7 @@ const kitapidgetit = () => {
             <div>
               <button onClick={wordAdd}> Kelime Ekle </button>
               <Link to="/WordsPage">
-                <FaRegEdit onClick={kitapidgetit} />
+                <FaRegEdit  />
               </Link>
             </div>
             <div>
