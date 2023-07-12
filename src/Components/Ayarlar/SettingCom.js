@@ -146,6 +146,10 @@ export default function SettingCom({ clicking, show, handle }) {
     }
   }, []);
 
+  const reset = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
   return (
     <>
       <div className={`props-main-box ${handle && show}`}>
@@ -174,6 +178,27 @@ export default function SettingCom({ clicking, show, handle }) {
             <span>Font Type</span>
           </h2>
           <div className="items-box" font_family_box=""></div>
+        </div>
+        <div className="sub-box">
+          <h2>
+            <span>Dil Seç</span>
+          </h2>
+          <div className="items-box options">
+            <select>
+              <option disabled selected>
+                Dil Seç
+              </option>
+              <option value={'Arabça'}>Arabça</option>
+              <option value={'Türkçe'}>Türkçe</option>
+              <option value={'İnglizge'}>İnglizge</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <button onClick={() => reset()} className="reset">
+            Reset
+          </button>
         </div>
       </div>
     </>

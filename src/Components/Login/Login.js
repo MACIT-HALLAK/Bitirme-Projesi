@@ -43,6 +43,7 @@ const Login = () => {
               setTimeout(() => {
                 setCookies('email', email, { path: '/' });
                 setCookies('role', res.data[0][0].role, { path: '/' });
+                setCookies('user_id', res.data[0][0].id, { path: '/' });
                 window.location.pathname = '/';
               }, 1500);
             } else {

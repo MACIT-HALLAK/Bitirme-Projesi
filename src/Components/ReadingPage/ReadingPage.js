@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Modal from 'react-modal';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navber';
@@ -19,6 +19,7 @@ const ReadingPage = () => {
   const [value, setValue] = useState('');
   const [handle, setHandle] = useState(false);
 
+  const pa = useRef();
   //******************* */
   const [selection, setSelection] = useState(null);
   const [showIcon, setShowIcon] = useState(false);
@@ -99,11 +100,14 @@ const ReadingPage = () => {
         element_arr.forEach((set_active) => {
           set_active.classList.add('active');
         });
+      } else {
+        pa.current.style.color =
+          prop_obj?.color !== 'null' ? prop_obj?.color : 'black';
+        pa.current.style.fontFamily =
+          prop_obj?.font !== 'null' ? prop_obj?.font : 'Sans-Serif';
+        pa.current.style.fontSize =
+          prop_obj?.size !== 'null' ? prop_obj?.size : '16px';
       }
-      document.querySelector('.text p').style.color =
-        prop_obj.color !== 'null' ? prop_obj.color : 'black';
-      document.querySelector('.text p').style.fontFamily = prop_obj.font;
-      document.querySelector('.text p').style.fontSize = prop_obj.size + 'px';
     }, 150);
   }
   useEffect(() => {
@@ -185,7 +189,7 @@ const ReadingPage = () => {
             <p>{selection}</p>
           </div>
         </Modal>
-        <p>
+        <p ref={pa}>
           I have found that it is best to deal with the meaning of the verb that
           is salient in the text. If the meaning of the verb in focus is to
           'reject', then I teach this meaning, without going into the other
@@ -245,7 +249,7 @@ const ReadingPage = () => {
         }}
         className="setting-open"
       />
-      
+
       <Footer />
     </div>
   );

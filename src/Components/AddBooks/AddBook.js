@@ -3,6 +3,8 @@ import './AddBook.css';
 import CustomFileInput from './CustomFileInput';
 import axios from 'axios';
 import BackTo from '../BackTo/BackTo';
+import { useCookies } from 'react-cookie';
+
 const AddBook = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -18,6 +20,7 @@ const AddBook = () => {
   const [lang, setLang] = useState('');
   const [pageCount, setPageCount] = useState();
   const [content, setContent] = useState('');
+  const [cookies, setCookies, removeCookies] = useCookies(['email', 'role']);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +31,7 @@ const AddBook = () => {
       // Make POST request using Axios
       const formData = new FormData();
       formData.append('title', title);
+      formData.append('userId', cookies.user_id);
       formData.append('author', author);
       formData.append('pageNumber', pageCount);
       formData.append('langueg', lang);
