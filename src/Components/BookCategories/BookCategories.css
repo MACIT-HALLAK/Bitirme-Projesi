@@ -1,14 +1,15 @@
 .chapters-wraper {
     grid-area: a;
-    border-radius: 4px;
+    border-radius: 9px;
     background-color: #ffffff;
     position: relative;
+
   }
   
 aside a {
      font-size: 20px;
      text-decoration: none; 
-     padding: 10px; 
+     padding: 5px; 
      display: block;
      color:#333;
      white-space: nowrap;
@@ -19,30 +20,55 @@ aside a {
   
   }
 
- aside a:hover::after {
-  padding-left:20px;
-  content: "";
-  position: absolute;
-  height: 5%;
-  width: 80%;
-  left: 5px;
-  bottom: 0;
-  background-color: var(--main-color-alt);
-  
- }
 aside a:hover {
-  padding-left:20px;
- }
+  padding-left: 20px;
+  }
+
 aside h2 {
   color: var(--main-color);
   text-align: center;
+
   
 }
 .book-icon {
   position: absolute;
   right: 0;
-  margin-right: 10px;
+  margin-right: 22px; /* book ıcon*/
   color: var(--main-color-alt);
   transform: skew(-12deg,5deg);
 
+
+}
+.cat-q {
+  width: 14.4vw; /* catego body*/
+  margin: -0.5vh 0.8vw;
+  background-color: white;
+  border: 2px solid #1c8b78;
+  border-radius: 5px;
+  height: 7vh;
+  cursor: pointer;
+  margin-top: 8px;
+
+}
+  
+.cat-q:hover {
+  transition: all 0.7s ease;
+  transform: scale(0.97);
+  border: 2px solid black;
+  background-color: #c1fff4;
+}
+
+.cat-q:hover .cat-icon {
+  position: absolute;
+  right: -7vw;
+  animation: rotate 1s ;
+}
+
+@keyframes rotate {
+  0% {
+      transform: skew(-12deg, 5deg) scale(0.97);
+  }
+  100% {
+      transform: skew(-12deg, 5deg) scale(0.97) rotate(360deg);
+  }
 }
