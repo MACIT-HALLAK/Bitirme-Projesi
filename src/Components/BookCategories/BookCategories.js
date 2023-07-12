@@ -21,7 +21,7 @@ class BookCategories extends Component {
   render(){
       const List = this.state.data;
       const View = List.map(categories => (
-        <a href={`/categories/${categories.categorie}`}><div className='cat-q' key={categories.id}>
+        <a href={`/categories/${categories.categorie}`}><div className='' key={categories.id}>
               <p className='cat-p'>{categories.categorie} <FaBook size={25} className='book-icon' /></p>
           </div></a>
       ));
