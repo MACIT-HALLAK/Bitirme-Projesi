@@ -132,16 +132,24 @@ const ReadingPage = () => {
         prop_obj.color !== 'null' ? prop_obj.color : 'black';
       document.querySelector('.text p').style.fontFamily = prop_obj.font;
       document.querySelector('.text p').style.fontSize = prop_obj.size + 'px';
-    }, 150);
+    }, 1000);
   }
   useEffect(() => {
     changeProps();
     loadData();
   }, []);
   const next =()=>{
-    setNextP(nextP+1);
+    bookdata.map((item)=>{
+      if(nextP +1 < item.content.split('$').length){
+        setNextP(nextP+1);
+      }
+      else{
+        setNextP(nextP);
+      }
+    })
   }
   const preivece =()=>{
+    if(nextP != 0)
     setNextP(nextP-1);
   }
   // ----------------------End change props of text--------------------------
@@ -221,12 +229,15 @@ const ReadingPage = () => {
           </div>
         </Modal>
         
+       
         {bookdata.map((item)=>{
-        const newData = item.content.split("$");
-        
-        return(<p>
-            {newData[nextP]}
-            <span>{nextP+1}</span>
+         const newData = item.content.split("$");
+         const dataNew = newData[nextP].split('#');
+         return(<p className="reading-page-dir" direc={item.langueg}>
+          
+           <span className='page-title'>{dataNew.length >1 ? dataNew[0]:""}</span>
+           {dataNew.length >1 ? dataNew[1]: dataNew[0]}
+            <span className='navigation-items'>{nextP+1}</span>
         </p>)
 })}
           
@@ -243,17 +254,21 @@ const ReadingPage = () => {
         <div>
           <h2>kitabin bilgileri</h2>
         </div>
+      <div>
+        {bookdata.map((items)=>
+                <>
+                <div>      
+                    <p>Yazar: {items.author} </p>
+                    <p>Categori: {items.categori} </p>
+                    <p>Dil: {items.langueg} </p>
+                    <p>Sayfa Sayısı: {items.pageNumber} </p>
+                    <p>Yayın Tarihi: {items.time.split(' ')[0]} </p>
+                </div>
+                <img src={`data:image/jpeg;base64,${items.conten}`} alt="" />
+                </>
+            )}
 
-        <div>
-          <div>
-            <p>yazar: iyad al qinabi </p>
-            <p>bolum: din </p>
-            <p>dil: arpca </p>
-            <p>kac sayfa: 232 </p>
-            <p>yayin tarihi: 20/5/2014 </p>
-          </div>
-          <img src={book_img} alt="" />
-        </div>
+</div>
       </aside>
 
       <FaCog
