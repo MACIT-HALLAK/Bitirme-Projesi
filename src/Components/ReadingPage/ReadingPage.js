@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navber';
 import book_img from '../../Assets/images/si1.webp';
 import './ReadingPage.css';
+import { useCookies } from 'react-cookie';
 import {
   FaArrowLeft,
   FaArrowRight,
@@ -23,16 +24,20 @@ const ReadingPage = () => {
   const loadData = async()=>{
       const res = await axios.get(`https://librarygop.com/public/index.php/api/getbook/${bookId}`);
       setBookdata(res.data);
-      console.log(res.data);
+
+      
+;
   }
 
   const [nextP, setNextP] = useState(0);
- 
+  const [prevP, setPrevP] = useState(0);
 
   const [value, setValue] = useState('');
   const [handle, setHandle] = useState(false);
 
   //******************* */
+  const [cookies] = useCookies(['email']);
+  const email = cookies.email;
   const [selection, setSelection] = useState(null);
   const [showIcon, setShowIcon] = useState(false);
   const [iconPosition, setIconPosition] = useState({ x: 0, y: 0 });
@@ -71,11 +76,20 @@ const ReadingPage = () => {
     setShowModal(true);
     translate();
   };
-  //--------------------------------------------------
+  //------------------------------------------------
 
   const wordAdd = () => {
-    console.log(selection);
-  };
+  axios.post(`http://127.0.0.1:8000/api/words/${email}/${bookId}/${selection}`)
+    .then(response => {
+      // İstek başarılı olduğunda yapılacak işlemler
+      console.log(bookId);
+      console.log("Kelime eklendi:", response.data);
+    })
+    .catch(error => {
+      // Hata durumunda yapılacak işlemler
+      console.error("Kelime ekleme başarısız:", error);
+    });
+};
   const quoteAdd = () => {
     console.log(selection);
   };
@@ -117,24 +131,16 @@ const ReadingPage = () => {
         prop_obj.color !== 'null' ? prop_obj.color : 'black';
       document.querySelector('.text p').style.fontFamily = prop_obj.font;
       document.querySelector('.text p').style.fontSize = prop_obj.size + 'px';
-    }, 1000);
+    }, 150);
   }
   useEffect(() => {
-    loadData();
     changeProps();
+    loadData();
   }, []);
   const next =()=>{
-     bookdata.map((item)=>{
-      if(nextP +1 < item.content.split('$').length){
-        setNextP(nextP+1);
-      }
-      else{
-        setNextP(nextP);
-      }
-    })
+    setNextP(nextP+1);
   }
   const preivece =()=>{
-    if(nextP != 0)
     setNextP(nextP-1);
   }
   // ----------------------End change props of text--------------------------
@@ -215,22 +221,20 @@ const ReadingPage = () => {
         </Modal>
         
         {bookdata.map((item)=>{
-         const newData = item.content.split("$");
-         const dataNew = newData[nextP].split('#');
-         return(<p className="reading-page-dir" direc={item.langueg}>
-          
-           <span className='page-title'>{dataNew.length >1 ? dataNew[0]:""}</span>
-           {dataNew.length >1 ? dataNew[1]: dataNew[0]}
-            <span className='navigation-items'>{nextP+1}</span>
+        const newData = item.content.split("$");
+        
+        return(<p>
+            {newData[nextP]}
+            <span>{nextP+1}</span>
         </p>)
 })}
           
         <div className="next-preivece">
-          <button onClick={preivece} >
+          <button onClick={preivece}>
             <FaArrowLeft />
           </button>
           <button>
-            <FaArrowRight onClick={next}/>
+            <FaArrowRight onClick={next} />
           </button>
         </div>
       </section>
@@ -240,18 +244,14 @@ const ReadingPage = () => {
         </div>
 
         <div>
-            {bookdata.map((items)=>
-                <>
-                <div>      
-                    <p>Yazar: {items.author} </p>
-                    <p>Categori: {items.categori} </p>
-                    <p>Dil: {items.langueg} </p>
-                    <p>Sayfa Sayısı: {items.pageNumber} </p>
-                    <p>Yayın Tarihi: {items.time.split(' ')[0]} </p>
-                </div>
-                <img src={`data:image/jpeg;base64,${items.conten}`} alt="" />
-                </>
-            )}
+          <div>
+            <p>yazar: iyad al qinabi </p>
+            <p>bolum: din </p>
+            <p>dil: arpca </p>
+            <p>kac sayfa: 232 </p>
+            <p>yayin tarihi: 20/5/2014 </p>
+          </div>
+          <img src={book_img} alt="" />
         </div>
       </aside>
 
