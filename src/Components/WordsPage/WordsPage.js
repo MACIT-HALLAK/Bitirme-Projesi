@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; //rfce
+import React, { useEffect, useMemo, useState } from 'react'; //rfce
 import './WordsPage.css';
 import Title from '../Title/Title';
 import { FaRegTrashAlt } from 'react-icons/fa';
@@ -11,6 +11,7 @@ function WordsPage() {
   const [bookData, setBookData] = useState([]);
 
   const kitapidgetit = async () => {
+    console.log('first');
     const res = await axios.get(
       `https://librarygop.com/public/index.php/api/words/${cookies.email}`
     );
@@ -31,7 +32,7 @@ function WordsPage() {
       });
   };
 
-  useEffect(() => {
+  useMemo(() => {
     kitapidgetit();
   }, []);
   return (

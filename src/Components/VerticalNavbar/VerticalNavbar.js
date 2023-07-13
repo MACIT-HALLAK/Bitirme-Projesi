@@ -1,18 +1,19 @@
-import React from 'react'
+import React from 'react';
 import './VerticalNavbar.css';
-import {FaBook} from "react-icons/fa"
+import { FaBook } from 'react-icons/fa';
 
 const VerticalNavbar = (props) => {
   return (
-    <div className='vertical-navbar-layout'>
-      {props.class? props.class.map((item)=>
-        <button>{item}  <FaBook className='book-icon' /></button>
-
-      ):""}
-       
-        
+    <div className="vertical-navbar-layout">
+      {props.class
+        ? props.class.map((item, index) => (
+            <button key={index}>
+              {item} <FaBook className="book-icon" />
+            </button>
+          ))
+        : ''}
     </div>
-  )
-}
+  );
+};
 
-export default VerticalNavbar
+export default VerticalNavbar;
