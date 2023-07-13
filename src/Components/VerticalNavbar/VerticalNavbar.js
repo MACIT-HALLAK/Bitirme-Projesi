@@ -8,23 +8,60 @@ const VerticalNavbar = (props) => {
   const email = cookies.email;
 
   const handleClick = (item) => {
-    // item içinde bulunan verilere erişim sağlayabilirsiniz
-    const title =item;
-    console.log(title)
 
-    axios.get(`https://librarygop.com/public/index.php/api/addbook/${title}`)
+    const title = item;
+    console.log(title)
+    let kitabId;
+    axios.get(`http://127.0.0.1:8000/api/addbook/${title}`)
+    .then(response => {
+      kitabId = response.data
+      console.log(kitabId);
+
+    // İlk axios isteği başarılı olduğunda ikinci axios isteğini yapabiliriz
+    axios.get(`http://127.0.0.1:8000/api/words_get/${email}/${kitabId}`)
+        .then(response => {
+         // const kelimeler = response.data
+          console.log(response.data);
+      })
+      .catch(error => {
+        console.error("Kelime  başarısız::", error);
+      });
+  })
+  .catch(error => {
+    console.error("Kelime ekleme başarısız::", error);
+  });
+};
+
+
+
+
+
+
+
+
+
+    // item içinde bulunan verilere erişim sağlayabilirsiniz
+ /*   const title = item;
+    console.log(title)
+    let kitabId;
+    axios.get(`http://127.0.0.1:8000/api/addbook/${title}`)
     .then(response => {
       // İstek başarılı olduğunda yapılacak işlemler
-      console.log(response.data);
+      kitabId = response.data
+      console.log(kitabId);
     })
+        axios.get(`http://127.0.0.1:8000/api/words/${email}/${kitabId}`)
+        .then(response => {
+          // İstek başarılı olduğunda yapılacak işlemler
+          const kitabId = response.data
+          console.log(kitabId);
+        })
     .catch(error => {
       // Hata durumunda yapılacak işlemler
       console.error("Kelime ekleme başarısız:", error);
-    });
-
-    // Verileri başka bir işleme tabi tutabilir veya başka bir işlevi çağırabilirsiniz.
-    // ...
-  };
+    });*/
+    
+  
   
   return (
     <div className='vertical-navbar-layout'>
