@@ -1,6 +1,6 @@
 class AppUrl{
-    static BaseApi='http://127.0.0.1:8000/api';
+    static BaseApi='https://librarygop.com/public/index.php/api';
     
-    static AddWriter=this.BaseApi+'/AddWriter';
+    static Categories =this.BaseApi+'/Categorie';
 }
 export default AppUrl;

@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Title from './Title/Title';
 import Card from './Card/Card';
 import BookCategories from './BookCategories/BookCategories';
@@ -18,11 +18,20 @@ import writer_Img4 from '../Assets/images/si1.webp';
 import CardWriters from './CardWriters/CardWriters';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 // import Form from "./Writer/Writer";
 
 //----Ana sayfa burasi----
 function App() {
+  const [data,setData] = useState([]);
+  const loadData = async()=>{
+    const response = await axios.get("https://librarygop.com/public/index.php/api/getnewerbooks");
+    setData(response.data);
+  }
+  useEffect(()=>{
+     loadData();
+  },[])
   return (
     <div className="layout">
       <Navbar />
@@ -30,11 +39,18 @@ function App() {
       <section>
         <Title title="En Yeni Kitaplar" />
         <div className="parent">
-          <Card bookImage={book_img} writerImage={writer_Img} />
-          <Card bookImage={book_img1} writerImage={writer_Img1} />
-          <Card bookImage={book_img2} writerImage={writer_Img2} />
-          <Card bookImage={book_img3} writerImage={writer_Img3} />
-          <Card bookImage={book_img2} writerImage={writer_Img4} />
+          {data ? data.map((items) => (
+            
+              <Card
+                key={items.id}
+                cardNumber={items.id}
+                bookImage={`data:image/jpeg;base64,${items.conten_book}`}
+                writerImage={`data:image/jpeg;base64,${items.conten_author}`}
+                name={items.title}
+                WriterName={items.author}
+              />))
+              :<p>no data</p>}
+         
         </div>
       </section>
       <BookCategories />

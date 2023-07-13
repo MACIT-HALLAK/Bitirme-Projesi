@@ -34,10 +34,12 @@ root.render(
         <Route path="/Seviyeler/orta" element={<Seviyeler />} />
         <Route path="/Seviyeler/temel" element={<Seviyeler />} />
         <Route path="/Writer" element={<Writer />} />
+        <Route path="/Writer/:writerId" element={<Writer />} />
         <Route path="/AddBook" element={<AddBook />} />
         <Route path="/BookPage" element={<BookPage />} />
         <Route path="/YazarEkle" element={<AddWriter />} />
         <Route path="/ReadingPage" element={<ReadingPage />} />
+        <Route path="/ReadingPage/:bookId" element={<ReadingPage />} />
         <Route path="/Deneme" element={<Deneme />} />
         <Route path="/Categories" element={<Categories />} />
         <Route path="/settings" element={<SettingCom />} />

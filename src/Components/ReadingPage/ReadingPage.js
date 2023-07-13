@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navber';
 import book_img from '../../Assets/images/si1.webp';
 import './ReadingPage.css';
+import { useCookies } from 'react-cookie';
 import {
   FaArrowLeft,
   FaArrowRight,
@@ -12,15 +13,32 @@ import {
   FaRegEdit,
 } from 'react-icons/fa';
 import SettingCom from '../Ayarlar/SettingCom';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const ReadingPage = () => {
+
+  let {bookId} = useParams();
+  const [bookdata,setBookdata] = useState([]);
+  //veritabanindan kitabi cekmek
+  const loadData = async()=>{
+      const res = await axios.get(`https://librarygop.com/public/index.php/api/getbook/${bookId}`);
+      setBookdata(res.data);
+
+      
+;
+  }
+
+  const [nextP, setNextP] = useState(0);
+  const [prevP, setPrevP] = useState(0);
+
   const [value, setValue] = useState('');
   const [handle, setHandle] = useState(false);
 
   const pa = useRef();
   //******************* */
+  const [cookies] = useCookies(['email']);
+  const email = cookies.email;
   const [selection, setSelection] = useState(null);
   const [showIcon, setShowIcon] = useState(false);
   const [iconPosition, setIconPosition] = useState({ x: 0, y: 0 });
@@ -59,11 +77,21 @@ const ReadingPage = () => {
     setShowModal(true);
     translate();
   };
-  //--------------------------------------------------
+  //------------------------------------------------
 
   const wordAdd = () => {
-    console.log(selection);
-  };
+  axios.post(`https://librarygop.com/public/index.php/api/words/${email}/${bookId}/${selection}`)
+    .then(response => {
+      // İstek başarılı olduğunda yapılacak işlemler
+      console.log(bookId);
+      console.log("Kelime eklendi:", response.data);
+    })
+    .catch(error => {
+      // Hata durumunda yapılacak işlemler
+      console.error("Kelime ekleme başarısız:", error);
+    });
+};
+
   const quoteAdd = () => {
     console.log(selection);
   };
@@ -112,7 +140,22 @@ const ReadingPage = () => {
   }
   useEffect(() => {
     changeProps();
+    loadData();
   }, []);
+  const next =()=>{
+    bookdata.map((item)=>{
+      if(nextP +1 < item.content.split('$').length){
+        setNextP(nextP+1);
+      }
+      else{
+        setNextP(nextP);
+      }
+    })
+  }
+  const preivece =()=>{
+    if(nextP != 0)
+    setNextP(nextP-1);
+  }
   // ----------------------End change props of text--------------------------
 
   return (
@@ -153,7 +196,7 @@ const ReadingPage = () => {
             <div>
               <button onClick={wordAdd}> Kelime Ekle </button>
               <Link to="/WordsPage">
-                <FaRegEdit />
+                <FaRegEdit  />
               </Link>
             </div>
             <div>
@@ -188,40 +231,24 @@ const ReadingPage = () => {
             <p>{outPut}</p>
             <p>{selection}</p>
           </div>
-        </Modal>
-        <p ref={pa}>
-          I have found that it is best to deal with the meaning of the verb that
-          is salient in the text. If the meaning of the verb in focus is to
-          'reject', then I teach this meaning, without going into the other
-          possible meanings. I find this approach to be clearer and less
-          confusing for students. Richards states that "Knowing a word means
-          knowing its different meanings (polysemy)." This is certainly our aim
-          in teaching, but we must realise that such competence requires time.
-          It is only through reading, exposing learners to texts rich in
-          multi-word verbs, that learners will become lexically competent. "The
-          learner must be allowed I have found that it is best to deal with the
-          meaning of the verb that is salient in the text. If the meaning of the
-          verb in focus is to 'reject', then I teach this meaning, without going
-          into the other possible meanings. I find this approach to be clearer
-          and less confusing for students. Richards states that "Knowing a word
-          means knowing its different meanings (polysemy)." This is certainly
-          our aim in teaching, but we must realise that such competence requires
-          time. such competence requires time. such competence requires time.
-          such competence requires time. such competence requires time. It is
-          only through reading, exposing learners to texts rich in multi-word
-          verbs, that learners will become lexically competent. "The learner
-          must be allowed to be vague about meaning at first; precision will
-          come later". (Judd, quoted in Carter and McCarthy) to be vague about
-          meaning at first; precision will come later". (Judd, quoted in Carter
-          and McCarthy)
-          <span>5</span>
-        </p>
+        </Modal>    
+        {bookdata.map((item)=>{
+         const newData = item.content.split("$");
+         const dataNew = newData[nextP].split('#');
+         return(<p className="reading-page-dir" ref={pa} direc={item.langueg}>
+          
+           <span className='page-title'>{dataNew.length >1 ? dataNew[0]:""}</span>
+           {dataNew.length >1 ? dataNew[1]: dataNew[0]}
+            <span className='navigation-items'>{nextP+1}</span>
+        </p>)
+})}
+          
         <div className="next-preivece">
-          <button>
+          <button onClick={preivece}>
             <FaArrowLeft />
           </button>
           <button>
-            <FaArrowRight />
+            <FaArrowRight onClick={next} />
           </button>
         </div>
       </section>
@@ -229,17 +256,21 @@ const ReadingPage = () => {
         <div>
           <h2>kitabin bilgileri</h2>
         </div>
+      <div>
+        {bookdata.map((items)=>
+                <>
+                <div>      
+                    <p>Yazar: {items.author} </p>
+                    <p>Categori: {items.categori} </p>
+                    <p>Dil: {items.langueg} </p>
+                    <p>Sayfa Sayısı: {items.pageNumber} </p>
+                    <p>Yayın Tarihi: {items.time.split(' ')[0]} </p>
+                </div>
+                <img src={`data:image/jpeg;base64,${items.conten}`} alt="" />
+                </>
+            )}
 
-        <div>
-          <div>
-            <p>yazar: iyad al qinabi </p>
-            <p>bolum: din </p>
-            <p>dil: arpca </p>
-            <p>kac sayfa: 232 </p>
-            <p>yayin tarihi: 20/5/2014 </p>
-          </div>
-          <img src={book_img} alt="" />
-        </div>
+</div>
       </aside>
 
       <FaCog
