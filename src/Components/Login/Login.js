@@ -29,26 +29,10 @@ const Login = () => {
           )
           .then((res) => {
             console.log(res.data);
-            if (String(res.status) === '200') {
-              toast.success(res.data.message, {
-                position: 'top-right',
-                autoClose: 1500, // مدة ظهور الرسالة (بالمللي ثانية)
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                toastId: 'success_loginToast', // معرّف فريد للتأكد من عدم تكرار ظهور الرسالة
-              });
-              setTimeout(() => {
-                setCookies('email', email, { path: '/' });
-                setCookies('role', res.data[0][0].role, { path: '/' });
-                window.location.pathname = '/';
-              }, 1500);
-            } else {
+            if (res.data.status !== 200) {
               toast.error(res.data.message, {
                 position: 'top-right',
-                autoClose: 1500,
+                autoClose: 750,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -57,6 +41,15 @@ const Login = () => {
                 // theme: 'colored',
                 toastId: 'error_loginToast', // معرّف فريد للتأكد من عدم تكرار ظهور الرسالة
               });
+            }
+            return res;
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              console.log('first');
+              setCookies('email', email, { path: '/' });
+              setCookies('role', res.data[0][0]?.role, { path: '/' });
+              window.location.pathname = '/';
             }
           });
       }

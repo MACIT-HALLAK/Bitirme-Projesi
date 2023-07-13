@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react"; //rfce
-import "./WordsPage.css";
-import Title from "../Title/Title";
-import { FaRegTrashAlt } from "react-icons/fa";
-import VerticalNavbar from "../VerticalNavbar/VerticalNavbar";
-import axios from "axios";
-import { useCookies } from "react-cookie";
+import React, { useEffect, useState } from 'react'; //rfce
+import './WordsPage.css';
+import Title from '../Title/Title';
+import { FaRegTrashAlt } from 'react-icons/fa';
+import VerticalNavbar from '../VerticalNavbar/VerticalNavbar';
+import axios from 'axios';
+import { useCookies } from 'react-cookie';
 
 function WordsPage() {
-  const [cookies] = useCookies(["email"]);
+  const [cookies] = useCookies(['email']);
   const [bookData, setBookData] = useState([]);
 
   const kitapidgetit = async () => {
@@ -18,7 +18,7 @@ function WordsPage() {
 
     const bookIds = res.data;
     await axios
-      .post("https://librarygop.com/public/index.php/api/getbooksname", {
+      .post('https://librarygop.com/public/index.php/api/getbooksname', {
         bookids: bookIds,
       })
       .then((response) => {
@@ -31,7 +31,6 @@ function WordsPage() {
       });
   };
 
- 
   useEffect(() => {
     kitapidgetit();
   }, []);
