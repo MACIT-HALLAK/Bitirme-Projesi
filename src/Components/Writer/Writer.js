@@ -1,42 +1,90 @@
 import Card from '../Card/Card';
 import Navbar from '../Navbar/Navber';
 import Footer from '../Footer/Footer';
-import WriterImage from '../../Assets/images/iyad.webp'
-import "./Writer.css"
+import './Writer.css';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 function Form() {
-    return (
-       <div className='writer-container'>
-           <Navbar />
-           <div className='writer-card-wraper'>
-            <div>
-               <img src={WriterImage} alt="tazarin resmi" />
-            </div>  
-            <div> 
-               <h3>iyad quneibi</h3>
-               <p>Kütüphanede toplam (222.990) indirilmiş ve okunmuş (14) kitabı bulunmaktadır.
-                    Kardeşin, İyad Abdel Hafız Quneibi
-                    Profesör Doktor Eczacılıkta "Profesör".
-                    Herhangi bir partiye, akıma veya partiye bağlı değilim ve sadece bölümlerim ve yazılarım beni temsil ediyor.
-                    Kendimi Müslüman olduğumdan daha fazla tanıtmayı sevmiyorum ve hepsiyle hayırda işbirliği yapıyorum.
-                    ABD, Houston Üniversitesi'nden farmakoloji alanında doktora derecem var ve bilimsel araştırmalarımı dünyanın en büyük tıbbi araştırma merkezlerinden biri olan Texas Medical Center'da yaptım.
-                    Çeşitli terapötik alanlarda uluslararası dergilerde yayınlanmış, yüzlerce kez atıfta bulunulan onlarca bilimsel makalem var.
-                </p>
-            </div>
-           </div>
-           <h2>yazarin butun kitablari 325 kitab</h2>
-           <div className='writer-book-wraper'>
-               <Card />
-               <Card />
-               <Card />
-               <Card />
-               <Card />
-               <Card />
-           </div>
-           <Footer />
+  const [data, setData] = useState([]);
+  const [databook, setDataBook] = useState([]);
+  const [loading, setLoading] = useState(true);
+  let {writerId} = useParams();
 
-       </div>
-
-
+  useEffect(() => {
+    loadImages();
+  }, []);
+  const loadImages = async () => {
+    const re = await axios.get(
+      `https://librarygop.com/public/index.php/api/getwriter/${writerId}`
     );
+    const res = await axios.get(
+      `https://librarygop.com/public/index.php/api/getbooksbyuserid/${writerId}`
+    );
+    setData(re.data);
+    setDataBook(res.data);
+    setLoading(false);
+    
+  };
+
+  return (
+    <>
+      <Navbar />
+      <div className="writer-container">
+        <div className="writer-card-wraper">
+          {loading ? (
+            <div className="loading">
+              <p>Lütfen Bekleyin</p>
+              <div className="loader"></div>
+            </div>
+          ) : (
+            data.map((item) => (
+              <>
+                <div>
+                  <img
+                    src={`data:image/jpeg;base64,${item.content}`}
+                    alt="tazarin resmi"
+                  />
+                </div>
+                <div>
+                  <h3>
+                    <strong>Yazar: </strong>
+                    {item.author}
+                  </h3>
+                  <p>
+                    <strong>Yazar Hakkında:</strong> {item.desc}
+                  </p>
+                  <p>
+                    {/* <strong>Kitaplar Sayısı:</strong> {item.bookNumber} */}
+                  </p>
+                </div>
+              </>
+            ))
+          )}
+        </div>
+        {data.map((item)=>(
+          <h2>yazarin butun kitablari {item.bookNumber} kitabı vardır.</h2>
+
+        ))}
+        <div className='writer-book-wraper'>
+          {databook.map((items)=>(
+             <Card
+             key={items.id}
+             cardNumber={items.id}
+             bookImage={`data:image/jpeg;base64,${items.conten_book}`}
+             writerImage={`data:image/jpeg;base64,${items.conten_author}`}
+             name={items.title}
+             WriterName={items.author}
+           />
+
+          ))}
+        </div>
+        <div className="writer-footer">
+          <Footer />
+        </div>
+      </div>
+    </>
+  );
 }
 export default Form;

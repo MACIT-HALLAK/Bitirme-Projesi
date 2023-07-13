@@ -1,16 +1,18 @@
 import React from "react";
 import "./Card.css";
-import book_img from "../../Assets/images/si1.webp";
 import writer_img from "../../Assets/images/iyad.webp";
+import { Link } from 'react-router-dom';
 
 //-----card component burasi-----
-const Card = () => {
+const Card = (props) => {
   return (
     <div className="card-container">
-      <img className="book-img" src={book_img} alt="" />
-      <img className="writer-img" src={writer_img} alt="" />
-      <h4>Soyluların biyografisi</h4>
-      <p>Muhammed Ali El-Sabouni</p>
+      <Link to={`/ReadingPage/${props.cardNumber}`} >
+         <img className="book-img" src={props.bookImage} alt="" />
+      </Link>
+      <img className="writer-img" src={props.writerImage} alt="" />
+      <h4>{props.name}</h4>
+      <p>{props.WriterName}</p>
     </div>
   );
 };

@@ -10,10 +10,11 @@ const Navbar = () => {
   const [value, setValue] = useState(() => '');
   const [handle, setHandle] = useState(() => false);
   const [btn_state, setBtnState] = useState(() => false);
-  const [cookies, setCookies, removeCookies] = useCookies(['email']);
+  const [cookies, setCookies, removeCookies] = useCookies(['email', 'role']);
 
   function logout() {
     removeCookies('email', { path: '/' });
+    removeCookies('role', { path: '/' });
     window.location.pathname = '/';
   }
 
@@ -25,15 +26,11 @@ const Navbar = () => {
     setHandle((prev) => !prev);
   }
   let toggle_class_check = btn_state ? 'hide' : '';
-  let nav_items = [
-    'Anasayfa',
-    'Yazarlar',
-    'Seviyeler',
-    // "Temel düzey",
-    // "Orta düzey",
-    // "İleri düzey",
-  ];
-  // let drop_items = ["Temel düzey", "Orta düzey", "İleri düzey"];
+  let nav_items = ['Anasayfa', 'Yazarlar', 'Seviyeler'];
+  let admin_items = ['Add Book','YazarEkle'];
+
+  // if user not admin filter array
+  if (cookies.role === '1') nav_items = nav_items.concat(admin_items);
   return (
     <>
       <nav>
@@ -41,42 +38,17 @@ const Navbar = () => {
         <ul className={`main-nav ${toggle_class_check}`}>
           {/* call main elments in navbar */}
           {nav_items.map((element, index) => {
-            return index < 3 ? (
-              element === 'Seviyeler' ? (
-                <NavEelements
-                  element={element}
-                  key={index}
-                  clicking={() => trigger()}
-                  handle={handle}
-                />
-              ) : (
-                <NavEelements element={element} key={index} />
-              )
+            return element === 'Seviyeler' ? (
+              <NavEelements
+                element={element}
+                key={index}
+                clicking={() => trigger()}
+                handle={handle}
+              />
             ) : (
-              ''
+              <NavEelements element={element} key={index} />
             );
           })}
-          {/* {handle && (
-            <div className="drop-items">
-              {nav_items.map((element, index) => {
-                return index >= 3 ? (
-                  <NavEelements element={element} key={index} />
-                ) : (
-                  ""
-                );
-              })}
-            </div>
-          )} */}
-          {/* <div className={`drop-items ${handle && "active"}`} drop-items="">
-            {nav_items.map((element, index) => {
-              return index >= 3 ? (
-                <NavEelements element={element} key={index} />
-              ) : (
-                ""
-              );
-            })}
-          </div> */}
-
           <li>
             <ul>
               <li className="alt-box">
@@ -112,7 +84,7 @@ const Navbar = () => {
                       </Link>
                     </>
                   ) : (
-                    <div onClick={logout} className="logout">
+                    <div onClick={logout} className="btn-auth">
                       logout
                     </div>
                   )}
