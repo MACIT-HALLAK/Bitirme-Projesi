@@ -3,9 +3,13 @@ import './AddBook.css';
 import CustomFileInput from './CustomFileInput';
 import axios from 'axios';
 import BackTo from '../BackTo/BackTo';
+import { useCookies } from 'react-cookie';
+import { useMemo } from 'react';
+
 const AddBook = () => {
   const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
+  const [authorId, setAuthorId] = useState('');
+  const [authorName, setAuthorName] = useState('');
   const [desc, setdesc] = useState('');
   const [coverImageBook, setCoverImageBook] = useState(null);
   const [coverImageAuthor, setCoverImageAuthor] = useState(null);
@@ -18,9 +22,27 @@ const AddBook = () => {
   const [lang, setLang] = useState('');
   const [pageCount, setPageCount] = useState();
   const [content, setContent] = useState('');
+  // const [cookies, setCookies, removeCookies] = useCookies(['email', 'role']);
+  const [authors, setAuthors] = useState();
+
+  const get_authors = async () => {
+    await axios
+      .get('https://librarygop.com/public/index.php/api/getAuthors')
+      // .get('http://127.0.0.1:8000/api/getAuthors')
+      .then((res) => {
+        console.log('data getirildi' + res.data[0]['id']);
+        setAuthors(res.data);
+      })
+      .catch(() => {
+        console.log('hata var demeki');
+      });
+  };
+
+  useMemo(() => get_authors(), []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     // console.log(coverImage);
     try {
       setUploading(true);
@@ -28,7 +50,8 @@ const AddBook = () => {
       // Make POST request using Axios
       const formData = new FormData();
       formData.append('title', title);
-      formData.append('author', author);
+      formData.append('author', authorName);
+      formData.append('authorId', authorId);
       formData.append('pageNumber', pageCount);
       formData.append('langueg', lang);
       formData.append('categori', category);
@@ -43,15 +66,15 @@ const AddBook = () => {
 
       // // Make POST request to upload image using Axios
       const response = await axios.post(
+        // 'http://127.0.0.1:8000/api/addbook',
         'https://librarygop.com/public/index.php/api/addbook',
         formData
       );
 
       // // Reset form after successful upload
-      setUploading(false);
-      setUploaded(true);
       setTitle('');
-      setAuthor('');
+      setAuthorName('');
+      setAuthorId('');
       setdesc('');
       setCoverImageAuthor(null);
       setCoverImageBook(null);
@@ -60,6 +83,8 @@ const AddBook = () => {
       setLang('');
       setPageCount(0);
       setContent('');
+      setUploading(false);
+      setUploaded(true);
     } catch (error) {
       console.error('Error uploading book:', error);
       setUploading(false);
@@ -111,15 +136,31 @@ const AddBook = () => {
                   required
                 />
               </div>
-              <div className="form-group  column-6">
-                <label htmlFor="author">Author:</label>
-                <input
-                  type="text"
-                  id="author"
-                  value={author}
-                  onChange={(e) => setAuthor(e.target.value)}
+              <div className="form-group column-6">
+                <label htmlFor="author-select">Author:</label>
+                <select
+                  id="author-select"
+                  value={authorId}
+                  onChange={(e) => [
+                    setAuthorId(e.target.value),
+                    setAuthorName(
+                      e.target.options[e.target.selectedIndex].text
+                    ),
+                  ]}
                   required
-                />
+                  className="custom-select"
+                >
+                  <option value="">Yazar Seç</option>
+
+                  {authors?.map((item) => {
+                    return (
+                      <>
+                        <option value={item.id}>{item.author}</option>
+                      </>
+                    );
+                  })}
+                  {/* قم بإضافة المزيد من الخيارات حسب الاحتياج */}
+                </select>
               </div>
             </div>
 

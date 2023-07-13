@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Modal from 'react-modal';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navber';
@@ -35,6 +35,7 @@ const ReadingPage = () => {
   const [value, setValue] = useState('');
   const [handle, setHandle] = useState(false);
 
+  const pa = useRef();
   //******************* */
   const [cookies] = useCookies(['email']);
   const email = cookies.email;
@@ -127,12 +128,15 @@ const ReadingPage = () => {
         element_arr.forEach((set_active) => {
           set_active.classList.add('active');
         });
+      } else {
+        pa.current.style.color =
+          prop_obj?.color !== 'null' ? prop_obj?.color : 'black';
+        pa.current.style.fontFamily =
+          prop_obj?.font !== 'null' ? prop_obj?.font : 'Sans-Serif';
+        pa.current.style.fontSize =
+          prop_obj?.size !== 'null' ? prop_obj?.size : '16px';
       }
-      document.querySelector('.text p').style.color =
-        prop_obj.color !== 'null' ? prop_obj.color : 'black';
-      document.querySelector('.text p').style.fontFamily = prop_obj.font;
-      document.querySelector('.text p').style.fontSize = prop_obj.size + 'px';
-    }, 1000);
+    }, 150);
   }
   useEffect(() => {
     changeProps();
@@ -227,13 +231,11 @@ const ReadingPage = () => {
             <p>{outPut}</p>
             <p>{selection}</p>
           </div>
-        </Modal>
-        
-       
+        </Modal>    
         {bookdata.map((item)=>{
          const newData = item.content.split("$");
          const dataNew = newData[nextP].split('#');
-         return(<p className="reading-page-dir" direc={item.langueg}>
+         return(<p className="reading-page-dir" ref={pa} direc={item.langueg}>
           
            <span className='page-title'>{dataNew.length >1 ? dataNew[0]:""}</span>
            {dataNew.length >1 ? dataNew[1]: dataNew[0]}
@@ -278,7 +280,7 @@ const ReadingPage = () => {
         }}
         className="setting-open"
       />
-      
+
       <Footer />
     </div>
   );

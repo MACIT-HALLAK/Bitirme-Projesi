@@ -28,7 +28,6 @@ const Login = () => {
             `https://librarygop.com/public/index.php/api/login/${email}/${password}`
           )
           .then((res) => {
-            console.log(res.data);
             if (res.data.status !== 200) {
               toast.error(res.data.message, {
                 position: 'top-right',
@@ -54,7 +53,6 @@ const Login = () => {
           });
       }
     } catch (err) {
-      console.log('je;;;;;;lkljhnj');
       console.log(err);
     }
   }
