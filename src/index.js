@@ -20,6 +20,7 @@ import QuotePage from './Components/QuotePage/QuotePage';
 import AddBook from './Components/AddBooks/AddBook';
 import AddWriter from './Components/AddWriter/AddWriter';
 import EmailConfirm from './Components/EmailConfirm/EmailConfirm';
+import MostRepeatedBooks from './Components/MostRepeatedBooks/MostRepeatedBooks';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -37,6 +38,7 @@ root.render(
         <Route path="/Writer/:writerId" element={<Writer />} />
         <Route path="/AddBook" element={<AddBook />} />
         <Route path="/BookPage" element={<BookPage />} />
+        <Route path="/MostRepeatedBooks" element={<MostRepeatedBooks />} />
         <Route path="/YazarEkle" element={<AddWriter />} />
         <Route path="/ReadingPage" element={<ReadingPage />} />
         <Route path="/ReadingPage/:bookId" element={<ReadingPage />} />
