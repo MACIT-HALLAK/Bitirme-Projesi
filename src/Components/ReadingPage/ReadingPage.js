@@ -128,6 +128,9 @@ const ReadingPage = () => {
         element_arr.forEach((set_active) => {
           set_active.classList.add('active');
         });
+        pa.current.style.color = prop_obj?.color;
+        pa.current.style.fontFamily = prop_obj?.font;
+        pa.current.style.fontSize = prop_obj?.size;
       } else {
         pa.current.style.color =
           prop_obj?.color !== 'null' ? prop_obj?.color : 'black';
@@ -136,7 +139,7 @@ const ReadingPage = () => {
         pa.current.style.fontSize =
           prop_obj?.size !== 'null' ? prop_obj?.size : '16px';
       }
-    }, 150);
+    }, 500);
   }
   useEffect(() => {
     changeProps();

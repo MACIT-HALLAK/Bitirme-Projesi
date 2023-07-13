@@ -28,7 +28,7 @@ const Login = () => {
             `https://librarygop.com/public/index.php/api/login/${email}/${password}`
           )
           .then((res) => {
-            if (res.data.status !== 200) {
+            if (res.data.status === 404) {
               toast.error(res.data.message, {
                 position: 'top-right',
                 autoClose: 750,

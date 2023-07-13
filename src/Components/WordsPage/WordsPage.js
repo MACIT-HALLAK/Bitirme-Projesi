@@ -11,13 +11,13 @@ function WordsPage() {
   const [bookData, setBookData] = useState([]);
 
   const kitapidgetit = async () => {
-    console.log('first');
     const res = await axios.get(
       `https://librarygop.com/public/index.php/api/words/${cookies.email}`
     );
     // İstek başarılı olduğunda yapılacak işlemler
 
     const bookIds = res.data;
+    console.log(bookIds);
     await axios
       .post('https://librarygop.com/public/index.php/api/getbooksname', {
         bookids: bookIds,

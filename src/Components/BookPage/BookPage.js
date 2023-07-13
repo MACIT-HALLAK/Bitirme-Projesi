@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import './BookPage.css';
 import Navbar from '../Navbar/Navber';
 import Card from '../Card/Card';
@@ -12,9 +12,6 @@ const BookPage = () => {
   const [minCardCount, setMinCardCount] = useState(10);
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    loadImages();
-  }, []);
   const loadImages = async () => {
     const re = await axios.get(
       'https://librarygop.com/public/index.php/api/getallbooks'
@@ -23,6 +20,9 @@ const BookPage = () => {
     console.log(re.data);
     setLoading(false);
   };
+  useEffect(() => {
+    loadImages();
+  }, []);
 
   //   const [cardCount, setCardCount] = useState(10);
   //   const [minCardCount, setMinCardCount] = useState(10);
