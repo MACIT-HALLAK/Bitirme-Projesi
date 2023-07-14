@@ -4,12 +4,12 @@ import Navbar from '../Navbar/Navber';
 import Card from '../Card/Card';
 import Footer from '../Footer/Footer';
 import axios from 'axios';
+import Title from '../Title/Title';
 
 const MostRepeatedBooks = () => {
   const [loading, setLoading] = useState(true);
 
-  const [cardCount, setCardCount] = useState(10);
-  const [m, setM] = useState([]);
+ 
   const [data, setData] = useState([]);
   const [dataCard, setDataCard] = useState([]);
   
@@ -21,45 +21,34 @@ const MostRepeatedBooks = () => {
         'https://librarygop.com/public/index.php/api/getallbooks'
         );
     setData(re.data);
-    const val = re.data.map((item) => (
-        item.id
-        ));
-    console.log(val);
     setLoading(false);
    
     const res = await axios.get(
         'https://librarygop.com/public/index.php/api/getmostrepeatedbook '       );
         setDataCard(res.data);
-        const val1 = res.data.map((item) => (
-            item.bookId
-            ));
-            console.log(val1);
-    console.log(checkValues(val,val1));
-    setM (checkValues(data,dataCard));
+        
+            
     
+  };  
+  const contentStyle = {
+    position: 'absolute',
+    backgroundColor: '#1c8b78',
+    width: '50px',
+    height: '50px',
+    top: '-13px',
+    left: '-15px',
+    borderRadius: '25px',
+    color: 'white',
+    lineHeight: '50px',
+    textAlign: 'center',
+    zIndex: '5',
   };
-
-  //   const [cardCount, setCardCount] = useState(10);
-  //   const [minCardCount, setMinCardCount] = useState(10);
-
-  //   const Card_Adedi_Artırmak = () => {
-  //     setCardCount(cardCount + 10);
-  //   };
-
-  const checkValues = (arr1, arr2) => {
-    const result = arr1.map((value) => ({
-      value,
-      exists: arr2.includes(value),
-    }));
-  
-    return result;
-  };
-
   return (
-    <>
+    <div className='MRBPage-container'>
       <div className="MRBPage-Header">
         <Navbar />
       </div>
+      <Title title="En Çok Okunan Kitablar" />
       <div className="MRBPage-Body">
         {loading ? (
           <div className="loading">
@@ -67,9 +56,13 @@ const MostRepeatedBooks = () => {
             <div className="loader"></div>
           </div>
         ) : (
-          data.map((items) => (
-            
-            <>
+          dataCard.map((item) => (
+            data.map((items)=>{
+              if(items.id == item.bookId){
+
+              return(
+                 <div className='MRB-cardRN' >
+                  <div style={contentStyle}>{item.count} kere</div>
               <Card
                 key={items.id}
                 cardNumber={items.id}
@@ -78,14 +71,11 @@ const MostRepeatedBooks = () => {
                 name={items.title}
                 WriterName={items.author}
               />
-              {/* author
-            <Card
-              key={items.id}
-              bookImage={`data:image/jpeg;base64,${items.conten_author}`}
-              name={items.title}
-              WriterName={items.author}
-            /> */}
-            </>
+            </div>
+              )
+          }
+        })
+           
           ))
         )}
       </div>
@@ -95,7 +85,7 @@ const MostRepeatedBooks = () => {
       <div className="MRBPage-Footer">
         <Footer />
       </div>
-    </>
+    </div>
   );
 };
 

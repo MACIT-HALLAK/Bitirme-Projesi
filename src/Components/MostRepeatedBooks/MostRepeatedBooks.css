@@ -1,10 +1,13 @@
-.book-page-container {
+.MRBPage-container {
     background-color: var(--section-background);
+    margin-top: -5px;
   }
   .MRBPage-Header {
-    margin: 2vw 6vw 2vw 6vw;
+    margin: 0vw 6vw 2vw 6vw;
+    padding-top: 5px;
   }
   .MRBPage-Body {
+    min-height: 400px;
     display: flex;
     flex-flow: row nowrap !important;
     gap: 1.125rem;
@@ -14,6 +17,12 @@
     animation-duration: 0.5s;
     animation-delay: 1s;
     animation-timing-function: ease-in-out;
+  }
+  .title{
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
   }
   @keyframes fade {
     0% {
@@ -65,6 +74,22 @@
     border-radius: 19px;
     animation: slideLeft5 1.5s ease-in-out forwards;
   }
+.MRB-cardRN{
+  position: relative;
+}
+/* .MRB-cardRN::after{
+  content: "5 kere";
+  position:absolute;
+  background-color: teal;
+  width: 50px;
+  height: 50px;
+  top: -13px;
+  left: -15px;
+  border-radius: 25px;
+  color: white;
+  line-height: 50px;
+  text-align: center;
+} */
   @keyframes slideLeft4 {
     0% {
       transform: translateX(400%); /* başlangıç konumu */
