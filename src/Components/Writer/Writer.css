@@ -65,7 +65,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content:space-evenly;
+  gap: 1rem;
 }
 .writer-container .writer-footer {
   grid-area: fo;

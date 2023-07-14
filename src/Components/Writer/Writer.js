@@ -10,7 +10,7 @@ function Form() {
   const [data, setData] = useState([]);
   const [databook, setDataBook] = useState([]);
   const [loading, setLoading] = useState(true);
-  let {writerId} = useParams();
+  let { writerId } = useParams();
 
   useEffect(() => {
     loadImages();
@@ -25,7 +25,6 @@ function Form() {
     setData(re.data);
     setDataBook(res.data);
     setLoading(false);
-    
   };
 
   return (
@@ -63,21 +62,19 @@ function Form() {
             ))
           )}
         </div>
-        {data.map((item)=>(
+        {data.map((item) => (
           <h2>yazarin butun kitablari {item.bookNumber} kitabı vardır.</h2>
-
         ))}
-        <div className='writer-book-wraper'>
-          {databook.map((items)=>(
-             <Card
-             key={items.id}
-             cardNumber={items.id}
-             bookImage={`data:image/jpeg;base64,${items.conten_book}`}
-             writerImage={`data:image/jpeg;base64,${items.conten_author}`}
-             name={items.title}
-             WriterName={items.author}
-           />
-
+        <div className="writer-book-wraper">
+          {databook.map((items) => (
+            <Card
+              key={items.id}
+              cardNumber={items.id}
+              bookImage={`data:image/jpeg;base64,${items.conten_book}`}
+              writerImage={`data:image/jpeg;base64,${items.conten_author}`}
+              name={items.title}
+              WriterName={items.author}
+            />
           ))}
         </div>
         <div className="writer-footer">

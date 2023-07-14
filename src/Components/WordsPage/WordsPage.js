@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react'; //rfce
+import React, { useEffect, useMemo, useState } from 'react'; //rfce
 import './WordsPage.css';
 import Title from '../Title/Title';
 import { FaRegTrashAlt } from 'react-icons/fa';
@@ -25,6 +25,7 @@ function WordsPage() {
     // İstek başarılı olduğunda yapılacak işlemler
 
     const bookIds = res.data;
+    console.log(bookIds);
     await axios
       .post('https://librarygop.com/public/index.php/api/getbooksname', {
         bookids: bookIds,
@@ -39,7 +40,7 @@ function WordsPage() {
       });
   };
 
-  useEffect(() => {
+  useMemo(() => {
     kitapidgetit();
   }, []);
   return (

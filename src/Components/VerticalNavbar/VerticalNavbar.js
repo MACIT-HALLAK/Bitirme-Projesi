@@ -65,18 +65,15 @@ const VerticalNavbar = (props) => {
     });*/
 
   return (
-    <>
-      <div className="vertical-navbar-layout">
-        {props.class
-          ? props.class.map((item) => (
-              <button onClick={() => handleClick(item)}>
-                {item}
-                <FaBook className="book-icon" />
-              </button>
-            ))
-          : ''}
-      </div>
-    </>
+    <div className="vertical-navbar-layout">
+      {props.class
+        ? props.class.map((item, index) => (
+            <button key={index}>
+              {item} <FaBook className="book-icon" />
+            </button>
+          ))
+        : ''}
+    </div>
   );
 };
 
