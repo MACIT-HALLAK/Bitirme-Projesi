@@ -28,7 +28,7 @@ export default function Content() {
        <img className="content-logo" src={lib} />
         <div className="footer-row">
           {/* <a className="btn btn-first">En Çok Okunan</a> */}
-          <Link to='/ReadingPage' className="btn btn-second">En Çok Okunan</Link>
+          <Link to='/MostRepeatedBooks' className="btn btn-second">En Çok Okunan</Link>
           <Link to='/BookPage' className="btn btn-second">Kitablar</Link>
           <Link to='/Categories' className="btn btn-second">Bölümler</Link>
           {/* <a className="btn btn-second">Kitablar</a> */}
