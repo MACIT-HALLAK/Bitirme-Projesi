@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'; //rfce
+import React, { useEffect, useState, useMemo } from 'react'; //rfce
 import './WordsPage.css';
 import Title from '../Title/Title';
 import { FaRegTrashAlt } from 'react-icons/fa';
@@ -40,7 +40,7 @@ function WordsPage() {
       });
   };
 
-  useMemo(() => {
+  useEffect(() => {
     kitapidgetit();
   }, []);
   return (
