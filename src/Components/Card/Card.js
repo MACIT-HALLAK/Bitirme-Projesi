@@ -11,7 +11,7 @@ const Card = (props) => {
          <img className="book-img" src={props.bookImage} alt="" />
       </Link>
       <img className="writer-img" src={props.writerImage} alt="" />
-      <h4>{props.cardNumber}</h4>
+      <h4>{props.name}</h4>
       <p>{props.WriterName}</p>
     </div>
   );

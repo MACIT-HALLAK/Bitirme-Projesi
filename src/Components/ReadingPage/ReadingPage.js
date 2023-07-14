@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Modal from 'react-modal';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navber';
-import book_img from '../../Assets/images/si1.webp';
 import './ReadingPage.css';
+import { useCookies } from 'react-cookie';
 import {
   FaArrowLeft,
   FaArrowRight,
@@ -16,17 +16,15 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const ReadingPage = () => {
-
-  let {bookId} = useParams();
-  const [bookdata,setBookdata] = useState([]);
+  let { bookId } = useParams();
+  const [bookdata, setBookdata] = useState([]);
   //veritabanindan kitabi cekmek
-  const loadData = async()=>{
-      const res = await axios.get(`https://librarygop.com/public/index.php/api/getbook/${bookId}`);
-      setBookdata(res.data);
-
-      
-;
-  }
+  const loadData = async () => {
+    const res = await axios.get(
+      `https://librarygop.com/public/index.php/api/getbook/${bookId}`
+    );
+    setBookdata(res.data);
+  };
 
   const [nextP, setNextP] = useState(0);
   const [prevP, setPrevP] = useState(0);
@@ -34,7 +32,10 @@ const ReadingPage = () => {
   const [value, setValue] = useState('');
   const [handle, setHandle] = useState(false);
 
+  const pa = useRef();
   //******************* */
+  const [cookies] = useCookies(['email']);
+  const email = cookies.email;
   const [selection, setSelection] = useState(null);
   const [showIcon, setShowIcon] = useState(false);
   const [iconPosition, setIconPosition] = useState({ x: 0, y: 0 });
@@ -73,11 +74,24 @@ const ReadingPage = () => {
     setShowModal(true);
     translate();
   };
-  //--------------------------------------------------
+  //------------------------------------------------
 
   const wordAdd = () => {
-    console.log(selection);
+    axios
+      .post(
+        `https://librarygop.com/public/index.php/api/words/${email}/${bookId}/${selection}`
+      )
+      .then((response) => {
+        // İstek başarılı olduğunda yapılacak işlemler
+        console.log(bookId);
+        console.log('Kelime eklendi:', response.data);
+      })
+      .catch((error) => {
+        // Hata durumunda yapılacak işlemler
+        console.error('Kelime ekleme başarısız:', error);
+      });
   };
+
   const quoteAdd = () => {
     console.log(selection);
   };
@@ -114,23 +128,35 @@ const ReadingPage = () => {
         element_arr.forEach((set_active) => {
           set_active.classList.add('active');
         });
+        pa.current.style.color = prop_obj?.color;
+        pa.current.style.fontFamily = prop_obj?.font;
+        pa.current.style.fontSize = prop_obj?.size;
+      } else {
+        pa.current.style.color =
+          prop_obj?.color !== 'null' ? prop_obj?.color : 'black';
+        pa.current.style.fontFamily =
+          prop_obj?.font !== 'null' ? prop_obj?.font : 'Sans-Serif';
+        pa.current.style.fontSize =
+          prop_obj?.size !== 'null' ? prop_obj?.size : '16px';
       }
-      document.querySelector('.text p').style.color =
-        prop_obj.color !== 'null' ? prop_obj.color : 'black';
-      document.querySelector('.text p').style.fontFamily = prop_obj.font;
-      document.querySelector('.text p').style.fontSize = prop_obj.size + 'px';
-    }, 150);
+    }, 500);
   }
   useEffect(() => {
     changeProps();
     loadData();
   }, []);
-  const next =()=>{
-    setNextP(nextP+1);
-  }
-  const preivece =()=>{
-    setNextP(nextP-1);
-  }
+  const next = () => {
+    bookdata.map((item) => {
+      if (nextP + 1 < item.content.split('$').length) {
+        setNextP(nextP + 1);
+      } else {
+        setNextP(nextP);
+      }
+    });
+  };
+  const preivece = () => {
+    if (nextP != 0) setNextP(nextP - 1);
+  };
   // ----------------------End change props of text--------------------------
 
   return (
@@ -207,16 +233,20 @@ const ReadingPage = () => {
             <p>{selection}</p>
           </div>
         </Modal>
-        
-        {bookdata.map((item)=>{
-         const newData = item.content.split("$");
-         
-         return(<p>
-           {newData[nextP]}
-            <span>{nextP+1}</span>
-        </p>)
-})}
-          
+        {bookdata.map((item) => {
+          const newData = item.content.split('$');
+          const dataNew = newData[nextP].split('#');
+          return (
+            <p className="reading-page-dir" ref={pa} direc={item.langueg}>
+              <span className="page-title">
+                {dataNew.length > 1 ? dataNew[0] : ''}
+              </span>
+              {dataNew.length > 1 ? dataNew[1] : dataNew[0]}
+              <span className="navigation-items">{nextP + 1}</span>
+            </p>
+          );
+        })}
+
         <div className="next-preivece">
           <button onClick={preivece}>
             <FaArrowLeft />
@@ -230,16 +260,19 @@ const ReadingPage = () => {
         <div>
           <h2>kitabin bilgileri</h2>
         </div>
-
         <div>
-          <div>
-            <p>yazar: iyad al qinabi </p>
-            <p>bolum: din </p>
-            <p>dil: arpca </p>
-            <p>kac sayfa: 232 </p>
-            <p>yayin tarihi: 20/5/2014 </p>
-          </div>
-          <img src={book_img} alt="" />
+          {bookdata.map((items) => (
+            <>
+              <div>
+                <p>Yazar: {items.author} </p>
+                <p>Categori: {items.categori} </p>
+                <p>Dil: {items.langueg} </p>
+                <p>Sayfa Sayısı: {items.pageNumber} </p>
+                <p>Yayın Tarihi: {items.time.split(' ')[0]} </p>
+              </div>
+              <img src={`data:image/jpeg;base64,${items.conten}`} alt="" />
+            </>
+          ))}
         </div>
       </aside>
 
@@ -250,7 +283,7 @@ const ReadingPage = () => {
         }}
         className="setting-open"
       />
-      
+
       <Footer />
     </div>
   );

@@ -33,12 +33,24 @@
   color: var(--main-color-screen);
 }
 
-.reading-container section p > span {
+.reading-container section p > .navigation-items {
   color: var(--main-color-alt);
   font-weight: bold;
   position: absolute;
-  bottom: -90px;
+  bottom: -53px;
   left: 50%;
+}
+.reading-page-dir[direc = "Arabça"]{
+  direction: rtl;
+}
+
+.reading-container section p > .page-title {
+  display: block;
+    text-align: center;
+    color: red;
+    font-size: 22px;
+    margin: 10px;
+    font-weight: bold;
 }
 .reading-container section .next-preivece {
   display: flex;

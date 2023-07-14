@@ -1,8 +1,11 @@
 .book-page-container {
   background-color: var(--section-background);
+  margin: -5px;
 }
 .BookPage-Header {
-  margin: 2vw 6vw 2vw 6vw;
+  margin: 0vw 6vw 2vw 6vw;
+  padding-top: 5px;
+  
 }
 .BookPage-Body {
   display: flex;
