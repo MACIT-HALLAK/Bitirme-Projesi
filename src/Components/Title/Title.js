@@ -5,9 +5,7 @@ import './Title.css';
 const Title = (props) => {
   return (
     <>
-      <h2 className="title" style={{ marginBottom: '.75rem' }}>
-        {props.title}
-      </h2>
+      <h2 className="title" style={{ marginBottom: '.75rem' }}>{props.title}</h2>
     </>
   );
 };

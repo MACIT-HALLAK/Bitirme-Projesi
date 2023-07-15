@@ -32,15 +32,14 @@ const ReadingPage = () => {
   const [value, setValue] = useState('');
   const [handle, setHandle] = useState(false);
 
-  const pa = useRef();
-  //******************* */
+  //******* */
   const [cookies] = useCookies(['email']);
   const email = cookies.email;
   const [selection, setSelection] = useState(null);
   const [showIcon, setShowIcon] = useState(false);
   const [iconPosition, setIconPosition] = useState({ x: 0, y: 0 });
   const [showModal, setShowModal] = useState(false);
-  //*****************varibalese for tarnslate text  */
+  //*******varibalese for tarnslate text  */
   const [from, setFrom] = useState('en');
   const [to, setTo] = useState('ar');
   const [input, setInput] = useState('');

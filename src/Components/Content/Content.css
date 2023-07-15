@@ -139,6 +139,10 @@
 @media (max-width: 1200px) {
   .text-box {
     width: 90%;
+    height: 54vh;
+  }
+  .text-box a {
+    padding: 15px 10px;
   }
   .main-image img {
     width: 75px;
@@ -147,6 +151,11 @@
   .main-image {
     width: 75px;
     height: 75px;
+  }
+}
+@media (max-width: 920px) {
+  .text-box a {
+    padding: 5px 10px;
   }
 }
 
