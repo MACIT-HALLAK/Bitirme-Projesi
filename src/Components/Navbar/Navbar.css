@@ -67,6 +67,7 @@ nav {
 }
 .main-nav {
   display: flex;
+  margin-inline: auto;
   background-color: var(--main-color-alt);
   margin-top: 5px;
   border-radius: 5px;
