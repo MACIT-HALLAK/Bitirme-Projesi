@@ -145,10 +145,6 @@ export default function SettingCom({ clicking, show, handle }) {
           prop_obj.color !== 'null' ? prop_obj.color : 'black';
         document.querySelector('.text p').style.fontFamily = prop_obj.font;
         document.querySelector('.text p').style.fontSize = prop_obj.size + 'px';
-
-        // if (localStorage.getItem("props_arr")) {
-        //   console.log(JSON.parse(localStorage.getItem("props_arr")));
-        // }
       }, 500);
     }
   }, []);
