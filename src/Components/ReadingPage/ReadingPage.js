@@ -155,7 +155,7 @@ const ReadingPage = () => {
     });
   };
   const preivece = () => {
-    if (nextP != 0) setNextP(nextP - 1);
+    if (nextP !== 0) setNextP(nextP - 1);
   };
   // ----------------------End change props of text--------------------------
 
