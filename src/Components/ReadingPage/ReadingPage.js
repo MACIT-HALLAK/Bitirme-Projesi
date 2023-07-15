@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Modal from 'react-modal';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navber';
@@ -17,6 +17,7 @@ import axios from 'axios';
 
 const ReadingPage = () => {
   let { bookId } = useParams();
+  const pa = useRef();
   const [bookdata, setBookdata] = useState([]);
   //veritabanindan kitabi cekmek
   const loadData = async () => {
@@ -106,11 +107,12 @@ const ReadingPage = () => {
   };
 
   // ----------------------Start change props of text--------------------------
-  function changeProps() {
+  async function changeProps() {
     setTimeout(() => {
       let element_arr = [];
 
       let prop_obj = JSON.parse(localStorage.getItem('props_arr'));
+      console.log(prop_obj);
       if (localStorage.getItem('props_arr')) {
         let all_props = document.querySelectorAll('.items-box span');
         all_props.forEach((element) => {
@@ -127,20 +129,19 @@ const ReadingPage = () => {
         element_arr.forEach((set_active) => {
           set_active.classList.add('active');
         });
-        pa.current.style.color = prop_obj?.color;
-        pa.current.style.fontFamily = prop_obj?.font;
-        pa.current.style.fontSize = prop_obj?.size;
+        setTimeout(() => {
+          pa.current.style.color = prop_obj?.color;
+          pa.current.style.fontFamily = prop_obj?.font;
+          pa.current.style.fontSize = prop_obj?.size;
+        }, 500);
       } else {
-        pa.current.style.color =
-          prop_obj?.color !== 'null' ? prop_obj?.color : 'black';
-        pa.current.style.fontFamily =
-          prop_obj?.font !== 'null' ? prop_obj?.font : 'Sans-Serif';
-        pa.current.style.fontSize =
-          prop_obj?.size !== 'null' ? prop_obj?.size : '16px';
+        pa.current.style.color = 'black';
+        pa.current.style.fontFamily = 'Sans-Serif';
+        pa.current.style.fontSize = '16px';
       }
     }, 500);
   }
-  useEffect(() => {
+  useMemo(() => {
     changeProps();
     loadData();
   }, []);
@@ -232,6 +233,7 @@ const ReadingPage = () => {
             <p>{selection}</p>
           </div>
         </Modal>
+
         {bookdata.map((item) => {
           const newData = item.content.split('$');
           const dataNew = newData[nextP].split('#');

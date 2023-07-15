@@ -83,7 +83,7 @@ export default function SettingCom({ clicking, show, handle }) {
 
     let prop_obj = JSON.parse(localStorage.getItem('props_arr'))
       ? JSON.parse(localStorage.getItem('props_arr'))
-      : { color: 'balck', font: 'sans-serif', size: '24px' };
+      : { color: 'balck', font: 'sans-serif', size: '16px' };
 
     all_props.forEach((e) => {
       e.addEventListener('click', (event) => {
@@ -114,35 +114,42 @@ export default function SettingCom({ clicking, show, handle }) {
       changeProps();
     };
 
-    function changeProps() {
-      let element_arr = [];
+    async function changeProps() {
+      setTimeout(() => {
+        let element_arr = [];
 
-      if (localStorage.getItem('props_arr')) {
-        prop_obj = JSON.parse(localStorage.getItem('props_arr'));
-        all_props.forEach((element) => {
-          let my_prop = element.getAttribute('prop');
-          // console.log(my_prop);
-          if (
-            my_prop === prop_obj.color ||
-            my_prop === prop_obj.font ||
-            my_prop === prop_obj.size
-          ) {
-            element_arr.push(element);
-            console.log('true');
-          }
-        });
-        element_arr.forEach((set_active) => {
-          set_active.classList.add('active');
-        });
-      }
-      document.querySelector('.text p').style.color =
-        prop_obj.color !== 'null' ? prop_obj.color : 'black';
-      document.querySelector('.text p').style.fontFamily = prop_obj.font;
-      document.querySelector('.text p').style.fontSize = prop_obj.size + 'px';
+        if (localStorage.getItem('props_arr')) {
+          prop_obj = JSON.parse(localStorage.getItem('props_arr'));
+          all_props.forEach((element) => {
+            let my_prop = element.getAttribute('prop');
+            // console.log(my_prop);
+            if (
+              my_prop === prop_obj.color ||
+              my_prop === prop_obj.font ||
+              my_prop === prop_obj.size
+            ) {
+              element_arr.push(element);
+              console.log('true');
+            }
+          });
+          element_arr.forEach((set_active) => {
+            set_active.classList.add('active');
+          });
+          setTimeout(() => {
+            document.querySelector('.text p').style.color = prop_obj?.color;
+            document.querySelector('.text p').style.fontFamily = prop_obj?.font;
+            document.querySelector('.text p').style.fontSize = prop_obj?.size;
+          }, 500);
+        }
+        document.querySelector('.text p').style.color =
+          prop_obj.color !== 'null' ? prop_obj.color : 'black';
+        document.querySelector('.text p').style.fontFamily = prop_obj.font;
+        document.querySelector('.text p').style.fontSize = prop_obj.size + 'px';
 
-      // if (localStorage.getItem("props_arr")) {
-      //   console.log(JSON.parse(localStorage.getItem("props_arr")));
-      // }
+        // if (localStorage.getItem("props_arr")) {
+        //   console.log(JSON.parse(localStorage.getItem("props_arr")));
+        // }
+      }, 500);
     }
   }, []);
 
