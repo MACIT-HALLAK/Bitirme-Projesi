@@ -31,6 +31,7 @@ export default function Content() {
           <Link to='/MostRepeatedBooks' className="btn btn-second">En Çok Okunan</Link>
           <Link to='/BookPage' className="btn btn-second">Kitablar</Link>
           <Link to='/Categories' className="btn btn-second">Bölümler</Link>
+          <Link to='/WordsPage' className="btn btn-second">Kelimelerim</Link>
           {/* <a className="btn btn-second">Kitablar</a> */}
           {/* <a className="btn btn-third">Bölümler</a> */}
         </div>
