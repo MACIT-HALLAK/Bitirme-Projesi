@@ -135,9 +135,11 @@ const ReadingPage = () => {
           pa.current.style.fontSize = prop_obj?.size;
         }, 500);
       } else {
-        pa.current.style.color = 'black';
-        pa.current.style.fontFamily = 'Sans-Serif';
-        pa.current.style.fontSize = '16px';
+        setTimeout(async () => {
+          pa.current.style.color = 'black';
+          pa.current.style.fontFamily = 'Sans-Serif';
+          pa.current.style.fontSize = '16px';
+        }, 500);
       }
     }, 500);
   }
