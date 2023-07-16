@@ -4,9 +4,12 @@ import Navbar from '../Navbar/Navber';
 import Card from '../Card/Card';
 import Footer from '../Footer/Footer';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const BookPage = () => {
   const [loading, setLoading] = useState(true);
+  const{level} = useParams();
+  
 
   const [cardCount, setCardCount] = useState(10);
   const [minCardCount, setMinCardCount] = useState(10);
@@ -55,21 +58,25 @@ const BookPage = () => {
         ) : (
           data.map((items) => (
             <>
-              <Card
-                key={items.id}
-                cardNumber={items.id}
-                bookImage={`data:image/jpeg;base64,${items.conten_book}`}
-                writerImage={`data:image/jpeg;base64,${items.conten_author}`}
-                name={items.title}
-                WriterName={items.author}
-              />
-              {/* author
+            {level? items.level == level ?
             <Card
-              key={items.id}
-              bookImage={`data:image/jpeg;base64,${items.conten_author}`}
-              name={items.title}
-              WriterName={items.author}
-            /> */}
+            key={items.id}
+            cardNumber={items.id}
+            bookImage={`data:image/jpeg;base64,${items.conten_book}`}
+            writerImage={`data:image/jpeg;base64,${items.conten_author}`}
+            name={items.title}
+            WriterName={items.author}
+          />:"":
+          <Card
+            key={items.id}
+            cardNumber={items.id}
+            bookImage={`data:image/jpeg;base64,${items.conten_book}`}
+            writerImage={`data:image/jpeg;base64,${items.conten_author}`}
+            name={items.title}
+            WriterName={items.author}
+          />
+            }
+              
             </>
           ))
         )}
