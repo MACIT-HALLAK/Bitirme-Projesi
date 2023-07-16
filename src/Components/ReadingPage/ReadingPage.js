@@ -14,6 +14,7 @@ import {
 import SettingCom from '../Ayarlar/SettingCom';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { getQueriesForElement } from '@testing-library/react';
 
 const ReadingPage = () => {
   let { bookId } = useParams();
@@ -48,31 +49,37 @@ const ReadingPage = () => {
 
   //secilen metini almak icin
   //
-  const handleSelection = () => {
+  const handleSelection = (e) => {
     setShowModal(false);
     const selectionText = window.getSelection().toString();
-    if (selectionText && selectionText != ' ') {
+    if (selectionText && selectionText.trim() !== '') {
       setSelection(selectionText);
-      const selectionRange = window.getSelection().getRangeAt(0);
+  
+      const eleme = document.querySelector('.reading-container');
+      if (eleme) {
+        const selectionRange = window.getSelection().getRangeAt(0);
+        const rangeRect = selectionRange.getBoundingClientRect();
 
-      const rangeRect = selectionRange.getBoundingClientRect();
-      console.log(rangeRect);
-      const iconX = `calc(${rangeRect.left}px + calc(${rangeRect.width}px / 2) - 40px)`;
-      const iconY = `calc(${rangeRect.bottom}px + calc(${rangeRect.width}px / 2) - 5px)`;
-
-      setIconPosition({ x: iconX, y: iconY });
-      setShowIcon(true);
-      setInput(selection);
+        const elemeRect = eleme.getBoundingClientRect();
+        const y = e.clientY + eleme.scrollTop - elemeRect.top +13;
+        const iconX = `calc(${rangeRect.left}px + calc(${rangeRect.width}px / 2) - 40px)`;
+        setIconPosition({ x: iconX, y: y });
+        setShowIcon(true);
+        setInput(selectionText);
+      }
     } else {
       setSelection(null);
       setShowIcon(false);
     }
   };
+  
+  
+  
   //--------------------------------------------------
   const handleIconClick = () => {
+    translate();
     setShowIcon(false);
     setShowModal(true);
-    translate();
   };
   //------------------------------------------------
 
@@ -146,6 +153,7 @@ const ReadingPage = () => {
   useMemo(() => {
     changeProps();
     loadData();
+   
   }, []);
   const next = () => {
     bookdata.map((item) => {
@@ -154,11 +162,24 @@ const ReadingPage = () => {
       } else {
         setNextP(nextP);
       }
-    });
-  };
-  const preivece = () => {
-    if (nextP !== 0) setNextP(nextP - 1);
-  };
+    })
+  }
+  const preivece =()=>{
+    if(nextP != 0)
+    setNextP(nextP-1);
+  }
+  const writelan= (e)=>{
+    let To="";
+    if(e == "Türkçe")
+      To = "tr"
+    else if(e == "English")
+      To = "en";
+    else 
+      To = "ar";
+
+    console.log(To)
+    setTo(To)
+  }
   // ----------------------End change props of text--------------------------
 
   return (
@@ -166,7 +187,7 @@ const ReadingPage = () => {
       <Navbar />
       {handle && (
         <>
-          <SettingCom
+          <SettingCom setlang={writelan}
             clicking={() => {
               setHandle((prev) => !prev);
             }}
@@ -177,7 +198,7 @@ const ReadingPage = () => {
           <div className="mask"></div>
         </>
       )}
-      <section className="text" onMouseUp={handleSelection}>
+      <section className="text" onMouseUp={(event)=>handleSelection((event))}>
         {showIcon && (
           <div
             style={{
@@ -221,12 +242,13 @@ const ReadingPage = () => {
               maxWidth: 'fit-content',
               height: 'fit-content',
               // margin: 'auto',
+              direction: 'ltr',
               position: 'absolute',
               left: iconPosition.x,
               top: iconPosition.y,
               zIndex: 1,
               color: 'var(--text-color)',
-              direction: 'rtl',
+              
             },
           }}
         >
@@ -279,7 +301,7 @@ const ReadingPage = () => {
         </div>
       </aside>
 
-      <FaCog
+      <FaCog 
         onClick={() => {
           setHandle((prev) => !prev);
           changeProps();

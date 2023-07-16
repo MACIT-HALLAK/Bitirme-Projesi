@@ -29,14 +29,11 @@ root.render(
       <Route path="/Anasayfa" element={<App />} />
       <Route element={<PrivateRoutes />}>
         <Route path="/Yazarlar" element={<Writerspage />} />
-        <Route path="/Seviyeler" element={<Seviyeler />} />
-        <Route path="/Seviyeler/ileri" element={<Seviyeler />} />
-        <Route path="/Seviyeler/orta" element={<Seviyeler />} />
-        <Route path="/Seviyeler/temel" element={<Seviyeler />} />
         <Route path="/Writer" element={<Writer />} />
         <Route path="/Writer/:writerId" element={<Writer />} />
         <Route path="/AddBook" element={<AddBook />} />
         <Route path="/BookPage" element={<BookPage />} />
+        <Route path="/BookPage/:level" element={<BookPage />} />
         <Route path="/MostRepeatedBooks" element={<MostRepeatedBooks />} />
         <Route path="/YazarEkle" element={<AddWriter />} />
         <Route path="/ReadingPage" element={<ReadingPage />} />
