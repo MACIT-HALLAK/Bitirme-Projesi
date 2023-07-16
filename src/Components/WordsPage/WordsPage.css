@@ -32,7 +32,9 @@
     font-size: 18px;
     margin-bottom: 20px;
     border-radius: 7px;
+    
 }
+
 .word-page-child button{
    font-size: 20px;
     color: var(--main-color-screen);
