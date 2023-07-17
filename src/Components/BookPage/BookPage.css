@@ -9,8 +9,8 @@
 }
 .BookPage-Body {
   display: flex;
-  flex-flow: row nowrap !important;
-  gap: 1.125rem;
+  flex-flow: row wrap !important;
+  gap: 2rem;
   width: calc(90.33% - 35px);
   margin: auto;
   animation-name: fade;

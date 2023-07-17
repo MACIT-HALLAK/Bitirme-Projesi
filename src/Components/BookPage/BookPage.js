@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import './BookPage.css';
 import Navbar from '../Navbar/Navber';
 import Card from '../Card/Card';
@@ -7,39 +7,37 @@ import axios from 'axios';
 
 const BookPage = () => {
   const [loading, setLoading] = useState(true);
-
-  const [cardCount, setCardCount] = useState(10);
-  const [minCardCount, setMinCardCount] = useState(10);
+  const [cardCount, setCardCount] = useState(6);
+  const [minCardCount, setMinCardCount] = useState(6);
   const [data, setData] = useState([]);
 
   const loadImages = async () => {
-    const re = await axios.get(
-      'https://librarygop.com/public/index.php/api/getallbooks'
-    );
-    setData(re.data);
-    console.log(re.data);
-    setLoading(false);
+    try {
+      const response = await axios.get(
+        'https://librarygop.com/public/index.php/api/getallbooks'
+      );
+      const allData = response.data;
+      const slicedData = allData.slice(0, cardCount);
+      setData(slicedData);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   useEffect(() => {
     loadImages();
-  }, []);
+  }, [cardCount]);
 
-  //   const [cardCount, setCardCount] = useState(10);
-  //   const [minCardCount, setMinCardCount] = useState(10);
+  const handleCardCountIncrease = () => {
+    setCardCount(prevCount => prevCount + 6);
+  };
 
-  //   const Card_Adedi_Artırmak = () => {
-  //     setCardCount(cardCount + 10);
-  //   };
-
-  const cards = [];
-  for (let i = 0; i < cardCount; i++) {
-    cards.push(<Card key={i} />);
-  }
-
-  //   const cards = [];
-  //   for (let i = 0; i < cardCount; i++) {
-  //     cards.push(<Card key={i} />);
-  //   }
+  const handleCardCountDecrease = () => {
+    if (cardCount > minCardCount) {
+      setCardCount(prevCount => prevCount - 6);
+    }
+  };
 
   return (
     <div className='book-page-container'>
@@ -53,41 +51,32 @@ const BookPage = () => {
             <div className="loader"></div>
           </div>
         ) : (
-          data.map((items) => (
-            <>
-              <Card
-                key={items.id}
-                cardNumber={items.id}
-                bookImage={`data:image/jpeg;base64,${items.conten_book}`}
-                writerImage={`data:image/jpeg;base64,${items.conten_author}`}
-                name={items.title}
-                WriterName={items.author}
-              />
-              {/* author
+          data.map((item) => (
             <Card
-              key={items.id}
-              bookImage={`data:image/jpeg;base64,${items.conten_author}`}
-              name={items.title}
-              WriterName={items.author}
-            /> */}
-            </>
+              key={item.id}
+              cardNumber={item.id}
+              bookImage={`data:image/jpeg;base64,${item.conten_book}`}
+              writerImage={`data:image/jpeg;base64,${item.conten_author}`}
+              name={item.title}
+              WriterName={item.author}
+            />
           ))
         )}
       </div>
 
       <div className="btn-btn">
         <button
-          type="submit"
+          type="button"
           className="BookPage-button-Artırma"
-          // onClick={Card_Adedi_Artırmak}
+          onClick={handleCardCountIncrease}
         >
           Daha Fazla Göster
         </button>
 
         <button
-          type="submit"
+          type="button"
           className="BookPage-button-Azaltma"
-          // onClick={Card_Adedi_Azaltmak}
+          onClick={handleCardCountDecrease}
         >
           Daha Az Göster
         </button>
