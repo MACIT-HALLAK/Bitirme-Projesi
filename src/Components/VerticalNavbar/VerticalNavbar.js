@@ -3,10 +3,12 @@ import './VerticalNavbar.css';
 import { FaBook } from 'react-icons/fa';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 
 const VerticalNavbar = (props) => {
   const [cookies] = useCookies(['email']);
+  const booksData = props.class;
+  console.log(booksData);
   const c = props.class[0];
   //console.log(props.class[0])
   const email = cookies.email;
@@ -18,13 +20,12 @@ const VerticalNavbar = (props) => {
     const handleButtonClick = async (res) => {
       await props?.sendDataToParent([{ name: title, value: res }]);
       const d = props.sendDataToParent;
-      console.log(d);
     };
     axios
       .get(`https://librarygop.com/public/index.php/api/addbook/${title}`)
       .then((response) => {
         kitabId = response.data;
-        //console.log(kitabId);
+        console.log(kitabId);
 
         // İlk axios isteği başarılı olduğunda ikinci axios isteğini yapabiliriz
         axios
@@ -43,14 +44,12 @@ const VerticalNavbar = (props) => {
         console.error('hata oluştu ::', error);
       });
   };
-  
+
   useEffect(() => {
     handleClick(c);
   }, [c]);
 
-
   return (
-    
     <>
       <div className="vertical-navbar-layout">
         {props.class

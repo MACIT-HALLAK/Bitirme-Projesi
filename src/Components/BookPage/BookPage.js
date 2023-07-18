@@ -4,28 +4,26 @@ import Navbar from '../Navbar/Navber';
 import Card from '../Card/Card';
 import Footer from '../Footer/Footer';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import ChildComponent from '../ChildComponent';
 
 const BookPage = () => {
   const [loading, setLoading] = useState(true);
-  const{level} = useParams();
-  
 
   const [cardCount, setCardCount] = useState(10);
   const [minCardCount, setMinCardCount] = useState(10);
   const [data, setData] = useState([]);
 
-  const loadImages = async () => {
-    const re = await axios.get(
-      'https://librarygop.com/public/index.php/api/getallbooks'
-    );
-    setData(re.data);
-    console.log(re.data);
-    setLoading(false);
-  };
-  useEffect(() => {
-    loadImages();
-  }, []);
+  // const loadImages = async () => {
+  //   const re = await axios.get(
+  //     'https://librarygop.com/public/index.php/api/getallbooks'
+  //   );
+  //   setData(re.data);
+  //   console.log(re.data);
+  //   setLoading(false);
+  // };
+  // useEffect(() => {
+  //   loadImages();
+  // }, []);
 
   //   const [cardCount, setCardCount] = useState(10);
   //   const [minCardCount, setMinCardCount] = useState(10);
@@ -45,41 +43,12 @@ const BookPage = () => {
   //   }
 
   return (
-    <div className='book-page-container'>
+    <div className="book-page-container">
       <div className="BookPage-Header">
         <Navbar />
       </div>
       <div className="BookPage-Body">
-        {loading ? (
-          <div className="loading">
-            <p>Lütfen Bekleyin</p>
-            <div className="loader"></div>
-          </div>
-        ) : (
-          data.map((items) => (
-            <>
-            {level? items.level == level ?
-            <Card
-            key={items.id}
-            cardNumber={items.id}
-            bookImage={`data:image/jpeg;base64,${items.conten_book}`}
-            writerImage={`data:image/jpeg;base64,${items.conten_author}`}
-            name={items.title}
-            WriterName={items.author}
-          />:"":
-          <Card
-            key={items.id}
-            cardNumber={items.id}
-            bookImage={`data:image/jpeg;base64,${items.conten_book}`}
-            writerImage={`data:image/jpeg;base64,${items.conten_author}`}
-            name={items.title}
-            WriterName={items.author}
-          />
-            }
-              
-            </>
-          ))
-        )}
+        <ChildComponent />
       </div>
 
       <div className="btn-btn">
