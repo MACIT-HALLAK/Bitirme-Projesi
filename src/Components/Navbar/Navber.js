@@ -19,9 +19,7 @@ const Navbar = () => {
   const [bookdata, setBookdata] = useState([]);
   const [filteredBookdata, setFilteredBookdata] = useState([]);
   const searchBox = useRef();
-  const searchEelemnt = useRef();
 
-  // console.log(bookdata[0] === undefined);
   function logout() {
     removeCookies('email', { path: '/' });
     removeCookies('role', { path: '/' });
@@ -30,6 +28,9 @@ const Navbar = () => {
 
   const resetBookData = () => {
     setFilteredBookdata([]);
+    setValue('');
+    searchBox.current.classList.remove('searched');
+    document.querySelector('.searched-element').classList.remove('search-hide');
   };
 
   const keepValue = () => {
@@ -64,13 +65,15 @@ const Navbar = () => {
 
   const getSearchedBooks = async (event) => {
     event.preventDefault();
-    setFilteredBookdata(
-      bookdata.filter((item) => {
-        return item.title.toLowerCase().includes(searchValue.toLowerCase());
-      })
-    );
-
-    // console.log(filteredBookdata);
+    if (event.target.value.length === 0) {
+      setFilteredBookdata([]);
+    } else {
+      setFilteredBookdata(
+        bookdata.filter((item) => {
+          return item.title.toLowerCase().includes(searchValue.toLowerCase());
+        })
+      );
+    }
   };
 
   let toggle_class_check = btn_state ? 'hide' : '';

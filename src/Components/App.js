@@ -17,6 +17,8 @@ import ChildComponent from './ChildComponent';
 
 //----Ana sayfa burasi----
 function App() {
+  const data = useContext(DataContext);
+
   return (
     <div className="layout">
       <Navbar />
@@ -24,7 +26,7 @@ function App() {
       <section>
         <Title title="En Yeni Kitaplar" />
         <div className="parent">
-          <ChildComponent />
+          <ChildComponent data={data} />
         </div>
       </section>
       <BookCategories />

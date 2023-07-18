@@ -3,11 +3,8 @@ import React, { useContext } from 'react';
 import { DataContext } from './DataContext';
 import Card from './Card/Card';
 
-const ChildComponent = () => {
-  const data = useContext(DataContext);
-
-  console.log('context data');
-  console.log(data);
+const ChildComponent = ({ data }) => {
+  // const data = useContext(DataContext);
 
   return (
     <>
