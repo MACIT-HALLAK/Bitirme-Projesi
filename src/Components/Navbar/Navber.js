@@ -1,10 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import './Navbar.css';
-import { FaClosedCaptioning, FaSearch } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 import { FaList } from 'react-icons/fa';
 import NavEelements from './navElements/NavEelements';
 import { Link } from 'react-router-dom';
-import Card from '../Card/Card';
 import { useCookies } from 'react-cookie';
 import { FaRegWindowClose } from 'react-icons/fa';
 import axios from 'axios';
@@ -52,7 +51,6 @@ const Navbar = () => {
       'https://librarygop.com/public/index.php/api/getallbooks'
     );
     setBookdata(res.data);
-    // console.log(res.data);
   }, [window.onload]);
 
   function handleClick() {
@@ -107,7 +105,7 @@ const Navbar = () => {
                   <form name="search" onSubmit={getSearchedBooks}>
                     <input
                       type="text"
-                      autocomplete="off"
+                      autoComplete="off"
                       className="input"
                       name="txt"
                       ref={searchBox}

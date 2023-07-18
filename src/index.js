@@ -38,8 +38,6 @@ const RootComponent = () => {
     };
 
     fetchData();
-
-    data && console.log(data);
   }, [data]);
 
   return (
