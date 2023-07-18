@@ -28,7 +28,6 @@ function WordsPage() {
     );
 
     const bookIds = res.data;
-    console.log(bookIds);
     await axios
       .post('https://librarygop.com/public/index.php/api/getbooksname', {
         bookids: bookIds,
@@ -104,6 +103,7 @@ function WordsPage() {
           <VerticalNavbar
             class={bookData}
             sendDataToParent={handleDataFromChild}
+            bookData={bookData}
           />
         </div>
       </div>

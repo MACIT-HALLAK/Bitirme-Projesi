@@ -21,7 +21,7 @@ const Navbar = () => {
   const searchBox = useRef();
   const searchEelemnt = useRef();
 
-  console.log(bookdata[0] === undefined);
+  // console.log(bookdata[0] === undefined);
   function logout() {
     removeCookies('email', { path: '/' });
     removeCookies('role', { path: '/' });
@@ -51,7 +51,7 @@ const Navbar = () => {
       'https://librarygop.com/public/index.php/api/getallbooks'
     );
     setBookdata(res.data);
-    console.log(res.data);
+    // console.log(res.data);
   }, [window.onload]);
 
   function handleClick() {
@@ -70,7 +70,7 @@ const Navbar = () => {
       })
     );
 
-    console.log(filteredBookdata);
+    // console.log(filteredBookdata);
   };
 
   let toggle_class_check = btn_state ? 'hide' : '';
