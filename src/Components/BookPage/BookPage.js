@@ -1,46 +1,35 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useContext } from 'react';
 import './BookPage.css';
 import Navbar from '../Navbar/Navber';
 import Card from '../Card/Card';
 import Footer from '../Footer/Footer';
 import axios from 'axios';
 import ChildComponent from '../ChildComponent';
+import { DataContext } from '../DataContext';
 
 const BookPage = () => {
   const [loading, setLoading] = useState(true);
+  const [slicedData, setSlicedData] = useState([]);
+  const [cardCount, setCardCount] = useState(6);
+  const [minCardCount, setMinCardCount] = useState(6);
 
-  const [cardCount, setCardCount] = useState(10);
-  const [minCardCount, setMinCardCount] = useState(10);
-  const [data, setData] = useState([]);
+  const data = useContext(DataContext);
 
-  // const loadImages = async () => {
-  //   const re = await axios.get(
-  //     'https://librarygop.com/public/index.php/api/getallbooks'
-  //   );
-  //   setData(re.data);
-  //   console.log(re.data);
-  //   setLoading(false);
-  // };
-  // useEffect(() => {
-  //   loadImages();
-  // }, []);
+  const sliced_data_base = data?.slice(0, cardCount);
 
-  //   const [cardCount, setCardCount] = useState(10);
-  //   const [minCardCount, setMinCardCount] = useState(10);
+  useEffect(() => {
+    setSlicedData(sliced_data_base);
+  }, [cardCount]);
 
-  //   const Card_Adedi_Artırmak = () => {
-  //     setCardCount(cardCount + 10);
-  //   };
+  const handleCardCountIncrease = () => {
+    setCardCount((prevCount) => prevCount + 3);
+  };
 
-  const cards = [];
-  for (let i = 0; i < cardCount; i++) {
-    cards.push(<Card key={i} />);
-  }
-
-  //   const cards = [];
-  //   for (let i = 0; i < cardCount; i++) {
-  //     cards.push(<Card key={i} />);
-  //   }
+  const handleCardCountDecrease = () => {
+    if (cardCount > minCardCount) {
+      setCardCount((prevCount) => prevCount - 3);
+    }
+  };
 
   return (
     <div className="book-page-container">
@@ -48,22 +37,22 @@ const BookPage = () => {
         <Navbar />
       </div>
       <div className="BookPage-Body">
-        <ChildComponent />
+        <ChildComponent data={slicedData} />
       </div>
 
       <div className="btn-btn">
         <button
-          type="submit"
+          type="button"
           className="BookPage-button-Artırma"
-          // onClick={Card_Adedi_Artırmak}
+          onClick={handleCardCountIncrease}
         >
           Daha Fazla Göster
         </button>
 
         <button
-          type="submit"
+          type="button"
           className="BookPage-button-Azaltma"
-          // onClick={Card_Adedi_Azaltmak}
+          onClick={handleCardCountDecrease}
         >
           Daha Az Göster
         </button>
