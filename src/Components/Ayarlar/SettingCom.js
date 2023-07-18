@@ -2,7 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import './SettingCom.css';
 import { FaRegWindowClose } from 'react-icons/fa';
 
-export default function SettingCom({ clicking, show, handle }) {
+export default function SettingCom({setlang, clicking, show, handle }) {
+
+  const handlelang =(e)=>{
+    setlang(e)
+  }
+
   useEffect(() => {
     let opac = '0.5';
     let colors = document.querySelector('[colors]');
@@ -16,7 +21,7 @@ export default function SettingCom({ clicking, show, handle }) {
       '#ffb300',
       '#757575',
     ];
-
+   
     let font_size = document.querySelector('[font_size]');
     let fonts_size_array = ['16', '18', '20', '22', '24', '28', '32', '36'];
 
@@ -184,10 +189,10 @@ export default function SettingCom({ clicking, show, handle }) {
         </div>
         <div className="sub-box">
           <h2>
-            <span>Dil Seç</span>
+            <span>Ana Dilin Seç</span>
           </h2>
           <div className="items-box options">
-            <select>
+            <select onChange={(e)=>handlelang(e.target.value)}>
               <option disabled selected>
                 Dil Seç
               </option>
