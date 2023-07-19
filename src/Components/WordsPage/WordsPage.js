@@ -14,11 +14,31 @@ function WordsPage() {
   const [receivedData, setReceivedData] = useState({});
   const [cookiesemail] = useCookies(['email']);
   const email = cookies.email;
-  
+  const alintilar = [];
+  const kelimeler = [];
   const handleDataFromChild = (data) => {
     // Handle the received data in the parent component
     setReceivedData(data);
-    //console.log(data);
+    const data1 = data[0].value; // receivedData[0].value, bir dizi içerisinde kelimeler ve cümleler içeriyor
+
+
+
+data1.forEach((element) => {
+  const trimmedElement = element.trim();
+  if (trimmedElement !== '') {
+    const elementWords = trimmedElement.split(/\s+/);
+    if (elementWords.length > 1) {
+      alintilar.push(trimmedElement);
+    } else if (elementWords.length === 1) {
+      kelimeler.push(elementWords[0]);
+    }
+  }
+});
+
+console.log('kelimeler:', kelimeler); // Sadece kelimeleri içeren dizi
+console.log('alintilar:', alintilar); // Sadece cümleleri içeren dizi
+
+    
   };
 
   const kitapidgetit = async () => {
@@ -27,7 +47,7 @@ function WordsPage() {
     );
     
     const bookIds = res.data;
-    console.log(bookIds);
+    //console.log(bookIds);
     await axios
       .post('https://librarygop.com/public/index.php/api/getbooksname', {
         bookids: bookIds,
@@ -99,9 +119,10 @@ function WordsPage() {
                     <div className="word-page-child">
                       <p>{value}</p>
                       
-                  <button onClick={() => handleDelete(item,value)}>
-                    <FaRegTrashAlt />
-                  </button>
+                      <button onClick={() => handleDelete(item,value)}>
+                        <FaRegTrashAlt />
+                      </button>
+                      
                       
                     </div>
                   );
@@ -128,7 +149,7 @@ function WordsPage() {
         )}
         
       </div>
-      <VerticalNavbar class={bookData} sendDataToParent={handleDataFromChild} />
+      <VerticalNavbar class={bookData}  sendDataToParent={handleDataFromChild} />
     </div>
     
   );

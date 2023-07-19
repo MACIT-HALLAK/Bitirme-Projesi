@@ -1,6 +1,5 @@
 .vertical-navbar-layout{
-    display: flex;
-    flex-direction:column;
+    width: 29vw;
     background-color: var(--main-color-screen);
     align-items: center;
     padding: 10px;
@@ -25,7 +24,8 @@
     line-height: 30px;
     position: relative;
     display: flex;
-    align-items: center;    
+    align-items: center;
+        
 
 }
 .vertical-navbar-layout button::after {
@@ -38,7 +38,14 @@
     bottom: -5px;
     transition: width 0.5s;
 }
-.vertical-navbar-layout button:hover::after {
+/*.vertical-navbar-layout button:hover::after {
     width: 100%;
 
+}*/
+.vertical-navbar-layout :focus {
+    margin-bottom: 11vh;
+    
+}
+.hidden {
+    display: none;
 }
