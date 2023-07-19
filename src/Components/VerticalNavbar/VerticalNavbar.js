@@ -54,7 +54,7 @@ const VerticalNavbar = (props) => {
       <div className="vertical-navbar-layout">
         {props.class
           ? props.class.map((item) => (
-              <button onClick={() => handleClick(item)}>
+              <button key={item} onClick={() => handleClick(item)}>
                 {item}
                 <FaBook className="book-icon" />
               </button>
