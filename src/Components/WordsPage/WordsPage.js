@@ -7,6 +7,7 @@ import Navbar from '../Navbar/Navber';
 
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
+import Swal1 from 'sweetalert2'
 
 function WordsPage() {
   const [cookies] = useCookies(['email']);
@@ -40,23 +41,42 @@ function WordsPage() {
         console.error(error);
       });
   };
-  const title = null;
-  const value = null;
+  const title =null;
+  const value =null;
+
+  
   const handleDelete = (item, word) => {
+    Swal1.fire({
+      title: 'Emin Misiniz?',
+      text: "Bu kelimeyi silmek istediğinizden emin misiniz?!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#1c8b78',
+      cancelButtonColor: 'gray',
+      confirmButtonText: 'Evet!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`https://librarygop.com/public/index.php/api/words_delete/${email}/${word}`)
+        .then(response => {
+          // İstek başarılı olduğunda yapılacak işlemler
+          console.log("Kelime silindi:", response.data);
+          window.location.reload();
+        
+        })
+        .catch(error => {
+          // Hata durumunda yapılacak işlemler
+          console.error("bir hata oluştu:", error);
+        });
+    
+        Swal1.fire(
+          'silindi!',
+          'Kelime Silindi.',
+          'success'
+        )
+      }
+    })
     //console.log(word); `http://127.0.0.1:8000/api/words/${email}/${word}`
-    axios
-      .delete(
-        `https://librarygop.com/public/index.php/api/words_delete/${email}/${word}`
-      )
-      .then((response) => {
-        // İstek başarılı olduğunda yapılacak işlemler
-        console.log('Kelime silindi:', response.data);
-        window.location.reload();
-      })
-      .catch((error) => {
-        // Hata durumunda yapılacak işlemler
-        console.error('bir hata oluştu:', error);
-      });
+    
   };
 
   useEffect(() => {
