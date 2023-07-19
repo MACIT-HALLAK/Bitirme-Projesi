@@ -73,6 +73,7 @@
   justify-content: space-evenly;
   gap: 10px;
 }
+
 /* for screen 850px */
 @media screen and (max-width: 850px) {
   .Writerspage-layout {
