@@ -37,7 +37,7 @@ const Writerspage = () => {
       <div className="Writerspage-layout-arama">
         <h3>
           <span>
-            <FaSearch />
+            <FaSearch   />
           </span>
           <input
             type="text"

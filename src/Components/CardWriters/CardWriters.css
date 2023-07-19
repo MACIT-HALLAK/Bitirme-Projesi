@@ -40,6 +40,7 @@
     text-transform: capitalize;
     position: relative;
     padding-bottom: 20px;
+    font-size: 1.2rem;
 }
 .writers-card-container a > h3::after {
     content:'';

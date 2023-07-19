@@ -12,7 +12,7 @@
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   position: relative;
-  font-family: "Alkatra", cursive;
+  font-family: 'Alkatra', cursive;
 }
 .main-image {
   position: absolute;
@@ -33,7 +33,6 @@
   align-items: center;
 }
 
-
 @keyframes moving {
   from {
     transform: translateY(-2px);
@@ -52,7 +51,7 @@
 }
 
 .text-box {
-  background-image: url("../../Assets/images/content.png");
+  background-image: url('../../Assets/images/content.png');
   width: 70%;
   height: 70%;
   padding: 10px 20px;
@@ -73,14 +72,32 @@
   align-items: center;
   flex-direction: column;
 }
-.content-logo{
+.content-logo {
   width: 120px;
   height: 120px;
   margin-top: 30px;
 }
-.text-box .content-name{
+.text-box .content-name {
   font-style: italic;
-  text-transform:uppercase ;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: aquamarine;
+  position: absolute;
+  font-size: 1.125rem;
+  transition: cubic-bezier(0.19, 1, 0.22, 1) 1.25s all;
+  -webkit-transition: cubic-bezier(0.19, 1, 0.22, 1) 1.25s all;
+  -moz-transition: cubic-bezier(0.19, 1, 0.22, 1) 1.25s all;
+  -ms-transition: cubic-bezier(0.19, 1, 0.22, 1) 1.25s all;
+  -o-transition: cubic-bezier(0.19, 1, 0.22, 1) 1.25s all;
+}
+
+.text-box .content-name.active {
+  transform: translate(5px, -2px);
+  rotate: 360deg;
+  -webkit-transform: translate(5px, -2px);
+  -moz-transform: translate(5px, -2px);
+  -ms-transform: translate(5px, -2px);
+  -o-transform: translate(5px, -2px);
 }
 
 .text-box .footer-row {
@@ -91,7 +108,6 @@
   position: absolute;
   bottom: 10%;
   left: 5%;
- 
 }
 .text-box p {
   text-align: center;
@@ -186,7 +202,7 @@
 }
 
 .text-box::after {
-  content: "";
+  content: '';
   width: 90%;
   height: 20px;
   border-radius: 50%;

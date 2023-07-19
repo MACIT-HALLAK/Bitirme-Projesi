@@ -1,22 +1,57 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import './Navbar.css';
 import { FaSearch } from 'react-icons/fa';
 import { FaList } from 'react-icons/fa';
 import NavEelements from './navElements/NavEelements';
 import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import { FaRegWindowClose } from 'react-icons/fa';
+import axios from 'axios';
+import { useRef } from 'react';
 
 const Navbar = () => {
   const [value, setValue] = useState(() => '');
+  const [searchValue, setSearchValue] = useState(() => '');
   const [handle, setHandle] = useState(() => false);
   const [btn_state, setBtnState] = useState(() => false);
   const [cookies, setCookies, removeCookies] = useCookies(['email', 'role']);
+  const [bookdata, setBookdata] = useState([]);
+  const [filteredBookdata, setFilteredBookdata] = useState([]);
+  const searchBox = useRef();
 
   function logout() {
     removeCookies('email', { path: '/' });
     removeCookies('role', { path: '/' });
     window.location.pathname = '/';
   }
+
+  const resetBookData = () => {
+    setFilteredBookdata([]);
+    setValue('');
+    searchBox.current.classList.remove('searched');
+    document.querySelector('.searched-element').classList.remove('search-hide');
+  };
+
+  const keepValue = () => {
+    if (searchBox.current.value.length > 0) {
+      searchBox.current.classList.add('searched');
+      document.querySelector('.searched-element').classList.add('search-hide');
+    } else {
+      setValue('');
+      searchBox.current.classList.remove('searched');
+      document
+        .querySelector('.searched-element')
+        .classList.remove('search-hide');
+      setFilteredBookdata([]);
+    }
+  };
+
+  useMemo(async () => {
+    const res = await axios.get(
+      'https://librarygop.com/public/index.php/api/getallbooks'
+    );
+    setBookdata(res.data);
+  }, [window.onload]);
 
   function handleClick() {
     setBtnState((btn_state) => !btn_state);
@@ -25,9 +60,23 @@ const Navbar = () => {
   function trigger() {
     setHandle((prev) => !prev);
   }
+
+  const getSearchedBooks = async (event) => {
+    event.preventDefault();
+    if (event.target.value.length === 0) {
+      setFilteredBookdata([]);
+    } else {
+      setFilteredBookdata(
+        bookdata.filter((item) => {
+          return item.title.toLowerCase().includes(searchValue.toLowerCase());
+        })
+      );
+    }
+  };
+
   let toggle_class_check = btn_state ? 'hide' : '';
   let nav_items = ['Anasayfa', 'Yazarlar', 'Seviyeler'];
-  let admin_items = ['Add Book','YazarEkle'];
+  let admin_items = ['Add Book', 'YazarEkle'];
 
   // if user not admin filter array
   if (cookies.role === '1') nav_items = nav_items.concat(admin_items);
@@ -53,18 +102,25 @@ const Navbar = () => {
             <ul>
               <li className="alt-box">
                 <div className="box">
-                  <form name="search">
+                  <form name="search" onSubmit={getSearchedBooks}>
                     <input
                       type="text"
+                      autoComplete="off"
                       className="input"
                       name="txt"
+                      ref={searchBox}
                       value={value}
                       onMouseEnter={() => setValue()}
-                      onMouseLeave={() => setValue('')}
+                      onMouseLeave={keepValue}
+                      onChange={(e) => {
+                        setSearchValue(e.target.value);
+                        getSearchedBooks(e);
+                      }}
                     ></input>
                   </form>
-                  <FaSearch />
+                  <FaSearch className="searched-element" />
                 </div>
+
                 <div className="auth">
                   {!cookies.email ? (
                     <>
@@ -90,6 +146,34 @@ const Navbar = () => {
                   )}
                 </div>
               </li>
+              {filteredBookdata[0] !== undefined ? (
+                <>
+                  <ul
+                    className="search-values"
+                    title="scroll to show another results"
+                  >
+                    <FaRegWindowClose
+                      className="closing-tag"
+                      onClick={resetBookData}
+                    ></FaRegWindowClose>
+                    {filteredBookdata?.map((item) => {
+                      return (
+                        <Link to={`/ReadingPage/${item.id}`} className="link">
+                          <li key={item.id}>
+                            {item.title}
+                            <img
+                              src={`data:image/jpeg;base64,${item.conten_book}`}
+                              alt={item.title}
+                            ></img>
+                          </li>
+                        </Link>
+                      );
+                    })}
+                  </ul>
+                </>
+              ) : (
+                ''
+              )}
             </ul>
           </li>
         </ul>

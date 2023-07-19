@@ -3,10 +3,10 @@
   grid-template-columns: 50px repeat(6, 1fr) 25px repeat(3, 1fr) 50px;
   grid-template-rows: auto 400px auto auto;
   grid-template-areas:
-    ". nav nav nav nav nav nav nav nav nav nav ."
-    ". sec sec sec sec sec sec . as as as ."
-    ". sec sec sec sec sec sec . . . . ."
-    ". fo fo fo fo fo fo fo fo fo fo .";
+    '. nav nav nav nav nav nav nav nav nav nav .'
+    '. sec sec sec sec sec sec . as as as .'
+    '. sec sec sec sec sec sec . . . . .'
+    '. fo fo fo fo fo fo fo fo fo fo .';
   background-color: var(--section-background);
   gap: 20px;
   overflow-y: hidden;
@@ -17,14 +17,75 @@
 .reading-container footer {
   grid-area: fo;
   width: 100%;
-    margin-left: -1px;
+  margin-left: -1px;
 }
 .reading-container section {
   grid-area: sec;
   background-color: var(--main-color-screen);
   padding: 20px;
   line-height: 30px;
+  position: relative;
+  overflow: hidden;
 }
+
+.hidden {
+  opacity: 0;
+}
+
+#leftButton.hidden {
+  transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+}
+#rightButton.hidden {
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+}
+
+#leftButton,
+#rightButton {
+  position: absolute;
+  top: 35% !important;
+  border: none;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  backdrop-filter: blur(5px) !important;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  -ms-border-radius: 50% !important;
+  -o-border-radius: 50% !important;
+  background-color: rgba(29, 140, 121, 0.7) !important;
+}
+
+#leftButton:focus,
+#rightButton:focus {
+  outline: none;
+}
+.midlle-elements {
+  display: flex;
+  align-items: center;
+}
+
+#leftButton {
+  left: 0;
+}
+
+#rightButton {
+  right: 0;
+}
+
 .reading-container section > p {
   position: relative;
 }
@@ -40,24 +101,26 @@
   bottom: -53px;
   left: 50%;
 }
-.reading-page-dir[direc = "Arabça"]{
+.reading-page-dir[direc='Arabça'] {
   direction: rtl;
 }
 
 .reading-container section p > .page-title {
   display: block;
-    text-align: center;
-    color: red;
-    font-size: 22px;
-    margin: 10px;
-    font-weight: bold;
+  text-align: center;
+  color: red;
+  font-size: 22px;
+  margin: 10px;
+  font-weight: bold;
 }
 .reading-container section .next-preivece {
   display: flex;
   justify-content: space-evenly;
   margin: 20px 0;
 }
-.reading-container section .next-preivece  button{
+.reading-container section .next-preivece button,
+#leftButton,
+#rightButton {
   color: var(--main-color-screen);
   background-color: var(--main-color-alt);
   height: 33px;
@@ -67,6 +130,8 @@
   line-height: 39px;
   border: none;
   cursor: pointer;
+  display: grid;
+  place-items: center;
 }
 .reading-container .text > div:first-child {
   height: 200px;
@@ -80,7 +145,6 @@
   border-image: initial;
   border-color: rgb(187, 187, 187) rgb(187, 187, 187) rgb(168, 168, 168);
   padding: 15px;
-  
 }
 .reading-container section div > button.trans-btn {
   background-color: var(--main-color);
@@ -93,7 +157,7 @@
   cursor: pointer;
   display: block;
 }
-.reading-container section  div > div button {
+.reading-container section div > div button {
   color: var(--text-color);
   background-color: transparent;
   border: none;
@@ -102,29 +166,26 @@
   margin-top: 15px;
   font-size: 16px;
   cursor: pointer;
-
 }
-.reading-container section div > div  {
-  display: flex;   
+.reading-container section div > div {
+  display: flex;
   justify-content: space-between;
   align-items: baseline;
- 
 }
-.reading-container section div > div svg  {
+.reading-container section div > div svg {
   font-size: 20px;
   color: var(--main-color-alt);
   cursor: pointer;
 }
 
-.reading-container section div > div> button::after {
-  content: "";
+.reading-container section div > div > button::after {
+  content: '';
   position: absolute;
   height: 2px;
   width: 148px;
   left: 0px;
   bottom: -4px;
   background-color: var(--main-color-alt);
-
 }
 .reading-container aside {
   grid-area: as;
@@ -164,10 +225,10 @@
     grid-template-columns: 50px repeat(6, 1fr) 10px repeat(3, 1fr) 50px;
     grid-template-rows: auto 400px auto auto;
     grid-template-areas:
-      ". nav nav nav nav nav nav nav nav nav nav ."
-      ". sec sec sec sec sec sec as as as as ."
-      ". sec sec sec sec sec sec . . . . ."
-      ". fo fo fo fo fo fo fo fo fo fo .";
+      '. nav nav nav nav nav nav nav nav nav nav .'
+      '. sec sec sec sec sec sec as as as as .'
+      '. sec sec sec sec sec sec . . . . .'
+      '. fo fo fo fo fo fo fo fo fo fo .';
   }
 }
 @media screen and (max-width: 712px) {
@@ -175,16 +236,16 @@
     grid-template-columns: 50px repeat(10, 1fr) 50px;
     grid-template-rows: auto 400px auto auto;
     grid-template-areas:
-      ". nav nav nav nav nav nav nav nav nav nav ."
-      ". as as as as as as  as as as as ."
-      ". sec sec sec sec sec sec sec sec sec sec ."
-      ". fo fo fo fo fo fo fo fo fo fo .";
+      '. nav nav nav nav nav nav nav nav nav nav .'
+      '. as as as as as as  as as as as .'
+      '. sec sec sec sec sec sec sec sec sec sec .'
+      '. fo fo fo fo fo fo fo fo fo fo .';
   }
 }
-@media (max-width: 576px){
-.reading-container .footer-bottom {
+@media (max-width: 576px) {
+  .reading-container .footer-bottom {
     width: 100%;
-}
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -192,26 +253,26 @@
     grid-template-columns: 10px repeat(10, 1fr) 10px;
     grid-template-rows: auto 400px auto auto;
     grid-template-areas:
-      ". nav nav nav nav nav nav nav nav nav nav ."
-      ". as as as as as as  as as as as ."
-      ". sec sec sec sec sec sec sec sec sec sec ."
-      ". fo fo fo fo fo fo fo fo fo fo .";
+      '. nav nav nav nav nav nav nav nav nav nav .'
+      '. as as as as as as  as as as as .'
+      '. sec sec sec sec sec sec sec sec sec sec .'
+      '. fo fo fo fo fo fo fo fo fo fo .';
   }
 }
-@media screen and (max-width: 303px){
-.reading-container .footer-items-2 {
-  margin-right: 50px;
-}
-.reading-container .footer-items-3 {
-  margin-right: 20px;
-}
-.reading-container .footer-items-4 {
-  margin-right: 23px;
-}
+@media screen and (max-width: 303px) {
+  .reading-container .footer-items-2 {
+    margin-right: 50px;
+  }
+  .reading-container .footer-items-3 {
+    margin-right: 20px;
+  }
+  .reading-container .footer-items-4 {
+    margin-right: 23px;
+  }
 }
 
 .reading-container:has(.props-main-box.show)::after {
-  content: "";
+  content: '';
   min-width: 100% !important;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.01);
@@ -366,5 +427,3 @@ nav {
   background-color: rgba(211, 203, 203, 0.5);
   color: aqua;
 } */
-
-
