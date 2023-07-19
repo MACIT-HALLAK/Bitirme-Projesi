@@ -211,16 +211,16 @@ const ReadingPage = () => {
       const contentRect = contentDiv.current.getBoundingClientRect();
       const contentWidth = contentDiv.current.offsetWidth;
 
-      // console.log(mouseX);
-      // console.log(contentRect);
+      console.log(mouseX);
+      console.log(contentRect);
 
-      if (mouseX < contentRect.left + 50) {
+      if (mouseX < contentRect.left + 75 && mouseX > contentRect.x) {
         leftButton.current.classList.remove('hidden');
       } else {
         leftButton.current.classList.add('hidden');
       }
 
-      if (mouseX > contentRect.right - 50) {
+      if (mouseX > contentRect.right - 75) {
         rightButton.current.classList.remove('hidden');
       } else {
         rightButton.current.classList.add('hidden');

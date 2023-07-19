@@ -2,8 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
-     
 }
 /* the container of this page */
 .Writerspage-layout {
@@ -12,10 +10,10 @@
   grid-template-columns: 100px repeat(10, 1fr) 100px;
   grid-template-rows: 75px 50px auto 250px;
   grid-template-areas:
-    ". header header header header header header header header header header ."
-    ". arama arama arama arama arama arama . . . . ."
-    ". card card card card card card card card card card ."
-    ". footer footer footer footer footer footer footer footer footer footer .";
+    '. header header header header header header header header header header .'
+    '. arama arama arama arama arama arama . . . . .'
+    '. card card card card card card card card card card .'
+    '. footer footer footer footer footer footer footer footer footer footer .';
   gap: 15px 10px;
 }
 /* To design a grid system... */
@@ -73,6 +71,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  gap: 10px;
 }
 /* for screen 850px */
 @media screen and (max-width: 850px) {
@@ -80,20 +79,21 @@
     grid-template-columns: 50px repeat(10, 1fr) 50px;
     grid-template-rows: auto 50px auto 250px;
     grid-template-areas:
-      ". header header header header header header header header header header ."
-      ". arama arama arama arama arama arama arama arama arama arama ."
-      ". card card card card card card card card card card ."
-      ". footer footer footer footer footer footer footer footer footer footer .";
+      '. header header header header header header header header header header .'
+      '. arama arama arama arama arama arama arama arama arama arama .'
+      '. card card card card card card card card card card .'
+      '. footer footer footer footer footer footer footer footer footer footer .';
   }
 }
-@media screen and (max-width: 800px){
+@media screen and (max-width: 800px) {
   .Writerspage-layout footer {
     height: 51vh;
-}}
-@media screen and (max-width: 576px){
+  }
+}
+@media screen and (max-width: 576px) {
   .Writerspage-layout .footer-bottom {
     width: 100%;
-}
+  }
 }
 /* for screen 535px */
 @media screen and (max-width: 550px) {
@@ -105,5 +105,5 @@
   }
   .Writerspage-layout footer {
     height: 93vh;
-}
+  }
 }
