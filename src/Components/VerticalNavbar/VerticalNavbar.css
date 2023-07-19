@@ -1,51 +1,38 @@
-.vertical-navbar-layout{
-    width: 29vw;
-    background-color: var(--main-color-screen);
-    align-items: center;
-    padding: 10px;
-    margin-top: 20px;
-    overflow: auto;
-    height: 570px;
-    position: sticky;
-    top: 20px;
-    scroll-behavior: smooth;
+.vertical-navbar-layout {
+  width: 29vw;
+  background-color: var(--main-color-screen);
+  align-items: center;
+  padding: 10px;
+  margin-top: 20px;
+  overflow: auto;
+  height: 570px;
+  position: sticky;
+  top: 20px;
+  scroll-behavior: smooth;
 }
 .vertical-navbar-layout button {
-    background-color: transparent;
-    margin: 5px;
-    padding: 5px;
-    width: 100%;
-    border-radius: 7px;
-    color: var(--text-color);
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    line-height: 30px;
-    position: relative;
-    display: flex;
-    align-items: center;
-        
-
+  background-color: transparent;
+  margin: 5px;
+  padding: 5px;
+  width: 100%;
+  border-radius: 7px;
+  color: var(--text-color);
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  line-height: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 .vertical-navbar-layout button::after {
-    content: "";
-    background-color: var(--main-color-alt);
-    position: absolute;
-    height: 1px;
-    width: 0;
-    left: 0px;
-    bottom: -5px;
-    transition: width 0.5s;
-}
-/*.vertical-navbar-layout button:hover::after {
-    width: 100%;
-
-}*/
-.vertical-navbar-layout :focus {
-    margin-bottom: 11vh;
-    
-}
-.hidden {
-    display: none;
+  content: '';
+  background-color: var(--main-color-alt);
+  position: absolute;
+  height: 1px;
+  width: 0;
+  left: 0px;
+  bottom: -5px;
+  transition: width 0.5s;
 }
