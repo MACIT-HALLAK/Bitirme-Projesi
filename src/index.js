@@ -56,6 +56,7 @@ const RootComponent = () => {
             <Route path="/Writer/:writerId" element={<Writer />} />
             <Route path="/AddBook" element={<AddBook />} />
             <Route path="/BookPage" element={<BookPage />} />
+            <Route path="/BookPage/:level" element={<BookPage />} />
             <Route path="/MostRepeatedBooks" element={<MostRepeatedBooks />} />
             <Route path="/YazarEkle" element={<AddWriter />} />
             <Route path="/ReadingPage" element={<ReadingPage />} />
