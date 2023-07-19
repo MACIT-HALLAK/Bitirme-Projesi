@@ -204,22 +204,30 @@ const ReadingPage = () => {
   let contentDiv = useRef();
   let leftButton = useRef();
   let rightButton = useRef();
+  let readCon = useRef();
+  let globalMouse;
 
   useEffect(() => {
+    readCon.current.addEventListener('mousemove', function (event) {
+      globalMouse = event.clientX;
+      const contentRect = contentDiv.current.getBoundingClientRect();
+
+      if (globalMouse > contentRect.right) {
+        rightButton.current.classList.add('hidden');
+      } else if (globalMouse < contentRect.x) {
+        leftButton.current.classList.add('hidden');
+      }
+    });
     contentDiv.current.addEventListener('mousemove', function (event) {
       const mouseX = event.clientX;
       const contentRect = contentDiv.current.getBoundingClientRect();
       const contentWidth = contentDiv.current.offsetWidth;
 
-      console.log(mouseX);
-      console.log(contentRect);
-
-      if (mouseX < contentRect.left + 75 && mouseX > contentRect.x) {
+      if (mouseX < contentRect.left + 75) {
         leftButton.current.classList.remove('hidden');
       } else {
         leftButton.current.classList.add('hidden');
       }
-
       if (mouseX > contentRect.right - 75) {
         rightButton.current.classList.remove('hidden');
       } else {
@@ -308,7 +316,7 @@ const ReadingPage = () => {
   // ----------------------End change props of text--------------------------
 
   return (
-    <div className="reading-container">
+    <div className="reading-container" ref={readCon}>
       <Navbar />
       {handle && (
         <>
@@ -385,11 +393,16 @@ const ReadingPage = () => {
           </div>
         </Modal>
 
-        {bookdata.map((item) => {
+        {bookdata.map((item, index) => {
           const newData = item.content.split('$');
           const dataNew = newData[nextP].split('#');
           return (
-            <p className="reading-page-dir" ref={pa} direc={item.langueg}>
+            <p
+              className="reading-page-dir"
+              ref={pa}
+              direc={item.langueg}
+              key={index}
+            >
               <span className="page-title">
                 {dataNew.length > 1 ? dataNew[0] : ''}
               </span>
@@ -410,7 +423,7 @@ const ReadingPage = () => {
         <div className="midlle-elements">
           <button
             id="leftButton"
-            class="hidden"
+            className="hidden"
             ref={leftButton}
             onClick={preivece}
           >
@@ -418,7 +431,7 @@ const ReadingPage = () => {
           </button>
           <button
             id="rightButton"
-            class="hidden"
+            className="hidden"
             ref={rightButton}
             onClick={next}
           >
@@ -433,7 +446,7 @@ const ReadingPage = () => {
         <div>
           {bookdata.map((items) => (
             <>
-              <div>
+              <div key={items.id}>
                 <p>Yazar: {items.author} </p>
                 <p>Kategori: {items.categori} </p>
                 <p>Dil: {items.langueg} </p>
