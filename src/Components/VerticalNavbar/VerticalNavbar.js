@@ -22,7 +22,9 @@ const VerticalNavbar = (props) => {
       const d = props.sendDataToParent;
     };
     axios
-      .get(`https://librarygop.com/public/index.php/api/addbook/${title}`)
+      .get(
+        `https://deneme.librarygop.com/public/index.php/api/addbook/${title}`
+      )
       .then((response) => {
         kitabId = response.data;
         console.log(kitabId);
@@ -30,7 +32,7 @@ const VerticalNavbar = (props) => {
         // İlk axios isteği başarılı olduğunda ikinci axios isteğini yapabiliriz
         axios
           .get(
-            `https://librarygop.com/public/index.php/api/words_get/${email}/${kitabId}`
+            `https://deneme.librarygop.com/public/index.php/api/words_get/${email}/${kitabId}`
           )
           .then((response) => {
             //console.log(response.data);

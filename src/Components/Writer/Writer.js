@@ -17,10 +17,10 @@ function Form() {
   }, []);
   const loadImages = async () => {
     const re = await axios.get(
-      `https://librarygop.com/public/index.php/api/getwriter/${writerId}`
+      `https://deneme.librarygop.com/public/index.php/api/getwriter/${writerId}`
     );
     const res = await axios.get(
-      `https://librarygop.com/public/index.php/api/getbooksbyuserid/${writerId}`
+      `https://deneme.librarygop.com/public/index.php/api/getbooksbyuserid/${writerId}`
     );
     setData(re.data);
     setDataBook(res.data);

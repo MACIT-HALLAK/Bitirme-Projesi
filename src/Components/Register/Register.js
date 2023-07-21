@@ -40,7 +40,7 @@ const Register = () => {
         //   }
         // );
         let res = await axios.get(
-          `https://librarygop.com/public/index.php/api/sendemail/${email}`
+          `https://deneme.librarygop.com/public/index.php/api/sendemail/${email}`
         );
         if (res.status === 200) {
           console.log('bayby');

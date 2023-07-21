@@ -27,7 +27,7 @@ const AddBook = () => {
 
   const get_authors = async () => {
     await axios
-      .get('https://librarygop.com/public/index.php/api/getAuthors')
+      .get('https://deneme.librarygop.com/public/index.php/api/getAuthors')
       // .get('http://127.0.0.1:8000/api/getAuthors')
       .then((res) => {
         console.log('data getirildi' + res.data[0]['id']);
@@ -67,7 +67,7 @@ const AddBook = () => {
       // // Make POST request to upload image using Axios
       const response = await axios.post(
         // 'http://127.0.0.1:8000/api/addbook',
-        'https://librarygop.com/public/index.php/api/addbook',
+        'https://deneme.librarygop.com/public/index.php/api/addbook',
         formData
       );
 

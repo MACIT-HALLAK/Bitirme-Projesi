@@ -50,13 +50,13 @@ function WordsPage() {
 
   const kitapidgetit = async () => {
     const res = await axios.get(
-      `https://librarygop.com/public/index.php/api/words/${cookies.email}`
+      `https://deneme.librarygop.com/public/index.php/api/words/${cookies.email}`
     );
 
     const bookIds = res.data;
     //console.log(bookIds);
     await axios
-      .post('https://librarygop.com/public/index.php/api/getbooksname', {
+      .post('https://deneme.librarygop.com/public/index.php/api/getbooksname', {
         bookids: bookIds,
       })
       .then((response) => {
@@ -83,7 +83,7 @@ function WordsPage() {
       if (result.isConfirmed) {
         axios
           .delete(
-            `https://librarygop.com/public/index.php/api/words_delete/${email}/${word}`
+            `https://deneme.librarygop.com/public/index.php/api/words_delete/${email}/${word}`
           )
           .then((response) => {
             // İstek başarılı olduğunda yapılacak işlemler

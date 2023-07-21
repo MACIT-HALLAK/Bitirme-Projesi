@@ -33,7 +33,7 @@ function AddWriter() {
 
       // Make POST request to upload image using Axios
       const response = await axios.post(
-        'https://librarygop.com/public/index.php/api/addwriter',
+        'https://deneme.librarygop.com/public/index.php/api/addwriter',
         formData
       );
 

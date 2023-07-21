@@ -25,7 +25,7 @@ const Login = () => {
       if (flag) {
         let res = await axios
           .post(
-            `https://librarygop.com/public/index.php/api/login/${email}/${password}`
+            `https://deneme.librarygop.com/public/index.php/api/login/${email}/${password}`
           )
           .then((res) => {
             if (res.data.status === 404) {

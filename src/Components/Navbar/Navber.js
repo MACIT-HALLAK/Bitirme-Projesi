@@ -48,7 +48,7 @@ const Navbar = () => {
 
   useMemo(async () => {
     const res = await axios.get(
-      'https://librarygop.com/public/index.php/api/getallbooks'
+      'https://deneme.librarygop.com/public/index.php/api/getallbooks'
     );
     setBookdata(res.data);
   }, [window.onload]);

@@ -16,7 +16,7 @@ const Writerspage = () => {
   //veriler veritabaninda cek
   const loadData = async () => {
     const re = await axios.get(
-      'https://librarygop.com/public/index.php/api/getallwriter'
+      'https://deneme.librarygop.com/public/index.php/api/getallwriter'
     );
     setData(re.data);
   };
@@ -37,7 +37,7 @@ const Writerspage = () => {
       <div className="Writerspage-layout-arama">
         <h3>
           <span>
-            <FaSearch   />
+            <FaSearch />
           </span>
           <input
             type="text"

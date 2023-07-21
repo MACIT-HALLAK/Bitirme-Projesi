@@ -25,7 +25,7 @@ const ReadingPage = () => {
   // Kitabı veritabanından çekme
   const loadData = async () => {
     const res = await axios.get(
-      `https://librarygop.com/public/index.php/api/getbook/${bookId}`
+      `https://deneme.librarygop.com/public/index.php/api/getbook/${bookId}`
     );
     setBookdata(res.data);
   };
@@ -83,7 +83,7 @@ const ReadingPage = () => {
   const wordAdd = () => {
     axios
       .get(
-        `https://librarygop.com/public/index.php/api/words_control/${email}/${bookId}/${selection}`
+        `https://deneme.librarygop.com/public/index.php/api/words_control/${email}/${bookId}/${selection}`
       )
       .then((response) => {
         console.log(response.data.success);
@@ -113,7 +113,7 @@ const ReadingPage = () => {
           } else {
             axios
               .post(
-                `https://librarygop.com/public/index.php/api/word_set/${email}/${bookId}/${selection}`
+                `https://deneme.librarygop.com/public/index.php/api/word_set/${email}/${bookId}/${selection}`
               )
               .then((res) => {
                 //console.log('Kelime eklendi:', response.data);
@@ -135,7 +135,7 @@ const ReadingPage = () => {
   const quoteAdd = () => {
     axios
       .get(
-        `https://librarygop.com/public/index.php/api/words_control/${email}/${bookId}/${selection}`
+        `https://deneme.librarygop.com/public/index.php/api/words_control/${email}/${bookId}/${selection}`
       )
       .then((response) => {
         //console.log(response.data.success);
@@ -157,7 +157,7 @@ const ReadingPage = () => {
           if (words.length > 1) {
             axios
               .post(
-                `https://librarygop.com/public/index.php/api/words_set/${email}/${bookId}/${selection}`
+                `https://deneme.librarygop.com/public/index.php/api/words_set/${email}/${bookId}/${selection}`
               )
               .then((response) => {
                 //console.log('Alıntınız eklendi:', response.data);

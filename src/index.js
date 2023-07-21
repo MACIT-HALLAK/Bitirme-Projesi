@@ -31,7 +31,7 @@ const RootComponent = () => {
     const fetchData = async () => {
       if (!data) {
         const response = await axios.get(
-          'https://librarygop.com/public/index.php/api/getnewerbooks'
+          'https://deneme.librarygop.com/public/index.php/api/getnewerbooks'
         );
         setData(response.data);
       }
