@@ -48,6 +48,7 @@ const ReadingPage = () => {
   const [to, setTo] = useState('ar');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
+  const modal = useRef();
 
   //secilen metini almak icin
   //
@@ -62,10 +63,20 @@ const ReadingPage = () => {
         const selectionRange = window.getSelection().getRangeAt(0);
         const rangeRect = selectionRange.getBoundingClientRect();
 
-        const elemeRect = eleme.getBoundingClientRect();
-        const y = e.clientY + eleme.scrollTop - elemeRect.top + 13;
-        const iconX = `calc(${rangeRect.left}px + calc(${rangeRect.width}px / 2) - 40px)`;
-        setIconPosition({ x: iconX, y: y });
+        let y = window.scrollY + rangeRect.top + rangeRect.height - 85;
+        let x = rangeRect.left + rangeRect.width / 2 - 40;
+
+        if (rangeRect.bottom > 410) {
+          y = y - 150;
+        }
+
+        const windowWidth = contentDiv.current.clientWidth;
+        const modalWidth = 200;
+        if (x + modalWidth > windowWidth) {
+          x = windowWidth - modalWidth - 20;
+        }
+
+        setIconPosition({ x, y });
         setShowIcon(true);
         setInput(selectionText);
       }
@@ -369,6 +380,7 @@ const ReadingPage = () => {
         )}
         <Modal
           isOpen={showModal}
+          ref={modal}
           onRequestClose={() => setShowModal(false)}
           overlayClassName="custom-overlay"
           style={{

@@ -6,6 +6,7 @@ import VerticalNavbar from '../VerticalNavbar/VerticalNavbar';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import Swal1 from 'sweetalert2';
+import Navbar from '../Navbar/Navber';
 
 function WordsPage() {
   const [cookies] = useCookies(['email']);
@@ -88,7 +89,7 @@ function WordsPage() {
           .then((response) => {
             // İstek başarılı olduğunda yapılacak işlemler
             console.log('Kelime silindi:', response.data);
-            window.location.reload();
+            window.location.href = 'http://localhost:3000/WordsPage';
           })
           .catch((error) => {
             // Hata durumunda yapılacak işlemler
@@ -108,52 +109,72 @@ function WordsPage() {
   }, []);
   return (
     <div className="word-page-parent">
-      <Title title={receivedData[0]?.name} />
-      <div className="word-page-wraper">
-        {receivedData ? (
-          <>
-            <div>
-              {kelimeler.length > 0 && <h4>kelimeler</h4>}
-              {kelimeler.length > 0 &&
-                kelimeler.map((item) => {
-                  return (
-                    <div className="word-page-child">
-                      {item}
-                      <button
-                        onClick={() =>
-                          handleDelete(receivedData[0]?.value, item)
-                        }
-                      >
-                        <FaRegTrashAlt />
-                      </button>
-                    </div>
-                  );
-                })}
-            </div>
-            <div>
-              {alintilar.length > 0 && <h4>Alıntılar</h4>}
-              {alintilar.length > 0 &&
-                alintilar.map((item) => {
-                  return (
-                    <div className="word-page-child">
-                      {item}
-                      <button
-                        onClick={() =>
-                          handleDelete(receivedData[0]?.value, item)
-                        }
-                      >
-                        <FaRegTrashAlt />
-                      </button>
-                    </div>
-                  );
-                })}
-            </div>
-          </>
-        ) : (
-          <div>no data to show </div>
-        )}
-      </div>
-      <VerticalNavbar class={bookData} sendDataToParent={handleDataFromChild} />
+      <Navbar />
+      {bookData.length > 0 ? (
+        <>
+          <Title title={receivedData[0]?.name} />
+          <div className="word-page-wraper">
+            {receivedData ? (
+              <>
+                <div>
+                  {kelimeler.length > 0 && <h4>kelimeler</h4>}
+                  {kelimeler.length > 0 &&
+                    kelimeler.map((item) => {
+                      return (
+                        <div className="word-page-child">
+                          {item}
+                          <button
+                            onClick={() =>
+                              handleDelete(receivedData[0]?.value, item)
+                            }
+                          >
+                            <FaRegTrashAlt />
+                          </button>
+                        </div>
+                      );
+                    })}
+                </div>
+                <div>
+                  {alintilar.length > 0 && <h4>Alıntılar</h4>}
+                  {alintilar.length > 0 &&
+                    alintilar.map((item) => {
+                      return (
+                        <div className="word-page-child">
+                          {item}
+                          <button
+                            onClick={() =>
+                              handleDelete(receivedData[0]?.value, item)
+                            }
+                          >
+                            <FaRegTrashAlt />
+                          </button>
+                        </div>
+                      );
+                    })}
+                </div>
+              </>
+            ) : (
+              <div>no data to show </div>
+            )}
+          </div>
+          <VerticalNavbar
+            class={bookData}
+            sendDataToParent={handleDataFromChild}
+          />
+        </>
+      ) : (
+        <h4
+          style={{
+            marginInline: 'auto',
+            position: 'absolute',
+            left: '50%',
+            transform: 'translate(-50% , -100%)',
+            top: '50%',
+          }}
+        >
+          Kelimleriniz veya Alıntılarınızı Yok
+        </h4>
+      )}
     </div>
   );
 }

@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import lib from '../../Assets/images/library.png';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
-export default function Content() {
+export default function Content({ items }) {
   const [name, setName] = useState();
   const [cookiesE, setCookiesE] = useCookies('email');
   const conName = useRef();
@@ -24,9 +25,32 @@ export default function Content() {
     setName(res.data);
     console.log(res.data);
   };
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((currentIndex + 1) % items.length);
+  };
+
+  const prevSlide = () => {
+    const newIndex = currentIndex - 1;
+    if (newIndex < 0) {
+      setCurrentIndex(items.length - 1);
+    } else {
+      setCurrentIndex(newIndex);
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((currentIndex + 1) % items.length);
+    }, 3000); // تغيير الشريحة كل 3 ثوان
+    return () => clearInterval(interval); // تنظيف عند فك تحميل المكون
+  }, [currentIndex, items]);
+
   return (
     <div className="content-main">
-      <div className="text-box">
+      <div className="text-box slider">
         {name ? (
           <p>
             Merhaba{' '}
@@ -44,21 +68,27 @@ export default function Content() {
         <p>EJIYAL Kütüphanesine Hoşgeldiniz</p>
         <img className="content-logo" src={lib} />
         <div className="footer-row">
-          {/* <a className="btn btn-first">En Çok Okunan</a> */}
-          <Link to="/MostRepeatedBooks" className="btn btn-second">
-            En Çok Okunan
-          </Link>
-          <Link to="/BookPage" className="btn btn-second">
-            Kitablar
-          </Link>
-          <Link to="/Categories" className="btn btn-second">
-            Bölümler
-          </Link>
-          <Link to="/WordsPage" className="btn btn-second">
-            Kelimelerim
-          </Link>
-          {/* <a className="btn btn-second">Kitablar</a> */}
-          {/* <a className="btn btn-third">Bölümler</a> */}
+          {items.map((item, index) => (
+            <div
+              className={`slide ${index === currentIndex ? 'active' : ''}`}
+              key={index}
+            >
+              {item}
+            </div>
+          ))}
+
+          <button className="slider-btn prev" onClick={prevSlide}>
+            <FaArrowLeft />
+          </button>
+          <button className="slider-btn next" onClick={nextSlide}>
+            <FaArrowRight />
+          </button>
+          {/* <button className="slider-btn prev" onClick={prevSlide}>
+              Previous
+            </button>
+            <button className="slider-btn next" onClick={nextSlide}>
+              Next
+            </button> */}
         </div>
       </div>
     </div>

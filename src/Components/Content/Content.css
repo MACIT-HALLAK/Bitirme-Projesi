@@ -169,6 +169,7 @@
     height: 75px;
   }
 }
+
 @media (max-width: 920px) {
   .text-box a {
     padding: 5px 10px;
@@ -185,19 +186,33 @@
   .main-image {
     display: none !important;
   }
+
+  .content-main .footer-row {
+    margin-top: 50px;
+    margin-bottom: 0 !important;
+  }
+
+  .content-main .footer-row a {
+    margin-top: 20px;
+  }
 }
 
 @media (max-width: 576px) {
   .text-box {
     height: 95%;
   }
-  .text-box a {
-    scale: 0.75;
-  }
+
   .text-box .footer-row {
     bottom: 1% !important;
     justify-content: center !important;
     gap: 0;
+  }
+
+  .content-main .footer-row {
+    margin-bottom: 25px !important;
+  }
+  .content-main .text-box {
+    scale: 0.9;
   }
 }
 
@@ -221,4 +236,83 @@
 
 .text-box:hover {
   scale: 1.05;
+}
+
+.content-main .footer-row {
+  justify-content: center !important;
+  margin-bottom: 25px;
+  bottom: 5%;
+  left: 5%;
+  height: 50px;
+}
+.content-main .slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.content-main .slide {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  /*bottom: 1px;
+  */
+}
+
+.content-main .slide.active {
+  opacity: 1;
+}
+
+/* أضف أي أنماشين أو تأثيرات أخرى تريدها للكروت هنا */
+
+.content-main .slider-btn {
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  display: grid;
+  place-content: center;
+  color: var(--main-color);
+  transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.2s scale;
+  -webkit-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.2s scale;
+  -moz-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.2s scale;
+  -ms-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.2s scale;
+  -o-transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.2s scale;
+}
+
+.prev,
+.next {
+  position: absolute;
+  bottom: 1px;
+}
+.content-main .slider-btn:hover {
+  scale: 1.1;
+  /* background-color: var(--main-color); */
+}
+.content-main .slider-btn:focus {
+  outline: none;
+}
+.content-main .slider-btn.prev {
+  left: 10px;
+}
+
+.content-main .slider-btn.next {
+  right: 10px;
+}
+
+.content-main .btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  translate: 0 50%;
+}
+
+.content-main .slider .slide a {
+  width: 100%;
+  cursor: pointer;
 }

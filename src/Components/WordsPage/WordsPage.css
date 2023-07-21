@@ -3,8 +3,9 @@
   background-color: var(--section-background);
   display: grid;
   grid-template-columns: 25px repeat(2, 1fr) 25px repeat(5, 1fr) 25px;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto 1fr;
   grid-template-areas:
+    '. nav nav nav nav nav nav nav nav .'
     '. vNav vNav . title title title title title .'
     '. vNav vNav . cont cont cont cont cont .';
   gap: 20px;
@@ -13,6 +14,13 @@
   grid-area: title;
   margin-top: 20px;
 }
+
+.word-page-parent > nav {
+  grid-area: nav;
+  margin-left: 0%;
+  margin-top: 5px;
+}
+
 .word-page-wraper {
   grid-area: cont;
   display: grid;
