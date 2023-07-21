@@ -54,17 +54,36 @@
   .word-page-parent {
     grid-template-columns: 20px repeat(3, 1fr) 10px repeat(4, 1fr) 20px;
     grid-template-areas:
+      '. nav nav nav nav nav nav nav nav .'
       '. vNav vNav vNav . title title title title .'
       '. vNav vNav vNav . cont cont cont cont .';
   }
 }
-@media screen and (max-width: 740px) {
+/* @media screen and (max-width: 740px) {
   .word-page-parent {
     grid-template-columns: 20px repeat(4, 1fr) 20px;
     grid-template-rows: auto auto 1fr;
     grid-template-areas:
-      '. title title title title .'
-      '. vNav vNav vNav vNav .'
+      '. nav nav nav nav nav nav nav nav .'
+      '. vNav title title title title .'
       '. cont cont cont cont .';
+  }
+} */
+
+@media (max-width: 768px) {
+  .word-page-wraper {
+    grid-area: cont;
+    display: flex;
+    flex-flow: wrap;
+  }
+
+  .word-page-wraper div {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .word-page-wraper {
+    align-content: baseline;
   }
 }

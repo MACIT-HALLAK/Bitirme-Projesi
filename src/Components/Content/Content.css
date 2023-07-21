@@ -255,19 +255,30 @@
   opacity: 0;
   transition: opacity 1s ease-in-out;
   width: 50%;
-  display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  /*bottom: 1px;
-  */
+  display: flex;
+  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  -o-transform: translateY(100%);
+  transition: cubic-bezier(0.165, 0.84, 0.44, 1) all 0.5s;
+  -webkit-transition: cubic-bezier(0.165, 0.84, 0.44, 1) all 0.5s;
+  -moz-transition: cubic-bezier(0.165, 0.84, 0.44, 1) all 0.5s;
+  -ms-transition: cubic-bezier(0.165, 0.84, 0.44, 1) all 0.5s;
+  -o-transition: cubic-bezier(0.165, 0.84, 0.44, 1) all 0.5s;
 }
 
 .content-main .slide.active {
   opacity: 1;
+  transform: translateY(0%);
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  -o-transform: translateY(0%);
 }
-
-/* أضف أي أنماشين أو تأثيرات أخرى تريدها للكروت هنا */
 
 .content-main .slider-btn {
   width: 35px;
@@ -292,7 +303,6 @@
 }
 .content-main .slider-btn:hover {
   scale: 1.1;
-  /* background-color: var(--main-color); */
 }
 .content-main .slider-btn:focus {
   outline: none;
@@ -315,4 +325,16 @@
 .content-main .slider .slide a {
   width: 100%;
   cursor: pointer;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

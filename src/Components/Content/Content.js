@@ -70,7 +70,9 @@ export default function Content({ items }) {
         <div className="footer-row">
           {items.map((item, index) => (
             <div
-              className={`slide ${index === currentIndex ? 'active' : ''}`}
+              className={`slide ${
+                index === currentIndex ? 'active' : 'sr-only'
+              }`}
               key={index}
             >
               {item}
