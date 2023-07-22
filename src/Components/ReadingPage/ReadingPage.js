@@ -217,7 +217,6 @@ const ReadingPage = () => {
     fetch(apiurl)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setOutput(data.responseData.translatedText);
       });
   };

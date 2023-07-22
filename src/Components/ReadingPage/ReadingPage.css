@@ -427,3 +427,11 @@ nav {
   background-color: rgba(211, 203, 203, 0.5);
   color: aqua;
 } */
+
+.ReactModal__Content {
+  transform: translate(35%, 50%) !important;
+  -webkit-transform: translate(35%, 50%) !important;
+  -moz-transform: translate(35%, 50%) !important;
+  -ms-transform: translate(35%, 50%) !important;
+  -o-transform: translate(35%, 50%) !important;
+}
