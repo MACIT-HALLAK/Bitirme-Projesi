@@ -125,11 +125,10 @@ nav {
 
   .menu-bars {
     display: block;
-    margin-bottom: 10px;
+    margin: 10px;
     font-size: 1.7rem;
     color: var(--main-color);
     cursor: pointer;
-    margin-left: 10px;
     transition: transform 0.5s ease-in-out;
     -webkit-transition: transform 0.5s ease-in-out;
     -moz-transition: transform 0.5s ease-in-out;

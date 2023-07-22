@@ -374,6 +374,13 @@ nav {
   color: var(--main-color-alt);
 }
 
+@media (max-width: 576px) {
+  .setting-open {
+    top: 1% !important;
+    right: 5% !important;
+  }
+}
+
 @keyframes rota {
   from {
     transform: rotate(0);

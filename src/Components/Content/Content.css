@@ -198,13 +198,24 @@
   }
 
   .text-box .footer-row {
-    bottom: 1% !important;
-    justify-content: center !important;
-    margin-bottom: 25px !important;
+    /* bottom: 1% !important; */
+    /* justify-content: center !important; */
+    height: 200px !important;
+    display: flex;
+    align-items: center;
+    /* margin-bottom: 25px !important; */
     gap: 0;
   }
   .content-main .text-box {
     scale: 0.9;
+  }
+
+  .content-main .slide {
+    width: 75% !important;
+  }
+
+  .content-main .text-box:hover {
+    scale: 0.85 !important;
   }
 }
 

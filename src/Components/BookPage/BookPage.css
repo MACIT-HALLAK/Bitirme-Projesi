@@ -114,8 +114,14 @@
   }
 }
 
-@media (max-width: 1200px){
+@media (max-width: 1200px) {
   .BookPage-Body {
     gap: 2.7vh 4.7vw;
+  }
+}
+
+@media (max-width: 576px) {
+  .BookPage-Body {
+    justify-content: center !important;
   }
 }
