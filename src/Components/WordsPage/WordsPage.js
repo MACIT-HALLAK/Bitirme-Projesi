@@ -43,8 +43,8 @@ function WordsPage() {
       }
     });
 
-    console.log('kelimeler:', kelimeler); // Sadece kelimeleri içeren dizi
-    console.log('alintilar:', alintilar); // Sadece cümleleri içeren dizi
+    // console.log('kelimeler:', kelimeler); // Sadece kelimeleri içeren dizi
+    // console.log('alintilar:', alintilar); // Sadece cümleleri içeren dizi
   };
 
   // console.log(alintilar);
@@ -88,8 +88,13 @@ function WordsPage() {
           )
           .then((response) => {
             // İstek başarılı olduğunda yapılacak işlemler
+
+            setkelimeler((prevKelimeler) =>
+              prevKelimeler.filter((kelime) => kelime !== word)
+            );
+
             console.log('Kelime silindi:', response.data);
-            window.location.href = 'http://localhost:3000/WordsPage';
+            // window.location.href = 'https://ejyel.librarygop.com/WordsPage';
           })
           .catch((error) => {
             // Hata durumunda yapılacak işlemler
@@ -99,13 +104,10 @@ function WordsPage() {
         Swal1.fire('silindi!', 'Kelime Silindi.', 'success');
       }
     });
-    //console.log(word); `http://127.0.0.1:8000/api/words/${email}/${word}`
   };
 
   useEffect(() => {
     kitapidgetit();
-
-    //window.location.reload();
   }, []);
   return (
     <div className="word-page-parent">
@@ -117,9 +119,9 @@ function WordsPage() {
             {receivedData ? (
               <>
                 <div>
-                  {kelimeler.length > 0 && <h4>kelimeler</h4>}
-                  {kelimeler.length > 0 &&
-                    kelimeler.map((item) => {
+                  {kelimeler?.length > 0 && <h4>kelimeler</h4>}
+                  {kelimeler?.length > 0 &&
+                    kelimeler?.map((item) => {
                       return (
                         <div className="word-page-child">
                           {item}
@@ -135,9 +137,9 @@ function WordsPage() {
                     })}
                 </div>
                 <div>
-                  {alintilar.length > 0 && <h4>Alıntılar</h4>}
-                  {alintilar.length > 0 &&
-                    alintilar.map((item) => {
+                  {alintilar?.length > 0 && <h4>Alıntılar</h4>}
+                  {alintilar?.length > 0 &&
+                    alintilar?.map((item) => {
                       return (
                         <div className="word-page-child">
                           {item}
@@ -172,7 +174,7 @@ function WordsPage() {
             top: '50%',
           }}
         >
-          Kelimleriniz veya Alıntılarınızı Yok
+          Kelimleriniz veya Alıntılarınızı Yok Yada Mevcutsa Getiriliyor
         </h4>
       )}
     </div>

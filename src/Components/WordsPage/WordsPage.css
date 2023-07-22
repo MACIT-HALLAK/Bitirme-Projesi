@@ -59,16 +59,6 @@
       '. vNav vNav vNav . cont cont cont cont .';
   }
 }
-/* @media screen and (max-width: 740px) {
-  .word-page-parent {
-    grid-template-columns: 20px repeat(4, 1fr) 20px;
-    grid-template-rows: auto auto 1fr;
-    grid-template-areas:
-      '. nav nav nav nav nav nav nav nav .'
-      '. vNav title title title title .'
-      '. cont cont cont cont .';
-  }
-} */
 
 @media (max-width: 768px) {
   .word-page-wraper {

@@ -66,8 +66,12 @@ const ReadingPage = () => {
         let y = window.scrollY + rangeRect.top + rangeRect.height - 85;
         let x = rangeRect.left + rangeRect.width / 2 - 40;
 
-        if (rangeRect.bottom > 410) {
-          y = y - 150;
+        console.log(rangeRect);
+        if (rangeRect.bottom > 120) {
+          y = y - 500;
+          x = x + 100;
+        } else {
+          y = y - 350;
         }
 
         const windowWidth = contentDiv.current.clientWidth;
@@ -372,7 +376,7 @@ const ReadingPage = () => {
             </div>
             <div>
               <button onClick={quoteAdd}>Alıntı Ekle</button>
-              <Link to="/QuotePage">
+              <Link to="/WordsPage">
                 <FaRegEdit />
               </Link>
             </div>
