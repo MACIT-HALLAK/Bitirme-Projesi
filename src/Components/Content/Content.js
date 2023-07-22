@@ -85,12 +85,14 @@ export default function Content({ items }) {
             </div>
           ))}
 
-          <button className="slider-btn prev" onClick={prevSlide}>
-            <FaArrowLeft />
-          </button>
-          <button className="slider-btn next" onClick={nextSlide}>
-            <FaArrowRight />
-          </button>
+          <div>
+            <button className="slider-btn prev" onClick={prevSlide}>
+              <FaArrowLeft />
+            </button>
+            <button className="slider-btn next" onClick={nextSlide}>
+              <FaArrowRight />
+            </button>
+          </div>
           {/* <button className="slider-btn prev" onClick={prevSlide}>
               Previous
             </button>
