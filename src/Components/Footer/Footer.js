@@ -47,7 +47,9 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="footer-bottom">Ejyal Kütüphanesi</div>
+      <div className="footer-bottom">
+        Telif Hakkı &copy; 2023 Ejyel. Tüm Hakları Saklıdır.
+      </div>
     </footer>
   );
 };

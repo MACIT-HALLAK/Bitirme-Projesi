@@ -18,6 +18,8 @@ export default function Content({ items }) {
       setcontentName(true);
     }, 500);
   }, []);
+
+  const btnColors = ['#4caf50', '#65c46b', '#8bc34a', '#4ecb82'];
   const loadName = async () => {
     const res = await axios.get(
       `https://deneme.librarygop.com/public/index.php/api/getusername/${cookiesE.email}`
@@ -74,6 +76,10 @@ export default function Content({ items }) {
                 index === currentIndex ? 'active' : 'sr-only'
               }`}
               key={index}
+              style={{
+                backgroundColor: btnColors[index],
+                borderRadius: '.25rem',
+              }}
             >
               {item}
             </div>

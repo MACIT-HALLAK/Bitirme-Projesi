@@ -42,13 +42,14 @@ const ReadingPage = () => {
   const [selection, setSelection] = useState(null);
   const [showIcon, setShowIcon] = useState(false);
   const [iconPosition, setIconPosition] = useState({ x: 0, y: 0 });
+
   const [showModal, setShowModal] = useState(false);
   //******* Metin çevirisi için değişkenler */
   const [from, setFrom] = useState('en');
   const [to, setTo] = useState('ar');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
-  const modal = useRef();
+  const readingContainerRef = useRef(null);
 
   //secilen metini almak icin
   //
@@ -59,25 +60,30 @@ const ReadingPage = () => {
       setSelection(selectionText);
 
       const eleme = document.querySelector('.reading-container');
-      if (eleme) {
+      if (contentDiv.current) {
         const selectionRange = window.getSelection().getRangeAt(0);
         const rangeRect = selectionRange.getBoundingClientRect();
+        const containerRect = contentDiv.current.getBoundingClientRect();
 
-        let y = window.scrollY + rangeRect.top + rangeRect.height - 85;
-        let x = rangeRect.left + rangeRect.width / 2 - 40;
+        let y = rangeRect.top - containerRect.top + 20;
+        let x = rangeRect.left - containerRect.left + rangeRect.width / 2 + 40;
 
-        console.log(rangeRect);
-        if (rangeRect.bottom > 120) {
-          y = y - 500;
-          x = x + 100;
-        } else {
-          y = y - 350;
+        const containerWidth = contentDiv.current.clientWidth;
+        const containerHeight = contentDiv.current.clientHeight;
+        const modalWidth = 200;
+        const modalHeight = 200;
+
+        if (x + modalWidth > containerWidth) {
+          x = containerWidth - modalWidth - 40;
         }
 
-        const windowWidth = contentDiv.current.clientWidth;
-        const modalWidth = 200;
-        if (x + modalWidth > windowWidth) {
-          x = windowWidth - modalWidth - 20;
+        if (y + modalHeight / 2 > containerHeight) {
+          y = containerHeight - modalHeight / 2;
+        }
+
+        console.log(containerRect);
+        if (containerRect.top < 0) {
+          y = y - 100;
         }
 
         setIconPosition({ x, y });
@@ -384,7 +390,6 @@ const ReadingPage = () => {
         )}
         <Modal
           isOpen={showModal}
-          ref={modal}
           onRequestClose={() => setShowModal(false)}
           overlayClassName="custom-overlay"
           style={{
