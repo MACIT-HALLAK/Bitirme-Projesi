@@ -65,26 +65,30 @@ const ReadingPage = () => {
         const rangeRect = selectionRange.getBoundingClientRect();
         const containerRect = contentDiv.current.getBoundingClientRect();
 
-        let y = rangeRect.top - containerRect.top + 20;
+        // let y = rangeRect.top - containerRect.top + 20;
+        const elemeRect = eleme.getBoundingClientRect();
+        let y = e.clientY + eleme.scrollTop - elemeRect.top -80;
+       
         let x = rangeRect.left - containerRect.left + rangeRect.width / 2 + 40;
-
+        console.log(y)
         const containerWidth = contentDiv.current.clientWidth;
         const containerHeight = contentDiv.current.clientHeight;
         const modalWidth = 200;
         const modalHeight = 200;
+        
 
         if (x + modalWidth > containerWidth) {
           x = containerWidth - modalWidth - 40;
         }
 
-        if (y + modalHeight / 2 > containerHeight) {
-          y = containerHeight - modalHeight / 2;
+        if (y + modalHeight  > containerHeight) {
+          y = containerHeight - modalHeight ;
         }
 
-        console.log(containerRect);
-        if (containerRect.top < 0) {
-          y = y - 100;
-        }
+        // console.log(containerRect);
+        // if (containerRect.top < 0) {
+        //   y = y - 100;
+        // }
 
         setIconPosition({ x, y });
         setShowIcon(true);

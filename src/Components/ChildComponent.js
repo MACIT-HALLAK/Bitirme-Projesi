@@ -23,7 +23,16 @@ const ChildComponent = ({ data }) => {
                     WriterName={items.author}
                   />
                 ) : (
-                  ''
+                  items.categori == level ?(
+                    <Card
+                        key={items.id}
+                        cardNumber={items.id}
+                        bookImage={`data:image/jpeg;base64,${items.conten_book}`}
+                        writerImage={`data:image/jpeg;base64,${items.conten_author}`}
+                        name={items.title}
+                        WriterName={items.author}
+                  />
+                  ):('')
                 )
               ) : (
                 <Card
