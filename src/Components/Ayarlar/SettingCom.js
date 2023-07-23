@@ -2,7 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import './SettingCom.css';
 import { FaRegWindowClose } from 'react-icons/fa';
 
-export default function SettingCom({ clicking, show, handle }) {
+export default function SettingCom({setlang, clicking, show, handle }) {
+
+  const handlelang =(e)=>{
+    setlang(e)
+  }
+
   useEffect(() => {
     let opac = '0.5';
     let colors = document.querySelector('[colors]');
@@ -16,7 +21,7 @@ export default function SettingCom({ clicking, show, handle }) {
       '#ffb300',
       '#757575',
     ];
-
+   
     let font_size = document.querySelector('[font_size]');
     let fonts_size_array = ['16', '18', '20', '22', '24', '28', '32', '36'];
 
@@ -83,7 +88,7 @@ export default function SettingCom({ clicking, show, handle }) {
 
     let prop_obj = JSON.parse(localStorage.getItem('props_arr'))
       ? JSON.parse(localStorage.getItem('props_arr'))
-      : { color: 'balck', font: 'sans-serif', size: '24px' };
+      : { color: 'balck', font: 'sans-serif', size: '16px' };
 
     all_props.forEach((e) => {
       e.addEventListener('click', (event) => {
@@ -114,35 +119,38 @@ export default function SettingCom({ clicking, show, handle }) {
       changeProps();
     };
 
-    function changeProps() {
-      let element_arr = [];
+    async function changeProps() {
+      setTimeout(() => {
+        let element_arr = [];
 
-      if (localStorage.getItem('props_arr')) {
-        prop_obj = JSON.parse(localStorage.getItem('props_arr'));
-        all_props.forEach((element) => {
-          let my_prop = element.getAttribute('prop');
-          // console.log(my_prop);
-          if (
-            my_prop === prop_obj.color ||
-            my_prop === prop_obj.font ||
-            my_prop === prop_obj.size
-          ) {
-            element_arr.push(element);
-            console.log('true');
-          }
-        });
-        element_arr.forEach((set_active) => {
-          set_active.classList.add('active');
-        });
-      }
-      document.querySelector('.text p').style.color =
-        prop_obj.color !== 'null' ? prop_obj.color : 'black';
-      document.querySelector('.text p').style.fontFamily = prop_obj.font;
-      document.querySelector('.text p').style.fontSize = prop_obj.size + 'px';
-
-      // if (localStorage.getItem("props_arr")) {
-      //   console.log(JSON.parse(localStorage.getItem("props_arr")));
-      // }
+        if (localStorage.getItem('props_arr')) {
+          prop_obj = JSON.parse(localStorage.getItem('props_arr'));
+          all_props.forEach((element) => {
+            let my_prop = element.getAttribute('prop');
+            // console.log(my_prop);
+            if (
+              my_prop === prop_obj.color ||
+              my_prop === prop_obj.font ||
+              my_prop === prop_obj.size
+            ) {
+              element_arr.push(element);
+              console.log('true');
+            }
+          });
+          element_arr.forEach((set_active) => {
+            set_active.classList.add('active');
+          });
+          setTimeout(() => {
+            document.querySelector('.text p').style.color = prop_obj?.color;
+            document.querySelector('.text p').style.fontFamily = prop_obj?.font;
+            document.querySelector('.text p').style.fontSize = prop_obj?.size;
+          }, 500);
+        }
+        document.querySelector('.text p').style.color =
+          prop_obj.color !== 'null' ? prop_obj.color : 'black';
+        document.querySelector('.text p').style.fontFamily = prop_obj.font;
+        document.querySelector('.text p').style.fontSize = prop_obj.size + 'px';
+      }, 500);
     }
   }, []);
 
@@ -181,10 +189,10 @@ export default function SettingCom({ clicking, show, handle }) {
         </div>
         <div className="sub-box">
           <h2>
-            <span>Dil Seç</span>
+            <span>Ana Dilin Seç</span>
           </h2>
           <div className="items-box options">
-            <select>
+            <select onChange={(e)=>handlelang(e.target.value)}>
               <option disabled selected>
                 Dil Seç
               </option>

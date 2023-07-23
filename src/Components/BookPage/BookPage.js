@@ -1,67 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useContext } from 'react';
 import './BookPage.css';
 import Navbar from '../Navbar/Navber';
 import Card from '../Card/Card';
 import Footer from '../Footer/Footer';
 import axios from 'axios';
+import ChildComponent from '../ChildComponent';
+import { DataContext } from '../DataContext';
 
 const BookPage = () => {
   const [loading, setLoading] = useState(true);
+  const [slicedData, setSlicedData] = useState([]);
   const [cardCount, setCardCount] = useState(6);
   const [minCardCount, setMinCardCount] = useState(6);
-  const [data, setData] = useState([]);
 
-  const loadImages = async () => {
-    try {
-      const response = await axios.get(
-        'https://librarygop.com/public/index.php/api/getallbooks'
-      );
-      const allData = response.data;
-      const slicedData = allData.slice(0, cardCount);
-      setData(slicedData);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const data = useContext(DataContext);
+
+  const sliced_data_base = data?.slice(0, cardCount);
 
   useEffect(() => {
-    loadImages();
+    setSlicedData(sliced_data_base);
   }, [cardCount]);
 
   const handleCardCountIncrease = () => {
-    setCardCount(prevCount => prevCount + 6);
+    setCardCount((prevCount) => prevCount + 3);
   };
 
   const handleCardCountDecrease = () => {
     if (cardCount > minCardCount) {
-      setCardCount(prevCount => prevCount - 6);
+      setCardCount((prevCount) => prevCount - 3);
     }
   };
 
   return (
-    <div className='book-page-container'>
+    <div className="book-page-container">
       <div className="BookPage-Header">
         <Navbar />
       </div>
       <div className="BookPage-Body">
-        {loading ? (
-          <div className="loading">
-            <p>Lütfen Bekleyin</p>
-            <div className="loader"></div>
-          </div>
-        ) : (
-          data.map((item) => (
-            <Card
-              key={item.id}
-              cardNumber={item.id}
-              bookImage={`data:image/jpeg;base64,${item.conten_book}`}
-              writerImage={`data:image/jpeg;base64,${item.conten_author}`}
-              name={item.title}
-              WriterName={item.author}
-            />
-          ))
-        )}
+        <ChildComponent data={slicedData} />
       </div>
 
       <div className="btn-btn">

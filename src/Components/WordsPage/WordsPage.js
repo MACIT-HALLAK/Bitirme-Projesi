@@ -5,39 +5,105 @@ import { FaRegTrashAlt } from 'react-icons/fa';
 import VerticalNavbar from '../VerticalNavbar/VerticalNavbar';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
+import Swal1 from 'sweetalert2';
+import Navbar from '../Navbar/Navber';
 
 function WordsPage() {
   const [cookies] = useCookies(['email']);
   const [bookData, setBookData] = useState([]);
   const [wordsData, setWordsData] = useState([]);
-
   const [receivedData, setReceivedData] = useState({});
-
-  const handleDataFromChild = (data) => {
+  const [cookiesemail] = useCookies(['email']);
+  const email = cookies.email;
+  const [alintilar, setalintilar] = useState([]);
+  const [kelimeler, setkelimeler] = useState([]);
+  const handleDataFromChild = async (data) => {
     // Handle the received data in the parent component
     setReceivedData(data);
+    const data1 = data[0].value; // receivedData[0].value, bir dizi içerisinde kelimeler ve cümleler içeriyor
+
+    // setalintilar((prev) => {
+    //   return [...prev, trimmedElement];
+    // });
+    setkelimeler([]);
+    setalintilar([]);
+    data1.forEach((element) => {
+      const trimmedElement = element.trim();
+      if (trimmedElement !== '') {
+        const elementWords = trimmedElement.split(/\s+/);
+        if (elementWords.length > 1) {
+          setalintilar((prev) => {
+            return [...prev, trimmedElement];
+          });
+        } else if (elementWords.length === 1) {
+          setkelimeler((prev) => {
+            return [...prev, elementWords[0]];
+          });
+        }
+      }
+    });
+
+    // console.log('kelimeler:', kelimeler); // Sadece kelimeleri içeren dizi
+    // console.log('alintilar:', alintilar); // Sadece cümleleri içeren dizi
   };
+
+  // console.log(alintilar);
 
   const kitapidgetit = async () => {
     const res = await axios.get(
-      `https://librarygop.com/public/index.php/api/words/${cookies.email}`
+      `https://deneme.librarygop.com/public/index.php/api/words/${cookies.email}`
     );
-    // İstek başarılı olduğunda yapılacak işlemler
 
     const bookIds = res.data;
-    console.log(bookIds);
+    //console.log(bookIds);
     await axios
-      .post('https://librarygop.com/public/index.php/api/getbooksname', {
+      .post('https://deneme.librarygop.com/public/index.php/api/getbooksname', {
         bookids: bookIds,
       })
       .then((response) => {
         const books = response.data;
         setBookData(books);
-        // İşlemlere devam edin...
       })
       .catch((error) => {
         console.error(error);
       });
+  };
+  const title = null;
+  const value = null;
+
+  const handleDelete = (item, word) => {
+    Swal1.fire({
+      title: 'Emin Misiniz?',
+      text: 'Bu kelimeyi silmek istediğinizden emin misiniz?!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#1c8b78',
+      cancelButtonColor: 'gray',
+      confirmButtonText: 'Evet!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(
+            `https://deneme.librarygop.com/public/index.php/api/words_delete/${email}/${word}`
+          )
+          .then((response) => {
+            // İstek başarılı olduğunda yapılacak işlemler
+
+            setkelimeler((prevKelimeler) =>
+              prevKelimeler.filter((kelime) => kelime !== word)
+            );
+
+            console.log('Kelime silindi:', response.data);
+            // window.location.href = 'https://ejyel.librarygop.com/WordsPage';
+          })
+          .catch((error) => {
+            // Hata durumunda yapılacak işlemler
+            console.error('bir hata oluştu:', error);
+          });
+
+        Swal1.fire('silindi!', 'Kelime Silindi.', 'success');
+      }
+    });
   };
 
   useEffect(() => {
@@ -45,101 +111,72 @@ function WordsPage() {
   }, []);
   return (
     <div className="word-page-parent">
-      <div className="word-page-wraper">
-        {receivedData ? (
-          Array.from(receivedData)?.map((item) => (
-            <>
-              <Title title={item.name} />
-              {item.value.length > 1 ? (
-                item.value?.map((value) => {
-                  return (
-                    <div className="word-page-child">
-                      <p>{value}</p>
-                    </div>
-                  );
-                })
-              ) : (
-                <div className="word-page-child">
-                  <p>{item.value}</p>
+      <Navbar />
+      {bookData.length > 0 ? (
+        <>
+          <Title title={receivedData[0]?.name} />
+          <div className="word-page-wraper">
+            {receivedData ? (
+              <>
+                <div>
+                  {kelimeler?.length > 0 && <h4>kelimeler</h4>}
+                  {kelimeler?.length > 0 &&
+                    kelimeler?.map((item) => {
+                      return (
+                        <div className="word-page-child">
+                          {item}
+                          <button
+                            onClick={() =>
+                              handleDelete(receivedData[0]?.value, item)
+                            }
+                          >
+                            <FaRegTrashAlt />
+                          </button>
+                        </div>
+                      );
+                    })}
                 </div>
-              )}
-            </>
-          ))
-        ) : (
-          <div></div>
-        )}
-        {/* <div className="word-page-child">
-          <p>attractiveness</p>
-          <p>جاذبية</p>
-          <button>
-            <FaRegTrashAlt />
-          </button>
-        </div>
-        <div className="word-page-child">
-          <p>wishes</p>
-          <p>التمنيات</p>
-          <button>
-            <FaRegTrashAlt />
-          </button>
-        </div>
-        <div className="word-page-child">
-          <p>wishes</p>
-          <p>التمنيات</p>
-          <button>
-            <FaRegTrashAlt />
-          </button>
-        </div>
-        <div className="word-page-child">
-          <p>wishes</p>
-          <p>التمنيات</p>
-          <button>
-            <FaRegTrashAlt />
-          </button>
-        </div>
-        <div className="word-page-child">
-          <p>wishes</p>
-          <p>التمنيات</p>
-          <button>
-            <FaRegTrashAlt />
-          </button>
-        </div>
-        <div className="word-page-child">
-          <p>wishes</p>
-          <p>التمنيات</p>
-          <button>
-            <FaRegTrashAlt />
-          </button>
-        </div>
-        <div className="word-page-child">
-          <p>wishes</p>
-          <p>التمنيات</p>
-          <button>
-            <FaRegTrashAlt />
-          </button>
-        </div>
-        <div className="word-page-child">
-          <p>wishes</p>
-          <p>التمنيات</p>
-          <button>
-            <FaRegTrashAlt />
-          </button>
-        </div>
-        <div className="word-page-child">
-          <p>wishes</p>
-          <p>التمنيات</p>
-          <button>
-            <FaRegTrashAlt />
-          </button>
-        </div>
-        <div className="word-page-child">
-          <p>wishes</p>
-          <p>التمنيات</p>
-          <button>
-            <FaRegTrashAlt />
-          </button>
-        </div> */}
-      </div>
-      <VerticalNavbar class={bookData} sendDataToParent={handleDataFromChild} />
+                <div>
+                  {alintilar?.length > 0 && <h4>Alıntılar</h4>}
+                  {alintilar?.length > 0 &&
+                    alintilar?.map((item) => {
+                      return (
+                        <div className="word-page-child">
+                          {item}
+                          <button
+                            onClick={() =>
+                              handleDelete(receivedData[0]?.value, item)
+                            }
+                          >
+                            <FaRegTrashAlt />
+                          </button>
+                        </div>
+                      );
+                    })}
+                </div>
+              </>
+            ) : (
+              <div>no data to show </div>
+            )}
+          </div>
+          <VerticalNavbar
+            class={bookData}
+            sendDataToParent={handleDataFromChild}
+          />
+        </>
+      ) : (
+        <h4
+          style={{
+            marginInline: 'auto',
+            position: 'absolute',
+            left: '50%',
+            transform: 'translate(-50% , -100%)',
+            top: '50%',
+          }}
+        >
+          Kelimleriniz veya Alıntılarınızı Yok Yada Mevcutsa Getiriliyor
+        </h4>
+      )}
     </div>
   );
 }

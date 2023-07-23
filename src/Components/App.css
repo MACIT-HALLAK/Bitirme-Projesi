@@ -77,6 +77,10 @@ section {
     width: 104%;
     margin-left: 0%;
   }
+  .title{
+    position: sticky;
+    top: -150px !important;
+  }
 }
 @media (max-width: 576px) {
   .parent {

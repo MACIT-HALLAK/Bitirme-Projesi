@@ -67,6 +67,7 @@ nav {
 }
 .main-nav {
   display: flex;
+  margin-inline: auto;
   background-color: var(--main-color-alt);
   margin-top: 5px;
   border-radius: 5px;
@@ -124,11 +125,10 @@ nav {
 
   .menu-bars {
     display: block;
-    margin-bottom: 10px;
+    margin: 10px;
     font-size: 1.7rem;
     color: var(--main-color);
     cursor: pointer;
-    margin-left: 10px;
     transition: transform 0.5s ease-in-out;
     -webkit-transition: transform 0.5s ease-in-out;
     -moz-transition: transform 0.5s ease-in-out;
@@ -348,9 +348,9 @@ nav {
 
 .main-nav li:last-child > ul .input {
   padding: 10px;
+  background-color: white;
   width: 50px;
   height: 50px;
-  background: none;
   border: 2px solid var(--main-color);
   border-radius: 50px;
   box-sizing: border-box;
@@ -359,10 +359,9 @@ nav {
   outline: none;
   transition: 0.5s;
 }
-.main-nav li:last-child > ul .input {
-  background-color: white;
-}
-.main-nav li:last-child > ul .box:hover input {
+
+.main-nav li:last-child > ul .box:hover input,
+.main-nav li:last-child > ul .input.searched {
   width: 250px;
   background: var(--section-background);
   border-radius: 25px;
@@ -371,6 +370,7 @@ nav {
   -ms-border-radius: 25px;
   -o-border-radius: 25px;
 }
+
 .main-nav li:last-child > ul .box svg {
   position: absolute;
   top: 50%;
@@ -380,7 +380,9 @@ nav {
   color: var(--main-color-alt);
   transition: 0.2s;
 }
-.main-nav li:last-child > ul .box:hover svg {
+
+.main-nav li:last-child > ul .box:hover svg,
+.main-nav li:last-child > ul .box svg.search-hide {
   opacity: 0;
   z-index: -1;
 }
@@ -529,4 +531,59 @@ nav {
     -ms-transition: all 0.15s linear;
     -o-transition: all 0.15s linear;
   }
+}
+
+.search-values {
+  margin-top: 0.3em !important ;
+  position: absolute;
+  z-index: 10000;
+  width: 320px;
+  padding: 10px 15px;
+  background-color: hsl(159, 80%, 80%);
+  transform: translate(-30%, 125px);
+  -webkit-transform: translate(-30%, 125px);
+  -moz-transform: translate(-30%, 125px);
+  -ms-transform: translate(-30%, 125px);
+  -o-transform: translate(-30%, 125px);
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  grid-template-rows: repeat(auto-fit, 1fr) !important;
+  grid-gap: 10px;
+  height: 180px;
+  overflow: scroll;
+}
+
+.search-values li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.8;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s all;
+  -webkit-transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s all;
+  -moz-transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s all;
+  -ms-transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s all;
+  -o-transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s all;
+}
+.search-values > .link:hover li {
+  cursor: pointer;
+  opacity: 1;
+  scale: 1.05;
+}
+.search-values li img {
+  width: 50px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.closing-tag {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  z-index: 10001;
+  font-size: large;
+}
+
+.closing-tag:hover {
+  cursor: pointer;
 }

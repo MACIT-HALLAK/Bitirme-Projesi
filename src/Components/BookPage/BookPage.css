@@ -5,12 +5,12 @@
 .BookPage-Header {
   margin: 0vw 6vw 2vw 6vw;
   padding-top: 5px;
-  
 }
 .BookPage-Body {
   display: flex;
-  flex-flow: row wrap !important;
-  gap: 2rem;
+  flex-flow: wrap;
+  gap: 2.7vh 3.2vw;
+  padding-left: 1vw;
   width: calc(90.33% - 35px);
   margin: auto;
   animation-name: fade;
@@ -111,5 +111,17 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1200px) {
+  .BookPage-Body {
+    gap: 2.7vh 4.7vw;
+  }
+}
+
+@media (max-width: 576px) {
+  .BookPage-Body {
+    justify-content: center !important;
   }
 }
