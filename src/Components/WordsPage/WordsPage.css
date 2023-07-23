@@ -62,7 +62,7 @@
 }
 @media (max-width: 750px) {
   .word-page-parent {
-    grid-template-columns: 10px repeat(8, 1fr) 10px;
+    grid-template-columns: 0px repeat(8, 1fr) 0px;
     grid-template-rows: auto auto  auto 1fr;
     grid-template-areas:
       '. nav nav nav nav nav nav nav nav .'
