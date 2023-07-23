@@ -28,6 +28,7 @@
 }
 .vertical-navbar-layout {
   grid-area: vNav;
+ 
 }
 .word-page-child {
   display: flex;
@@ -52,12 +53,37 @@
 }
 @media screen and (max-width: 890px) {
   .word-page-parent {
-    grid-template-columns: 20px repeat(3, 1fr) 10px repeat(4, 1fr) 20px;
+    grid-template-columns: 10px repeat(2, 1fr) 10px repeat(5, 1fr) 10px;
     grid-template-areas:
       '. nav nav nav nav nav nav nav nav .'
-      '. vNav vNav vNav . title title title title .'
+      '. vNav vNav . title title title title title .'
       '. vNav vNav vNav . cont cont cont cont .';
   }
+}
+@media (max-width: 750px) {
+  .word-page-parent {
+    grid-template-columns: 10px repeat(8, 1fr) 10px;
+    grid-template-rows: auto auto  auto 1fr;
+    grid-template-areas:
+      '. nav nav nav nav nav nav nav nav .'
+      '. vNav vNav  vNav  vNav  vNav vNav vNav vNav .'
+      '. title title title title title title title title .'
+      '. cont cont cont  cont  cont cont cont cont .';
+     
+  }
+  .vertical-navbar-layout {
+    height: fit-content !important;
+    width: 100% !important;
+    top: 0 !important;
+  }
+  .title {
+    position: sticky;
+    top: 170px;
+  }
+  .vertical-navbar-layout button:first-child {
+      padding-top: 25px;
+  }
+
 }
 
 @media (max-width: 768px) {

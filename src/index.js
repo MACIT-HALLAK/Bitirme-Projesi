@@ -15,7 +15,6 @@ import Deneme from './Components/Deneme/Deneme';
 import Categories from './Components/Categories/Categories';
 import WordsPage from './Components/WordsPage/WordsPage';
 import PrivateRoutes from './Components/utils/PrivateRoutes';
-import QuotePage from './Components/QuotePage/QuotePage';
 import AddBook from './Components/AddBooks/AddBook';
 import AddWriter from './Components/AddWriter/AddWriter';
 import EmailConfirm from './Components/EmailConfirm/EmailConfirm';
@@ -66,7 +65,6 @@ const RootComponent = () => {
             <Route path="/settings" element={<SettingCom />} />
             <Route path="/BackTo" element={<BackTo />} />
             <Route path="/WordsPage" element={<WordsPage />} />
-            <Route path="/QuotePage" element={<QuotePage />} />
           </Route>
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
