@@ -58,7 +58,7 @@ const MostRepeatedBooks = () => {
               if (items.id == item.bookId) {
                 return (
                   <div className="MRB-cardRN">
-                    <div style={contentStyle}>{item.count} kere</div>
+                    <div style={contentStyle}>{item.count} K</div>
                     <Card
                       key={items.id}
                       cardNumber={items.id}
