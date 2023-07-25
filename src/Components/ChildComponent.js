@@ -32,7 +32,7 @@ const ChildComponent = ({ data }) => {
                     WriterName={items.author}
                   />
                 ) : index === 0 ? (
-                  'no data to store '
+                  'Bu bölüm herhangi bir kitap içermiyor.'
                 ) : (
                   ''
                 )
@@ -48,7 +48,7 @@ const ChildComponent = ({ data }) => {
               )}
             </Fragment>
           ))
-        : 'no data'}
+        : 'kitaplar bulunmadı'}
     </>
   );
 };
