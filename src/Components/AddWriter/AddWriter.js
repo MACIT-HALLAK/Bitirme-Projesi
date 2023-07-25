@@ -63,8 +63,12 @@ function AddWriter() {
             enctype="multipart/form-data"
             onSubmit={handleSubmit}
           >
-            <div className="row flex">
-              {' '}
+            <div
+              className="row flex"
+              style={{
+                marginLeft: '5px',
+              }}
+            >
               <div className="form-group column-6">
                 <label htmlFor="title">Yazar Adi:</label>
                 <input
