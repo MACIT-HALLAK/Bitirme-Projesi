@@ -12,7 +12,6 @@ const CustomFileInput = ({ onFileSelect }) => {
 
   return (
     <div className="custom-file-input">
-      {selectedFile ? console.log(selectedFile.name) : 'nothing'}
       <label htmlFor="file-input">
         {selectedFile ? selectedFile.name : 'Choose image'}
       </label>

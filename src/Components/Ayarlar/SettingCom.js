@@ -5,7 +5,10 @@ import { FaRegWindowClose } from 'react-icons/fa';
 export default function SettingCom({setlang, clicking, show, handle }) {
 
   const handlelang =(e)=>{
-    setlang(e)
+    console.log(e);
+    const Anadil = e; // Eğer olay düğmeye tıklama ise, düğümün dilini alabilirsin.
+    setlang(Anadil);
+    localStorage.setItem('dil', Anadil);
   }
 
   useEffect(() => {

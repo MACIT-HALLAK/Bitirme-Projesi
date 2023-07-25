@@ -72,6 +72,10 @@
   align-items: center;
   flex-direction: column;
 }
+
+.text-box > p:first-child {
+  margin-left: -75px;
+}
 .content-logo {
   width: 120px;
   height: 120px;
@@ -207,7 +211,8 @@
     gap: 0;
   }
   .content-main .text-box {
-    scale: 0.9;
+    transform: scaleX(1.1);
+    height: 80%;
   }
 
   .content-main .slide {

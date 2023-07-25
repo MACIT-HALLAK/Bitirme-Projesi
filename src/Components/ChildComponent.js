@@ -10,7 +10,7 @@ const ChildComponent = ({ data }) => {
   return (
     <>
       {data
-        ? data.map((items) => (
+        ? data.map((items, index) => (
             <Fragment key={items.id}>
               {level ? (
                 items.level == level ? (
@@ -22,17 +22,19 @@ const ChildComponent = ({ data }) => {
                     name={items.title}
                     WriterName={items.author}
                   />
-                ) : (
-                  items.categori == level ?(
-                    <Card
-                        key={items.id}
-                        cardNumber={items.id}
-                        bookImage={`data:image/jpeg;base64,${items.conten_book}`}
-                        writerImage={`data:image/jpeg;base64,${items.conten_author}`}
-                        name={items.title}
-                        WriterName={items.author}
+                ) : items.categori == level ? (
+                  <Card
+                    key={items.id}
+                    cardNumber={items.id}
+                    bookImage={`data:image/jpeg;base64,${items.conten_book}`}
+                    writerImage={`data:image/jpeg;base64,${items.conten_author}`}
+                    name={items.title}
+                    WriterName={items.author}
                   />
-                  ):('')
+                ) : index === 0 ? (
+                  'no data to store '
+                ) : (
+                  ''
                 )
               ) : (
                 <Card

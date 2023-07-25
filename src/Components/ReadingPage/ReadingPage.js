@@ -331,7 +331,7 @@ const ReadingPage = () => {
   const writelan = (e) => {
     let To = '';
     if (e == 'Türkçe') To = 'tr';
-    else if (e == 'English') To = 'en';
+    else if (e == 'İnglizge') To = 'en';
     else To = 'ar';
 
     console.log(To);
