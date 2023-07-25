@@ -3,6 +3,7 @@ import './BookCategories.css';
 import { FaBook } from 'react-icons/fa';
 import RestApi from '../../AppUrl/RestApi';
 import AppUrl from '../../AppUrl/AppUrl';
+import { Link } from 'react-router-dom';
 
 class BookCategories extends Component {
   constructor() {
@@ -21,13 +22,13 @@ class BookCategories extends Component {
   render() {
     const List = this.state.data;
     const View = List.map((categories, index) => (
-      <a href={`/categories/${categories.categorie}`} key={index}>
+      <Link to={`/BookPage/${categories.categorie}`} key={index}>
         <div className="" key={categories.id}>
           <p className="cat-p">
             {categories.categorie} <FaBook size={25} className="book-icon" />
           </p>
         </div>
-      </a>
+      </Link>
     ));
     return (
       <aside className="chapters-wraper">
