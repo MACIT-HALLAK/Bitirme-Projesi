@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa';
 export default function NavEelements({ element, clicking, handle }) {
- 
   return (
     <>
       <li className={element === 'Seviyeler' ? 'level ' : ''}>
@@ -29,7 +28,9 @@ export default function NavEelements({ element, clicking, handle }) {
           </div>
         ) : (
           <Link
-            to={`/${String(element).split(' ').join('')}`}
+            to={`/${String(element !== 'KitapEkle' ? element : 'AddBook')
+              .split(' ')
+              .join('')}`}
             className="input"
           >
             {element}

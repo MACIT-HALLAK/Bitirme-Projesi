@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import './Navbar.css';
 import { FaSearch } from 'react-icons/fa';
 import { FaList } from 'react-icons/fa';
@@ -45,6 +45,13 @@ const Navbar = () => {
       setFilteredBookdata([]);
     }
   };
+
+  useEffect(() => {
+    const filteredData = bookdata.filter((item) =>
+      item.title.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilteredBookdata(filteredData);
+  }, [searchValue, bookdata]);
 
   useMemo(async () => {
     const res = await axios.get(
@@ -114,7 +121,6 @@ const Navbar = () => {
                       onMouseLeave={keepValue}
                       onChange={(e) => {
                         setSearchValue(e.target.value);
-                        getSearchedBooks(e);
                       }}
                     ></input>
                   </form>
@@ -146,7 +152,7 @@ const Navbar = () => {
                   )}
                 </div>
               </li>
-              {filteredBookdata[0] !== undefined ? (
+              {filteredBookdata[0] !== undefined && searchValue.length > 0 ? (
                 <>
                   <ul
                     className="search-values"
